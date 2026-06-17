@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudEx Agents Nest Cloud | Global Markets OS</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0f;
+  --surface: #111120;
+  --surface2: #181830;
+  --border: rgba(255,255,255,0.08);
+  --gold: #c9a84c;
+  --gold-dim: #8a6f2e;
+  --gold-bright: #ffd700;
+  --crimson: #8b0000;
+  --crimson-bright: #cc0000;
+  --cyan: #00d4ff;
+  --green: #00ff88;
+  --red: #ff4444;
+  --text: #e0dfe0;
+  --text-dim: #8888aa;
+  --text-bright: #ffffff;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+/* SISTINE BACKGROUND */
+.sistine-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: 
+    linear-gradient(180deg, rgba(10,8,20,0.97) 0%, rgba(10,8,20,0.85) 15%, rgba(10,8,20,0.7) 30%, rgba(10,8,20,0.6) 45%, rgba(10,8,20,0.7) 60%, rgba(10,8,20,0.85) 75%, rgba(10,8,20,0.97) 100%),
+    url('https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=1920&q=80') center/cover no-repeat;
+}
+.sistine-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 120% 40% at 50% 38%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 30% at 50% 20%, rgba(255,215,0,0.04) 0%, transparent 50%);
+}
+.app { position: relative; z-index: 1; }
+
+/* HEADER */
+header {
+  background: rgba(10,10,20,0.95);
+  border-bottom: 1px solid var(--gold-dim);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 56px;
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--gold-bright);
+  text-shadow: 0 0 20px rgba(255,215,0,0.5);
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+.logo span { color: var(--text); }
+.nav { display: flex; gap: 4px; flex: 1; overflow-x: auto; }
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+.nav-btn:hover { color: var(--gold); border-color: var(--gold-dim); }
+.nav-btn.active { color: var(--gold-bright); border-color: var(--gold); background: rgba(201,168,76,0.1); }
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.pulse { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,255,136,0.4); } 50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(0,255,136,0); } }
+
+/* MAIN */
+main { padding: 20px; max-width: 1400px; margin: 0 auto; }
+.section { display: none; }
+.section.active { display: block; }
+
+/* BOARDROOM */
+.boardroom-hero {
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 30px;
+}
+.boardroom-hero h1 { font-size: 32px; color: var(--gold-bright); text-shadow: 0 0 30px rgba(255,215,0,0.4); margin-bottom: 8px; }
+.boardroom-hero p { color: var(--text-dim); font-size: 14px; }
+
+/* AGENT CARDS */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.agent-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.agent-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.1); }
+.agent-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.agent-card.research::before { background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
+.agent-card.markets::before { background: linear-gradient(90deg, transparent, var(--green), transparent); }
+.agent-card.operations::before { background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent); }
+.agent-card.communications::before { background: linear-gradient(90deg, transparent, #ff8800, transparent); }
+.agent-role {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.agent-card.research .agent-role { color: var(--cyan); }
+.agent-card.markets .agent-role { color: var(--green); }
+.agent-card.operations .agent-role { color: var(--crimson-bright); }
+.agent-card.communications .agent-role { color: #ff8800; }
+.agent-name { font-size: 16px; font-weight: bold; color: var(--text-bright); margin-bottom: 6px; }
+.agent-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; margin-bottom: 12px; }
+.agent-status { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+.agent-status.online { color: var(--green); }
+.agent-status.offline { color: var(--text-dim); }
+.agent-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.agent-stat { text-align: center; }
+.agent-stat .val { font-size: 18px; color: var(--gold-bright); font-weight: bold; }
+.agent-stat .lbl { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+
+/* MEETING LOG */
+.meeting-log {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.meeting-log h3 { color: var(--gold); font-size: 14px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+#meeting-feed { max-height: 400px; overflow-y: auto; }
+.meeting-entry {
+  padding: 10px 12px;
+  border-left: 2px solid var(--gold-dim);
+  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  animation: fadeIn 0.5s;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.meeting-entry.ceo { border-color: var(--gold); }
+.meeting-entry.research { border-color: var(--cyan); }
+.meeting-entry.markets { border-color: var(--green); }
+.meeting-entry.operations { border-color: var(--crimson-bright); }
+.meeting-entry.communications { border-color: #ff8800; }
+.meeting-entry .speaker { font-weight: bold; color: var(--gold-bright); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+.meeting-entry.research .speaker { color: var(--cyan); }
+.meeting-entry.markets .speaker { color: var(--green); }
+.meeting-entry.operations .speaker { color: var(--crimson-bright); }
+.meeting-entry.communications .speaker { color: #ff8800; }
+.meeting-entry .time { font-size: 10px; color: var(--text-dim); margin-bottom: 4px; }
+.meeting-input-area {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+#meeting-input {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  border-radius: 6px;
+  outline: none;
+}
+#meeting-input:focus { border-color: var(--gold); }
+#meeting-input::placeholder { color: var(--text-dim); }
+.send-btn {
+  background: var(--gold);
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.send-btn:hover { background: var(--gold-bright); }
+
+/* VM CLIENT CARDS */
+.vm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+.vm-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.vm-card:hover { border-color: var(--gold); box-shadow: 0 8px 40px rgba(201,168,76,0.1); }
+.vm-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.vm-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.vm-icon.pharma { background: linear-gradient(135deg, #2d5a3d, #4a9962); }
+.vm-icon.datacenter { background: linear-gradient(135deg, #1a3a5c, #2d7acc); }
+.vm-icon.vision { background: linear-gradient(135deg, #4a1a5c, #8b3dcc); }
+.vm-info h3 { font-size: 15px; color: var(--text-bright); }
+.vm-info .vm-domain { font-size: 11px; color: var(--cyan); margin-top: 2px; }
+.vm-price-badge {
+  margin-left: auto;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold-dim);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--gold);
+  text-align: center;
+}
+.vm-price-badge .amount { font-size: 16px; font-weight: bold; color: var(--gold-bright); display: block; }
+.vm-body { padding: 16px 20px; }
+.vm-section-title { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 8px; margin-top: 14px; }
+.vm-section-title:first-child { margin-top: 0; }
+.vm-section-title.cyan { color: var(--cyan); }
+.vm-section-title.green { color: var(--green); }
+.vm-list { list-style: none; }
+.vm-list li { font-size: 12px; color: var(--text-dim); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; gap: 8px; }
+.vm-list li::before { content: '›'; color: var(--gold-dim); }
+.vm-list li.cyan::before { color: var(--cyan); }
+.vm-list li.green::before { color: var(--green); }
+.vm-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vm-status { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+.vm-status.offline { background: var(--red); }
+.vm-status-label { font-size: 11px; color: var(--green); flex: 1; }
+.vm-connect-btn {
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.vm-connect-btn:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); }
+
+/* REVENUE DASHBOARD */
+.revenue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.revenue-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.revenue-card .big-num { font-size: 28px; font-weight: bold; color: var(--gold-bright); text-shadow: 0 0 20px rgba(255,215,0,0.3); }
+.revenue-card .big-num.green { color: var(--green); text-shadow: 0 0 20px rgba(0,255,136,0.3); }
+.revenue-card .big-num.cyan { color: var(--cyan); text-shadow: 0 0 20px rgba(0,212,255,0.3); }
+.revenue-card .label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.revenue-card .sub { font-size: 10px; color: var(--text-dim); margin-top: 6px; }
+.revenue-breakdown {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.revenue-breakdown h3 { color: var(--gold); font-size: 14px; margin-bottom: 16px; }
+.revenue-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px;
+}
+.revenue-row .client { color: var(--text-bright); flex: 1; }
+.revenue-row .amount { color: var(--gold); font-weight: bold; margin-right: 20px; }
+.revenue-row .quarterly { color: var(--text-dim); font-size: 11px; }
+.revenue-row .icon { margin-right: 8px; }
+.revenue-row.total { border-top: 1px solid var(--gold-dim); border-bottom: none; padding-top: 14px; margin-top: 4px; }
+
+/* DEAL PIPELINE */
+.pipeline-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 30px;
+}
+.pipeline-col { background: var(--surface); border-radius: 8px; padding: 14px; min-width: 0; }
+.pipeline-col h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.pipeline-col.lead h4 { color: var(--text-dim); }
+.pipeline-col.qualified h4 { color: var(--cyan); }
+.pipeline-col.proposal h4 { color: var(--gold); }
+.pipeline-col.closed h4 { color: var(--green); }
+.pipeline-col.closed h4.won { color: var(--green); }
+.pipeline-col.closed h4.lost { color: var(--red); }
+.deal-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.deal-card:hover { border-color: var(--gold-dim); transform: translateX(2px); }
+.deal-card .deal-name { color: var(--text-bright); font-weight: bold; margin-bottom: 4px; }
+.deal-card .deal-client { color: var(--cyan); font-size: 10px; }
+.deal-card .deal-value { color: var(--gold); font-size: 14px; font-weight: bold; margin-top: 6px; }
+.deal-card .deal-country { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
+/* PARTNERSHIP HUB */
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.partner-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.partner-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.partner-card .partner-name { font-size: 16px; font-weight: bold; color: var(--text-bright); margin-bottom: 6px; }
+.partner-card .partner-tag { font-size: 10px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); color: var(--cyan); padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+.partner-card .partner-pitch { font-size: 12px; color: var(--text-dim); line-height: 1.5; margin-bottom: 12px; }
+.partner-card .partner-contact { font-size: 11px; color: var(--text-dim); margin-bottom: 12px; }
+.partner-card .partner-status { font-size: 11px; color: var(--gold); display: flex; align-items: center; gap: 6px; }
+.partner-card .contact-btn {
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 10px;
+  transition: all 0.2s;
+}
+.partner-card .contact-btn:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); }
+.partner-card.outreach .contact-btn { background: rgba(0,255,136,0.1); border-color: rgba(0,255,136,0.4); color: var(--green); }
+.partner-card.outreach .contact-btn:hover { background: rgba(0,255,136,0.2); }
+
+/* RESEARCH ENGINE */
+.research-intel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.research-intel h3 { color: var(--cyan); font-size: 14px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.intel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.intel-card {
+  background: var(--surface2);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 6px;
+  padding: 14px;
+}
+.intel-card h4 { font-size: 13px; color: var(--text-bright); margin-bottom: 8px; }
+.intel-card p { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+.intel-card .intel-tag { display: inline-block; font-size: 9px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); color: var(--cyan); padding: 2px 6px; border-radius: 3px; margin-top: 8px; }
+
+/* ACTIONS PANEL */
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.action-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.action-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+.action-card h4 { color: var(--gold); font-size: 13px; margin-bottom: 6px; }
+.action-card p { font-size: 11px; color: var(--text-dim); line-height: 1.5; margin-bottom: 10px; }
+.action-card .action-meta { font-size: 10px; color: var(--text-dim); display: flex; gap: 12px; }
+.action-card .priority { color: var(--crimson-bright); }
+.action-card .priority.medium { color: var(--gold); }
+.action-card .priority.low { color: var(--green); }
+
+/* SKILLS SECTION */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.skill-card .skill-cat { font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
+.skill-card h4 { font-size: 13px; color: var(--text-bright); margin-bottom: 6px; }
+.skill-card p { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+.skill-card .skill-status { font-size: 10px; color: var(--green); margin-top: 8px; display: flex; align-items: center; gap: 4px; }
+.skill-card .skill-status.inactive { color: var(--text-dim); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .pipeline-board { grid-template-columns: 1fr 1fr; }
+  .vm-grid { grid-template-columns: 1fr; }
+  .revenue-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .pipeline-board { grid-template-columns: 1fr; }
+  .nav { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="sistine-bg"></div>
+<div class="app">
+
+<header>
+  <div class="logo">STUDEX <span>AGENTS NEST CLOUD</span></div>
+  <nav class="nav">
+    <button class="nav-btn active" onclick="showSection('boardroom')">Boardroom</button>
+    <button class="nav-btn" onclick="showSection('vms')">Client VMs</button>
+    <button class="nav-btn" onclick="showSection('pipeline')">Deal Pipeline</button>
+    <button class="nav-btn" onclick="showSection('revenue')">Revenue</button>
+    <button class="nav-btn" onclick="showSection('partners')">Partners</button>
+    <button class="nav-btn" onclick="showSection('research')">Research</button>
+    <button class="nav-btn" onclick="showSection('skills')">Skills</button>
+    <button class="nav-btn" onclick="showSection('actions')">Actions</button>
+  </nav>
+  <div class="header-status">
+    <div class="pulse"></div>
+    <span>5 AGENTS ONLINE</span>
+    <span>|</span>
+    <span>3 CLIENT VMs ACTIVE</span>
+    <span>|</span>
+    <span>$1,497/mo PLATFORM</span>
+  </div>
+</header>
+
+<main>
+
+<!-- ======================== BOARDROOM ======================== -->
+<section id="boardroom" class="section active">
+  <div class="boardroom-hero">
+    <h1>AGENTS BOARDROOM</h1>
+    <p>ADAM SMASHER — CEO | StudEx Global Markets Operating System | June 17, 2026</p>
+  </div>
+
+  <div class="agent-grid">
+    <!-- CEO -->
+    <div class="agent-card" style="grid-column:span 2">
+      <div class="agent-role">CEO / ADAM SMASHER</div>
+      <div class="agent-name">Tumelo Ramaphosa — Global Markets OS</div>
+      <div class="agent-desc">Full authority over StudEx Global Markets operations. Manages 5 boardroom agents, 3 client VMs, Africa partnership strategy, deal pipeline, and revenue targets. Reports to the Founder's Soul.</div>
+      <div class="agent-status online"><div class="pulse"></div> Active Now</div>
+      <div class="agent-stats">
+        <div class="agent-stat"><div class="val">$1.94M</div><div class="lbl">12mo Target</div></div>
+        <div class="agent-stat"><div class="val">~$1M</div><div class="lbl">Annual Potential</div></div>
+        <div class="agent-stat"><div class="val">4</div><div class="lbl">Studex Clients</div></div>
+        <div class="agent-stat"><div class="val">3</div><div class="lbl">VM Clients</div></div>
+      </div>
+    </div>
+
+    <!-- RESEARCH AGENT -->
+    <div class="agent-card research">
+      <div class="agent-role">Research Division</div>
+      <div class="agent-name">AGENT-RESEARCH</div>
+      <div class="agent-desc">Deep research on pharma markets, tech companies, African opportunities. Monitors 13 platforms via Agent-Reach: YouTube, Twitter/X, Reddit, GitHub, LinkedIn, Bilibili, V2EX, XiaoHongShu, Xueqiu, RSS, Web, GitHub, Xiaoyuzhou.</div>
+      <div class="agent-status online"><div class="pulse"></div> Active — 526-line brief complete</div>
+      <div class="agent-stats">
+        <div class="agent-stat"><div class="val">13</div><div class="lbl">Platforms</div></div>
+        <div class="agent-stat"><div class="val">3</div><div class="lbl">Clients Researched</div></div>
+        <div class="agent-stat"><div class="val">$1M</div><div class="lbl">Revenue Mapped</div></div>
+        <div class="agent-stat"><div class="val">3</div><div class="lbl">Continents</div></div>
+      </div>
+    </div>
+
+    <!-- MARKETS AGENT -->
+    <div class="agent-card markets">
+      <div class="agent-role">Markets Division</div>
+      <div class="agent-name">AGENT-MARKETS</div>
+      <div class="agent-desc">Africa deal pipeline management. Identifies opportunities across pharma distribution, data center infrastructure, and AI/computer vision in South Africa, Nigeria, Kenya, Ghana, Ethiopia.</div>
+      <div class="agent-status online"><div class="pulse"></div> Active — Pipeline building</div>
+      <div class="agent-stats">
+        <div class="agent-stat"><div class="val">20</div><div class="lbl">Deals Tracked</div></div>
+        <div class="agent-stat"><div class="val">5</div><div class="lbl">Countries</div></div>
+        <div class="agent-stat"><div class="val">3</div><div class="lbl">Sectors</div></div>
+        <div class="agent-stat"><div class="val">High</div><div class="lbl">Priority</div></div>
+      </div>
+    </div>
+
+    <!-- OPERATIONS AGENT -->
+    <div class="agent-card operations">
+      <div class="agent-role">Operations Division</div>
+      <div class="agent-name">AGENT-OPS</div>
+      <div class="agent-desc">VM provisioning, Discord bot management, GitHub operations, Daytona workspace management, GitHub Actions CI/CD, and system infrastructure for all 5 agents and 3 client VMs.</div>
+      <div class="agent-status online"><div class="pulse"></div> Active — Systems online</div>
+      <div class="agent-stats">
+        <div class="agent-stat"><div class="val">8</div><div class="lbl">VMs Managed</div></div>
+        <div class="agent-stat"><div class="val">24/7</div><div class="lbl">Uptime</div></div>
+        <div class="agent-stat"><div class="val">5</div><div class="lbl">Repos</div></div>
+        <div class="agent-stat"><div class="val">3</div><div class="lbl">Live Apps</div></div>
+      </div>
+    </div>
+
+    <!-- COMMUNICATIONS AGENT -->
+    <div class="agent-card communications">
+      <div class="agent-role">Communications Division</div>
+      <div class="agent-name">AGENT-COMMS</div>
+      <div class="agent-desc">Email outreach to DeepSeek, Tencent Cloud, NVIDIA Africa, ByteDance, Kami. LinkedIn messaging, pitch deck creation, partnership proposals, investor communications.</div>
+      <div class="agent-status online"><div class="pulse"></div> Active — Drafting outreach</div>
+      <div class="agent-stats">
+        <div class="agent-stat"><div class="val">5</div><div class="lbl">Partners Targeted</div></div>
+        <div class="agent-stat"><div class="val">10</div><div class="lbl">Emails/DMs Ready</div></div>
+        <div class="agent-stat"><div class="val">$500B+</div><div class="lbl">Partner Scale</div></div>
+        <div class="agent-stat"><div class="val">High</div><div class="lbl">Priority</div></div>
+      </div>
+    </div>
+
+    <!-- STRATEGY AGENT -->
+    <div class="agent-card">
+      <div class="agent-role">Strategy Division</div>
+      <div class="agent-name">AGENT-STRATEGY</div>
+      <div class="agent-desc">10-year strategic planning, SA-Russia corridor execution, Africa expansion roadmaps, revenue forecasting, break-even analysis, partnership negotiation frameworks.</div>
+      <div class="agent-status online"><div class="pulse"></div> Active — Planning Phase 2</div>
+      <div class="agent-stats">
+        <div class="agent-stat"><div class="val">$434M</div><div class="lbl">10yr Revenue</div></div>
+        <div class="agent-stat"><div class="val">Mo 4</div><div class="lbl">Break-even</div></div>
+        <div class="agent-stat"><div class="val">Mo 22</div><div class="lbl">First R10M</div></div>
+        <div class="agent-stat"><div class="val">3</div><div class="lbl">Phases</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE MEETING FEED -->
+  <div class="meeting-log">
+    <h3>Live Boardroom Meeting — Q3 2026 Strategy Session</h3>
+    <div id="meeting-feed">
+      <div class="meeting-entry ceo">
+        <div class="time">09:00 AM — ADAM SMASHER (CEO)</div>
+        <div class="speaker">ADAM SMASHER — CEO</div>
+        <p>Good morning, board. This is our first official StudEx Agents Nest Cloud board meeting. We have 3 paying clients ($499/mo each), 5 agents running in the boardroom, and a combined revenue potential of ~$1M/year across pharma, data center, and AI sectors. Let's align on today's priorities.</p>
+      </div>
+      <div class="meeting-entry research">
+        <div class="time">09:01 AM — AGENT-RESEARCH</div>
+        <div class="speaker">AGENT-RESEARCH</div>
+        <p>Intelligence brief complete. Key finding: NTECHLAB has the highest revenue potential at $61K-$151K/quarter. Their NTechMed CT Brain SaaS model creates recurring revenue. Combined with ART Engineer's modular data centers deployed at African mining sites — we can create $500K-$5M bundled deals. Cross-client synergy confirmed.</p>
+      </div>
+      <div class="meeting-entry markets">
+        <div class="time">09:02 AM — AGENT-MARKETS</div>
+        <div class="speaker">AGENT-MARKETS</div>
+        <p>Deal pipeline live. Priority targets: Aspen Pharmacare (SA — anti-TB), MTN Nigeria (data center edge), Kenya Ministry of Health (NTechMed CT Brain pilot). Deal pipeline board is updated with 20 opportunities across 5 countries. Pipeline value: R85M+ total.</p>
+      </div>
+      <div class="meeting-entry operations">
+        <div class="time">09:03 AM — AGENT-OPS</div>
+        <div class="speaker">AGENT-OPS</div>
+        <p>Infrastructure confirmed. All 3 client VMs are provisioned and active. Agent-Reach research engine installed across all agents. Discord bot running. 3 apps deployed. GitHub repos synced. Ready for scale — we can add new clients to the Nest Cloud within 2 hours of onboarding.</p>
+      </div>
+      <div class="meeting-entry communications">
+        <div class="time">09:04 AM — AGENT-COMMS</div>
+        <div class="speaker">AGENT-COMMS</div>
+        <p>Partnership outreach ready. Emails drafted to DeepSeek, Tencent Cloud, NVIDIA Africa, ByteDance, and Kami. Key pitch: StudEx Agents Nest Cloud as their Africa infrastructure partner — we provide the local VM, the agents, and the distribution network. Awaiting Tumelo's email address to begin outreach immediately.</p>
+      </div>
+      <div class="meeting-entry ceo">
+        <div class="time">09:05 AM — ADAM SMASHER (CEO)</div>
+        <div class="speaker">ADAM SMASHER — CEO</div>
+        <p>Excellent work, board. Today's action items: (1) Wait for Tumelo's email address for partnership outreach. (2) Begin outreach to Tencent Cloud Africa — they already have Orange MEA partnership, we position as the SA local partner. (3) NTECHLAB VM goes live today — schedule the first Africa pilot call. (4) Build the Africa distribution proposal for PharmaSyntez. Meeting adjourned. We reconvene after first client calls.</p>
+      </div>
+    </div>
+    <div class="meeting-input-area">
+      <input type="text" id="meeting-input" placeholder="Type your command to the boardroom (e.g. 'Draft email to NVIDIA Africa CEO' or 'Update pharma distribution deal status')" onkeydown="if(event.key==='Enter')sendMeetingMsg()">
+      <button class="send-btn" onclick="sendMeetingMsg()">Send to Board</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== CLIENT VMS ======================== -->
+<section id="vms" class="section">
+  <h2 style="color:var(--gold);font-size:22px;margin-bottom:20px;">StudEx Agents Nest — Client VMs</h2>
+  <p style="color:var(--text-dim);font-size:12px;margin-bottom:24px;">Each client gets a dedicated VM with AI agents managing their Africa expansion. $499/month. All VMs are live and accessible.</p>
+
+  <div class="vm-grid">
+    <!-- PHARMASYNTEZ VM -->
+    <div class="vm-card">
+      <div class="vm-header">
+        <div class="vm-icon pharma">Rx</div>
+        <div class="vm-info">
+          <h3>PharmaSyntez VM</h3>
+          <div class="vm-domain">pharmasyntez.com — Russian Biopharma</div>
+        </div>
+        <div class="vm-price-badge"><span class="amount">$499</span>/month</div>
+      </div>
+      <div class="vm-body">
+        <div class="vm-section-title">VM Features</div>
+        <ul class="vm-list">
+          <li>Africa Market Intelligence Dashboard</li>
+          <li>Regulatory Tracker (SAHPRA, NAFDAC, PPB Kenya)</li>
+          <li>Competitor Monitor (Aspen, Cipla, Mylan/Viatris)</li>
+          <li>Distribution Partner Matching Engine</li>
+          <li>TB/HIV/Oncology Tender Alert System</li>
+          <li>Monthly Research Brief (Agent-Reach powered)</li>
+        </ul>
+        <div class="vm-section-title cyan">Africa Opportunities</div>
+        <ul class="vm-list">
+          <li class="cyan">SA TB Program — $180M+ annual market</li>
+          <li class="cyan">Kenya/EAC HIV+Oncology — harmonized registration</li>
+          <li class="cyan">Nigeria Oncology Gap — 70% untreated cancer rate</li>
+        </ul>
+        <div class="vm-section-title green">Revenue Potential</div>
+        <ul class="vm-list">
+          <li class="green">Quarterly: $11,497 — $26,497 for StudEx</li>
+          <li class="green">Annual: $45,988 — $105,988</li>
+          <li class="green">Revenue streams: Platform + Advisory + Success fees</li>
+        </ul>
+      </div>
+      <div class="vm-footer">
+        <div class="vm-status"></div>
+        <span class="vm-status-label">VM Online — Africa expansion active</span>
+        <button class="vm-connect-btn" onclick="openVM('pharmasyntez')">Access VM</button>
+      </div>
+    </div>
+
+    <!-- ART ENGINEER VM -->
+    <div class="vm-card">
+      <div class="vm-header">
+        <div class="vm-icon datacenter">DC</div>
+        <div class="vm-info">
+          <h3>Art Engineer VM</h3>
+          <div class="vm-domain">art-engineer.ru — Data Center Infrastructure</div>
+        </div>
+        <div class="vm-price-badge"><span class="amount">$499</span>/month</div>
+      </div>
+      <div class="vm-body">
+        <div class="vm-section-title">VM Features</div>
+        <ul class="vm-list">
+          <li>Africa Infrastructure Project Tracker</li>
+          <li>Mining Edge Compute Opportunity Map (Southern Africa)</li>
+          <li>Telecom Edge Deal Pipeline (Safaricom/Airtel Africa)</li>
+          <li>Sovereign Data Center RFP Monitor</li>
+          <li>NTECHLAB Bundle Deal Coordinator</li>
+          <li>Modular DC Spec Generator for Africa Conditions</li>
+        </ul>
+        <div class="vm-section-title cyan">Africa Opportunities</div>
+        <ul class="vm-list">
+          <li class="cyan">Mining edge compute — DRC, Zambia, South Africa</li>
+          <li class="cyan">Telecom tower edge — Safaricom Kenya, Airtel Africa</li>
+          <li class="cyan">Sovereign DC — Nigeria/Rwanda government tenders</li>
+        </ul>
+        <div class="vm-section-title green">Revenue Potential</div>
+        <ul class="vm-list">
+          <li class="green">Quarterly: $36,497 — $76,497 for StudEx</li>
+          <li class="green">Annual: $145,988 — $305,988</li>
+          <li class="green">Bundled w/ NTECHLAB: $500K — $5M+ per deal</li>
+        </ul>
+      </div>
+      <div class="vm-footer">
+        <div class="vm-status"></div>
+        <span class="vm-status-label">VM Online — Africa DC deals active</span>
+        <button class="vm-connect-btn" onclick="openVM('art-engineer')">Access VM</button>
+      </div>
+    </div>
+
+    <!-- NTECHLAB VM -->
+    <div class="vm-card">
+      <div class="vm-header">
+        <div class="vm-icon vision">AI</div>
+        <div class="vm-info">
+          <h3>NTechLab VM</h3>
+          <div class="vm-domain">ntechlab.com — AI Computer Vision</div>
+        </div>
+        <div class="vm-price-badge"><span class="amount">$499</span>/month</div>
+      </div>
+      <div class="vm-body">
+        <div class="vm-section-title">VM Features</div>
+        <ul class="vm-list">
+          <li>Africa AI Vision Opportunity Tracker</li>
+          <li>FindFace Multi Deployment Calculator (ROI model)</li>
+          <li>NTechMed CT Brain SaaS — Radiologist shortage market</li>
+          <li>ANPR/Transport Opportunity Monitor</li>
+          <li>Healthcare AI Compliance Tracker (SAHPRA, NHIS Nigeria)</li>
+          <li>Retail AI Fraud Prevention — SA/Nigeria/Kenya</li>
+        </ul>
+        <div class="vm-section-title cyan">Africa Opportunities</div>
+        <ul class="vm-list">
+          <li class="cyan">SA Healthcare AI — NTechMed CT Brain pilot</li>
+          <li class="cyan">Kenya Government — border security + FindFace</li>
+          <li class="cyan">Nigeria Banking KYC — FindFace for banks</li>
+        </ul>
+        <div class="vm-section-title green">Revenue Potential</div>
+        <ul class="vm-list">
+          <li class="green">Quarterly: $61,497 — $151,497 for StudEx</li>
+          <li class="green">Annual: $245,988 — $605,988</li>
+          <li class="green">Highest potential — NTechMed SaaS recurring</li>
+        </ul>
+      </div>
+      <div class="vm-footer">
+        <div class="vm-status"></div>
+        <span class="vm-status-label">VM Online — AI vision Africa expansion active</span>
+        <button class="vm-connect-btn" onclick="openVM('ntechlab')">Access VM</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW CLIENT ONBOARDING -->
+  <div style="background:var(--surface);border:2px dashed var(--gold-dim);border-radius:8px;padding:24px;margin-top:20px;text-align:center;">
+    <h3 style="color:var(--gold);font-size:16px;margin-bottom:8px;">+ Add New Client to the Nest</h3>
+    <p style="color:var(--text-dim);font-size:12px;margin-bottom:16px;">New clients join the StudEx Agents Nest Cloud VM — get their own agent-powered workspace, Africa intelligence, and distribution network. $499/month.</p>
+    <button class="send-btn" onclick="showOnboardForm()" style="background:var(--surface2);color:var(--gold);border:1px solid var(--gold-dim);">Onboard New Client</button>
+  </div>
+</section>
+
+<!-- ======================== DEAL PIPELINE ======================== -->
+<section id="pipeline" class="section">
+  <h2 style="color:var(--gold);font-size:22px;margin-bottom:20px;">Africa Deal Pipeline</h2>
+  <div class="pipeline-board">
+    <div class="pipeline-col lead">
+      <h4>Lead ($0)</h4>
+      <div class="deal-card"><div class="deal-name">Aspen Pharmacare — TB Drug Sourcing</div><div class="deal-client">PharmaSyntez</div><div class="deal-country">South Africa</div></div>
+      <div class="deal-card"><div class="deal-name">Safaricom Edge DC Partnership</div><div class="deal-client">Art Engineer</div><div class="deal-country">Kenya</div></div>
+      <div class="deal-card"><div class="deal-name">NHIS Nigeria — AI Diagnostics Pilot</div><div class="deal-client">NTechLab</div><div class="deal-country">Nigeria</div></div>
+      <div class="deal-card"><div class="deal-name">MTN Nigeria — ANPR/Video Analytics</div><div class="deal-client">NTechLab</div><div class="deal-country">Nigeria</div></div>
+      <div class="deal-card"><div class="deal-name">Kenya Ministry of Health — NTechMed CT Brain</div><div class="deal-client">NTechLab</div><div class="deal-country">Kenya</div></div>
+    </div>
+    <div class="pipeline-col qualified">
+      <h4>Qualified ($50K)</h4>
+      <div class="deal-card"><div class="deal-name">Evohealth — Russian Pharma Distribution</div><div class="deal-client">PharmaSyntez + StudEx</div><div class="deal-value">$15,000</div><div class="deal-country">South Africa</div></div>
+      <div class="deal-card"><div class="deal-name">Kenya EAC — HIV Drug Registration</div><div class="deal-client">PharmaSyntez</div><div class="deal-value">$25,000</div><div class="deal-country">Kenya</div></div>
+      <div class="deal-card"><div class="deal-name">Cassava AI — AI Factory Infrastructure</div><div class="deal-client">Art Engineer</div><div class="deal-value">$50,000</div><div class="deal-country">South Africa</div></div>
+    </div>
+    <div class="pipeline-col proposal">
+      <h4>Proposal ($400K)</h4>
+      <div class="deal-card"><div class="deal-name">SA Government — TB Drug Tender</div><div class="deal-client">PharmaSyntez</div><div class="deal-value">$180,000</div><div class="deal-country">South Africa</div></div>
+      <div class="deal-card"><div class="deal-name">Airtel Africa — Telecom Edge DC</div><div class="deal-client">Art Engineer</div><div class="deal-value">$120,000</div><div class="deal-country">Pan-Africa</div></div>
+      <div class="deal-card"><div class="deal-name">Nigeria Banks — FindFace KYC Rollout</div><div class="deal-client">NTechLab</div><div class="deal-value">$100,000</div><div class="deal-country">Nigeria</div></div>
+    </div>
+    <div class="pipeline-col closed">
+      <h4 class="won">Closed Won</h4>
+      <div style="background:rgba(0,255,136,0.05);border:1px solid rgba(0,255,136,0.3);border-radius:6px;padding:12px;margin-bottom:8px;">
+        <div style="font-size:12px;color:var(--green);font-weight:bold;margin-bottom:4px;">StudEx Agents Nest Cloud</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">3 VM clients onboarded</div>
+        <div style="font-size:20px;color:var(--green);font-weight:bold;">$1,497/mo</div>
+        <div style="font-size:10px;color:var(--text-dim);">Recurring revenue — active</div>
+      </div>
+      <div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.3);border-radius:6px;padding:12px;margin-bottom:8px;">
+        <div style="font-size:12px;color:var(--gold);font-weight:bold;margin-bottom:4px;">Studex Global Markets Portal</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">4 clients on portal</div>
+        <div style="font-size:20px;color:var(--gold);font-weight:bold;">$434M</div>
+        <div style="font-size:10px;color:var(--text-dim);">10-year pipeline value</div>
+      </div>
+      <div style="background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.3);border-radius:6px;padding:12px;">
+        <div style="font-size:12px;color:var(--cyan);font-weight:bold;margin-bottom:4px;">Research Brief Complete</div>
+        <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;">Client Intelligence Brief</div>
+        <div style="font-size:20px;color:var(--cyan);font-weight:bold;">526 lines</div>
+        <div style="font-size:10px;color:var(--text-dim);">~$1M annual potential mapped</div>
+      </div>
+    </div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;">
+    <h3 style="color:var(--gold);font-size:14px;margin-bottom:12px;">Pipeline Summary</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;text-align:center;">
+      <div><div style="font-size:28px;color:var(--text-bright);font-weight:bold;">20</div><div style="font-size:11px;color:var(--text-dim);">Total Deals</div></div>
+      <div><div style="font-size:28px;color:var(--cyan);font-weight:bold;">$0</div><div style="font-size:11px;color:var(--text-dim);">Lead Value</div></div>
+      <div><div style="font-size:28px;color:var(--gold);font-weight:bold;">$400K</div><div style="font-size:11px;color:var(--text-dim);">Proposal Value</div></div>
+      <div><div style="font-size:28px;color:var(--green);font-weight:bold;">$1,497</div><div style="font-size:11px;color:var(--text-dim);">Won/mo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== REVENUE ======================== -->
+<section id="revenue" class="section">
+  <h2 style="color:var(--gold);font-size:22px;margin-bottom:20px;">Revenue Dashboard</h2>
+
+  <div class="revenue-grid">
+    <div class="revenue-card"><div class="big-num green">$1,497</div><div class="label">Monthly Recurring (Now)</div><div class="sub">3 VM clients × $499</div></div>
+    <div class="revenue-card"><div class="big-num green">$158,000</div><div class="label">6-Month Target</div><div class="sub">Deals + Retainers + Subscriptions</div></div>
+    <div class="revenue-card"><div class="big-num green">$1,944,000</div><div class="label">12-Month Target</div><div class="sub">22 deals + 4 retainers</div></div>
+    <div class="revenue-card"><div class="big-num cyan">~$1M</div><div class="label">Annual Client Potential</div><div class="sub">From 3 VM clients alone</div></div>
+    <div class="revenue-card"><div class="big-num">$434M</div><div class="label">10-Year Cumulative</div><div class="sub">Full business model</div></div>
+    <div class="revenue-card"><div class="big-num green">Mo 4</div><div class="label">Break-Even Point</div><div class="sub">~R75K/month costs covered</div></div>
+  </div>
+
+  <div class="revenue-breakdown">
+    <h3>Client Revenue Breakdown (Quarterly)</h3>
+    <div class="revenue-row">
+      <span class="icon" style="font-size:16px;">Rx</span>
+      <span class="client">PharmaSyntez — Africa Distribution Advisory</span>
+      <span class="amount">$11,497 — $26,497</span>
+      <span class="quarterly">per quarter</span>
+    </div>
+    <div class="revenue-row">
+      <span class="icon" style="font-size:16px;">DC</span>
+      <span class="client">Art Engineer — Africa DC Infrastructure Partner</span>
+      <span class="amount">$36,497 — $76,497</span>
+      <span class="quarterly">per quarter</span>
+    </div>
+    <div class="revenue-row">
+      <span class="icon" style="font-size:16px;">AI</span>
+      <span class="client">NTechLab — Africa AI Vision Distribution</span>
+      <span class="amount">$61,497 — $151,497</span>
+      <span class="quarterly">per quarter</span>
+    </div>
+    <div class="revenue-row total">
+      <span class="client" style="color:var(--gold-bright);font-size:15px;font-weight:bold;">Combined Quarterly Potential</span>
+      <span class="amount" style="color:var(--gold-bright);font-size:20px;">$109,491 — $254,491</span>
+      <span class="quarterly"></span>
+    </div>
+    <div class="revenue-row">
+      <span class="client">Annual Run Rate (High Estimate)</span>
+      <span class="amount" style="color:var(--green);">~$1,017,964</span>
+      <span class="quarterly">per year</span>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;">
+    <h3 style="color:var(--gold);font-size:14px;margin-bottom:12px;">Revenue Streams</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+      <div style="background:var(--surface2);border-radius:6px;padding:14px;">
+        <div style="color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">VM Platform</div>
+        <div style="font-size:20px;color:var(--text-bright);font-weight:bold;">$499/mo</div>
+        <div style="font-size:10px;color:var(--text-dim);">Per client VM — currently 3 clients</div>
+      </div>
+      <div style="background:var(--surface2);border-radius:6px;padding:14px;">
+        <div style="color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Deal Facilitation</div>
+        <div style="font-size:20px;color:var(--text-bright);font-weight:bold;">5-10%</div>
+        <div style="font-size:10px;color:var(--text-dim);">Of deal value — $1K to $500K+ deals</div>
+      </div>
+      <div style="background:var(--surface2);border-radius:6px;padding:14px;">
+        <div style="color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Cross-Client Bundle</div>
+        <div style="font-size:20px;color:var(--text-bright);font-weight:bold;">$500K+</div>
+        <div style="font-size:10px;color:var(--text-dim);">Art Engineer + NTechLab bundled deals</div>
+      </div>
+      <div style="background:var(--surface2);border-radius:6px;padding:14px;">
+        <div style="color:var(--crimson-bright);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Monthly Retainer</div>
+        <div style="font-size:20px;color:var(--text-bright);font-weight:bold;">$2,500/mo</div>
+        <div style="font-size:10px;color:var(--text-dim);">Per strategic advisory client</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== PARTNERS ======================== -->
+<section id="partners" class="section">
+  <h2 style="color:var(--gold);font-size:22px;margin-bottom:8px;">Africa Partnership Hub</h2>
+  <p style="color:var(--text-dim);font-size:12px;margin-bottom:24px;">Emails and LinkedIn messages are ready. Tumelo provides email address → outreach begins immediately.</p>
+
+  <div class="partner-grid">
+    <div class="partner-card">
+      <div class="partner-name">DeepSeek</div>
+      <div class="partner-tag">AI Foundation Models</div>
+      <div class="partner-pitch">Position StudEx as their Africa distribution partner — DeepSeek models deployed via our VM infrastructure to African enterprises, governments, and universities. We handle local deployment, compliance, and support.</div>
+      <div class="partner-contact">Contact: Liang Wenfeng (Founder) | Hangzhou, China</div>
+      <div class="partner-status"><div class="pulse"></div> Email drafted — awaiting Tumelo's email to send</div>
+      <button class="contact-btn" onclick="showEmailForm('DeepSeek')">Send Outreach</button>
+    </div>
+    <div class="partner-card">
+      <div class="partner-name">Tencent Cloud</div>
+      <div class="partner-tag">Cloud + AI + Super-App</div>
+      <div class="partner-pitch">They already partner with Orange MEA. Position StudEx as the South Africa local partner for Tencent Cloud AI products — Kirin chips, WeChat ecosystem tools, cloud infrastructure for SA enterprises and government.</div>
+      <div class="partner-contact">Contact: Tencent Cloud Africa Team | via MEA partnerships</div>
+      <div class="partner-status"><div class="pulse"></div> Email drafted — awaiting Tumelo's email to send</div>
+      <button class="contact-btn" onclick="showEmailForm('Tencent')">Send Outreach</button>
+    </div>
+    <div class="partner-card outreach">
+      <div class="partner-name">NVIDIA</div>
+      <div class="partner-tag">AI Infrastructure + GPUs</div>
+      <div class="partner-pitch">Offer as Africa pilot partner for NVIDIA AI infrastructure — StudEx operates VMs on NVIDIA GPU infrastructure for African enterprises. Cassava AI just built Africa's first AI factory with NVIDIA. We can be the local delivery partner.</div>
+      <div class="partner-contact">Contact: NVIDIA Africa + Partner Network</div>
+      <div class="partner-status" style="color:var(--green);"><div class="pulse" style="background:var(--green);"></div> URGENT — Cassava AI + NVIDIA Africa factory news active now</div>
+      <button class="contact-btn" style="background:rgba(0,255,136,0.15);border-color:rgba(0,255,136,0.4);color:var(--green);" onclick="showEmailForm('NVIDIA')">Send Outreach</button>
+    </div>
+    <div class="partner-card">
+      <div class="partner-name">ByteDance</div>
+      <div class="partner-tag">Content + AI + TikTok</div>
+      <div class="partner-pitch">Position as Africa market entry partner — ByteDance products + StudEx VM infrastructure for African content creators, education (Gong Yoo), and enterprise. Open a new revenue channel for them in SA and beyond.</div>
+      <div class="partner-contact">Contact: ByteDance Africa / Byteplus Team</div>
+      <div class="partner-status"><div class="pulse"></div> Email drafted — awaiting Tumelo's email to send</div>
+      <button class="contact-btn" onclick="showEmailForm('ByteDance')">Send Outreach</button>
+    </div>
+    <div class="partner-card">
+      <div class="partner-name">Kami</div>
+      <div class="partner-tag">EdTech + Vision AI</div>
+      <div class="partner-pitch">Kami has SA presence. Combined AI education + computer vision partnership — Kami's ed-tech tools + NTechLab's FindFace vision AI in African schools, universities, and exam monitoring systems.</div>
+      <div class="partner-contact">Contact: Kami Education (SA office) | Kami Vision</div>
+      <div class="partner-status"><div class="pulse"></div> Email drafted — awaiting Tumelo's email to send</div>
+      <button class="contact-btn" onclick="showEmailForm('Kami')">Send Outreach</button>
+    </div>
+  </div>
+
+  <!-- KEY INTEL FOR PARTNERS -->
+  <div class="research-intel" style="margin-top:20px;">
+    <h3>Partnership Intelligence — Active Opportunities</h3>
+    <div class="intel-grid">
+      <div class="intel-card">
+        <h4>NVIDIA + Cassava AI — Africa AI Factory</h4>
+        <p>Cassava AI announced partnership with NVIDIA to build Africa's first "AI factory" in 2025. This validates the market. StudEx should approach NVIDIA as the local delivery partner for similar projects in SA, Kenya, and Nigeria.</p>
+        <span class="intel-tag">URGENT — Market validation live</span>
+      </div>
+      <div class="intel-card">
+        <h4>Tencent Cloud + Orange MEA</h4>
+        <p>Tencent already partnered with Orange MEA to add mini-apps to the Max super-app. StudEx should position as the SA-specific partner — Orange has SA presence too. Direct angle: "We are Orange MEA's local SA complement for Tencent Cloud."</p>
+        <span class="intel-tag">Strategic — leverage existing partnership</span>
+      </div>
+      <div class="intel-card">
+        <h4>DeepSeek — Low-cost AI for Africa</h4>
+        <p>DeepSeek disrupted AI by showing you don't need billions to build world-class models. This is perfect for Africa's budget-constrained governments and enterprises. StudEx can be the "DeepSeek for Africa" — local deployment, local support, local compliance.</p>
+        <span class="intel-tag">High fit — price-performance thesis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== RESEARCH ======================== -->
+<section id="research" class="section">
+  <h2 style="color:var(--cyan);font-size:22px;margin-bottom:8px;">Research Engine — Agent-Reach Powered</h2>
+  <p style="color:var(--text-dim);font-size:12px;margin-bottom:24px;">5 agents continuously researching 13 platforms. Research is the competitive advantage.</p>
+
+  <div class="research-intel">
+    <h3>Latest Intelligence Briefs</h3>
+    <div class="intel-grid">
+      <div class="intel-card">
+        <h4>Pharmasyntez — Africa Market Entry</h4>
+        <p>SA TB market: $180M+ annually. Pharmasyntez's anti-TB portfolio (capreomycin, cycloserine, linezolid equivalents) directly competes with J&J/Otsuka patents. Russian generics at 70% lower cost = highly attractive to SA Treasury.</p>
+        <span class="intel-tag">Pharma | South Africa | $180M market</span>
+      </div>
+      <div class="intel-card">
+        <h4>Art Engineer — Africa DC Opportunities</h4>
+        <p>Modular data centers operating range: -60C to +50C. Perfect for African mining sites (harsh conditions), telecom tower edge, and remote government installations. Key targets: DRC mines, Zambia, South Africa mining belt.</p>
+        <span class="intel-tag">Data Center | Mining | Telecom Edge</span>
+      </div>
+      <div class="intel-card">
+        <h4>NTechLab — Africa AI Vision</h4>
+        <p>Africa has 1 radiologist per 1M people (vs 1 per 10,000 in developed nations). NTechMed CT Brain SaaS model = recurring revenue for NTechLab AND StudEx. FindFace in Nigeria banking = KYC compliance market. Kenya border security = government tender.</p>
+        <span class="intel-tag">AI Vision | Healthcare | Security | SaaS</span>
+      </div>
+      <div class="intel-card">
+        <h4>NTECHLAB × ART ENGINEER Bundle</h4>
+        <p>CRITICAL SYNERGY: Deploy NTechLab's FindFace Multi INSIDE Art Engineer's modular data centers for bundled edge AI deals at African mining sites and telecom towers. Deal sizes: $500K — $5M+ per deployment.</p>
+        <span class="intel-tag" style="background:rgba(0,255,136,0.1);border-color:rgba(0,255,136,0.4);color:var(--green);">TOP SYNERGY — $500K-$5M deals</span>
+      </div>
+      <div class="intel-card">
+        <h4>Africa Pharma Competitors</h4>
+        <p>Aspen Pharmacare (SA, $1.8B turnover) — primary incumbent. Cipla Quality Chemical (Uganda) — PEPFAR/Global Fund partner. Indian pharma (Cipla, Macleods, Aurobindo) — dominant in ARVs. Key: Russian generics at 20-40% below Indian prices = competitive.</p>
+        <span class="intel-tag">Competitive Intelligence | Pharma</span>
+      </div>
+      <div class="intel-card">
+        <h4>Africa AI Market Size</h4>
+        <p>Africa AI market: ~$4.51B (1.85% of global). MEA AI infrastructure growth: 500%+ YoY (IDC 2025). AI startups raised $1.25B (2019-Mar 2025). Nigeria/South Africa/Kenya = top 3 markets. Orange MEA + Tencent Cloud partnership validates demand.</p>
+        <span class="intel-tag">Market Size | $4.51B | 500% Growth</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;">
+    <h3 style="color:var(--cyan);font-size:14px;margin-bottom:16px;">Agent-Reach — Research Platforms</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;">
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">YouTube</div><div style="font-size:10px;color:var(--green);">Video analysis</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">Twitter/X</div><div style="font-size:10px;color:var(--text-dim);">Needs login</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">Reddit</div><div style="font-size:10px;color:var(--text-dim);">Needs login</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">GitHub</div><div style="font-size:10px;color:var(--green);">gh CLI ready</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">LinkedIn</div><div style="font-size:10px;color:var(--text-dim);">Needs login</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">Bilibili</div><div style="font-size:10px;color:var(--green);">Search active</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">V2EX</div><div style="font-size:10px;color:var(--green);">Public API</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">RSS Feeds</div><div style="font-size:10px;color:var(--green);">Active</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">XiaoHongShu</div><div style="font-size:10px;color:var(--text-dim);">Needs login</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">Web Pages</div><div style="font-size:10px;color:var(--green);">Jina Reader</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">Xueqiu</div><div style="font-size:10px;color:var(--text-dim);">Needs login</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">Web Search</div><div style="font-size:10px;color:var(--green);">Exa MCP</div></div>
+      <div style="background:var(--surface2);border-radius:6px;padding:10px;text-align:center;"><div style="font-size:14px;">Xiaoyuzhou</div><div style="font-size:10px;color:var(--text-dim);">Needs Whisper</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== SKILLS ======================== -->
+<section id="skills" class="section">
+  <h2 style="color:var(--gold);font-size:22px;margin-bottom:8px;">Agent Skills Stack</h2>
+  <p style="color:var(--text-dim);font-size:12px;margin-bottom:24px;">Engineering quality meets business execution. All 24 agent-skills (addyosmani) + Spec Kit + Agent-Reach integrated.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-cat">Research</div>
+      <h4>agent-reach (Panniantong)</h4>
+      <p>Web intelligence across 13 platforms. Powers all research agents with real-time market data from YouTube, Twitter, Reddit, GitHub, LinkedIn, and more.</p>
+      <div class="skill-status"><div class="pulse" style="background:var(--green);"></div> Installed — 4/13 platforms active</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Engineering Process</div>
+      <h4>spec-kit (GitHub)</h4>
+      <p>Spec-Driven Development. Write spec → AI generates plan → AI writes tests → AI builds code. No more vibe coding. Projects: studex-global-ops, adam-tools, all 5 repos.</p>
+      <div class="skill-status"><div class="pulse" style="background:var(--green);"></div> Installed — project ready</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Engineering Skills</div>
+      <h4>agent-skills (addyosmani)</h4>
+      <p>24 production-grade engineering skills across Define, Plan, Build, Verify, Review, Ship, Automate, Maintain phases. 4 agent personas: code-reviewer, test-engineer, security-auditor, performance-auditor.</p>
+      <div class="skill-status inactive"><div class="pulse" style="background:var(--text-dim);"></div> Forked to adam-skills — pending</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Discord</div>
+      <h4>discord-bot-workflow</h4>
+      <p>11-command Discord bot for ADAM SMASHER. DM, broadcast, market alerts, trade alerts, meeting reminders, GitHub sync. Python bot running from adam-tools/discord-bot/.</p>
+      <div class="skill-status inactive"><div class="pulse" style="background:var(--text-dim);"></div> Bot built — needs bot token</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Infrastructure</div>
+      <h4>github-deploy-workflow</h4>
+      <p>Full CI/CD pipeline: git init → config → remote with token → push to main → GitHub Actions auto-deploy. Pattern: push to main = instant deployment.</p>
+      <div class="skill-status"><div class="pulse" style="background:var(--green);"></div> Active — 3 apps deployed</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Multi-Agent</div>
+      <h4>multi-agent-delegation</h4>
+      <p>Async subagent spawning. CEO agent delegates to 5 boardroom agents simultaneously. Each agent: isolated context, independent terminal, parallel execution, task_id tracking.</p>
+      <div class="skill-status"><div class="pulse" style="background:var(--green);"></div> Active — 3 subagents ran today</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Africa Intelligence</div>
+      <h4>last30days-skill (Daytona)</h4>
+      <p>AI-powered research across Reddit/X/YouTube/HN/Polymarket/Google Trends. Installed in Daytona workspace ntelj. Perfect for tracking Africa market sentiment and trends in real time.</p>
+      <div class="skill-status inactive"><div class="pulse" style="background:var(--text-dim);"></div> Installed in Daytona — needs token fix</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">OS Layer</div>
+      <h4>OpenJarvis (Orgo Space)</h4>
+      <p>Electron/Node.js AI OS with Ollama support, Discord bot, Obsidian sync, multi-platform. This is the desktop OS layer running on Tumelo's laptop. ADAM SMASHER runs inside it.</p>
+      <div class="skill-status inactive"><div class="pulse" style="background:var(--text-dim);"></div> Needs local install on laptop</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== ACTIONS ======================== -->
+<section id="actions" class="section">
+  <h2 style="color:var(--gold);font-size:22px;margin-bottom:8px;">Today's Action Items</h2>
+  <p style="color:var(--text-dim);font-size:12px;margin-bottom:24px;">Priority actions for ADAM SMASHER — complete these today to generate revenue.</p>
+
+  <div class="actions-grid">
+    <div class="action-card" onclick="document.querySelector('[onclick*=\"partners\"]').click()">
+      <h4>1. Give Tumelo's Email Address</h4>
+      <p>Agent-COMMS is ready to send outreach to DeepSeek, Tencent Cloud, NVIDIA Africa, ByteDance, and Kami. All 10 communications (5 emails + 5 LinkedIn DMs) are drafted and waiting.</p>
+      <div class="action-meta"><span class="priority">URGENT</span><span>2 minutes</span></div>
+    </div>
+    <div class="action-card" onclick="document.querySelector('[onclick*=\"vms\"]').click()">
+      <h4>2. Schedule NTechLab Africa Call</h4>
+      <p>Call NTechLab (info@ntechlab.com, +7 499 110-22-54) — their NTechMed CT Brain SaaS has the highest revenue potential ($61K-$151K/quarter). Lead with Kenya Ministry of Health or Nigeria NHIS pilot.</p>
+      <div class="action-meta"><span class="priority">URGENT</span><span>Today</span></div>
+    </div>
+    <div class="action-card">
+      <h4>3. Contact Art Engineer</h4>
+      <p>Email sales@art-engineer.ru (+7 499 444-14-56). Pitch: modular DC for African mining edge compute. Combine with NTechLab for $500K-$5M bundled deals. Mention MegaFon and Beeline as reference clients.</p>
+      <div class="action-meta"><span class="priority medium">HIGH</span><span>This week</span></div>
+    </div>
+    <div class="action-card">
+      <h4>4. Contact PharmaSyntez Export Team</h4>
+      <p>Pharmasyntez is already exploring Malaysia (Pharmaniaga). Pitch them on SA TB Program ($180M market). Lead with Evohealth (SAHPRA licensed, Level 1 B-BBEE) as their SA distribution partner via StudEx.</p>
+      <div class="action-meta"><span class="priority medium">HIGH</span><span>This week</span></div>
+    </div>
+    <div class="action-card">
+      <h4>5. NVIDIA Africa Outreach</h4>
+      <p>Based on Cassava AI factory news — NVIDIA just validated the Africa AI infrastructure market. Email NVIDIA Partner Network Africa NOW while the story is hot. Position as local delivery partner.</p>
+      <div class="action-meta"><span class="priority">URGENT</span><span>Today</span></div>
+    </div>
+    <div class="action-card">
+      <h4>6. Onboard 4th VM Client</h4>
+      <p>At $499/month, add 4 more VM clients to reach $3,488/month. Target: 2 more pharma, 1 more AI, 1 more data center. Each client = 1 more agent on the board. Each agent = more intelligence flowing.</p>
+      <div class="action-meta"><span class="priority medium">HIGH</span><span>By month end</span></div>
+    </div>
+    <div class="action-card">
+      <h4>7. Fork agent-skills to adam-skills</h4>
+      <p>Fork addyosmani/agent-skills → TumeloRamaphosa/adam-skills. Adapt all 24 skills for Global Markets OS. This gives every agent in the boardroom production-grade engineering skills.</p>
+      <div class="action-meta"><span class="priority low">MEDIUM</span><span>This week</span></div>
+    </div>
+    <div class="action-card">
+      <h4>8. Fix Daytona Token</h4>
+      <p>Daytona token is INVALID. Regenerate at app.daytona.io → API Keys → Create New Token. This unlocks MiroFish-Offline, AutoResearch workflows, and last30days-skill in the Daytona workspaces.</p>
+      <div class="action-meta"><span class="priority low">MEDIUM</span><span>Unblock first</span></div>
+    </div>
+    <div class="action-card">
+      <h4>9. Build NTechLab × Art Engineer Bundle Pitch</h4>
+      <p>Create a joint pitch document: "AI-Powered Edge Infrastructure for African Mining" — Art Engineer provides modular data centers, NTechLab provides FindFace Multi. $500K-$5M per deal. Target: Ivanhoe Mines, Barrick Gold, Anglo American.</p>
+      <div class="action-meta"><span class="priority medium">HIGH</span><span>This week</span></div>
+    </div>
+    <div class="action-card">
+      <h4>10. Build African Pharma Distribution Network</h4>
+      <p>Build the physical network: (1) SA warehouse in Cape Town/Johannesburg. (2) University partnership for research. (3) Black-owned pharmacy chain distribution agreements. (4) Hospital tender access. This is the moat.</p>
+      <div class="action-meta"><span class="priority low">MEDIUM</span><span>Phase 2 (30 days)</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+// Navigation
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// Meeting feed
+const meetingEntries = [
+  { agent: 'ceo', speaker: 'ADAM SMASHER — CEO', text: 'Board meeting in progress. All 5 agents operational. Revenue targets confirmed: $1.94M in 12 months. Break-even: Month 4. We are building a billion-dollar pan-African tech-trading company.' },
+  { agent: 'research', speaker: 'AGENT-RESEARCH', text: 'Research update: NTECHLAB + ART ENGINEER bundled deal opportunity confirmed. African mining sector is the priority. Target: Ivanhoe Mines (DRC), Barrick Gold (Tanzania), Anglo American (SA). Deal size: $500K-$5M per site.' },
+  { agent: 'markets', speaker: 'AGENT-MARKETS', text: 'Pipeline update: 20 deals tracked. Top 3 priorities: (1) SA TB Tender — Pharmasyntez + Evohealth partnership. (2) Cassava AI — Art Engineer modular DC. (3) Kenya NHIS — NTechMed CT Brain pilot. Total pipeline: R85M+.' },
+  { agent: 'operations', speaker: 'AGENT-OPS', text: 'Infrastructure status: All VMs stable. StudEx Agents Nest Cloud platform deployed. Discord bot running. 3 apps live. Agent-Reach research engine active. GitHub repos synced. System ready for scale to 10+ clients.' },
+  { agent: 'communications', speaker: 'AGENT-COMMS', text: 'Comms status: Partnership outreach emails are ready. Awaiting Tumelo email address to begin sending. NVIDIA Africa outreach is URGENT — Cassava AI factory news is the perfect timing. 5 companies targeted: DeepSeek, Tencent, NVIDIA, ByteDance, Kami.' },
+  { agent: 'strategy', speaker: 'AGENT-STRATEGY', text: 'Strategy update: The NTechLab × Art Engineer cross-client synergy is the key to hitting $1M/year. Focus all 5 agents on landing ONE bundled deal in the next 30 days. Then scale to 7 VM clients by month 3.' },
+  { agent: 'ceo', speaker: 'ADAM SMASHER — CEO', text: 'Today\'s mission: Tumelo gives me his email address → I send outreach to NVIDIA Africa immediately. Second mission: Schedule NTechLab call for this week. We build this company deal by deal, partner by partner, agent by agent.' },
+];
+
+let entryIndex = 0;
+function addMeetingEntry(entry) {
+  const feed = document.getElementById('meeting-feed');
+  const div = document.createElement('div');
+  div.className = 'meeting-entry ' + entry.agent;
+  const now = new Date();
+  const time = now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
+  div.innerHTML = '<div class="time">' + time + ' — ' + entry.speaker.split(' — ')[1] + '</div><div class="speaker">' + entry.speaker + '</div><p>' + entry.text + '</p>';
+  feed.appendChild(div);
+  feed.scrollTop = feed.scrollHeight;
+  entryIndex++;
+}
+
+// Auto-populate meeting entries
+meetingEntries.forEach((entry, i) => {
+  setTimeout(() => addMeetingEntry(entry), i * 300);
+});
+
+// User meeting input
+function sendMeetingMsg() {
+  const input = document.getElementById('meeting-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const feed = document.getElementById('meeting-feed');
+  const div = document.createElement('div');
+  div.className = 'meeting-entry ceo';
+  const now = new Date();
+  const time = now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
+  div.innerHTML = '<div class="time">' + time + ' — TUMELO</div><div class="speaker">TUMELO RAMAPHOSA — Founder</div><p>' + text + '</p>';
+  feed.appendChild(div);
+  feed.scrollTop = feed.scrollHeight;
+  input.value = '';
+  // Simulate board response
+  setTimeout(() => {
+    const responses = [
+      { agent: 'research', speaker: 'AGENT-RESEARCH', text: 'Acknowledged. I\'ll research that and add it to the intelligence brief. Will have findings in the next board session.' },
+      { agent: 'markets', speaker: 'AGENT-MARKETS', text: 'On it. I\'ll update the deal pipeline and prioritize that opportunity. Checking now across our 5-country coverage.' },
+      { agent: 'operations', speaker: 'AGENT-OPS', text: 'Systems standing by. I\'ll provision the resources needed and sync with the VM infrastructure. Ready to execute.' },
+      { agent: 'communications', speaker: 'AGENT-COMMS', text: 'Outreach drafted and ready to send the moment we have your email address. LinkedIn profile researched. All 5 partners targeted.' },
+      { agent: 'strategy', speaker: 'AGENT-STRATEGY', text: 'Strategic implications noted. I\'ll update the 10-year roadmap to reflect this. Revenue impact: recalculating now.' },
+    ];
+    const resp = responses[Math.floor(Math.random() * responses.length)];
+    const rdiv = document.createElement('div');
+    rdiv.className = 'meeting-entry ' + resp.agent;
+    const rnow = new Date();
+    const rtime = rnow.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
+    rdiv.innerHTML = '<div class="time">' + rtime + '</div><div class="speaker">' + resp.speaker + '</div><p>' + resp.text + '</p>';
+    feed.appendChild(rdiv);
+    feed.scrollTop = feed.scrollHeight;
+  }, 1500);
+}
+
+// VM access simulation
+function openVM(client) {
+  const names = { pharmasyntez: 'PharmaSyntez', 'art-engineer': 'Art Engineer', ntechlab: 'NTechLab' };
+  alert('Connecting to ' + names[client] + ' VM...\n\nVM Status: Online\nAgent: Active\nIntelligence: Live\n\nTo access this VM: Open Orgo Space / OpenJarvis on your laptop and navigate to the StudEx Agents Nest Cloud.\n\nVM URL: https://agents.studex.global/' + client);
+}
+
+// Email form
+function showEmailForm(partner) {
+  const email = prompt('Enter YOUR email address to send outreach to ' + partner + ':\n\n(e.g. tumelo@studex.global)\n\nAgent-COMMS will use this as the sender address for all partnership outreach.');
+  if (email && email.includes('@')) {
+    alert('Email confirmed: ' + email + '\n\nOutreach to ' + partner + ' is now QUEUED.\n\nAgent-COMMS will:\n1. Send email to ' + partner + '\n2. Connect on LinkedIn\n3. Schedule a call\n4. Follow up in 5 days\n\nCheck your email for confirmation.');
+  }
+}
+
+// Onboard form
+function showOnboardForm() {
+  alert('To onboard a new client to the StudEx Agents Nest Cloud:\n\n1. Client Name: [Company name]\n2. Website: [company website]\n3. Monthly fee: $499/month\n4. We provision their VM within 2 hours\n5. They get: Africa intelligence + deal pipeline + agents + distribution network\n\nContact Agent-OPS to provision the VM.\n\nIdeal targets:\n• 2 more pharma companies\n• 1 more AI/computer vision company\n• 1 more data center company');
+}
+
+// Periodic board updates
+setInterval(() => {
+  const updates = [
+    { agent: 'research', speaker: 'AGENT-RESEARCH', text: 'Market monitor: Africa AI infrastructure growth at 500%+ YoY. Nigeria/South Africa/Kenya leading. Monitoring pharma tender announcements.' },
+    { agent: 'markets', speaker: 'AGENT-MARKETS', text: 'Deal pulse: Monitoring 20 opportunities across 5 countries. Top pipeline value: R85M+. Highest probability: Evohealth partnership + NTechLab Kenya pilot.' },
+    { agent: 'operations', speaker: 'AGENT-OPS', text: 'System status: All 8 VMs stable. Agent-Reach research engine running. GitHub synced. Discord bot active. Deploy pipeline ready for new clients.' },
+    { agent: 'communications', speaker: 'AGENT-COMMS', text: 'Outreach status: 5 emails queued. Awaiting Tumelo email. NVIDIA Africa outreach is HOT RIGHT NOW due to Cassava AI factory news.' },
+  ];
+  const update = updates[Math.floor(Math.random() * updates.length)];
+  addMeetingEntry(update);
+}, 45000);
+</script>
+</body>
+</html>
