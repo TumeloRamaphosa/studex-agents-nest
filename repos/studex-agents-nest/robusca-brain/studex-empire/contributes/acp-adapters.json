@@ -1,0 +1,109 @@
+[
+  {
+    "id": "hermes-ceo",
+    "name": "Hermes CEO",
+    "description": "Chief Executive Officer — coordinates all Studex agents, runs the mesh network, executes RALF loop. Studex Group CEO agent.",
+    "connectionType": "http",
+    "endpoint": "http://localhost:3000/acp",
+    "supportsStreaming": true,
+    "icon": "assets/hermes-logo.svg",
+    "models": ["qwen2.5:1.5b", "qwen2.5:7b", "qwen2.5:14b"],
+    "apiKeyFields": [
+      {
+        "key": "HERMES_PAPERCLIP_KEY",
+        "label": "Hermes API Key",
+        "type": "password",
+        "required": true
+      }
+    ],
+    "env": {
+      "HERMES_PORT": "3000",
+      "HERMES_MESH_PORT": "3001",
+      "STUDEX_VAULT_PATH": "~/.aionui/extensions/studex-empire"
+    }
+  },
+  {
+    "id": "openclaw-marketing",
+    "name": "OpenClaw",
+    "description": "Chief Marketing Officer — content generation, campaign management, social media automation, brand strategy for Studex Group.",
+    "connectionType": "http",
+    "endpoint": "http://localhost:3002/acp",
+    "supportsStreaming": true,
+    "icon": "assets/openclaw-logo.svg",
+    "models": ["deepseek-v4-pro:cloud", "kimi-k2.5:cloud"],
+    "apiKeyFields": [
+      {
+        "key": "OPENCLAW_API_KEY",
+        "label": "OpenClaw API Key",
+        "type": "password",
+        "required": true
+      },
+      {
+        "key": "BLOTATO_API_KEY",
+        "label": "Blotato API Key",
+        "type": "password",
+        "required": false
+      }
+    ],
+    "env": {
+      "OPENCLAW_PORT": "3002",
+      "STUDEX_BRAND": "obsidian-gold",
+      "RAILWAY_TOKEN": "${RAILWAY_TOKEN}",
+      "VERCEL_TOKEN": "${VERCEL_TOKEN}"
+    }
+  },
+  {
+    "id": "goose-dev",
+    "name": "Goose",
+    "description": "Chief Development Officer — runs Adam Smasher as chief. Code generation, architecture, deployment automation for Studex Group.",
+    "connectionType": "http",
+    "endpoint": "http://localhost:3003/acp",
+    "supportsStreaming": true,
+    "icon": "assets/goose-logo.svg",
+    "models": ["kimi-k2.5:cloud", "deepseek-v4-pro:cloud"],
+    "apiKeyFields": [
+      {
+        "key": "GOOSE_API_KEY",
+        "label": "Goose API Key",
+        "type": "password",
+        "required": true
+      }
+    ],
+    "env": {
+      "GOOSE_PORT": "3003",
+      "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+      "VERCEL_TOKEN": "${VERCEL_TOKEN}",
+      "RAILWAY_TOKEN": "${RAILWAY_TOKEN}"
+    }
+  },
+  {
+    "id": "cashclaw-finance",
+    "name": "CashClaw / Adam Smasher",
+    "description": "Chief Finance Officer — revenue tracking, financial reporting, R4M ZAR target management for Studex Group. Adam Smasher is the human chief running CashClaw.",
+    "connectionType": "http",
+    "endpoint": "http://localhost:3004/acp",
+    "supportsStreaming": true,
+    "icon": "assets/cashclaw-logo.svg",
+    "models": ["minimax-m2:cloud", "phi4-mini:latest"],
+    "apiKeyFields": [
+      {
+        "key": "CASHCLAW_API_KEY",
+        "label": "CashClaw API Key",
+        "type": "password",
+        "required": true
+      },
+      {
+        "key": "STRIPE_API_KEY",
+        "label": "Stripe API Key",
+        "type": "password",
+        "required": false
+      }
+    ],
+    "env": {
+      "CASHCLAW_PORT": "3004",
+      "REVENUE_TARGET": "4000000",
+      "CURRENCY": "ZAR",
+      "NOTION_FINANCE_DB": "${NOTION_FINANCE_DB}"
+    }
+  }
+]

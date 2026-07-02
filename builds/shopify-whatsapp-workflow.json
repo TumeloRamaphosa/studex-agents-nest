@@ -1,0 +1,101 @@
+{
+  "name": "Studex — Shopify Order → WhatsApp Alert",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "studex-shopify-order",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-shopify",
+      "name": "Shopify Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "studex-shopify-order"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Shopify order_created webhook payload\nconst data = $input.item.json;\n\nconst orderNumber = data.name || data.order_number || 'N/A';\nconst customerName = data.customer?.first_name && data.customer?.last_name\n  ? `${data.customer.first_name} ${data.customer.last_name}`\n  : data.customer?.email || 'Guest';\nconst email = data.customer?.email || 'No email';\nconst total = data.current_total_price || data.total_price || '0';\nconst currency = data.currency || 'ZAR';\nconst city = data.shipping_address?.city || data.billing_address?.city || '';\nconst country = data.shipping_address?.country || data.billing_address?.country || '';\n\nconst lineItems = (data.line_items || []).map(item => \n  `• ${item.quantity}x ${item.title} (R${item.price})`\n).join('\\n');\n\nconst message = `🥩 *New Studex Order!*\\n\\n` +\n  `📦 Order: *#${orderNumber}*\\n` +\n  `👤 Customer: ${customerName}\\n` +\n  `📧 Email: ${email}\\n` +\n  `📍 Location: ${city}${country ? ', ' + country : ''}\\n` +\n  `💰 Total: *${currency} ${total}*\\n\\n` +\n  `Items:\\n${lineItems}`;\n\nreturn [{ json: { message, orderNumber, customerName, email, total, currency, lineItems } }];"
+      },
+      "id": "parse-order",
+      "name": "Parse Order Details",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v18.0/749827870391669/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer EAASNg25ZBOoUBR8dT2diYUmUzfZAspz8r5aneEYoB8fZBBXFkyrFe459n1cZCXczTO4B994nS9F8QRLot1P0ocSsZCgjJpxZAQBwZCzp0vR9SbgSGKKKx7hqyBBBwsWfQTaZAZCWCtKH5GHxZCnOKQ81IKcAoWT9zzazLDK7w8JxmCHyvKyCE1DdfUwpk4N7x08Pfip4PW2WZBrBBEZCZBwKP4Fy4WjS5sKUIZBU1TJuge6zhAWAZDZD" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "messaging_product", "value": "whatsapp" },
+            { "name": "to", "value": "=27825550194" },
+            { "name": "type", "value": "text" },
+            { "name": "text", "value": "={{ $json.message }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "send-tumelo-whatsapp",
+      "name": "Send to Tumelo (WhatsApp)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [750, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v18.0/749827870391669/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer EAASNg25ZBOoUBR8dT2diYUmUzfZAspz8r5aneEYoB8fZBBXFkyrFe459n1cZCXczTO4B994nS9F8QRLot1P0ocSsZCgjJpxZAQBwZCzp0vR9SbgSGKKKx7hqyBBBwsWfQTaZAZCWCtKH5GHxZCnOKQ81IKcAoWT9zzazLDK7w8JxmCHyvKyCE1DdfUwpk4N7x08Pfip4PW2WZBrBBEZCZBwKP4Fy4WjS5sKUIZBU1TJuge6zhAWAZDZD" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "messaging_product", "value": "whatsapp" },
+            { "name": "to", "value": "=27612345678" },
+            { "name": "type", "value": "text" },
+            { "name": "text", "value": "={{ $json.message }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "send-naledi-whatsapp",
+      "name": "Send to Naledi (WhatsApp)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [750, 400]
+    }
+  ],
+  "connections": {
+    "Shopify Webhook Trigger": {
+      "main": [[{ "node": "Parse Order Details", "type": "main", "index": 0 }]]
+    },
+    "Parse Order Details": {
+      "main": [[
+        { "node": "Send to Tumelo (WhatsApp)", "type": "main", "index": 0 },
+        { "node": "Send to Naledi (WhatsApp)", "type": "main", "index": 0 }
+      ]]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "id": "studex-shopify-whatsapp"
+}

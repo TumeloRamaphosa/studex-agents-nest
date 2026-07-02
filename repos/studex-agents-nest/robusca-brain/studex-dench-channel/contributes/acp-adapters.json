@@ -1,0 +1,49 @@
+[
+  {
+    "id": "hermes-ceo",
+    "name": "Hermes CEO",
+    "description": "Chief Executive Officer of Studex Group — coordinates the multi-agent mesh, runs RALF loop at midnight SAST, manages revenue target of R4M ZAR.",
+    "connectionType": "http",
+    "endpoint": "http://localhost:3000/acp",
+    "supportsStreaming": true,
+    "icon": "assets/hermes-logo.svg",
+    "models": ["qwen2.5:1.5b", "qwen2.5:7b", "qwen2.5:14b"],
+    "apiKeyFields": [
+      {
+        "key": "HERMES_PAPERCLIP_KEY",
+        "label": "Hermes API Key",
+        "type": "password",
+        "required": true
+      }
+    ],
+    "env": {
+      "HERMES_PORT": "3000",
+      "HERMES_MESH_PORT": "3001",
+      "STUDEX_VAULT_PATH": "~/Obsidian/SecondBrain",
+      "RALF_LOOP_TIME": "00:00 SAST"
+    }
+  },
+  {
+    "id": "goose-dev",
+    "name": "Goose",
+    "description": "Chief Development Officer — runs Adam Smasher as chief. Code generation, architecture, GitHub, Vercel, Railway deployments, n8n workflows.",
+    "connectionType": "http",
+    "endpoint": "http://localhost:3003/acp",
+    "supportsStreaming": true,
+    "icon": "assets/goose-logo.svg",
+    "models": ["kimi-k2.5:cloud", "deepseek-v4-pro:cloud"],
+    "apiKeyFields": [
+      {
+        "key": "GOOSE_API_KEY",
+        "label": "Goose API Key",
+        "type": "password",
+        "required": true
+      }
+    ],
+    "env": {
+      "GOOSE_PORT": "3003",
+      "ADAM_SMASHER_CHIEF": "true",
+      "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+    }
+  }
+]

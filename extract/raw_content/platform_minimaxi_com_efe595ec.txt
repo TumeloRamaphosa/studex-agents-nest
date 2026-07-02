@@ -1,0 +1,149 @@
+# Source URL: https://platform.minimaxi.com/
+# Content Length: 5098 characters
+# Extracted at: 2026-06-09 02:05:10
+#============================================================
+
+
+概览 - MiniMax 开放平台文档中心
+> Documentation Index
+> -------------------
+> 
+> Fetch the complete documentation index at: </docs/llms.txt>
+> 
+> Use this file to discover all available pages before exploring further.
+
+[跳转到主要内容](#content-area)
+
+🎉 MiniMax-M3 全新发布！你触手可得的 Frontier Model，编程及Agent。[查看文档](https://platform.minimaxi.com/docs/guides/models-intro) ➔
+
+[MiniMax 开放平台文档中心 home page![]()![]()](https://minimaxi.com)简体中文搜索...⌘K
+
+* [文档](https://platform.minimaxi.com/docs)
+* [定价](https://platform.minimaxi.com/docs/pricing/overview)
+* [控制台](https://platform.minimaxi.com/user-center/basic-information)
+搜索...Navigation开始使用概览[开发指南](/docs/guides/models-intro)[API](/docs/api-reference/api-overview)[Token Plan](/docs/token-plan/intro)[定价](/docs/pricing/overview)[更新日志](/docs/release-notes/models)
+### 开始使用
+
+* [概览](/docs/guides/models-intro)
+* 快速开始
+### 使用指南
+
+* 文本
+* 视频
+* 语音
+* 图像
+* 音乐
+* MCP
+* 本地部署
+### 常见问题
+
+* [接口相关](/docs/faq/about-apis)
+* [账户相关](/docs/faq/about-account)
+* [历史接口](/docs/faq/history-query)
+* [联系我们](/docs/faq/contact-us)
+### 条款与政策
+
+* [用户协议](https://platform.minimaxi.com/protocol/user-agreement)
+* [隐私条款](https://platform.minimaxi.com/protocol/privacy-policy)
+
+在此页面
+----
+
+* [语言模型](#%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B)
+* [视频模型](#%E8%A7%86%E9%A2%91%E6%A8%A1%E5%9E%8B)
+* [语音模型](#%E8%AF%AD%E9%9F%B3%E6%A8%A1%E5%9E%8B)
+* [图片模型](#%E5%9B%BE%E7%89%87%E6%A8%A1%E5%9E%8B)
+* [音乐模型](#%E9%9F%B3%E4%B9%90%E6%A8%A1%E5%9E%8B)
+开始使用
+
+概览
+==
+
+复制页面
+
+MiniMax 模型体系涵盖语言、视频、语音、图像与音乐五大方向，助力开发者高效构建智能应用。
+
+复制页面
+### [​](#语言模型)语言模型
+
+| **模型名称** | **介绍** |
+| --- | --- |
+| [MiniMax-M3](https://platform.minimaxi.com/docs/api-reference/text-anthropic-api) | 原生多模态、1M 上下文的 Frontier Coding 模型 |
+| [MiniMax-M2.7](https://platform.minimaxi.com/docs/api-reference/text-anthropic-api) | 开启模型的自我迭代 |
+| [MiniMax-M2.7-highspeed](https://platform.minimaxi.com/docs/api-reference/text-anthropic-api) | 与 M2.7 效果不变，速度大幅提升 |
+
+
+历史模型
+
+| **模型名称** | **介绍** |
+| --- | --- |
+| [MiniMax-M2.5](https://platform.minimaxi.com/docs/api-reference/text-anthropic-api) | 顶尖性能与极致性价比，轻松驾驭复杂任务 |
+| [MiniMax-M2.5-highspeed](https://platform.minimaxi.com/docs/api-reference/text-anthropic-api) | 与 M2.5 效果不变，速度大幅提升 |
+| [MiniMax-M2.1](https://platform.minimaxi.com/docs/api-reference/text-anthropic-api) | 强大多语言编程能力，全面升级代码工程体验 |
+| [MiniMax-M2.1-highspeed](https://platform.minimaxi.com/docs/api-reference/text-anthropic-api) | 与 M2.1 效果不变，速度大幅提升 |
+| [MiniMax-M2](https://platform.minimaxi.com/docs/api-reference/text-anthropic-api) | 专为高效编码与Agent工作流而生 |
+
+### [​](#视频模型)视频模型
+
+| **模型名称** | **介绍** |
+| --- | --- |
+| [MiniMax Hailuo 2.3](https://platform.minimaxi.com/docs/api-reference/video-generation-t2v) | 全新视频生成模型，肢体动作、面部表情、物理表现与指令遵循再度突破 |
+| [MiniMax Hailuo 2.3 Fast](https://platform.minimaxi.com/docs/api-reference/video-generation-i2v) | 全新图生视频模型，物理表现与指令遵循具佳，更快更优惠 |
+
+
+历史模型
+
+| **模型名称** | **介绍** |
+| --- | --- |
+| [MiniMax Hailuo 02](https://platform.minimaxi.com/docs/api-reference/video-generation-t2v) | 新一代视频生成模型，1080p 原生，SOTA 指令遵循，极致物理表现 |
+
+### [​](#语音模型)语音模型
+
+| **模型名称** | **介绍** |
+| --- | --- |
+| [Speech-2.8-HD](https://platform.minimaxi.com/docs/api-reference/speech-t2a-http) | 新一代语音 HD 模型，情绪渲染融合语气词，重塑自然听感 |
+| [Speech-2.8-Turbo](https://platform.minimaxi.com/docs/api-reference/speech-t2a-http) | 新一代语音 Turbo 模型，极致生成速度，更自然逼真的音频效果 |
+
+
+历史模型
+
+| **模型名称** | **介绍** |
+| --- | --- |
+| [Speech-2.6-HD](https://platform.minimaxi.com/docs/api-reference/speech-t2a-http) | 极致音质与韵律表现，生成更快更自然 |
+| [Speech-2.6-Turbo](https://platform.minimaxi.com/docs/api-reference/speech-t2a-http) | 音质优异，超低时延，响应更灵敏 |
+| [Speech-02-HD](https://platform.minimaxi.com/docs/api-reference/speech-t2a-http) | 语音 HD 模型，拥有出色的韵律和稳定性，复刻相似度和音质表现突出 |
+| [Speech-02-Turbo](https://platform.minimaxi.com/docs/api-reference/speech-t2a-http) | 语音 Turbo 模型，小语种能力增强，性能表现出色 |
+
+### [​](#图片模型)图片模型
+
+| **模型名称** | **介绍** |
+| --- | --- |
+| [image-01](https://platform.minimaxi.com/docs/api-reference/image-generation-t2i) | 图像生成模型，画面表现细腻，支持文生图、图生图 |
+| [image-01-live](https://platform.minimaxi.com/docs/api-reference/image-generation-t2i) | 图像生成模型，手绘、卡通等画风增强，支持文生图并进行画风设置 |
+
+### [​](#音乐模型)音乐模型
+
+| **模型名称** | **介绍** |
+| --- | --- |
+| [music-2.6](https://platform.minimaxi.com/docs/api-reference/music-generation) | 以声传情：翻唱入心，器乐入魂 |
+| [music-cover](https://platform.minimaxi.com/docs/api-reference/music-generation) | 基于参考音频生成翻唱版本，支持一步翻唱和两步翻唱（可修改歌词），支持风格迁移和自动歌词提取 |
+
+此页面对您有帮助吗？
+
+是否[前置准备](/docs/guides/quickstart-preparation)⌘I[MiniMax 开放平台文档中心 home page![]()![]()](https://minimaxi.com)[discord](https://www.minimax.io/discord)[x](https://x.com/MiniMax_AI)[linkedin](https://www.linkedin.com/company/minimax-ai)[github](https://github.com/MiniMax-AI)
+
+备案信息
+
+[沪公网安备31010402010179号](https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402010179)[沪ICP备2023003282号-38](https://beian.miit.gov.cn/)
+
+MiniMax官方交流群
+
+[MiniMax官方交流群](https://filecdn.minimax.chat/public/20260415-184628.jpeg)
+
+开放平台公众号
+
+[开放平台公众号](https://filecdn.minimax.chat/public/46a6af8f-eeef-462b-b4a3-0da2481ebd43.png)
+
+MiniMax官方客服
+
+[MiniMax官方客服](https://filecdn.minimax.chat/qrcode/customer-service/img_9bb518846379.jpg)

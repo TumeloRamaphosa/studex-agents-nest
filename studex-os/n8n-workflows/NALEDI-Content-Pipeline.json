@@ -1,0 +1,211 @@
+{
+  "name": "Naledi — Content Pipeline",
+  "description": "StudEx Meat automated content pipeline: schedule posts, generate copy, post to Facebook + Instagram, log results",
+  "nodes": [
+    {
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300],
+      "parameters": {
+        "rule": {
+          "interval": [
+            { "field": "cron", "hours": 9, "minutes": 0, "dayOfWeek": ["2","4","6"] }
+          ]
+        }
+      }
+    },
+    {
+      "id": "read-content-queue",
+      "name": "Read Content Queue (Google Sheet)",
+      "type": "@n8n/n8n-nodes-base.googleSheets",
+      "position": [500, 300],
+      "parameters": {
+        "operation": "read",
+        "documentId": "={{ $env.GOOGLE_SHEET_CONTENT_QUEUE_ID }}",
+        "sheetName": "Content Queue",
+        "outputFormatting": "detectAutomatically",
+        "options": {}
+      }
+    },
+    {
+      "id": "filter-pending",
+      "name": "Filter: Pending Posts Only",
+      "type": "@n8n/n8n-nodes-base.filter",
+      "position": [750, 300],
+      "parameters": {
+        "conditions": {
+          "options": {},
+          "conditions": [
+            {
+              "id": "status",
+              "leftValue": "{{ $json.status }}",
+              "rightValue": "PENDING",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "generate-caption",
+      "name": "Generate Caption (Claude)",
+      "type": "@n8n/n8n-nodes-base.httpRequest",
+      "position": [1000, 300],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.ANTHROPIC_API_URL }}/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "x-api-key", "value": "={{ $env.ANTHROPIC_API_KEY }}" },
+            { "name": "anthropic-version", "value": "2023-06-01" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "model", "value": "claude-sonnet-4-20250514" },
+            { "name": "max_tokens", "value": 300 },
+            { "name": "system", "value": "You are Naledi, the StudEx Meat CMO. You write bold, culturally-rooted South African social media captions. You write in a confident, proud tone. Always use 3-5 relevant hashtags. Keep captions punchy. Instagram captions can have up to 2200 characters. Facebook posts should be under 500 characters with a clear CTA." },
+            { "name": "messages", "value": "[{\"role\":\"user\",\"content\":\"Write a social media caption for this StudEx Meat content:\n\nPlatform: {{ $json.platform }}\nContent Type: {{ $json.content_type }}\nProduct/Topic: {{ $json.topic }}\nTheme: {{ $json.theme }}\nCall to Action: {{ $json.cta }}\n\nFormat your response ONLY as valid JSON like this:\n{\"caption\": \"your caption text here\", \"hashtags\": \"#tag1 #tag2 #tag3\"}" }]" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "generate-image",
+      "name": "Generate Image (Higgsfield)",
+      "type": "@n8n/n8n-nodes-base.httpRequest",
+      "position": [1000, 500],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.higgsfield.ai/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer {{ $env.HIGGSFIELD_API_KEY }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "body": {
+          "model": "seedance-2.0",
+          "prompt": "{{ $json.image_prompt }}",
+          "n": 1,
+          "size": "1024x1024",
+          "response_format": "url"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "post-facebook",
+      "name": "Post to Facebook Page",
+      "type": "@n8n/n8n-nodes-base.facebookPages",
+      "position": [1250, 200],
+      "parameters": {
+        "operation": "post",
+        "pageId": "108934711902801",
+        "postType": "post",
+        "text": "={{ $json.caption }} {{ $json.hashtags }}",
+        "imageUrl": "={{ $json.image_url }}",
+        "accessToken": "={{ $env.FB_PAGE_ACCESS_TOKEN }}"
+      }
+    },
+    {
+      "id": "post-instagram",
+      "name": "Post to Instagram",
+      "type": "@n8n/n8n-nodes-base.httpRequest",
+      "position": [1250, 400],
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v19.0/17841403538967823/media",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "image_url", "value": "={{ $json.image_url }}" },
+            { "name": "caption", "value": "={{ $json.caption }} {{ $json.hashtags }}" },
+            { "name": "access_token", "value": "={{ $env.FB_USER_ACCESS_TOKEN }}" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "log-results",
+      "name": "Log to Content Calendar",
+      "type": "@n8n/n8n-nodes-base.googleSheets",
+      "position": [1500, 300],
+      "parameters": {
+        "operation": "update",
+        "documentId": "={{ $env.GOOGLE_SHEET_CONTENT_QUEUE_ID }}",
+        "sheetName": "Content Queue",
+        "columns": {
+          "values": [
+            { "columnHeader": "status", "columnValue": "POSTED" },
+            { "columnHeader": "posted_at", "columnValue": "={{ $now.toISO() }}" },
+            { "columnHeader": "platform", "columnValue": "={{ $json.platform }}" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "notify-discord",
+      "name": "Notify #content on Discord",
+      "type": "@n8n/n8n-nodes-base.discord",
+      "position": [1500, 500],
+      "parameters": {
+        "webhook": "={{ $env.DISCORD_WEBHOOK_URL }}",
+        "text": "=📣 **Naledi just posted!**\n\n**Platform:** {{ $json.platform }}\n**Content:** {{ $json.topic }}\n**Caption:** {{ $json.caption | truncate(100) }}"
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[{ "node": "Read Content Queue", "type": "main", "index": 0 }]]
+    },
+    "Read Content Queue": {
+      "main": [[{ "node": "Filter: Pending Posts Only", "type": "main", "index": 0 }]]
+    },
+    "Filter: Pending Posts Only": {
+      "main": [
+        [{ "node": "Generate Caption", "type": "main", "index": 0 }],
+        [{ "node": "Generate Image", "type": "main", "index": 0 }]
+      ]
+    },
+    "Generate Caption": {
+      "main": [[{ "node": "Post to Facebook Page", "type": "main", "index": 0 }]]
+    },
+    "Generate Image": {
+      "main": [[{ "node": "Post to Instagram", "type": "main", "index": 0 }]]
+    },
+    "Post to Facebook Page": {
+      "main": [[{ "node": "Log to Content Calendar", "type": "main", "index": 0 }]]
+    },
+    "Post to Instagram": {
+      "main": [[{ "node": "Notify #content on Discord", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "env": {
+    "FB_PAGE_ACCESS_TOKEN": "EAASNg25ZBOoUBRZBVsXmJ4YJd9hu2peOznYF1GLlBgNam3nKvzr6Vt5ktCNLHhuVYxY0EZBFGUieDqC8fwdwWHl5xxHZBzzQUeHk76VkYGyTRGeVqtyVi3A0lytR1gFrHZAXaPNXaYgZCk76baPtFZCOr1O7vhta73NTxzlxEoHvVe7ZAd87YMFuHvtDrk9vJ64aBCGfPGpxileoxFzE594rH996GSiAiXff4nZAwhQZDZD",
+    "FB_USER_ACCESS_TOKEN": "EAASNg25ZBOoUBRZBLTfKyYCk8Wy0IL8wzrb9r0XW7bPTWGXjVM7m1aLxeZCmzolY5SlR76iBfPTayZAZCyEw3JEsZCsnBZCuUT3oPpTbH2sNwyLzwnKualTaCLZCR7CDviQNLJlKnZCeVkHBgwJ0ZBpnA4ZCZBNoO9ZAdfayC8EFxCMn0O28cl2GKJ8CU6E1GrmlZB4kQWeKpjRWxIXUJUHEHPzGHikqtV90bOFwwF5OnZC5KxSzGZApnvI7YB4QGRsPXol3rb6JZAw4vQeydE06tEL4tPcPhef9j58ZCYtrma4UZAWIvLoz8MpqQYGXhhBZBr3m6jo7L15pqJYZCL4r7",
+    "ANTHROPIC_API_KEY": "",
+    "ANTHROPIC_API_URL": "https://api.anthropic.com",
+    "HIGGSFIELD_API_KEY": "",
+    "GOOGLE_SHEET_CONTENT_QUEUE_ID": "",
+    "DISCORD_WEBHOOK_URL": ""
+  },
+  "staticData": null,
+  "tags": ["naledi", "content", "facebook", "instagram", "studex"]
+}

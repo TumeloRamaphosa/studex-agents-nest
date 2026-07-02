@@ -1,0 +1,59 @@
+# ============================================================
+# Caddyfile — Rocket.Chat War Room SSL Proxy
+# Studex Meat OS — Studex Meat War Room
+# ============================================================
+# Auto-provisions Let's Encrypt certificate for DOMAIN
+# Usage: Start with docker-compose.ssl.yml override
+# ============================================================
+
+# The domain from .env: DOMAIN=warroom.studexmeat.com
+{$DOMAIN}
+
+# Log format for debugging
+log {
+    level INFO
+    output file /data/access.log
+}
+
+# Enable compression
+encode gzip zstd
+
+# Security headers
+header {
+    # HSTS (force HTTPS)
+    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    # Prevent clickjacking
+    X-Frame-Options DENY
+    # Prevent MIME sniffing
+    X-Content-Type-Options nosniff
+    # Content Security Policy (adjust if you need inline scripts)
+    Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' wss: https:; font-src 'self' data:;"
+    # Remove server fingerprint
+    -Server
+}
+
+# Proxy all requests to Rocket.Chat
+reverse_proxy rocketchat:3000 {
+    # Forward real IP for Rocket.Chat logs
+    header_up X-Real-IP {remote_host}
+    header_up X-Forwarded-For {header.X-Forwarded-For}
+    header_up X-Forwarded-Proto {header.X-Forwarded-Proto}
+}
+
+# Health check endpoint
+respond /health 200 {
+    body "OK"
+}
+
+# Let's Encrypt email for certificate expiry warnings
+tls {$ADMIN_EMAIL_SSL}
+
+# ──────────────────────────────────────────────────────────
+# Development fallback — when DOMAIN is not set or DNS
+# not yet configured, use IP-based access on port 8080
+# (uncomment below and run: docker compose up -d)
+# ──────────────────────────────────────────────────────────
+# http://67.213.119.157:8080 {
+#     reverse_proxy rocketchat:3000
+#     log
+# }

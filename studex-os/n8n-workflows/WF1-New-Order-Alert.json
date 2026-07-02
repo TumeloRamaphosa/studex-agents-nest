@@ -1,0 +1,101 @@
+{
+  "name": "WF1: New Order Alert",
+  "nodes": [
+    {
+      "id": "shopify-trigger",
+      "name": "Shopify Webhook",
+      "type": "@n8n/n8n-nodes-base.webhook",
+      "position": [250, 300],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "studex-new-order",
+        "responseMode": "onReceived",
+        "options": {}
+      }
+    },
+    {
+      "id": "parse-order",
+      "name": "Parse Order JSON",
+      "type": "@n8n/n8n-nodes-base.set",
+      "position": [500, 300],
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "items": [
+            { "name": "order_id", "value": "={{ $json.body.id }}" },
+            { "name": "customer_name", "value": "={{ $json.body.customer.first_name }} {{ $json.body.customer.last_name }}" },
+            { "name": "customer_email", "value": "={{ $json.body.customer.email }}" },
+            { "name": "total_price", "value": "={{ $json.body.total_price }}" },
+            { "name": "city", "value": "={{ $json.body.shipping_address.city }}" },
+            { "name": "line_items", "value": "={{ $json.body.line_items }}" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "discord-notify",
+      "name": "Post to Discord #ops",
+      "type": "@n8n/n8n-nodes-base.discord",
+      "position": [750, 200],
+      "parameters": {
+        "webhook": "={{ $env.DISCORD_WEBHOOK_URL }}",
+        "text": "=📦 **New Order #{{ $json.order_id }}**\n\n**Customer:** {{ $json.customer_name }}\n**Total:** R{{ $json.total_price }}\n**City:** {{ $json.city }}\n**Items:** {{ $json.line_items.length }} item(s)"
+      }
+    },
+    {
+      "id": "gsheet-log",
+      "name": "Log to Google Sheet",
+      "type": "@n8n/n8n-nodes-base.googleSheets",
+      "position": [750, 400],
+      "parameters": {
+        "operation": "append",
+        "sheetId": "={{ $env.GOOGLE_SHEET_ID }}",
+        "range": "Orders!A:F",
+        "columns": {
+          "values": [
+            { "columnHeader": "Order ID", "columnValue": "={{ $json.order_id }}" },
+            { "columnHeader": "Customer", "columnValue": "={{ $json.customer_name }}" },
+            { "columnHeader": "Email", "columnValue": "={{ $json.customer_email }}" },
+            { "columnHeader": "Total (R)", "columnValue": "={{ $json.total_price }}" },
+            { "columnHeader": "City", "columnValue": "={{ $json.city }}" },
+            { "columnHeader": "Date", "columnValue": "={{ $now.toISO() }}" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "whatsapp-notify",
+      "name": "WhatsApp Tumelo",
+      "type": "@n8n/n8n-nodes-base.httpRequest",
+      "position": [750, 600],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.OPENWA_URL }}/api/send",
+        "bodyParameters": {
+          "parameters": [
+            { "name": "session", "value": "studex-business" },
+            { "name": "to", "value": "={{ $env.TUMELO_PHONE }}" },
+            { "name": "text", "value": "New order #{{ $json.order_id }} — R{{ $json.total_price }} from {{ $json.customer_name }} in {{ $json.city }}" }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Shopify Webhook": { "main": [[{ "node": "Parse Order JSON", "type": "main", "index": 0 }]] },
+    "Parse Order JSON": { "main": [[
+      { "node": "Post to Discord #ops", "type": "main", "index": 0 },
+      { "node": "Log to Google Sheet", "type": "main", "index": 0 },
+      { "node": "WhatsApp Tumelo", "type": "main", "index": 0 }
+    ]] }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": ["orders", "shopify", "studex"]
+}

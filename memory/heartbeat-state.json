@@ -1,0 +1,23 @@
+{
+  "lastChecks": {
+    "shopify_orders": 1750658400,
+    "agentmail": 1750658400,
+    "midday_check": 1750667460,
+    "evening_standup": 1750671600,
+    "midnight_sync": 1750682700
+  },
+  "notes": {
+    "shopify": "Blocked — no API token → 0 orders in system",
+    "agentmail": "send.studexmeat.com DNS PENDING — charlie/naledi inboxes unreachable",
+    "blotato": "0 accounts connected — FB/IG needs dashboard connection",
+    "meta_token": "Expired Jun 22 — Naledi cannot post",
+    "github_push": "Blocked — workspace has no GitHub remote, no commits yet",
+    "core_os": "github.com/RedPlanetHQ/core adopted as OS layer — 1830 stars, TypeScript, AGPL 3.0. Wire to War Room as UI.",
+    "denchclaw": "Can run on MaxClaw directly — needs dench.com/api key OR use CORE Notion/Linear instead",
+    "cashclaw": "Moltlaunch marketplace agent — no API access, separate infrastructure"
+  },
+  "vault_sync": {
+    "schedule": "12:00 SAST + 00:00 SAST daily",
+    "last_sync": "2026-07-01 00:06 SAST"
+  }
+}

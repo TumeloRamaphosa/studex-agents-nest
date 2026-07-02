@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studex Meat — Investor Pitch Deck 2026</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0a0505;--dark:#14100e;--red:#8B1A1A;--red-bright:#c0392b;--gold:#d4a017;--cream:#f5f0e8;--cream-dim:#c8c0b0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
+section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 10%;position:relative}
+section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.4}
+#cover{background:var(--black);text-align:center;position:relative}
+#cover::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(139,26,26,.18) 0%,transparent 65%);pointer-events:none}
+.cover-badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;padding:6px 20px;border-radius:2px;margin-bottom:40px}
+.cover-title{font-family:Arial Black,Helvetica,sans-serif;font-size:clamp(72px,14vw,140px);color:var(--cream);letter-spacing:8px;line-height:1;margin-bottom:8px;text-transform:uppercase}
+.cover-title .r{color:var(--red-bright)}
+.cover-divider{width:60px;height:2px;background:var(--gold);margin:28px auto}
+.cover-tagline{font-size:clamp(16px,3vw,24px);font-weight:300;letter-spacing:6px;color:var(--cream-dim);text-transform:uppercase;margin-bottom:60px}
+.cover-meta{font-size:13px;color:rgba(245,240,232,.4);letter-spacing:2px}
+.cover-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(245,240,232,.3);font-size:10px;letter-spacing:3px;text-transform:uppercase;animation:b 2s infinite}
+@keyframes b{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.section-label{font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-family:Arial Narrow,sans-serif}
+h1{font-family:Arial Black,Helvetica,sans-serif;font-size:clamp(44px,7vw,88px);letter-spacing:3px;line-height:1.05;margin-bottom:32px}
+h1 .a{color:var(--red-bright)}
+h2{font-family:Arial Black,Helvetica,sans-serif;font-size:clamp(22px,4vw,44px);letter-spacing:2px;color:var(--cream);margin-bottom:20px}
+h3{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;margin-top:28px}
+p{font-size:17px;line-height:1.8;color:var(--cream-dim);max-width:680px;margin-bottom:16px}
+p.l{font-size:20px;font-weight:300;color:var(--cream);max-width:720px}
+.callout{border-left:3px solid var(--gold);padding:16px 24px;background:rgba(212,160,23,.06);margin:32px 0;font-size:16px;color:var(--cream);border-radius:0 4px 4px 0}
+table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+th{text-align:left;padding:10px 16px;color:var(--gold);font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:11px}
+td{padding:12px 16px;border-bottom:1px solid rgba(139,26,26,.2);color:var(--cream-dim)}
+tr:hover td{background:rgba(139,26,26,.08)}
+td:first-child{color:var(--cream);font-weight:500}
+td:last-child{color:var(--gold);font-weight:600}
+ul{list-style:none;margin:20px 0}
+ul li{padding:10px 0 10px 32px;position:relative;font-size:17px;color:var(--cream-dim);border-bottom:1px solid rgba(139,26,26,.15)}
+ul li::before{content:▸;position:absolute;left:0;color:var(--red-bright);font-size:14px;top:12px}
+ol{list-style:none;counter-reset:n;margin:20px 0}
+ol li{counter-increment:n;padding:12px 0 12px 52px;position:relative;font-size:17px;color:var(--cream-dim);border-bottom:1px solid rgba(139,26,26,.15)}
+ol li::before{content:counter(n);position:absolute;left:0;top:10px;width:30px;height:30px;background:var(--red);color:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Arial Black,sans-serif;font-size:16px}
+.gc{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:32px}
+.card{background:var(--dark);border:1px solid rgba(139,26,26,.3);border-radius:4px;padding:28px 24px;text-align:center;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.n{font-family:Arial Black,Helvetica,sans-serif;font-size:52px;color:var(--cream);line-height:1;margin-bottom:8px}
+.lbl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.prow{display:grid;grid-template-columns:1fr auto;align-items:center;gap:32px;padding:24px 0;border-bottom:1px solid rgba(139,26,26,.2)}
+.prow:last-child{border-bottom:none}
+.pname{font-family:Arial Black,Helvetica,sans-serif;font-size:26px;letter-spacing:2px;color:var(--cream);margin-bottom:4px}
+.pcontact{font-size:14px;color:var(--cream-dim)}
+.pcov{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.3);padding:6px 16px;border-radius:2px;white-space:nowrap}
+footer{background:var(--dark);border-top:1px solid rgba(139,26,26,.3);padding:48px 10%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.fbrand{font-family:Arial Black,Helvetica,sans-serif;font-size:22px;letter-spacing:4px;color:var(--cream)}
+.fbrand span{color:var(--red-bright)}
+.fmeta{font-size:13px;color:rgba(245,240,232,.3)}
+.dots{position:fixed;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:100}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(139,26,26,.4);transition:all .3s;cursor:pointer;border:none}
+.dot.active{background:var(--red-bright);height:24px;border-radius:3px}
+@media(max-width:768px){section{padding:60px 6%}.g2,.gc{grid-template-columns:1fr}.dots{display:none}footer{flex-direction:column;align-items:flex-start}}
+@media print{section{min-height:auto;page-break-after:always}.dots,.cover-scroll{display:none}}
+</style>
+</head>
+<body>
+<div class="dots"><button class="dot active" onclick="document.querySelectorAll('section')[0].scrollIntoView({behavior:'smooth'})"></button><button class="dot" onclick="document.querySelectorAll('section')[1].scrollIntoView({behavior:'smooth'})"></button><button class="dot" onclick="document.querySelectorAll('section')[2].scrollIntoView({behavior:'smooth'})"></button><button class="dot" onclick="document.querySelectorAll('section')[3].scrollIntoView({behavior:'smooth'})"></button><button class="dot" onclick="document.querySelectorAll('section')[4].scrollIntoView({behavior:'smooth'})"></button><button class="dot" onclick="document.querySelectorAll('section')[5].scrollIntoView({behavior:'smooth'})"></button><button class="dot" onclick="document.querySelectorAll('section')[6].scrollIntoView({behavior:'smooth'})"></button><button class="dot" onclick="document.querySelectorAll('section')[7].scrollIntoView({behavior:'smooth'})"></button></div>
+
+<section id="cover">
+  <div class="cover-badge">Investor Pitch Deck · June 2026</div>
+  <div class="cover-title">STUDEX <span class="r">MEAT</span></div>
+  <div class="cover-divider"></div>
+  <div class="cover-tagline">Premium Halal Meat — Farm to Table</div>
+  <div class="cover-meta">studexmeat.com · South Africa · 2026</div>
+</section>
+
+<section id="who">
+  <div class="section-label">About Us</div>
+  <h1>FROM THE <span class="a">FARM</span><br>TO YOUR DOOR</h1>
+  <p class="l">Studex Meat is South Africa's premium online butchery — sourcing heritage and luxury breeds directly from verified farms and delivering to homes and businesses across the country.</p>
+  <div class="callout">Our difference: full provenance transparency. Every cut shows the farm, the animal age, and the slaughter date. Customers know exactly what they're buying.</div>
+  <div class="gc">
+    <div class="card"><div class="n">100%</div><div class="lbl">Halal Certified</div></div>
+    <div class="card"><div class="n">3</div><div class="lbl">Supplier Farms</div></div>
+    <div class="card"><div class="n">2</div><div class="lbl">Delivery Partners</div></div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="section-label">Our Products</div>
+  <h1>PREMIUM <span class="a">BREEDS</span></h1>
+  <p class="l">From slow-cured Wagyu biltong to heritage lamb chops — every product is traceable, premium, and professionally packed.</p>
+  <h2>Wagyu Biltong Gold</h2>
+  <p>Premium grade A5 Wagyu beef, dry-aged and slow-cured in the traditional South African biltong style.</p>
+  <table>
+    <thead><tr><th>Product</th><th>Origin</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td>Wagyu Biltong Gold 500g</td><td>Moutloe Farm</td><td>R549</td></tr>
+      <tr><td>Wagyu Biltong Gold 1kg</td><td>Moutloe Farm</td><td>R999</td></tr>
+      <tr><td>Premium Beef Short Ribs</td><td>Moutloe Farm</td><td>R499</td></tr>
+      <tr><td>Fresh Farm Lamb Chops</td><td>Moutloe Farm</td><td>R549</td></tr>
+      <tr><td>Beef Sausage Bulk Pack</td><td>Moutloe Farm</td><td>R399</td></tr>
+    </tbody>
+  </table>
+  <h3>Coming Soon — Ankole Cattle</h3>
+  <p>Drought-resistant, native to Southern Africa, intensely flavoured lean beef from natural savannah-reared cattle.</p>
+</section>
+
+<section id="farms">
+  <div class="section-label">Farm Network</div>
+  <h1>VERIFIED <span class="a">SOURCES</span></h1>
+  <p class="l">Direct relationships with farms and suppliers — no middlemen, full transparency, consistent quality.</p>
+  <table>
+    <thead><tr><th>Farm / Supplier</th><th>Location</th><th>Speciality</th></tr></thead>
+    <tbody>
+      <tr><td>Moutloe Farm</td><td>South Africa</td><td>Wagyu, Lamb, Premium Beef</td></tr>
+      <tr><td>Silent Valley</td><td>190 Rooiberg St, N4 Gateway, Pretoria</td><td>Fresh cuts, supplier</td></tr>
+      <tr><td>Noags Butchery</td><td>19 Pomona Rd, Kempton Park, 1623</td><td>Bulk orders</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="delivery">
+  <div class="section-label">Delivery Network</div>
+  <h1>BUILT TO <span class="a">DELIVER</span></h1>
+  <p class="l">Vetted specialist food delivery providers ensuring every order arrives fresh, on time, in perfect condition.</p>
+  <div class="prow"><div><div class="pname">Dinkoko Pty Ltd</div><div class="pcontact">Derrick Selepe · +27 67 681 3076</div></div><div class="pcov">Nationwide</div></div>
+  <div class="prow"><div><div class="pname">My Courier</div><div class="pcontact">Willy · +27 61 362 3448</div></div><div class="pcov">Gauteng Metro</div></div>
+  <div class="callout" style="margin-top:32px">All deliveries include real-time WhatsApp tracking updates. Orders assigned to optimal partner by routing zone.</div>
+</section>
+
+<section id="why">
+  <div class="section-label">Why Studex</div>
+  <h1>THE <span class="a">DIFFERENCE</span></h1>
+  <div class="g2">
+    <ul>
+      <li>100% Halal certified — every product, every supplier</li>
+      <li>Farm provenance on every product page</li>
+      <li>Same-day delivery in Gauteng</li>
+      <li>Dry-aged & premium cuts unavailable in retail stores</li>
+      <li>Direct farm relationships — no middlemen markup</li>
+      <li>Online ordering with real-time delivery scheduling</li>
+      <li>AI-powered order management (Charlie orchestrator)</li>
+      <li>Post-delivery automated review requests</li>
+    </ul>
+    <div>
+      <div class="card" style="margin-bottom:16px"><div class="n">R14k+</div><div class="lbl">Monthly Revenue</div></div>
+      <div class="card" style="margin-bottom:16px"><div class="n">100%</div><div class="lbl">Client Satisfaction Target</div></div>
+      <div class="card"><div class="n">24/7</div><div class="lbl">AI Agent Coverage</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="model">
+  <div class="section-label">How It Works</div>
+  <h1>THE <span class="a">PIPELINE</span></h1>
+  <p class="l">A fully AI-orchestrated farm-to-door operation — from order receipt to delivery confirmation.</p>
+  <ol>
+    <li><strong>Customer places order</strong> at studexmeat.com — Shopify storefront with live inventory</li>
+    <li><strong>Charlie AI</strong> assigns delivery and fulfilment automatically</li>
+    <li><strong>Product sourced</strong> from Moutloe Farm or our supplier network</li>
+    <li><strong>Packed and dispatched</strong> via Dinkoko or My Courier based on routing zone</li>
+    <li><strong>WhatsApp updates</strong> at every stage — confirmed, dispatched, delivered</li>
+    <li><strong>Automated review request</strong> sent 24 hours post-delivery</li>
+  </ol>
+</section>
+
+<section id="opportunity">
+  <div class="section-label">The Opportunity</div>
+  <h1>MARKET <span class="a">REALITY</span></h1>
+  <div class="g2">
+    <div>
+      <p class="l">South Africa's premium meat e-commerce market is growing rapidly. Studex is positioned to be the leading online specialist for heritage and luxury breeds in Southern Africa.</p>
+      <div class="callout">Studex is positioned to be the leading online specialist for heritage and luxury breeds in Southern Africa.</div>
+      <h3>Market Tailwinds</h3>
+      <ul>
+        <li>Rising middle class demand for premium food</li>
+        <li>Farm-to-table transparency trends</li>
+        <li>Shift to online grocery accelerated by convenience</li>
+        <li>African luxury meat market growing to 2034</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Strategic Focus Areas</h3>
+      <ul>
+        <li>Wagyu and Ankole premium positioning</li>
+        <li>Corporate and hospitality bulk supply</li>
+        <li>B2B restaurant and hotel partnerships</li>
+        <li>National delivery expansion</li>
+      </ul>
+      <h3 style="margin-top:24px">Agent Infrastructure</h3>
+      <ul>
+        <li>Charlie — AI Operations Orchestrator</li>
+        <li>Naledi — Content & Marketing Agent</li>
+        <li>Delivery Agent — 15-minute order cycle</li>
+        <li>Robusca — CEO Agent</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h1>LET'S <span class="a">TALK</span></h1>
+  <p class="l">Interested in partnering, investing, or supplying? We'd love to hear from you.</p>
+  <div class="g2" style="margin-top:40px">
+    <div>
+      <h3>Orders & Customer Care</h3>
+      <p>studexmeat.com<br>orders@studexmeat.com</p>
+      <h3>Business Development</h3>
+      <p>Tumelo Ramaphosa<br>Director, Studex Meat (Pty) Ltd</p>
+    </div>
+    <div>
+      <h3>Delivery Partners</h3>
+      <p>Dinkoko Pty Ltd — Derrick Selepe<br>+27 67 681 3076</p>
+      <p>My Courier — Willy<br>+27 61 362 3448</p>
+      <h3 style="margin-top:20px">Supplier Inquiries</h3>
+      <p>Silent Valley — +27 71 346 5083<br>Noags Butchery — 19 Pomona Rd, Kempton Park</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">STUDEX <span>MEAT</span></div>
+  <div class="fmeta">© 2026 Studex Meat (Pty) Ltd. All rights reserved. · studexmeat.com</div>
+</footer>
+</body>
+</html>

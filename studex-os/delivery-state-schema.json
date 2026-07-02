@@ -1,0 +1,340 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://studexmeat.com/schemas/delivery-state-v1.json",
+  "title": "Studex Meat Delivery State",
+  "description": "Schema for the persisted delivery state file (delivery-state.json). Single source of truth for all in-flight orders, drivers, and suppliers.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["orders", "drivers", "suppliers", "last_sync"],
+  "additionalProperties": false,
+
+  "properties": {
+
+    "orders": {
+      "type": "object",
+      "description": "All orders keyed by internal order_id (ord_internal_<shopify_id>)",
+      "additionalProperties": {
+        "$ref": "#/definitions/Order"
+      }
+    },
+
+    "drivers": {
+      "type": "object",
+      "description": "All registered delivery drivers/companies",
+      "additionalProperties": {
+        "$ref": "#/definitions/Driver"
+      }
+    },
+
+    "suppliers": {
+      "type": "object",
+      "description": "All registered suppliers",
+      "additionalProperties": {
+        "$ref": "#/definitions/Supplier"
+      }
+    },
+
+    "moutloe_farm": {
+      "type": "object",
+      "description": "Moutloe Farm provenance metadata",
+      "required": ["name"],
+      "additionalProperties": true,
+      "properties": {
+        "name": { "type": "string", "const": "Moutloe Farm" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" }
+      }
+    },
+
+    "last_sync": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last successful Charlie↔Delivery Agent sync"
+    },
+
+    "last_shopify_check": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last Shopify API poll. Null = never polled."
+    }
+  },
+
+  "definitions": {
+
+    "Order": {
+      "type": "object",
+      "required": [
+        "order_id",
+        "order_number",
+        "shopify_order_id",
+        "status",
+        "customer",
+        "items",
+        "order_value",
+        "created_at",
+        "updated_at",
+        "last_updated_by"
+      ],
+      "additionalProperties": true,
+
+      "properties": {
+
+        "order_id": {
+          "type": "string",
+          "description": "Internal order ID — format: ord_internal_<shopify_id>"
+        },
+
+        "order_number": {
+          "type": "string",
+          "description": "Human-readable order number from Shopify, e.g. '1001'"
+        },
+
+        "shopify_order_id": {
+          "type": "string",
+          "description": "Shopify order ID as string (e.g. '1234567890')"
+        },
+
+        "status": {
+          "type": "string",
+          "enum": [
+            "ORDER_INTAKE",
+            "PACKING",
+            "DISPATCHED",
+            "DELIVERED",
+            "DONE",
+            "CANCELLED",
+            "NEEDS_REVIEW",
+            "PAYMENT_FAILED"
+          ],
+          "description": "Current lifecycle status of the delivery"
+        },
+
+        "delivery_company": {
+          "type": ["string", "null"],
+          "enum": ["dinkoko", "mycourier", null],
+          "description": "Which delivery company is assigned"
+        },
+
+        "driver_name": {
+          "type": ["string", "null"],
+          "description": "Driver's full name"
+        },
+
+        "driver_phone": {
+          "type": ["string", "null"],
+          "description": "Driver's SA mobile number with country code"
+        },
+
+        "tracking_number": {
+          "type": ["string", "null"],
+          "description": "Tracking number from the delivery company"
+        },
+
+        "tracking_url": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Tracking URL for the customer"
+        },
+
+        "customer": {
+          "$ref": "#/definitions/Customer"
+        },
+
+        "items": {
+          "type": "array",
+          "description": "Line items in the order",
+          "items": {
+            "type": "object",
+            "required": ["title", "quantity"],
+            "properties": {
+              "title":    { "type": "string" },
+              "quantity": { "type": "integer", "minimum": 1 },
+              "sku":      { "type": "string" },
+              "vendor":   { "type": "string" },
+              "price":    { "type": "string" }
+            }
+          }
+        },
+
+        "order_value": {
+          "type": "number",
+          "description": "Total order value in ZAR"
+        },
+
+        "currency": {
+          "type": "string",
+          "default": "ZAR"
+        },
+
+        "eta_promised": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "ETA communicated to the customer (ISO 8601)"
+        },
+
+        "eta_actual": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Actual ETA based on Google Maps calculation (ISO 8601)"
+        },
+
+        "eta_urgency": {
+          "type": ["string", "null"],
+          "enum": ["green", "yellow", "red", "alert", null],
+          "description": "Computed urgency: green >2h, yellow 1-2h, red <1h, alert = missed"
+        },
+
+        "eta_method": {
+          "type": ["string", "null"],
+          "enum": ["google_maps_routes_api", "haversine_fallback", "zone_estimate", null]
+        },
+
+        "memory_log": {
+          "type": "array",
+          "description": "Timestamped audit trail of all actions on this order",
+          "items": {
+            "$ref": "#/definitions/MemoryLogEntry"
+          }
+        },
+
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the order was first recorded (Shopify created_at)"
+        },
+
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification timestamp (ISO 8601)"
+        },
+
+        "last_updated_by": {
+          "type": "string",
+          "description": "Actor who last updated this order (e.g. 'Charlie', 'Delivery Agent', 'Tumelo')"
+        },
+
+        "source": {
+          "type": "string",
+          "enum": ["shopify", "manual", "import"],
+          "default": "shopify"
+        },
+
+        "notes": {
+          "type": ["string", "null"],
+          "description": "Free-text notes from the team"
+        }
+      }
+    },
+
+    "Customer": {
+      "type": "object",
+      "required": ["name", "address"],
+      "properties": {
+        "name":    { "type": "string" },
+        "phone":   { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "address": { "type": "string" },
+        "email":   { "type": "string" },
+        "lat":     { "type": ["number", "null"] },
+        "lng":     { "type": ["number", "null"] }
+      }
+    },
+
+    "MemoryLogEntry": {
+      "type": "object",
+      "required": ["timestamp", "actor", "action"],
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "actor": {
+          "type": "string",
+          "description": "Who performed the action: Charlie, Delivery Agent, Tumelo, etc."
+        },
+        "action": {
+          "type": "string",
+          "description": "Human-readable description of what happened"
+        }
+      }
+    },
+
+    "Driver": {
+      "type": "object",
+      "required": ["name", "phone", "active_orders", "status"],
+      "additionalProperties": true,
+      "properties": {
+
+        "name": {
+          "type": "string",
+          "description": "Driver or company contact name"
+        },
+
+        "phone": {
+          "type": "string",
+          "description": "SA mobile number with country code"
+        },
+
+        "whatsapp_group_id": {
+          "type": ["string", "null"],
+          "description": "WhatsApp group ID for driver communication relay (TBD)"
+        },
+
+        "active_orders": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of order_ids currently assigned to this driver"
+        },
+
+        "status": {
+          "type": "string",
+          "enum": ["available", "busy", "unavailable"],
+          "description": "Current availability state"
+        },
+
+        "coverage_area": {
+          "type": ["string", "null"],
+          "description": "Primary coverage zone, e.g. 'Gauteng Metro', 'Nationwide'"
+        }
+      }
+    },
+
+    "Supplier": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+
+        "name": {
+          "type": "string",
+          "description": "Supplier display name"
+        },
+
+        "phone": {
+          "type": ["string", "null"]
+        },
+
+        "address": {
+          "type": ["string", "null"],
+          "description": "Full physical address"
+        },
+
+        "lat": {
+          "type": ["number", "null"]
+        },
+
+        "lng": {
+          "type": ["number", "null"]
+        },
+
+        "contact_person": {
+          "type": ["string", "null"]
+        },
+
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  }
+}
