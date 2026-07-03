@@ -3,7 +3,7 @@
     "shopify_orders": 1783069707,
     "agentmail": 1783069707,
     "midday_check": 1750667460,
-    "evening_standup": 1750671600,
+    "evening_standup": 1783107501,
     "midnight_sync": 1750682700
   },
   "notes": {
@@ -16,12 +16,16 @@
     "denchclaw": "Can run on MaxClaw directly \u2014 needs dench.com/api key OR CORE Notion/Linear",
     "cashclaw": "Moltlaunch marketplace agent \u2014 no API access, separate infrastructure",
     "seo-os": "github.com/AgriciDaniel/seo-os \u2014 3D SEO agency OS, 25 specialists, Next.js + R3F, worth exploring",
-    "claude-seo": "github.com/AgriciDaniel/claude-seo \u2014 25 SEO specialist agents, Claude Code plugin, Python"
+    "claude-seo": "github.com/AgriciDaniel/claude-seo \u2014 25 SEO specialist agents, Claude Code plugin, Python",
+    "vault_sync_confirmed": "All agents sync to /workspace/studex-obsidian-vault/ at 12:00 and midnight SAST"
   },
   "vault_sync": {
-    "schedule": "12:00 SAST + 00:00 SAST daily",
-    "last_sync": "2026-07-03 12:08 SAST (COMMIT OK, PUSH FAILED \u2014 no GitHub credentials)",
-    "push_error": "fatal: could not read Username for https://github.com"
+    "schedule": "12:00 SAST + Midnight SAST daily",
+    "last_sync": "2026-07-03 21:38 SAST \u2014 2 local commits ahead of origin, push failing no credentials",
+    "cron_jobs": {
+      "12:00_sast": "5d6729b7-8ad0-4ba3-99c8-b48ddeac49aa",
+      "midnight_sast": "4eba3bce-4551-4f02-8a03-fbbafa7084b0"
+    }
   },
   "last_morning_check": "2026-07-03 11:08 SAST"
 }
