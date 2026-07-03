@@ -20,7 +20,8 @@
   },
   "vault_sync": {
     "schedule": "12:00 SAST + 00:00 SAST daily",
-    "last_sync": "2026-07-01 00:06 SAST"
+    "last_sync": "2026-07-03 12:08 SAST (COMMIT OK, PUSH FAILED \u2014 no GitHub credentials)",
+    "push_error": "fatal: could not read Username for https://github.com"
   },
   "last_morning_check": "2026-07-03 11:08 SAST"
 }
