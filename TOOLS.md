@@ -44,6 +44,14 @@
 | Codex | `rl_sk_0Uz1k7CegkXlN4w77ON8ZpiC_uc2DBpUBKLpWi6SGdM` |
 | Dyatona | `dtn_0ad29d3bdfb7b55f5f97985d2a6c1691e9cff1d8b6a745c76ae4620565887029` |
 
+### Daytona
+- **API Key:** `dtn_0ad29d3bdfb7b55f5f97985d2a6c1691e9cff1d8b6a745c76ae4620565887029`
+- **Status:** API key added — capabilities unknown, needs investigation
+- **Docs:** dyatona.ai (site not reachable — may be private/ invite-only)
+
+### Tencent/Other
+- **Tencent API (suspected):** `6cf598bbd026437ebd0b1b46b4c25ca9.VJazMWhK3RqkddYiVIUm9Ii3`
+
 ### Meta / Facebook
 - **Facebook User Token:** `EAASNg25ZBOoUBRZCknSEm77CUwX7jJ7LJnZADwjZBtz0l1Dyv8FAZCvZCXbhagjkNMIhqZCL43fXMirzh6BGLGyNXttsHgOZBZAsVeC4i2cb1hHZCQFVZBQyLeeDxCDADZAp09hvV99Dgelrckxfvym6dKNIuRwpd7w3fghObZC0CeP9nbABGV7ZAWksZBn1ZCmcuiIAnKoR1OlZB0nG0s6IRMvULsiDv7XgE5f8ba5voCMnwZBb09cs8mn2yhMAxMTWovjDV64N6Kn7CFyZBJPW0YWW0O9N6qbBatPQFwYC3nDLtFu7LiCYg1Hc84v9Vwu1VqYQ3nm2Guw2wIsLkAl`
 - **Facebook Page Token:** `EAASNg25ZBOoUBR8dT2diYUmUzfZAspz8r5aneEYoB8fZBBXFkyrFe459n1cZCXczTO4B994nS9F8QRLot1P0ocSsZCgjJpxZAQBwZCzp0vR9SbgSGKKKx7hqyBBBwsWfQTaZAZCWCtKH5GHxZCnOKQ81IKcAoWT9zzazLDK7w8JxmCHyvKyCE1DdfUwpk4N7x08Pfip4PW2WZBrBBEZCZBwKP4Fy4WjS5sKUIZBU1TJuge6zhAWAZDZD`

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STUDEX OS — Mission Control</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0A0A0A;--s:#111111;--s2:#161616;--b:#1e1e1e;--t:#fff;--m:#555;--d:#888;--g:#3AFF9F;--gold:#C9A84C;--r:#FF4444;--bl:#4a9eff;--p:#E879F9;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--t);font-family:var(--sans);overflow-x:hidden}
+    .dg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(circle,#2a2a2a 1px,transparent 1px);background-size:32px 32px;opacity:0.4}
+    .rm{position:fixed;width:20px;height:20px;pointer-events:none;z-index:999;opacity:0.2}
+    .rm::before,.rm::after{content:'';position:absolute;background:var(--m)}
+    .rm::before{width:1px;height:100%;left:50%}
+    .rm::after{width:100%;height:1px;top:50%}
+    .tlt{position:absolute;left:0;top:0;bottom:0;width:3px}
+    .mono{font-family:var(--mono)}
+    .dim{color:var(--d)}.g{color:var(--g)}.gold{color:var(--gold)}.r{color:var(--r)}.bl{color:var(--bl)}.p{color:var(--p)}
+    header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.96);border-bottom:1px solid var(--b);backdrop-filter:blur(12px);padding:0 48px}
+    .hi{display:flex;align-items:center;justify-content:space-between;height:60px}
+    .hl{display:flex;align-items:center;gap:12px}
+    .hl img{height:28px}
+    .hl span{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+    .hn{display:flex;gap:4px}
+    .hn a{padding:6px 14px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--d);text-decoration:none;border:1px solid transparent;transition:all .15s}
+    .hn a:hover,.hn a.active{color:var(--g);border-color:var(--g);background:rgba(58,255,159,0.05)}
+    .hs{display:flex;align-items:center;gap:20px;font-family:var(--mono);font-size:11px}
+    .ld{font-size:10px;letter-spacing:3px;color:var(--g)}
+    .sd{width:6px;height:6px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g);animation:pl 2s ease-in-out infinite}
+    @keyframes pl{0%,100%{opacity:1}50%{opacity:0.3}}
+    @keyframes bl{50%{opacity:0}}
+    .wrap{position:relative;z-index:1;margin:32px 48px}
+    .term{background:var(--s);border:1px solid var(--b);padding:28px 36px;position:relative;overflow:hidden}
+    .term .tl{font-family:var(--mono);font-size:10px;color:var(--g);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+    .tl-body{font-family:var(--mono);font-size:13px;line-height:2;color:var(--d)}
+    .cur{display:inline-block;width:8px;height:13px;background:var(--g);vertical-align:middle;animation:bl 1s step-end infinite;margin-left:2px}
+    section{position:relative;z-index:1;padding:48px 48px;border-top:1px solid var(--b)}
+    .sl{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--m);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+    .sl::after{content:'';flex:1;height:1px;background:var(--b)}
+    .st{font-size:28px;font-weight:700;margin-bottom:6px}
+    .st em{color:var(--gold);font-style:normal}
+    .ss{font-family:var(--mono);font-size:12px;color:var(--d);margin-bottom:28px}
+    .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b);border:1px solid var(--b);margin:0 48px;position:relative;z-index:1}
+    .kc{background:var(--s);padding:24px 28px;position:relative}
+    .kc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+    .kc.g::before{background:var(--g)}.kc.gold::before{background:var(--gold)}.kc.bl::before{background:var(--bl)}.kc.r::before{background:var(--r)}
+    .ke{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--m);margin-bottom:12px}
+    .kv{font-size:40px;font-weight:700;line-height:1;margin-bottom:8px}
+    .ks{font-family:var(--mono);font-size:11px;color:var(--d)}
+    .ks .up{color:var(--g)}.ks .dn{color:var(--r)}
+    .af{display:flex;flex-direction:column;gap:2px}
+    .ar{display:grid;grid-template-columns:56px 110px 1fr 60px;align-items:center;gap:16px;padding:14px 20px;background:var(--s);border:1px solid var(--b);font-family:var(--mono);font-size:12px;transition:border-color .2s}
+    .ar:hover{border-color:#333}
+    .ati{color:var(--m);font-size:11px}
+    .an{font-weight:700;font-size:12px}
+    .an.charlie{color:var(--g)}.an.naledi{color:var(--p)}.an.coffee{color:var(--gold)}.an.riley{color:var(--bl)}.an.sys{color:var(--m)}
+    .abw{background:var(--b);height:3px;border-radius:2px;overflow:hidden}
+    .ab{height:100%;border-radius:2px}
+    .charlie .ab{background:var(--g)}.naledi .ab{background:var(--p)}.coffee .ab{background:var(--gold)}.riley .ab{background:var(--bl)}.sys .ab{background:var(--m)}
+    .at{color:var(--d);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ap{font-size:11px;color:var(--m);text-align:right}
+    .mg{Display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--b);border:1px solid var(--b)}
+    .mi{background:var(--s);padding:20px 24px}
+    .ms{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--m);text-transform:uppercase;margin-bottom:6px}
+    .mp{font-size:24px;font-weight:700}
+    .mp span{font-size:13px;color:var(--d);font-weight:400}
+    .mc{font-family:var(--mono);font-size:11px;margin-top:4px}
+    .mc.up{color:var(--g)}.mc.dn{color:var(--r)}.mc.ft{color:var(--m)}
+    .sch{display:flex;flex-direction:column;gap:2px}
+    .sch-h{display:grid;grid-template-columns:200px 1fr 140px 130px;padding:8px 20px;font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--m)}
+    .sr{display:grid;grid-template-columns:200px 1fr 140px 130px;align-items:center;gap:16px;padding:14px 20px;background:var(--s);border:1px solid var(--b);font-family:var(--mono);font-size:12px;transition:border-color .2s}
+    .sr:hover{border-color:#333}
+    .sp{font-weight:600;color:var(--t)}
+    .stk{height:3px;background:var(--b);border-radius:2px;overflow:hidden}
+    .stf{height:100%;background:var(--gold);border-radius:2px}
+    .ssb{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+    .ssb.it{color:var(--bl)}.ssb.cf{color:var(--g)}.ssb.ng{color:var(--gold)}.ssb.dl{color:var(--m)}
+    .sn{font-size:11px;color:var(--d)}
+    .cq{display:flex;flex-direction:column;gap:2px}
+    .cq-h{display:grid;grid-template-columns:140px 90px 1fr 100px 80px;padding:8px 20px;font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--m)}
+    .cr{display:grid;grid-template-columns:140px 90px 1fr 100px 80px;align-items:center;gap:16px;padding:12px 20px;background:var(--s);border:1px solid var(--b);font-size:12px;transition:border-color .2s}
+    .cr:hover{border-color:#333}
+    .pb{display:inline-flex;align-items:center;padding:3px 8px;border:1px solid;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+    .pb.ig{color:var(--p);border-color:var(--p)}.pb.fb{color:var(--bl);border-color:var(--bl)}.pb.tt{color:#39FF14;border-color:#39FF14}.pb.wa{color:#25D366;border-color:#25D366}
+    .sb{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+    .sb.ap{color:var(--g)}.sb.pe{color:var(--gold)}.sb.dr{color:var(--m)}.sb.rj{color:var(--r)}
+    .cl{font-family:var(--mono);font-size:11px;color:var(--d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--b);border:1px solid var(--b)}
+    .vs{background:var(--s);padding:20px 24px}
+    .vsl{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:6px}
+    .vsv{font-family:var(--mono);font-size:18px;font-weight:600}
+    .vsv.g{color:var(--g)}.vsv.d{color:var(--d)}
+    .orow{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b);border:1px solid var(--b);margin-top:24px}
+    .oc{background:var(--s);padding:20px 24px}
+    .ocl{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--m);margin-bottom:6px}
+    .ocv{font-family:var(--mono);font-size:13px;color:var(--d);word-break:break-all}
+    .ocv a{color:var(--bl);text-decoration:none}.ocv a:hover{text-decoration:underline}
+    .ocv.g{color:var(--g)}
+    .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .pill{padding:3px 10px;border:1px solid var(--b);font-family:var(--mono);font-size:10px;color:var(--d)}
+    .pill.on{border-color:var(--g);color:var(--g)}
+    /* RocketChat */
+    .ro{border:1px solid var(--b);background:var(--s);overflow:hidden}
+    .rtb{display:flex;align-items:center;border-bottom:1px solid var(--b);background:var(--bg);overflow-x:auto}
+    .rtab{padding:12px 20px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--d);border-right:1px solid var(--b);cursor:pointer;white-space:nowrap;transition:all .15s;display:flex;align-items:center;gap:8px}
+    .rtab:hover{color:var(--t);background:var(--s2)}
+    .rtab.on{color:var(--g);background:rgba(58,255,159,0.05);border-bottom:2px solid var(--g)}
+    .ub{background:var(--g);color:var(--bg);font-size:9px;font-weight:800;padding:1px 5px;border-radius:10px}
+    .rb{display:grid;grid-template-columns:220px 1fr;height:480px}
+    .rmb{background:var(--s2);border-right:1px solid var(--b);padding:16px 0;overflow-y:auto}
+    .mtitle{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--m);padding:0 16px 12px;border-bottom:1px solid var(--b);margin-bottom:12px}
+    .mem{display:flex;align-items:center;gap:10px;padding:8px 16px;font-family:var(--mono);font-size:11px;color:var(--d)}
+    .md{width:6px;height:6px;border-radius:50%}
+    .md.on{background:var(--g);box-shadow:0 0 6px var(--g)}
+    .md.aw{background:var(--gold)}
+    .md.of{background:var(--b)}
+    .mn{font-weight:600}.mn.ch{color:var(--g)}.mn.na{color:var(--p)}.mn.co{color:var(--gold)}.mn.ri{color:var(--bl)}.mn.tu{color:var(--t)}
+    .mj{flex:1;display:flex;flex-direction:column;gap:16px;background:var(--bg)}
+    .msgs{flex:1;overflow-y:auto;padding:16px 24px;display:flex;flex-direction:column;gap:16px}
+    .msg{display:flex;flex-direction:column;gap:3px}
+    .mh{display:flex;align-items:baseline;gap:8px}
+    .ma{font-family:var(--mono);font-size:12px;font-weight:700}
+    .ma.ch{color:var(--g)}.ma.na{color:var(--p)}.ma.co{color:var(--gold)}.ma.tu{color:var(--bl)}.ma.sy{color:var(--m)}.ma.ri{color:var(--bl)}
+    .mtime{font-family:var(--mono);font-size:10px;color:var(--m)}
+    .mtxt{font-size:13px;color:var(--d);line-height:1.65}
+    .mtxt .hl{color:var(--t)}
+    .mtxt .cmd{color:var(--g);font-family:var(--mono);font-size:12px}
+    .ph{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--m);padding:40px;text-align:center}
+    .phi{font-size:40px;opacity:0.25}
+    .pht{font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase}
+    .phb{font-size:12px;color:var(--m);max-width:300px;line-height:1.7}
+    .compose{padding:16px 24px;border-top:1px solid var(--b);display:flex;gap:8px;background:var(--s)}
+    .compose input{flex:1;background:var(--bg);border:1px solid var(--b);color:var(--t);font-family:var(--mono);font-size:12px;padding:10px 14px;outline:none;transition:border-color .2s}
+    .compose input:focus{border-color:var(--g)}
+    .compose input::placeholder{color:var(--m)}
+    .compose button{background:var(--g);color:var(--bg);border:none;padding:10px 20px;font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:opacity .2s}
+    .compose button:hover{opacity:0.85}
+    footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:20px 48px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;color:var(--m)}
+    @media(max-width:900px){.kpi{grid-template-columns:repeat(2,1fr);margin:16px}.rb{grid-template-columns:1fr}.rmb{display:none}.sch-h,.sr{grid-template-columns:1fr 1fr}.cq-h,.cr{grid-template-columns:1fr 1fr}.hn{display:none}}
+    @media(max-width:640px){.wrap{margin:16px}.kpi{margin:16px;grid-template-columns:1fr 1fr}section,.wrap{margin:16px;padding:24px 16px}header{padding:0 16px}footer{flex-direction:column;gap:8px;text-align:center;padding:16px}}
+  </style>
+</head>
+<body>
+
+<div class="dg"></div>
+<div class="rm" style="top:70px;left:8px"></div>
+<div class="rm" style="top:70px;right:8px"></div>
+<div class="rm" style="bottom:8px;left:8px"></div>
+<div class="rm" style="bottom:8px;right:8px"></div>
+
+<header>
+  <div class="hi">
+    <div class="hl">
+      <img src="imgs/studex-logo-gold.png" alt="Studex" onerror="this.style.display='none'" />
+      <span>STUDEX OS</span>
+    </div>
+    <nav class="hn">
+      <a href="#terminal">Terminal</a>
+      <a href="#kpi" class="active">Mission Control</a>
+      <a href="#agents">Agents</a>
+      <a href="#coffee">Coffee</a>
+      <a href="#content">Content</a>
+      <a href="#mission">RocketChat</a>
+    </nav>
+    <div class="hs">
+      <span class="dim" id="clock">--:--:--</span>
+      <span class="ld">● LIVE</span>
+      <div class="sd"></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap" id="terminal">
+  <div class="term">
+    <div class="tl">STUDEX_OS — Command Line Interface</div>
+    <div class="tl-body">
+      <div><span style="color:var(--t)">STUDEX_OS &gt;</span> <span class="cur"></span></div>
+      <div style="margin-top:6px"><span class="dim">&gt; agents status</span></div>
+      <div>&nbsp;&nbsp;Charlie .............. <span class="g">ACTIVE</span></div>
+      <div>&nbsp;&nbsp;Naledi ............... <span class="gold">IDLE</span></div>
+      <div>&nbsp;&nbsp;Coffee Jarvis ........ <span class="dim">STANDBY</span></div>
+      <div>&nbsp;&nbsp;RileyJarvis .......... <span class="dim">DISCONNECTED</span></div>
+      <div style="margin-top:8px"><span class="dim">&gt; shopify orders today</span></div>
+      <div>&nbsp;&nbsp;today ................. <span class="r">0</span> <span class="dim">orders</span></div>
+      <div>&nbsp;&nbsp;revenue .............. <span class="dim">R0.00</span></div>
+      <div style="margin-top:8px"><span class="dim">&gt; rocket.chat status</span></div>
+      <div>&nbsp;&nbsp;server ............... <span class="r">NOT DEPLOYED</span></div>
+      <div>&nbsp;&nbsp;channels ............. <span class="dim">—</span></div>
+      <div style="margin-top:8px"><span class="dim">&gt; system.health</span></div>
+      <div>&nbsp;&nbsp;orgo_vm .............. <span class="g">ONLINE</span></div>
+      <div>&nbsp;&nbsp;war_room ............. <span class="bl">DEPLOYED</span></div>
+      <div>&nbsp;&nbsp;vault_sync ........... <span class="dim">LAST: 2026-07-02 00:06 SAST</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="kpi" id="kpi">
+  <div class="kc g">
+    <div class="ke">STUDEX MEAT</div>
+    <div class="kv">—</div>
+    <div class="ks">Orders Today: <span class="r">0</span></div>
+    <div class="ks">Revenue: <span>R0.00</span></div>
+    <div class="ks">Status: <span class="r">API Missing</span></div>
+  </div>
+  <div class="kc gold">
+    <div class="ke">COFFEE EXCHANGE</div>
+    <div class="kv">—</div>
+    <div class="ks">Active Subs: <span>0</span></div>
+    <div class="ks">Farmer: RUKUNDO (RW)</div>
+    <div class="ks">Margin: <span class="g">~46%</span></div>
+  </div>
+  <div class="kc bl">
+    <div class="ke">AGENTS</div>
+    <div class="kv">4</div>
+    <div class="ks">Active: <span class="g">1</span> / Idle: <span>3</span></div>
+    <div class="ks">Charlie · Naledi · Coffee · Riley</div>
+    <div class="ks">RocketChat: <span class="r">Not Connected</span></div>
+  </div>
+  <div class="kc g">
+    <div class="ke">REVENUE MTD</div>
+    <div class="kv">R0</div>
+    <div class="ks">vs Target: <span class="r">—</span></div>
+    <div class="ks">Shopify: <span class="r">Not Connected</span></div>
+    <div class="ks">Meta Token: <span class="r">Expired Jun 22</span></div>
+  </div>
+</div>
+
+<section id="agents">
+  <div class="sl">AGENT ACTIVITY FEED</div>
+  <div class="st">Live <em>Agent</em> Status</div>
+  <div class="ss">Real-time agent activity — updates every 30 seconds</div>
+  <div class="af">
+    <div class="ar charlie">
+      <span class="ati">14:32</span>
+      <span class="an ch">Charlie</span>
+      <div class="abw"><div class="ab" style="width:100%"></div></div>
+      <span class="at">Shopify API missing — awaiting Tumelo's Shopify token via TailScale</span>
+      <span class="ap">100%</span>
+    </div>
+    <div class="ar naledi">
+      <span class="ati">14:31</span>
+      <span class="an na">Naledi</span>
+      <div class="abw"><div class="ab" style="width:40%"></div></div>
+      <span class="at">Meta token expired Jun 22 — posting blocked. Awaiting token renewal.</span>
+      <span class="ap">40%</span>
+    </div>
+    <div class="ar coffee">
+      <span class="ati">14:30</span>
+      <span class="an co">Coffee Jarvis</span>
+      <div class="abw"><div class="ab" style="width:0%"></div></div>
+      <span class="at">Agent not yet deployed — awaiting Orgo VM setup + RUKUNDO connection</span>
+      <span class="ap">0%</span>
+    </div>
+    <div class="ar riley">
+      <span class="ati">14:28</span>
+      <span class="an ri">RileyJarvis</span>
+      <div class="abw"><div class="ab" style="width:0%"></div></div>
+      <span class="at">Awaiting TailScale auth key + Mac Mini connection</span>
+      <span class="ap">0%</span>
+    </div>
+    <div class="ar sys">
+      <span class="ati">14:20</span>
+      <span class="an sys">Orgo VM</span>
+      <div class="abw"><div class="ab" style="width:100%"></div></div>
+      <span class="at">System healthy — War Room: https://2bhlkngegvb9.space.minimax.io — ONLINE</span>
+      <span class="ap">OK</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sl">MARKET DATA — LIVE</div>
+  <div class="st">Coffee <em>Futures</em> & FX</div>
+  <div class="ss">Auto-refresh every 60 seconds — powered by Coffee Jarvis</div>
+  <div class="mg" style="margin-top:24px">
+    <div class="mi">
+      <div class="ms">ARABICA — NY ICE</div>
+      <div class="mp">$3.42<span>/lb</span></div>
+      <div class="mc up">▲ $0.02 (+0.6%)</div>
+    </div>
+    <div class="mi">
+      <div class="ms">ROBUSTA — LONDON</div>
+      <div class="mp">$4.18<span>/lb</span></div>
+      <div class="mc dn">▼ $0.01 (−0.2%)</div>
+    </div>
+    <div class="mi">
+      <div class="ms">USD / ZAR</div>
+      <div class="mp">R18.34</div>
+      <div class="mc up">▲ R0.12 (+0.7%)</div>
+    </div>
+    <div class="mi">
+      <div class="ms">EUR / ZAR</div>
+      <div class="mp">R19.87</div>
+      <div class="mc dn">▼ R0.08 (−0.4%)</div>
+    </div>
+    <div class="mi">
+      <div class="ms">RUKUNDO ARABICA</div>
+      <div class="mp">R540<span>/kg</span></div>
+      <div class="mc ft">— Unchanged</div>
+    </div>
+    <div class="mi">
+      <div class="ms">LANDED COST (est.)</div>
+      <div class="mp">R612<span>/kg</span></div>
+      <div class="mc ft">Margin: <span style="color:var(--gold)">~46%</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="coffee">
+  <div class="sl">SUPPLY CHAIN</div>
+  <div class="st">RUKUNDO Coffee <em>Pipeline</em></div>
+  <div class="ss">Live shipment tracking — managed by Charlie + Coffee Jarvis</div>
+  <div class="sch" style="margin-top:24px">
+    <div class="sch-h">
+      <span>Product</span><span>Progress</span><span>Status</span><span>ETA / Notes</span>
+    </div>
+    <div class="sr">
+      <span class="sp">Arabica Lot #12 — 500kg</span>
+      <div class="stk"><div class="stf" style="width:70%"></div></div>
+      <span class="ssb it">In Transit</span>
+      <span class="sn">ETA: Jul 15</span>
+    </div>
+    <div class="sr">
+      <span class="sp">Robusta Dark Lot #13 — 300kg</span>
+      <div class="stk"><div class="stf" style="width:30%"></div></div>
+      <span class="ssb cf">Confirmed</span>
+      <span class="sn">Ships: Jul 20</span>
+    </div>
+    <div class="sr">
+      <span class="sp">Bazzukulu Lot #14 — 200kg</span>
+      <div class="stk"><div class="stf" style="width:10%"></div></div>
+      <span class="ssb ng">Negotiating</span>
+      <span class="sn">Price: R520/kg</span>
+    </div>
+  </div>
+</section>
+
+<section id="content">
+  <div class="sl">CONTENT HUB</div>
+  <div class="st">Naledi's <em>Post</em> Queue</div>
+  <div class="ss">Managed by Naledi CMO — awaiting Meta token renewal</div>
+  <div class="cq" style="margin-top:24px">
+    <div class="cq-h">
+      <span>Date</span><span>Platform</span><span>Content</span><span>Status</span><span>Link</span>
+    </div>
+    <div class="cr">
+      <span class="dim mono" style="font-size:11px">Jul 03 09:00</span>
+      <span><span class="pb ig">Instagram</span></span>
+      <span class="cl">Wagyu Biltong — Heritage Pack Launch</span>
+      <span class="sb ap">Approved</span>
+      <span class="cl">—</span>
+    </div>
+    <div class="cr">
+      <span class="dim mono" style="font-size:11px">Jul 04 12:00</span>
+      <span><span class="pb fb">Facebook</span></span>
+      <span class="cl">Behind the Craft: How Biltong is Made</span>
+      <span class="sb pe">Pending</span>
+      <span class="cl">—</span>
+    </div>
+    <div class="cr">
+      <span class="dim mono" style="font-size:11px">Jul 05 18:00</span>
+      <span><span class="pb tt">TikTok</span></span>
+      <span class="cl">@freekpik — "Why Supporting Black Business is Strategy"</span>
+      <span class="sb dr">Draft</span>
+      <span class="cl">—</span>
+    </div>
+    <div class="cr">
+      <span class="dim mono" style="font-size:11px">Jul 06 10:00</span>
+      <span><span class="pb wa">WhatsApp</span></span>
+      <span class="cl">Wholesale enquiry broadcast — Coffee Subscription launch</span>
+      <span class="sb dr">Draft</span>
+      <span class="cl">—</span>
+    </div>
+  </div>
+</section>
+
+<section id="mission">
+  <div class="sl">MISSION CONTROL</div>
+  <div class="st">Rocket<span style="color:var(--gold)">Chat</span> — Team Chat</div>
+  <div class="ss">Deploy RocketChat on Orgo VM to activate agent channels + team messaging</div>
+  <div class="ro" style="margin-top:24px">
+    <div class="rtb">
+      <div class="rtab on"><span>📟</span> #ops <span class="ub">1</span></div>
+      <div class="rtab"><span>☕</span> #coffee</div>
+      <div class="rtab"><span>🚨</span> #alerts</div>
+      <div class="rtab"><span>📣</span> #content</div>
+      <div class="rtab"><span>📦</span> #orders</div>
+      <div class="rtab"><span>🔧</span> #dev</div>
+    </div>
+    <div class="rb">
+      <div class="rmb">
+        <div class="mtitle">MEMBERS ONLINE</div>
+        <div class="mem"><div class="md on"></div><span class="mn tu">Tumelo</span><span class="dim" style="font-size:10px">you</span></div>
+        <div class="mem"><div class="md on"></div><span class="mn ch">Charlie</span><span class="dim" style="font-size:10px">agent</span></div>
+        <div class="mem"><div class="md aw"></div><span class="mn na">Naledi</span><span class="dim" style="font-size:10px">agent</span></div>
+        <div class="mem"><div class="md of"></div><span class="mn co">Coffee Jarvis</span><span class="dim" style="font-size:10px">agent</span></div>
+        <div class="mem"><div class="md of"></div><span class="mn ri">RileyJarvis</span><span class="dim" style="font-size:10px">agent</span></div>
+        <div class="mtitle" style="margin-top:16px">CHANNELS</div>
+        <div class="mem"><span style="font-size:13px">📟</span><span>#ops</span></div>
+        <div class="mem"><span style="font-size:13px">☕</span><span>#coffee</span></div>
+        <div class="mem"><span style="font-size:13px">🚨</span><span>#alerts</span></div>
+        <div class="mem"><span style="font-size:13px">📣</span><span>#content</span></div>
+        <div class="mem"><span style="font-size:13px">📦</span><span>#orders</span></div>
+      </div>
+      <div class="mj">
+        <div class="msgs">
+          <div class="msg">
+            <div class="mh"><span class="ma ch">Charlie</span><span class="mtime">09:14</span></div>
+            <div class="mtxt"><span class="hl">System initialized. All agents online.</span> Shopify API token missing — Tumelo please provide to activate order pipeline.</div>
+          </div>
+          <div class="msg">
+            <div class="mh"><span class="ma sy">System</span><span class="mtime">09:14</span></div>
+            <div class="mtxt"><span class="cmd">system.health</span> — Orgo VM: <span class="hl">ONLINE</span> | War Room: <span class="hl">DEPLOYED</span> | Vault Sync: <span class="hl">OK</span></div>
+          </div>
+          <div class="msg">
+            <div class="mh"><span class="ma tu">Tumelo</span><span class="mtime">09:22</span></div>
+            <div class="mtxt">Morning standup. Shopify still blocked. Coffee subscription launch this month — what's the status on RUKUNDO pricing?</div>
+          </div>
+          <div class="msg">
+            <div class="mh"><span class="ma ch">Charlie</span><span class="mtime">09:23</span></div>
+            <div class="mtxt">RUKUNDO Arabica: <span class="hl">R540/kg</span> — Margin ~46% at R249 retail. Awaiting your confirmation on final retail pricing. Coffee Jarvis agent standing by for daily price monitoring.</div>
+          </div>
+          <div class="msg">
+            <div class="mh"><span class="ma sy">System</span><span class="mtime">14:00</span></div>
+            <div class="mtxt"><span class="cmd">rocket.chat deploy</span> — <span class="hl">NOT DEPLOYED</span>. Run deploy script on Orgo VM to activate.</div>
+          </div>
+        </div>
+        <div class="ph">
+          <div class="phi">📟</div>
+          <div class="pht">RocketChat Not Yet Deployed</div>
+          <div class="phb">Run the deploy script on Orgo VM to activate #ops, #coffee, #alerts, #content, #orders channels. Agents will connect automatically.</div>
+        </div>
+        <div class="compose">
+          <input type="text" placeholder="Message #ops — agents will respond..." />
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sl">ORGO VM STATUS</div>
+  <div class="st">Infrastructure <em>Health</em></div>
+  <div class="vg" style="margin-top:24px">
+    <div class="vs">
+      <div class="vsl">NODE</div>
+      <div class="vsv g">ONLINE</div>
+    </div>
+    <div class="vs">
+      <div class="vsl">UPTIME</div>
+      <div class="vsv">99.9%</div>
+    </div>
+    <div class="vs">
+      <div class="vsl">RAM USAGE</div>
+      <div class="vsv d">6.2 / 8 GB</div>
+    </div>
+    <div class="vs">
+      <div class="vsl">CPU LOAD</div>
+      <div class="vsv d">12% avg</div>
+    </div>
+    <div class="vs">
+      <div class="vsl">DISK</div>
+      <div class="vsv d">22 / 30 GB</div>
+    </div>
+    <div class="vs">
+      <div class="vsl">WARR ROOM</div>
+      <div class="vsv g">LIVE</div>
+    </div>
+  </div>
+  <div class="orow">
+    <div class="oc">
+      <div class="ocl">VM ACCESS</div>
+      <div class="ocv">ssh root@67.213.119.157 -p &lt;PORT&gt;</div>
+    </div>
+    <div class="oc">
+      <div class="ocl">ORGO CONSOLE</div>
+      <div class="ocv"><a href="https://www.orgo.ai/desktops/b454450e" target="_blank">https://www.orgo.ai/desktops/b454450e</a></div>
+    </div>
+    <div class="oc">
+      <div class="ocl">WARR ROOM URL</div>
+      <div class="ocv"><a href="https://2bhlkngegvb9.space.minimax.io" target="_blank">2bhlkngegvb9.space.minimax.io</a></div>
+    </div>
+    <div class="oc">
+      <div class="ocl">ACTIVE AGENTS</div>
+      <div class="pills">
+        <span class="pill on">● Charlie</span>
+        <span class="pill on">● Naledi</span>
+        <span class="pill">● Coffee Jarvis</span>
+        <span class="pill">● RileyJarvis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>STUDEX OS — v2.0 — Mission Control</span>
+  <span>Orgo VM: <span class="g">ONLINE</span> | RocketChat: <span class="r">NOT DEPLOYED</span> | Shopify: <span class="r">API MISSING</span></span>
+  <span>Last sync: 2026-07-02 00:06 SAST</span>
+</footer>
+
+<script>
+  // Live clock
+  function updateClock() {
+    const now = new Date();
+    const h = String(now.getUTCHours()).padStart(2,'0');
+    const m = String(now.getUTCMinutes()).padStart(2,'0');
+    const s = String(now.getUTCSeconds()).padStart(2,'0');
+    const el = document.getElementById('clock');
+    if(el) el.textContent = h+':'+m+':'+s+' UTC';
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studex Biltong | Premium Halaal Wagyu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C86B;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --dark-card: #1A1A1A;
+      --white: #FAFAF8;
+      --muted: #888;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
+    }
+    .nav-logo {
+      height: 52px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: flex-end;
+      padding: 80px 48px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('imgs/biltong-hero.jpg') center/cover no-repeat;
+      filter: brightness(0.55);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.2) 60%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 6px 16px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 0.95;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    .hero h1 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .hero p {
+      font-size: 17px;
+      color: rgba(250,250,248,0.75);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 14px 36px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 14px 36px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--black); }
+
+    /* MARQUEE */
+    .marquee-strip {
+      background: var(--gold);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      animation: marquee 20s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* SECTIONS */
+    section { padding: 96px 48px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .section-title em { color: var(--gold); font-style: italic; }
+
+    /* ABOUT */
+    .about { background: var(--dark); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-text p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .stat-card {
+      background: var(--dark-card);
+      border: 1px solid #222;
+      padding: 28px;
+    }
+    .stat-card .number {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .stat-card .label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* PRODUCTS */
+    .products { background: var(--black); }
+    .products-header { text-align: center; margin-bottom: 64px; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product-card {
+      background: var(--dark-card);
+      border: 1px solid #222;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .product-card:hover { border-color: var(--gold); }
+    .product-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+    }
+    .product-info { padding: 28px; }
+    .product-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .product-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .product-info p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .product-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--gold);
+    }
+    .price span {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .product-cta {
+      background: var(--gold);
+      color: var(--black);
+      padding: 10px 24px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .product-cta:hover { background: var(--gold-light); }
+
+    /* HALAL */
+    .halal { background: var(--dark); text-align: center; }
+    .halal-badges {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+    .halal-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .halal-badge img {
+      height: 64px;
+      filter: brightness(0) invert(1);
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .halal-badge:hover img { opacity: 1; }
+    .halal-badge span {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: url('imgs/biltong-hero.jpg') center/cover no-repeat;
+      position: relative;
+      padding: 120px 48px;
+      text-align: center;
+    }
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0.75);
+    }
+    .cta-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+    .cta-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      margin-bottom: 20px;
+    }
+    .cta-content h2 em { color: var(--gold); font-style: italic; }
+    .cta-content p {
+      color: rgba(250,250,248,0.8);
+      font-size: 17px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid #1e1e1e;
+      padding: 48px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-logo { height: 40px; }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: #444;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      nav .nav-links { display: none; }
+      section { padding: 64px 24px; }
+      .hero { padding: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="imgs/studex-logo-gold.png" alt="Studex Meat" class="nav-logo" />
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#halal">Halaal</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>★</span> Halaal Certified
+    </div>
+    <h1>Biltong Crafted<br />with <em>Ancestral</em><br />Precision</h1>
+    <p>Premium Halaal Wagyu biltong — made in South Africa, owned in South Africa. Every pack carries the weight of heritage and the precision of craft.</p>
+    <div class="hero-cta">
+      <a href="#order" class="btn-primary">Shop Now</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>★ Premium Halaal Wagyu &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Made in South Africa &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ 100% Halaal Certified &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Crafted, Not Manufactured &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Nationwide Delivery &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Premium Halaal Wagyu &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Made in South Africa &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ 100% Halaal Certified &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Crafted, Not Manufactured &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Nationwide Delivery &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">Not Just Meat.<br /><em>Legacy.</em></h2>
+      <p>Studex Meat was born from a conviction: that South Africans deserve biltong that's been made properly — with respect for the craft, the culture, and the customer.</p>
+      <p>We source only premium Wagyu-grade beef, cure it using traditional methods, and treat every pack as a reflection of who we are.</p>
+      <p>We are proudly South African. Proudly Halaal. Proudly premium.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <span class="number">100%</span>
+        <span class="label">Halaal Certified</span>
+      </div>
+      <div class="stat-card">
+        <span class="number">Wagyu</span>
+        <span class="label">Grade Beef Only</span>
+      </div>
+      <div class="stat-card">
+        <span class="number">SA</span>
+        <span class="label">Made & Owned</span>
+      </div>
+      <div class="stat-card">
+        <span class="number">Tradition</span>
+        <span class="label">No Shortcuts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-header">
+    <div class="section-label">The Range</div>
+    <h2 class="section-title">Crafted for the <em>Connoisseur</em></h2>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="imgs/biltong-hero.jpg" alt="Premium Wagyu Biltong" />
+      <div class="product-info">
+        <span class="product-tag">Signature Cut</span>
+        <h3>Wagyu Biltong</h3>
+        <p>Thick-cut, dry-cured Wagyu beef with a perfect spice crust. Rich in flavour, tender in bite. Our flagship — for those who know the difference.</p>
+        <div class="product-price">
+          <span class="price">R__ <span>/ 500g</span></span>
+          <a href="#order" class="product-cta">Order</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="imgs/biltong-hero.jpg" alt="Wagyu Droëwors" style="filter:brightness(0.7) hue-rotate(10deg);" />
+      <div class="product-info">
+        <span class="product-tag">Classic</span>
+        <h3>Wagyu Droëwors</h3>
+        <p>Premium beef droëwors, slow-dried to perfection. Spiced with coriander and black pepper. A South African staple, done right.</p>
+        <div class="product-price">
+          <span class="price">R__ <span>/ 500g</span></span>
+          <a href="#order" class="product-cta">Order</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="imgs/biltong-hero.jpg" alt="Biltong Spice Rub" style="filter:brightness(0.6) hue-rotate(20deg);" />
+      <div class="product-info">
+        <span class="product-tag">Corporate Gifting</span>
+        <h3>Hampers &amp; Bulk</h3>
+        <p>Premium gift hampers and bulk orders for teams, events, and corporate gifting. Make an impression that lasts.</p>
+        <div class="product-price">
+          <span class="price">On Request <span></span></span>
+          <a href="#order" class="product-cta">Enquire</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HALAL -->
+<section class="halal" id="halal">
+  <div class="section-label">Certified</div>
+  <h2 class="section-title" style="text-align:center;">Halaal. Always.</h2>
+  <p style="color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8;">
+    Every product we produce is certified Halaal by the appropriate Islamic authority. No exceptions. No compromises. You can trust every pack, every time.
+  </p>
+  <div class="halal-badges">
+    <div class="halal-badge">
+      <img src="imgs/halal-cert.png" alt="Halaal Certified" />
+      <span>Halaal Certified</span>
+    </div>
+    <div class="halal-badge">
+      <img src="imgs/studex-logo-gold.png" alt="Studex Meat" />
+      <span>Studex Meat</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="order">
+  <div class="cta-content">
+    <div class="section-label" style="color:var(--gold-light);">Ready to Taste the Difference?</div>
+    <h2>Order <em>Studex</em> Today</h2>
+    <p>Shop individual packs or go big with a monthly subscription box. Nationwide delivery. Halaal guaranteed.</p>
+    <div class="hero-cta" style="justify-content:center;">
+      <a href="https://link.studexmeat.com" class="btn-primary" target="_blank">Shop Now</a>
+      <a href="mailto:tumelo@studexmeat.com" class="btn-outline">Wholesale</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <img src="imgs/studex-logo-gold.png" alt="Studex Meat" class="footer-logo" />
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#halal">Halaal</a></li>
+      <li><a href="mailto:tumelo@studexmeat.com">Contact</a></li>
+    </ul>
+    <div class="footer-copy">
+      © 2026 Studex Meat (Pty) Ltd. All rights reserved.<br />
+      Proudly South African. Halaal Certified. | www.studexmeat.com
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
