@@ -1,0 +1,61 @@
+{
+  "title": "Rwanda Coffee Partnership Proposal",
+  "subtitle": "PROWTC — Dubai, UAE",
+  "author": "Tumelo Ramaphosa",
+  "company": "Studex — Coffee & Commodities Division",
+  "date": "July 2026",
+  "logo_url": "https://studexwildlife.com/assets/studex-logo-gold.png",
+  "contact": {
+    "name": "Tumelo Ramaphosa",
+    "email": "t.ramaphosa@studexwildlife.com",
+    "phone": "+27 83 593 2577",
+    "whatsapp": "+27 83 593 2577",
+    "website": "studexwildlife.com"
+  },
+  "sections": [
+    {
+      "heading": "Our Rwanda Offer",
+      "body": "Studex works directly with cooperative washing stations in Rwanda to source exceptional arabica coffees at competitive prices. All lots are hand-sorted, fully washed, and exported from Djibouti."
+    },
+    {
+      "heading": "Current Stock — Rwanda Wet Polished",
+      "type": "table",
+      "table": {
+        "headers": ["Grade", "Screen Size", "Process", "Volume", "Price (USD/MT)"],
+        "rows": [
+          ["A1 Premium", "17+", "Wet Polished", "20 MT", "USD 4,200–4,800 FOB Djibouti"],
+          ["A2 Commercial", "15–16", "Wet Polished", "40 MT", "USD 3,600–4,000 FOB Djibouti"]
+        ]
+      },
+      "note": "Cupping score A1: 84+. Very low cup defects. Clean, bright acidity with stone fruit sweetness."
+    },
+    {
+      "heading": "Full Origin Portfolio",
+      "type": "grid",
+      "grid": {
+        "columns": 2,
+        "items": [
+          {"flag": "🇪🇹", "country": "Ethiopia", "regions": "Yirgacheffe · Sidama · Guji"},
+          {"flag": "🇰🇪", "country": "Kenya", "regions": "AA · AB — Nyeri · Kirinyaga"},
+          {"flag": "🇺🇬", "country": "Uganda", "regions": "Bugisu AA · Drugar"},
+          {"flag": "🇿🇦", "country": "South Africa", "regions": "Bourbon · Castillo"}
+        ]
+      }
+    },
+    {
+      "heading": "What We Arrange",
+      "type": "checklist",
+      "checks": [
+        "Sample shipments (5–10kg) prior to bulk commitment",
+        "Private label packaging — your brand on our green coffee",
+        "Flexible incoterms: FOB Djibouti, CIF, DAP to destination",
+        "Full documentation: phytosanitary certificates, COA, fumigation records",
+        "Cupping sessions via video call before shipment"
+      ]
+    },
+    {
+      "heading": "Recommended Next Steps",
+      "body": "We suggest a 30-minute call this week to review cupping samples, clarify your grade and packaging requirements, and agree on delivery terms for your first order.\n\nI am available on WhatsApp for immediate communication: +27 83 593 2577."
+    }
+  ]
+}
