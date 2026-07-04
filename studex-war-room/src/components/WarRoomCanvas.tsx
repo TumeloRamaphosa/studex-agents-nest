@@ -106,8 +106,8 @@ export default function WarRoomCanvas({ onNodeSelect, selectedNodeId, hoveredNod
 
     // Three.js setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#080c14');
-    scene.fog = new THREE.FogExp2('#080c14', 0.035);
+    scene.background = new THREE.Color('#010810');
+    scene.fog = new THREE.FogExp2('#021a28', 0.025);
 
     const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.set(0, 2, 28);
@@ -118,25 +118,48 @@ export default function WarRoomCanvas({ onNodeSelect, selectedNodeId, hoveredNod
     container.appendChild(renderer.domElement);
 
     // Ambient + directional lights
-    const ambientLight = new THREE.AmbientLight(0x1a1a2e, 1.5);
+    const ambientLight = new THREE.AmbientLight(0x021a2e, 2.0);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xd4a017, 2, 60);
+    // Bioluminescent green primary light
+    const pointLight = new THREE.PointLight(0x00ff88, 3.5, 80);
     pointLight.position.set(0, 0, 0);
     scene.add(pointLight);
+
+    // Deep blue secondary fill
+    const pointLight2 = new THREE.PointLight(0x0044ff, 1.2, 60);
+    pointLight2.position.set(-10, 5, 10);
+    scene.add(pointLight2);
 
     const group = new THREE.Group();
     scene.add(group);
 
     // Background star field
+    // Underwater particle field — bioluminescent plankton/bubbles
     const starGeo = new THREE.BufferGeometry();
-    const starCount = 3000;
+    const starCount = 4000;
     const starPositions = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i++) {
-      starPositions[i] = (Math.random() - 0.5) * 200;
+    const starColors = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount; i++) {
+      starPositions[i * 3] = (Math.random() - 0.5) * 200;
+      starPositions[i * 3 + 1] = (Math.random() - 0.5) * 200;
+      starPositions[i * 3 + 2] = (Math.random() - 0.5) * 200;
+      // Mix of toxic green and deep cyan bioluminescent
+      const isGreen = Math.random() > 0.4;
+      starColors[i * 3] = isGreen ? 0.0 : 0.0;
+      starColors[i * 3 + 1] = isGreen ? 1.0 : 0.6;
+      starColors[i * 3 + 2] = isGreen ? 0.5 : 1.0;
     }
     starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-    const starMat = new THREE.PointsMaterial({ color: 0x334466, size: 0.15, sizeAttenuation: true });
+    starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+    const starMat = new THREE.PointsMaterial({
+      color: 0x00ff88,
+      size: 0.22,
+      sizeAttenuation: true,
+      transparent: true,
+      opacity: 0.6,
+      vertexColors: true,
+    });
     const stars = new THREE.Points(starGeo, starMat);
     group.add(stars);
 
@@ -222,7 +245,7 @@ export default function WarRoomCanvas({ onNodeSelect, selectedNodeId, hoveredNod
     const pGeo = new THREE.BufferGeometry();
     pGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(particlePositions), 3));
     pGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(particleColors), 3));
-    const pMat = new THREE.PointsMaterial({ size: 0.18, vertexColors: true, transparent: true, opacity: 0.7 });
+    const pMat = new THREE.PointsMaterial({ size: 0.22, vertexColors: true, transparent: true, opacity: 0.85 });
     const particles = new THREE.Points(pGeo, pMat);
     group.add(particles);
 
