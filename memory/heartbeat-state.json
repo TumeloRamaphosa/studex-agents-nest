@@ -1,31 +1,11 @@
 {
   "lastChecks": {
-    "shopify_orders": 1783069707,
-    "agentmail": 1783069707,
-    "midday_check": 1750667460,
-    "evening_standup": 1783107501,
-    "midnight_sync": 1750682700
+    "shopify_orders": 1783152765,
+    "agentmail": 1783152765
   },
   "notes": {
-    "shopify": "Blocked \u2014 no API token \u2192 0 orders in system",
-    "agentmail": "No new messages since Jun 30 \u2014 9 inboxes all quiet",
-    "blotato": "0 accounts connected \u2014 FB/IG needs dashboard connection",
-    "meta_token": "Expired Jun 22 \u2014 Naledi cannot post",
-    "github_push": "Workspace has GitHub remote now (studex-agents-nest)",
-    "core_os": "github.com/RedPlanetHQ/core adopted as OS layer",
-    "denchclaw": "Can run on MaxClaw directly \u2014 needs dench.com/api key OR CORE Notion/Linear",
-    "cashclaw": "Moltlaunch marketplace agent \u2014 no API access, separate infrastructure",
-    "seo-os": "github.com/AgriciDaniel/seo-os \u2014 3D SEO agency OS, 25 specialists, Next.js + R3F, worth exploring",
-    "claude-seo": "github.com/AgriciDaniel/claude-seo \u2014 25 SEO specialist agents, Claude Code plugin, Python",
-    "vault_sync_confirmed": "All agents sync to /workspace/studex-obsidian-vault/ at 12:00 and midnight SAST"
-  },
-  "vault_sync": {
-    "schedule": "12:00 SAST + Midnight SAST daily",
-    "last_sync": "2026-07-03 21:38 SAST \u2014 2 local commits ahead of origin, push failing no credentials",
-    "cron_jobs": {
-      "12:00_sast": "5d6729b7-8ad0-4ba3-99c8-b48ddeac49aa",
-      "midnight_sast": "4eba3bce-4551-4f02-8a03-fbbafa7084b0"
-    }
-  },
-  "last_morning_check": "2026-07-03 11:08 SAST"
+    "shopify": "No token",
+    "agentmail": "9 inboxes, no new messages since June 30",
+    "vm_disk": "81% used, ~5.4GB free"
+  }
 }
