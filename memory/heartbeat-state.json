@@ -7,5 +7,13 @@
     "shopify": "No token",
     "agentmail": "9 inboxes, no new messages since June 30",
     "vm_disk": "81% used, ~5.4GB free"
+  },
+  "vault_sync": {
+    "last_sync": "2026-07-04T10:03:00Z",
+    "last_sync_label": "2026-07-04 12:00 SAST",
+    "file": "daily/2026-07-04-MORNING.md",
+    "git_commit": "894025b",
+    "git_push": "FAILED — no remote configured on server",
+    "notes": "Morning standup consolidated. All 3 agent plans from Jul 3 filed. Push failed — Tumelo to add GitHub remote."
   }
 }
