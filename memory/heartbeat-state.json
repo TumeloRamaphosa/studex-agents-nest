@@ -3,10 +3,13 @@
     "midnight_sync": 1783208707
   },
   "vault_sync": {
-    "last_sync": "2026-07-05 01:44 SAST \u2014 committed, push still failing no credentials",
+    "last_sync": "2026-07-05 22:00 UTC — EOD daily log written to studex-obsidian-vault/daily/2026-07-05.md",
     "schedule": "12:00 + Midnight SAST"
   },
   "notes": {
-    "github": "Still failing \u2014 5 local commits ahead of origin, no PAT received"
+    "github": "Still failing — 5 local commits ahead of origin, no PAT received",
+    "build_tonight": "War Room ContentHub tab deployed — https://krx2vgg4duwc.space.minimax.io",
+    "research_tonight": "China Jul 20 coffee window identified — studex-wildlife-coffee is empty shell, action needed",
+    "blockers": ["Shopify token", "Meta token", "GitHub PAT", "Blotato FB/IG link", "n8n VM deploy"]
   }
 }
