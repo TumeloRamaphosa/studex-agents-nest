@@ -1,22 +1,12 @@
 {
   "lastChecks": {
-    "shopify_orders": 1783152765,
-    "agentmail": 1783152765,
-    "midday_check": 1783159972
-  },
-  "notes": {
-    "shopify": "No token",
-    "agentmail": "9 inboxes, no new messages since June 30",
-    "vm_disk": "81% used, ~5.4GB free",
-    "war_room": "Underwater theme deployed to https://uru0on54sv4k.space.minimax.io",
-    "tenacitOS": "LIVE at http://67.213.119.157:3500"
+    "midnight_sync": 1783208707
   },
   "vault_sync": {
-    "last_sync": "2026-07-04 22:00 UTC (Midnight SAST) — full EOD daily log written",
-    "last_sync_label": "2026-07-04 22:00 UTC",
-    "file": "daily/2026-07-04.md",
-    "git_commit": "7204f00",
-    "git_push": "FAILED — GitHub credentials missing on server. Commit saved locally. Tumelo must add GitHub PAT to server for push to work.",
-    "notes": "EOD log complete. Build Hour output: Blotato content pipeline. Research: n8n MCP deploy urgent, Voicebox clone, corporate gifting tiers. All 6 agent plans from inbox filed. All blockers unchanged — Shopify + Meta tokens still open."
+    "last_sync": "2026-07-05 01:44 SAST \u2014 committed, push still failing no credentials",
+    "schedule": "12:00 + Midnight SAST"
+  },
+  "notes": {
+    "github": "Still failing \u2014 5 local commits ahead of origin, no PAT received"
   }
 }
