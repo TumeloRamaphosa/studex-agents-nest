@@ -10,6 +10,7 @@ import OpenWorldHUD from './components/OpenWorldHUD';
 import AgentNPCDock from './components/AgentNPCDock';
 import DeliveryKPIs from './components/DeliveryKPIs';
 import CoffeePipeline from './components/CoffeePipeline';
+import ContentHub from './components/ContentHub';
 import { GraphNode } from './data/graphData';
 
 export default function App() {
@@ -70,15 +71,7 @@ export default function App() {
           {activeTab === 'COFFEE' && <CoffeePipeline />}
           {activeTab === 'INTEL' && <IntelPanel />}
           {activeTab === 'WORKFLOW' && <WorkflowPanel />}
-          {activeTab === 'CONTENT' && (
-            <div className="panel-placeholder">
-              <div className="placeholder-inner">
-                <span className="placeholder-icon">📣</span>
-                <div className="placeholder-title">CONTENT HUB</div>
-                <div className="placeholder-sub">Naledi's queue — queued posts, calendar, approvals</div>
-              </div>
-            </div>
-          )}
+          {activeTab === 'CONTENT' && <ContentHub />}
           {activeTab === 'AGENTS' && (
             <div style={{ display: 'flex', gap: '12px', width: '100%', height: '100%', overflow: 'hidden' }}>
               <div style={{ flex: 1, overflowY: 'auto' }}>
