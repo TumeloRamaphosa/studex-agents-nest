@@ -8,9 +8,9 @@
     "schedule": "12:00 + Midnight SAST"
   },
   "notes": {
-    "github": "Still failing \u2014 5 local commits ahead of origin, no PAT received",
-    "build_tonight": "War Room ContentHub tab deployed \u2014 https://krx2vgg4duwc.space.minimax.io",
-    "research_tonight": "China Jul 20 coffee window identified \u2014 studex-wildlife-coffee is empty shell, action needed",
+    "github": "Push blocked — no PAT in workspace. Commits queued locally.",
+    "build_tonight": "War Room ContentHub tab deployed — https://krx2vgg4duwc.space.minimax.io",
+    "research_tonight": "China Jul 20 coffee window identified — studex-wildlife-coffee is empty shell, action needed",
     "blockers": [
       "Shopify token",
       "Meta token",
@@ -19,8 +19,8 @@
       "n8n VM deploy"
     ],
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
-    "obsidian_brain": "Built + deployed. 7 docs added. Edit mode + Ask the Brain chat working",
+    "obsidian_brain": "Built + deployed. 9 docs added. Edit mode + Ask the Brain chat working",
     "youtube_script": "Full 7-min script at /workspace/studex-youtube-script.md",
-    "china_strategy": "Complete playbook built. Emails drafted. Buyer list identified."
+    "china_strategy": "Complete playbook built. Emails drafted EN+Mandarin. Buyer list ready."
   }
 }
