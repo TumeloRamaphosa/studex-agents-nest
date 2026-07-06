@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export type NavTab = 'WAR ROOM' | 'INTEL' | 'WORKFLOW' | 'CONTENT' | 'COFFEE' | 'AGENTS' | 'TASKS' | 'COMMS';
+export type NavTab = 'WAR ROOM' | 'INTEL' | 'WORKFLOW' | 'CONTENT' | 'COFFEE' | 'AGENTS' | 'TASKS' | 'COMMS' | 'BRAIN';
 
 interface Props {
   activeTab: NavTab;
@@ -31,7 +31,7 @@ function getSASTDate(): string {
   });
 }
 
-const tabs: NavTab[] = ['WAR ROOM', 'COFFEE', 'CONTENT', 'AGENTS', 'TASKS', 'COMMS'];
+const tabs: NavTab[] = ['BRAIN', 'WAR ROOM', 'INTEL', 'WORKFLOW', 'CONTENT', 'AGENTS', 'COFFEE', 'TASKS', 'COMMS'];
 
 export default function NavigationHUD({ activeTab, onTabChange }: Props) {
   const [time, setTime] = useState(getSASTTime());

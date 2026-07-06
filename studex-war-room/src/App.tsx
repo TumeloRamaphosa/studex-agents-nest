@@ -11,10 +11,11 @@ import AgentNPCDock from './components/AgentNPCDock';
 import DeliveryKPIs from './components/DeliveryKPIs';
 import CoffeePipeline from './components/CoffeePipeline';
 import ContentHub from './components/ContentHub';
+import ObsidianBrain from './components/ObsidianBrain';
 import { GraphNode } from './data/graphData';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<NavTab>('WAR ROOM');
+  const [activeTab, setActiveTab] = useState<NavTab>('BRAIN');
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
   const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null);
   const [mdPanelOpen, setMdPanelOpen] = useState(false);
@@ -68,6 +69,7 @@ export default function App() {
               <OpenWorldHUD />
             </div>
           )}
+          {activeTab === 'BRAIN' && <ObsidianBrain />}
           {activeTab === 'COFFEE' && <CoffeePipeline />}
           {activeTab === 'INTEL' && <IntelPanel />}
           {activeTab === 'WORKFLOW' && <WorkflowPanel />}
