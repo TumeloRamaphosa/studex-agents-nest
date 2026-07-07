@@ -6,8 +6,10 @@
     "evening_standup": 1751828100
   },
   "vault_sync": {
-    "last_sync": "2026-07-06 22:00 UTC — EOD log committed locally (17c1b4c). GitHub push BLOCKED — no PAT. All vault + research + builds in local commit.",
-    "schedule": "12:00 + Midnight SAST"
+    "last_sync": "2026-07-07 12:00 SAST — morning standup consolidated to vault. Commit 7fb3f3f ready. GitHub push BLOCKED — no PAT.",
+    "schedule": "12:00 + Midnight SAST",
+    "last_commit": "7fb3f3f — vault: 2026-07-07 12:00 SAST — morning standup consolidated",
+    "github_push": "BLOCKED — no credentials"
   },
   "notes": {
     "github": "Push blocked — no PAT in workspace. Commits queued locally (commit 17c1b4c).",
