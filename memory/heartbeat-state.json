@@ -2,6 +2,7 @@
   "lastChecks": {
     "morning_check": 1751852100,
     "standup_0700_sast": 1751855700,
+    "midday_check": 1751861100,
     "midnight_sync": 1751830800,
     "evening_standup": 1751828100
   },
@@ -12,9 +13,7 @@
     "github_push": "BLOCKED — no credentials"
   },
   "notes": {
-    "github": "Push blocked — no PAT in workspace. Commits queued locally (commit 17c1b4c).",
-    "build_tonight": "Studex Wildlife Coffee landing page deployed — https://f10ofkdydtc1.space.minimax.io",
-    "research_tonight": "SA B2B coffee market deep-dive + n8n MCP officially confirmed. Blotato API confirmed working.",
+    "github": "Push blocked — no PAT in workspace. Commits queued locally.",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
@@ -22,13 +21,12 @@
       "Blotato FB/IG connection",
       "send.studexmeat.com DNS"
     ],
+    "content_approval_url": "https://dhb15furtgvx.space.minimax.io",
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
     "coffee_url": "https://f10ofkdydtc1.space.minimax.io",
-    "obsidian_brain": "Built + deployed today. BRAIN tab default, INTEL tab, 7 wiki docs, edit mode + Ask the Brain chat.",
-    "youtube_script": "Full 7-min script at /workspace/studex-youtube-script.md",
-    "china_strategy": "Complete. July 20 window 13 days away. Buyer list: Luckin, Tim Hortons China, Pacific Coffee, Yaoji, JD.com, Alibaba. CIIE Nov 2026 booth application needed.",
+    "china_window": "July 20 — 13 days away",
+    "midday_check_notes": "Naledi inbox: 5 unread — all 'Ankole Beef' same email, duplicate mailing system artifact. Robusca 0, Charlie 0.",
     "n8n_status": "Docker image running on Orgo VM at http://67.213.119.157:5678 — MCP connection to Robusca pending",
-    "standup_0700_sast_notes": "Shopify: no token (blocked). AgentMail: Naledi inbox 3 unread earlier, Charlie/Robusca 0. Content queue: can't check without Meta token. Discord #ops: bot not in server, can't post.",
-    "china_window": "July 20 — 13 days away"
+    "next_standup": "17:00 SAST today — evening standup (orders, content queue, Discord #ops)"
   }
 }
