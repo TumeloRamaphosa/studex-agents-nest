@@ -3,16 +3,15 @@
     "morning_check": 1751852100,
     "standup_0700_sast": 1751855700,
     "midday_check": 1751861100,
-    "evening_standup": 1751876100,
+    "evening_standup": 1751882760,
     "midnight_sync": 1751830800
   },
   "vault_sync": {
-    "last_sync": "2026-07-07 19:45 SAST — evening standup done. Naledi: 3 unread (same Ankole emails, no new items). GitHub push BLOCKED — no PAT.",
-    "schedule": "12:00 + Midnight SAST",
-    "github_push": "BLOCKED — no PAT"
+    "last_sync": "2026-07-07 22:06 SAST — EOD standup complete. GitHub push BLOCKED — no PAT.",
+    "schedule": "12:00 + Midnight SAST"
   },
   "notes": {
-    "github": "Push blocked — no PAT. Commits queued locally.",
+    "github": "Push blocked — no PAT. All new work today (content approval page, images, emails, sheet copy-paste) in local commits only.",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
@@ -21,11 +20,24 @@
       "send.studexmeat.com DNS"
     ],
     "content_approval_url": "https://j8qaf7l9auly.space.minimax.io",
-    "app_warehouse_url": "https://0mkykm7rgvia.space.minimax.io",
-    "cto_playbook_url": "https://xh5tvgeucldj.space.minimax.io",
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
     "coffee_url": "https://f10ofkdydtc1.space.minimax.io",
+    "app_warehouse_url": "https://0mkykm7rgvia.space.minimax.io",
+    "cto_playbook_url": "https://xh5tvgeucldj.space.minimax.io",
     "china_window": "July 20 — 13 days away",
-    "evening_check_notes": "Naledi inbox: 3 unread — same Ankole emails from yesterday (no new items). Robusca 0. All deploys done today. Content approval page with images live."
+    "china_emails_built": "/workspace/china-coffee-outreach.md — 3-touch sequence ready",
+    "sheet_package": "/workspace/china-coffee-sheet-copy-paste.md — 5 tabs ready to paste",
+    "product_images": "6 AI images generated today",
+    "cashclaw_status": "etb-cashclaw/ cloned locally — NOT YET INSTALLED on Orgo VM",
+    "evening_standup_notes": "AgentMail: Naledi 3 unread (same Ankole dupes as morning), Robusca 0. No new orders (Shopify blocked). Discord #ops: can't post — bot not in server. No Meta token. All ops at standstill until token refresh.",
+    "today_done": [
+      "Content approval page with images — j8qaf7l9auly.space.minimax.io",
+      "6 AI product images (coffee, biltong, caviar, ankole, wagyu, export)",
+      "China coffee outreach emails (3-touch sequence)",
+      "Google Sheet copy-paste package (5 tabs)",
+      "App Warehouse page deployed",
+      "CTO Playbook page deployed",
+      "Project summary (Biltong + Caviar + Coffee)"
+    ]
   }
 }
