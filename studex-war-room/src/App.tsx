@@ -12,6 +12,7 @@ import DeliveryKPIs from './components/DeliveryKPIs';
 import CoffeePipeline from './components/CoffeePipeline';
 import ContentHub from './components/ContentHub';
 import ObsidianBrain from './components/ObsidianBrain';
+import CommsPanel from './components/CommsPanel';
 import { GraphNode } from './data/graphData';
 
 export default function App() {
@@ -85,15 +86,7 @@ export default function App() {
             </div>
           )}
           {activeTab === 'TASKS' && <DeliveryKPIs />}
-          {activeTab === 'COMMS' && (
-            <div className="panel-placeholder">
-              <div className="placeholder-inner">
-                <span className="placeholder-icon">💬</span>
-                <div className="placeholder-title">COMMS</div>
-                <div className="placeholder-sub">StudEx Meat DM pipeline</div>
-              </div>
-            </div>
-          )}
+          {activeTab === 'COMMS' && <CommsPanel />}
         </div>
 
         <NodeInfoPanel selectedNode={selectedNode} onClose={() => setSelectedNode(null)} />

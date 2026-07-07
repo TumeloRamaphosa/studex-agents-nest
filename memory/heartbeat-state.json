@@ -7,11 +7,12 @@
     "midnight_sync": 1751830800
   },
   "vault_sync": {
-    "last_sync": "2026-07-07 12:00 SAST — morning standup consolidated. Commit 7fb3f3f.",
+    "last_sync": "2026-07-07 19:45 SAST — evening standup done. Naledi: 3 unread (same Ankole emails, no new items). GitHub push BLOCKED — no PAT.",
+    "schedule": "12:00 + Midnight SAST",
     "github_push": "BLOCKED — no PAT"
   },
   "notes": {
-    "github": "Push blocked — no PAT in workspace. Commits queued locally.",
+    "github": "Push blocked — no PAT. Commits queued locally.",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
@@ -20,12 +21,11 @@
       "send.studexmeat.com DNS"
     ],
     "content_approval_url": "https://j8qaf7l9auly.space.minimax.io",
+    "app_warehouse_url": "https://0mkykm7rgvia.space.minimax.io",
+    "cto_playbook_url": "https://xh5tvgeucldj.space.minimax.io",
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
     "coffee_url": "https://f10ofkdydtc1.space.minimax.io",
     "china_window": "July 20 — 13 days away",
-    "china_coffee_emails": "/workspace/china-coffee-outreach.md — 3-touch email sequence + LinkedIn outreach ready",
-    "china_sheet_copy": "/workspace/china-coffee-sheet-copy-paste.md — paste-ready tables for Google Sheet",
-    "project_summary": "/workspace/projects-biltong-caviar-coffee.md — all 3 product lines documented",
-    "product_images": "6 AI images generated — coffee, biltong, caviar, ankole, wagyu, export packaging"
+    "evening_check_notes": "Naledi inbox: 3 unread — same Ankole emails from yesterday (no new items). Robusca 0. All deploys done today. Content approval page with images live."
   }
 }
