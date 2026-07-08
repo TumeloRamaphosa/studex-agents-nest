@@ -4,16 +4,21 @@
     "standup_0700_sast": 1783487202,
     "midday_check": 1783501569,
     "evening_standup": 1751882760,
-    "midnight_sync": 1751912400
+    "midnight_sync": 1751912400,
+    "eod_vault_sync": 1752016800
   },
   "vault_sync": {
-    "last_sync": "2026-07-08 12:04 SAST — 2026-07-03 morning standup consolidated into daily/2026-07-03-MORNING.md. 2 files changed, 173 insertions. Push BLOCKED — no PAT. Commit 08e8f45 saved locally.",
+    "last_sync": "2026-07-08 22:00 UTC (midnight SAST) — Full EOD daily log written to daily/2026-07-08.md. 3 files changed, 169 insertions. Commit 703678f saved locally. Push BLOCKED — no GitHub PAT. Remote: origin/master configured but unauthenticated.",
     "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "08e8f45",
-    "push_status": "blocked_no_pat"
+    "commit_hash": "703678f",
+    "push_status": "blocked_no_pat",
+    "today_built": "Studex Caviar Landing Page (https://1jg3y0481lwr.space.minimax.io) — luxury B2B caviar page, 4 tiers, B2B inquiry form",
+    "today_research": "SA e-comm booming ($38B→$77B), n8n+Blotato winning combo, Voicebox not production-ready, Africa Food Show 2026 hosted buyer program opportunity",
+    "today_orders": "No live orders (Shopify token blocker). DeliveryKPIs running mock data.",
+    "today_content": "Naledi sent 5 Ankole Beef outbound emails to China contacts (June outreach). FB/IG posting blocked (Meta token expired)."
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commit 46712f1 saved locally. All vaults, builds, research, memory committed.",
+    "github": "Push blocked — no GitHub PAT. Commit 703678f saved locally. Vault, builds, research, memory all committed.",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
@@ -27,17 +32,15 @@
     "app_warehouse_url": "https://0mkykm7rgvia.space.minimax.io",
     "cto_playbook_url": "https://xh5tvgeucldj.space.minimax.io",
     "comms_panel_url": "https://my2wwbtrlwp1.space.minimax.io",
-    "china_window": "July 20 — 13 days away",
+    "caviar_landing_url": "https://1jg3y0481lwr.space.minimax.io",
+    "china_window": "July 20 — 12 days away",
     "today_done": [
-      "CommsPanel built (War Room COMMS tab)",
-      "6 AI product images generated",
-      "China coffee outreach emails (3-touch sequence)",
-      "Google Sheet copy-paste package (5 tabs)",
-      "Content approval page deployed",
-      "App Warehouse page deployed",
-      "CTO Playbook page deployed",
-      "Project summary (Biltong + Caviar + Coffee)",
-      "EOD daily log written to vault daily/2026-07-07.md",
+      "Studex Caviar Landing Page built and deployed (luxury B2B, 4 caviar tiers, B2B inquiry form)",
+      "War Room COFFEE tab: PROWTC Dubai deal + China zero-tariff intel + Rwanda A1/A2 deals",
+      "War Room DELIVERY tab: Order KPI dashboard (mock — needs Shopify token)",
+      "Research brief: SA e-comm market, n8n+Blotato automation, Voicebox verdict, Africa Food Show opportunity",
+      "Morning standup: VM services UP, 5 outbound Ankole campaign emails confirmed in Naledi's inbox",
+      "EOD daily log written to vault daily/2026-07-08.md",
       "Vault committed locally (push blocked)"
     ]
   }
