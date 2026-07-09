@@ -1,34 +1,34 @@
 {
   "lastChecks": {
-    "morning_check": 1752017160,
-    "standup_0700_sast": 1752017160,
-    "midday_check": 1752021600,
+    "morning_check": 1783576560,
+    "standup_0700_sast": 1783577160,
+    "midday_check": 1783587060,
     "evening_standup": 1751882760,
-    "midnight_sync": 1752016800,
+    "midnight_sync": 1783555560,
     "eod_vault_sync": 1752016800
   },
   "vault_sync": {
-    "last_sync": "2026-07-09 12:00 SAST — Commit 7ebcd04 created. Push BLOCKED — no GitHub PAT. Local commit preserved.",
+    "last_sync": "2026-07-08 22:00 SAST — Commit 703678f saved locally. Push BLOCKED — no GitHub PAT.",
     "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "7ebcd04",
+    "commit_hash": "703678f",
     "push_status": "blocked_no_pat"
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commit 7ebcd04 saved locally. GitHub PAT needed to restore sync.",
+    "github": "Push blocked — no GitHub PAT. Commit 703678f saved locally.",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
-      "GitHub PAT (CRITICAL — vault push broken)",
+      "GitHub PAT (CRITICAL — vault sync broken)",
       "Blotato FB/IG connection",
       "send.studexmeat.com DNS",
       "Orgo VM credentials INVALID (CRITICAL — VM offline)"
     ],
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
-    "china_window": "July 20 — 11 days away",
+    "caviar_landing_url": "https://1jg3y0481lwr.space.minimax.io",
+    "china_window": "July 20 — 10 days away",
     "alerts": [
-      "🚨 Orgo VM OFFLINE — VM ID invalid, all VM services inaccessible. Need new credentials from Orgo dashboard.",
-      "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain/email list needs verification before retry",
-      "📝 Daily log created: studex-obsidian-vault/daily/2026-07-09-MORNING.md"
+      "🚨 Orgo VM OFFLINE — VM ID invalid, all VM services inaccessible. Need new credentials.",
+      "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain/email list needs verification before retry"
     ]
   }
 }
