@@ -3,32 +3,32 @@
     "morning_check": 1783576560,
     "standup_0700_sast": 1783577160,
     "midday_check": 1783587060,
-    "evening_standup": 1783590960,
+    "evening_standup": 1783606560,
     "midnight_sync": 1783555560,
-    "eod_vault_sync": 1783590960
+    "eod_vault_sync": 1783606560
   },
   "vault_sync": {
-    "last_sync": "2026-07-09 14:06 SAST — Commit 7154f3d. Push BLOCKED — no GitHub PAT.",
+    "last_sync": "2026-07-09 17:36 SAST — Commit 2c0fdc2 ready. Push BLOCKED — no GitHub PAT.",
     "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "7154f3d",
+    "commit_hash": "2c0fdc2",
     "push_status": "blocked_no_pat"
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commit 7154f3d saved locally.",
+    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2).",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
       "GitHub PAT (CRITICAL — vault sync broken)",
       "Blotato FB/IG connection",
       "send.studexmeat.com DNS",
-      "Orgo VM credentials INVALID (CRITICAL — VM offline)"
+      "Orgo VM credentials INVALID"
     ],
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
     "caviar_landing_url": "https://1jg3y0481lwr.space.minimax.io",
-    "china_window": "July 20 — 10 days away",
+    "china_window": "July 20 — 9 days away",
     "alerts": [
-      "🚨 Orgo VM OFFLINE — VM ID invalid, all VM services inaccessible. Need new credentials.",
-      "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain/email list needs verification before retry"
+      "🚨 Orgo VM OFFLINE — VM ID invalid since ~Jul 9, all VM services inaccessible",
+      "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain/email list needs verification"
     ]
   }
 }
