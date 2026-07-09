@@ -1,81 +1,66 @@
 # 🎛️ Command Centre I — Studex Meat OS
 
-> Auto-updated by Robusca AI | Last sync: 2026-06-29
+> Auto-updated by Robusca AI | Last sync: 2026-07-09 17:00 SAST
 
 ---
 
 ## 🤖 Agent Team
 
 | Agent | Role | Status |
-|---|---|---|
-| **Robusca** (Me) | CEO — strategic decisions, oversight | 🟢 Active |
-| **Charlie** | Operations Orchestrator — orders, fulfilment | 🟡 Running |
-| **Naledi** | CMO — content, marketing, social | 🔴 Needs Meta token |
-| **Delivery Agent** | Delivery pipeline, driver comms | 🟡 Waiting on Shopify token |
-
----
-
-## 📦 Today's Operations
-
-### Orders
-- Shopify: **NOT CONNECTED** — waiting on Admin API token
-- Orders today: `?`
-- Revenue today: `?`
-
-### Delivery Pipeline
-| Order | Stage | Driver | ETA |
-|---|---|---|---|
-| — | — | — | — |
-
-> Connect Shopify to activate real-time order tracking
-
----
-
-## 📅 Today's Schedule (SAST)
-
-| Time | Event |
 |---|---|
-| 07:00 | 🌅 Morning planning ritual |
-| 07:00 | 💧 Hydration reminder (hourly) |
-| 07:00 | 🍽️ Meal reminder (every 3hrs) |
-| 11:00 | ⚠️ Pay Derrick & Noah's |
-| 20:00 | 🤖 Agent Board Meeting |
-| 22:00 | 🌙 Midnight Build |
+| **Robusca** (Me) | CEO — strategic decisions, oversight | 🟡 Active (degraded) |
+| **Charlie** | Operations Orchestrator — orders, fulfilment | 🟡 Degraded (Shopify blocked) |
+| **Naledi** | CMO — content, marketing, social | 🟡 Degraded (Meta blocked) |
 
 ---
 
-## 🚨 Priority Actions — Tumelo
+## 🚨 Critical Blockers
 
-- [ ] **Get Shopify Admin API token** → unblocks everything
-- [ ] **Set up ElevenLabs account** → agent voices
-- [ ] **Invite Kilo StudEx bot to Discord** → board meeting channel
-- [ ] **Connect Obsidian Git** → sync this vault automatically
-
----
-
-## 📊 Business Metrics
-
-| Metric | Value |
-|---|---|
-| Monthly Revenue | R14,450 (last known) |
-| Shopify Orders | Connect store to see live |
-| Delivery Success | — |
-| Active Campaigns | — |
+| Blocker | Owner | Status |
+|---------|-------|--------|
+| Shopify Admin API token | Tumelo | 🔴 CRITICAL |
+| GitHub PAT | Tumelo | 🔴 CRITICAL |
+| Orgo VM credentials INVALID | Tumelo | 🔴 CRITICAL |
+| Meta permanent access token | Tumelo | 🔴 CRITICAL |
+| Blotato FB/IG connection | Tumelo | 🟡 HIGH |
+| send.studexmeat.com DNS | AgentMail | 🟡 HIGH |
+| Ankole Beef email bounced | Tumelo | 🟡 HIGH |
 
 ---
 
-## 🔗 Quick Links
+## 📦 Orders (Shopify)
 
-- **Studex Meat Store**: studexmeat.com
-- **War Room (Rocket.Chat)**: `http://67.213.119.157:3000` (once deployed)
-- **Studex OS GitHub**: github.com/TumeloRamaphosa/studex-os
-- **Pitch Deck PDF**: tmpfiles.org link in Robusca chat
+- **Status:** BLOCKED — no Admin API token
+- Charlie cannot pull order data
+- **ACTION:** Tumelo to provide Shopify Admin API token
 
 ---
 
-## 🧠 Notes from Robusca
+## 📅 China Window
 
-*System initialized 2026-06-29. More to follow as agents build out the OS.*
+- **Date:** July 20, 2026 — ⚠️ **11 days away**
+- **Ankole Beef outreach email:** BOUNCED Jul 6
+- **Action needed:** Verify sender domain, re-send outreach
+- **Owner:** Tumelo
+
+---
+
+## 📊 Commit Log
+
+| Time | Event | Status |
+|------|-------|--------|
+| 2026-07-08 midnight | Last GitHub push | ✅ `703678f` |
+| 2026-07-09 17:00 SAST | EOD standup commit | ✅ `1411c90` (local only) |
+| 2026-07-09 17:00 SAST | GitHub push | ❌ BLOCKED (no PAT) |
+
+---
+
+## 🧠 Notes
+
+- Orgo VM: Day 2 offline — all VM-based services suspended
+- War Room: Deployed version still live at https://dehdxyf8nnyl.space.minimax.io
+- Voice tools: ElevenLabs TTS available
+- AgentMail: No new messages today (5 items — all outbound Ankole campaign)
 
 ---
 
