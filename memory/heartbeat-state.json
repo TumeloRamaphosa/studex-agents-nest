@@ -1,47 +1,33 @@
 {
   "lastChecks": {
-    "morning_check": 1751932560,
-    "standup_0700_sast": 1783487202,
+    "morning_check": 1783576560,
+    "standup_0700_sast": 1783577160,
     "midday_check": 1783501569,
     "evening_standup": 1751882760,
-    "midnight_sync": 1751912400,
+    "midnight_sync": 1783555560,
     "eod_vault_sync": 1752016800
   },
   "vault_sync": {
-    "last_sync": "2026-07-08 22:00 UTC (midnight SAST) — Full EOD daily log written to daily/2026-07-08.md. 3 files changed, 169 insertions. Commit 703678f saved locally. Push BLOCKED — no GitHub PAT. Remote: origin/master configured but unauthenticated.",
+    "last_sync": "2026-07-08 22:00 UTC (midnight SAST) — Commit 703678f saved locally. Push BLOCKED — no GitHub PAT.",
     "schedule": "12:00 + Midnight SAST",
     "commit_hash": "703678f",
-    "push_status": "blocked_no_pat",
-    "today_built": "Studex Caviar Landing Page (https://1jg3y0481lwr.space.minimax.io) — luxury B2B caviar page, 4 tiers, B2B inquiry form",
-    "today_research": "SA e-comm booming ($38B→$77B), n8n+Blotato winning combo, Voicebox not production-ready, Africa Food Show 2026 hosted buyer program opportunity",
-    "today_orders": "No live orders (Shopify token blocker). DeliveryKPIs running mock data.",
-    "today_content": "Naledi sent 5 Ankole Beef outbound emails to China contacts (June outreach). FB/IG posting blocked (Meta token expired)."
+    "push_status": "blocked_no_pat"
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commit 703678f saved locally. Vault, builds, research, memory all committed.",
+    "github": "Push blocked — no GitHub PAT. Commit 703678f saved locally.",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
       "GitHub PAT (CRITICAL — vault sync broken)",
       "Blotato FB/IG connection",
-      "send.studexmeat.com DNS"
+      "send.studexmeat.com DNS",
+      "Orgo VM credentials INVALID (CRITICAL — VM offline)"
     ],
-    "content_approval_url": "https://j8qaf7l9auly.space.minimax.io",
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
-    "coffee_url": "https://f10ofkdydtc1.space.minimax.io",
-    "app_warehouse_url": "https://0mkykm7rgvia.space.minimax.io",
-    "cto_playbook_url": "https://xh5tvgeucldj.space.minimax.io",
-    "comms_panel_url": "https://my2wwbtrlwp1.space.minimax.io",
-    "caviar_landing_url": "https://1jg3y0481lwr.space.minimax.io",
-    "china_window": "July 20 — 12 days away",
-    "today_done": [
-      "Studex Caviar Landing Page built and deployed (luxury B2B, 4 caviar tiers, B2B inquiry form)",
-      "War Room COFFEE tab: PROWTC Dubai deal + China zero-tariff intel + Rwanda A1/A2 deals",
-      "War Room DELIVERY tab: Order KPI dashboard (mock — needs Shopify token)",
-      "Research brief: SA e-comm market, n8n+Blotato automation, Voicebox verdict, Africa Food Show opportunity",
-      "Morning standup: VM services UP, 5 outbound Ankole campaign emails confirmed in Naledi's inbox",
-      "EOD daily log written to vault daily/2026-07-08.md",
-      "Vault committed locally (push blocked)"
+    "china_window": "July 20 — 11 days away",
+    "alerts": [
+      "🚨 Orgo VM OFFLINE — VM ID invalid, all VM services inaccessible. Need new credentials from Orgo dashboard.",
+      "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain/email list needs verification before retry"
     ]
   }
 }
