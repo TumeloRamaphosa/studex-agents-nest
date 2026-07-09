@@ -3,18 +3,18 @@
     "morning_check": 1783576560,
     "standup_0700_sast": 1783577160,
     "midday_check": 1783587060,
-    "evening_standup": 1751882760,
+    "evening_standup": 1783590960,
     "midnight_sync": 1783555560,
-    "eod_vault_sync": 1752016800
+    "eod_vault_sync": 1783590960
   },
   "vault_sync": {
-    "last_sync": "2026-07-08 22:00 SAST — Commit 703678f saved locally. Push BLOCKED — no GitHub PAT.",
+    "last_sync": "2026-07-09 14:06 SAST — Commit 7154f3d. Push BLOCKED — no GitHub PAT.",
     "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "703678f",
+    "commit_hash": "7154f3d",
     "push_status": "blocked_no_pat"
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commit 703678f saved locally.",
+    "github": "Push blocked — no GitHub PAT. Commit 7154f3d saved locally.",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
