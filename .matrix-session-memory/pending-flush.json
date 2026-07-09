@@ -1,96 +1,6 @@
 {
   "entries": [
     {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T07:06:03.365Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T07:36:03.854Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T08:00:00.113Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T08:06:03.369Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T08:36:03.374Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T09:06:03.375Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T09:36:03.910Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T10:00:00.112Z"
-    },
-    {
-      "role": "assistant",
-      "snippet": "**🌤️ Midday Nudge — Thu Jul 9, 2026 | 12:00 SAST**\n\n---\n\n**1. Orders — Shopify**\n🚫 BLOCKED. No Admin API token = no order automation, no inventory sync, no auto-fulfillment. Orders can't be checked programmatically today.\n\n**2. Content — Naledi / Facebook/Instagram**\n🚫 BLOCKED. Blotato has 0 accounts connected — FB/IG not linked. Naledi's scheduled posts likely not going out. Meta permanent token also expired/missing.\n\n**3. Inventory**\n⚠️ Can't check. Shopify is the source of truth and it's b...",
-      "timestamp": "2026-07-09T10:03:16.131Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T10:03:16.515Z"
-    },
-    {
-      "role": "assistant",
-      "snippet": "Push blocked (no GitHub PAT). I'll write the daily log and commit locally — push will need the GitHub PAT restored.\nNow commit and push:\nPush blocked. Now update heartbeat-state.json:\n---\n\n**Vault Sync Complete — 2026-07-09 12:00 SAST**\n\n✅ **Done:**\n- Read inbox: 3 agent plans consolidated (Fleet Master Plan, Home OS Plan, OS Redesign + RocketChat Plan)\n- Read today's memory (2026-07-09)\n- Wrote `studex-obsidian-vault/daily/2026-07-09-MORNING.md` — full consolidated log covering: Orgo VM offline...",
-      "timestamp": "2026-07-09T10:04:47.146Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T10:06:03.380Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T10:36:03.920Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T11:06:03.885Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T11:36:03.383Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T12:06:03.381Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T12:36:03.900Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-09T12:52:52.862Z"
-    },
-    {
       "role": "assistant",
       "snippet": "No — I'm not currently connected to any Google Sheet. I don't have Google Sheets API credentials configured, and I haven't done any Sheet updates during this session.\n\nI can see from `china-coffee-sheet-copy-paste.md` that a sheet was planned around Jul 7 with buyer tracking and email sequence tabs. If you shared a sheet link in a previous session, I don't have that context in memory right now.\n\n**Can you drop me the sheet URL?** I'll take a look at what's there and what's needed. If you need me...",
       "timestamp": "2026-07-09T12:53:16.120Z"
@@ -149,8 +59,98 @@
       "role": "user",
       "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
       "timestamp": "2026-07-09T15:06:03.386Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T15:36:03.416Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T16:06:03.405Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T16:36:03.402Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T17:06:03.424Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T17:36:03.420Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T18:00:00.110Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T18:06:03.410Z"
+    },
+    {
+      "role": "assistant",
+      "snippet": "Now I have enough intelligence. Let me write the research brief.\nResearch brief saved. Now entering **BUILD HOUR**. Let me hit the Orgo VM and get Voicebox + n8n running.\n📋 **Research Hour Complete — 2026-07-09**\n\n**Research brief saved:** `/workspace/research/2026-07-09.md`\n\n---\n\n## Research Summary — 4 Topics Covered\n\n### 🥩 Luxury Meat E-Commerce SA\n- SA e-commerce hitting $77B by 2034 (8.17% CAGR). Right time, right market.\n- Competitors (Noags, biltong.co.za, Angus Meat Supply) compete on ...",
+      "timestamp": "2026-07-09T18:13:45.762Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T18:36:03.419Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T19:00:00.128Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T19:06:03.417Z"
+    },
+    {
+      "role": "assistant",
+      "snippet": "Tonight's research is clear: **Voicebox on the Orgo VM** is the top Build Hour pick — clone Naledi's voice, test the speak API. Let me start checking the VM state.\nOrgo VM is off the grid (rebuilt, new ID needed). Let me pivot smartly — **Build Option F: War Room Upgrade**. I have everything I need to ship it. Let me check the current War Room state first.\nGood — there's a `studex-war-room` directory. Let me see what's there.\nThe War Room already has placeholder components. Let me check if they'...",
+      "timestamp": "2026-07-09T19:07:59.380Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T19:36:03.417Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T20:06:03.428Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T20:36:03.423Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T21:06:03.416Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T21:36:03.434Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-09T22:00:00.102Z"
     }
   ],
-  "lastSessionId": "7b31a50a-e929-46ba-be36-a25f7f9f3876",
-  "lastFlushAt": "2026-07-09T15:31:12.985Z"
+  "lastSessionId": "4866e113-2ac0-447e-8a62-6fad1dbbf9c9",
+  "lastFlushAt": "2026-07-09T22:04:13.738Z"
 }
