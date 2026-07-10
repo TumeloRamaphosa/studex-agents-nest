@@ -4,17 +4,17 @@
     "standup_0700_sast": 1783577160,
     "midday_check": 1783587060,
     "evening_standup": 1783606560,
-    "midnight_sync": 1783555560,
-    "eod_vault_sync": 1783628400
+    "midnight_sync": 1783628760,
+    "eod_vault_sync": 1783628760
   },
   "vault_sync": {
-    "last_sync": "2026-07-09 22:00 UTC — Commit 9e5d4e6 pushed locally. GitHub push BLOCKED — no PAT.",
+    "last_sync": "2026-07-09 22:06 UTC (midnight SAST) — Commit 7cc6af0 saved locally. Push BLOCKED — no GitHub PAT.",
     "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "9e5d4e6",
+    "commit_hash": "7cc6af0",
     "push_status": "blocked_no_pat"
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2, 9e5d4e6).",
+    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2, 7cc6af0).",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
@@ -24,13 +24,11 @@
       "Orgo VM credentials INVALID"
     ],
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
-    "b2b_coffee_landing_url": "https://uh2wxhj3p8nl.space.minimax.io",
-    "china_window": "July 20 — 11 days away",
-    "ciie_deadline": "July 20, 2026 — CIIE Shanghai booth applications",
+    "caviar_landing_url": "https://1jg3y0481lwr.space.minimax.io",
+    "china_window": "July 20 — 9 days away",
     "alerts": [
-      "🚨 Orgo VM OFFLINE — VM ID invalid since ~Jul 9, all VM services inaccessible",
-      "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain needs verification",
-      "⚠️ CIIE Nov 2026 Shanghai — booth application deadline July 20, 11 days remaining"
+      "🚨 Orgo VM OFFLINE — since ~Jul 9",
+      "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain/email list needs verification"
     ]
   }
 }
