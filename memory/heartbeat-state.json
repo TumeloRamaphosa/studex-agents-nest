@@ -8,13 +8,14 @@
     "eod_vault_sync": 1783628760
   },
   "vault_sync": {
-    "last_sync": "2026-07-09 22:06 UTC (midnight SAST) — Commit 7cc6af0 saved locally. Push BLOCKED — no GitHub PAT.",
+    "last_sync": "2026-07-10 10:03 UTC (12:03 SAST) — Commit 416dce4 saved locally. Push BLOCKED — no GitHub PAT or gh CLI.",
     "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "7cc6af0",
-    "push_status": "blocked_no_pat"
+    "commit_hash": "416dce4",
+    "push_status": "blocked_no_pat",
+    "file": "studex-obsidian-vault/daily/2026-07-10-MORNING.md"
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2, 7cc6af0).",
+    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2, 7cc6af0, 416dce4).",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token",
@@ -25,7 +26,7 @@
     ],
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
     "caviar_landing_url": "https://1jg3y0481lwr.space.minimax.io",
-    "china_window": "July 20 — 9 days away",
+    "china_window": "July 20 — 10 days away",
     "alerts": [
       "🚨 Orgo VM OFFLINE — since ~Jul 9",
       "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain/email list needs verification"
