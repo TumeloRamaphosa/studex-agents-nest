@@ -5,31 +5,36 @@
     "midday_check": 1783587060,
     "evening_standup": 1783606560,
     "midnight_sync": 1783628760,
-    "eod_vault_sync": 1783628760
+    "eod_vault_sync": 1783642800
   },
   "vault_sync": {
-    "last_sync": "2026-07-10 10:03 UTC (12:03 SAST) — Commit 416dce4 saved locally. Push BLOCKED — no GitHub PAT or gh CLI.",
+    "last_sync": "2026-07-10 22:00 UTC (midnight SAST) — Commit c119635 saved locally. Push BLOCKED — no GitHub PAT. Full EOD log written to studex-obsidian-vault/daily/2026-07-10.md.",
     "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "416dce4",
+    "commit_hash": "c119635",
     "push_status": "blocked_no_pat",
-    "file": "studex-obsidian-vault/daily/2026-07-10-MORNING.md"
+    "file": "studex-obsidian-vault/daily/2026-07-10.md"
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2, 7cc6af0, 416dce4).",
+    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2, 7cc6af0, 416dce4, c119635).",
     "blockers": [
       "Shopify Admin API token",
-      "Meta permanent access token",
+      "Meta permanent access token (expired Jun 22)",
       "GitHub PAT (CRITICAL — vault sync broken)",
       "Blotato FB/IG connection",
       "send.studexmeat.com DNS",
       "Orgo VM credentials INVALID"
     ],
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
-    "caviar_landing_url": "https://1jg3y0481lwr.space.minimax.io",
+    "coffee_b2b_landing": "https://qs9wz5dta4k7.space.minimax.io",
     "china_window": "July 20 — 10 days away",
+    "ciie_booth_deadline": "IMMINENT — this week",
+    "today_output": "Coffee B2B landing page deployed (studex-b2b-coffee)",
     "alerts": [
-      "🚨 Orgo VM OFFLINE — since ~Jul 9",
-      "⚠️ Ankole Beef China outreach BOUNCED (Jul 6) — sender domain/email list needs verification"
+      "🚨 Orgo VM OFFLINE — credentials invalidated",
+      "🚨 Naledi BLOCKED — Meta token expired Jun 22, zero content posted today",
+      "🚨 Shopify BLOCKED — no API token, orders + revenue unknown",
+      "⚠️ CIIE booth application deadline this week — Tumelo must act",
+      "⚠️ Luckin Coffee outreach should go out Monday"
     ]
   }
 }
