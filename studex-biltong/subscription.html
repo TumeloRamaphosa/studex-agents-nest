@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studex Biltong — Subscription Box | Premium Halaal Wagyu</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C86B;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --dark-card: #1A1A1A;
+      --dark-card-hover: #221810;
+      --border: #222222;
+      --white: #FAFAF8;
+      --muted: #888;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
+    }
+    .nav-logo { height: 48px; }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 48px 80px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1558030006-450675393462?w=1600&q=80') center/cover no-repeat;
+      filter: brightness(0.35);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(10,10,10,0.95) 40%, rgba(10,10,10,0.3) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 6px 16px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: Georgia, 'Playfair Display', serif;
+      font-size: clamp(44px, 6vw, 80px);
+      line-height: 1.0;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero p {
+      font-size: 18px;
+      color: rgba(250,250,248,0.75);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 14px 36px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 14px 36px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--black); }
+
+    /* MARQUEE */
+    .marquee-strip { background: var(--gold); padding: 14px 0; overflow: hidden; }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      animation: marquee 20s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* HOW IT WORKS */
+    .how { padding: 96px 48px; background: var(--dark); }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .section-title { font-family: Georgia, serif; font-size: clamp(28px, 3.5vw, 44px); margin-bottom: 48px; line-height: 1.1; }
+    .section-title em { color: var(--gold); font-style: italic; }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      max-width: 1000px;
+    }
+    .step { text-align: center; padding: 32px 24px; }
+    .step-num {
+      display: inline-block;
+      width: 48px; height: 48px;
+      line-height: 48px;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .step h3 { font-size: 16px; margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .step p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+    /* PLANS */
+    .plans { padding: 96px 48px; background: var(--black); }
+    .plans-header { text-align: center; margin-bottom: 64px; }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .plan-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .plan-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .plan-card.featured {
+      border-color: var(--gold);
+      background: var(--dark-card-hover);
+    }
+    .plan-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -1px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 4px 16px;
+    }
+    .plan-name {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .plan-price {
+      font-family: Georgia, serif;
+      font-size: 52px;
+      color: var(--white);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+    .plan-price sup { font-size: 24px; vertical-align: top; margin-top: 10px; display: inline-block; }
+    .plan-price .per { font-size: 14px; color: var(--muted); font-family: Inter, sans-serif; }
+    .plan-desc { color: var(--muted); font-size: 14px; margin: 16px 0 28px; line-height: 1.6; min-height: 60px; }
+    .plan-features { list-style: none; margin-bottom: 32px; }
+    .plan-features li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: rgba(250,250,248,0.8);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+    .plan-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .plan-cta {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 14px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+    }
+    .plan-cta:hover { background: var(--gold); color: var(--black); }
+    .plan-card.featured .plan-cta { background: var(--gold); color: var(--black); }
+    .plan-card.featured .plan-cta:hover { background: var(--gold-light); }
+
+    /* WAITLIST */
+    .waitlist { padding: 96px 48px; background: var(--dark); }
+    .waitlist-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .waitlist h2 { font-family: Georgia, serif; font-size: clamp(28px, 4vw, 44px); margin-bottom: 16px; }
+    .waitlist h2 em { color: var(--gold); font-style: italic; }
+    .waitlist p { color: var(--muted); font-size: 16px; margin-bottom: 40px; line-height: 1.7; }
+    .waitlist-form { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .waitlist-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 14px 20px;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-form input:focus { border-color: var(--gold); }
+    .waitlist-form input::placeholder { color: var(--muted); }
+    .waitlist-form button { background: var(--gold); color: var(--black); padding: 14px 32px; font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; }
+    .waitlist-form button:hover { background: var(--gold-light); }
+    .success-msg { display: none; padding: 24px; background: var(--dark-card); border: 1px solid var(--gold); color: var(--gold); font-size: 15px; margin-top: 20px; }
+    .success-msg.show { display: block; }
+
+    /* TESTIMONIALS */
+    .testimonials { padding: 80px 48px; background: var(--black); }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .test-card { background: var(--dark-card); border: 1px solid var(--border); padding: 28px; }
+    .test-card .stars { color: var(--gold); font-size: 14px; letter-spacing: 4px; margin-bottom: 14px; }
+    .test-card blockquote { color: rgba(250,250,248,0.8); font-size: 15px; line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+    .test-card .author { color: var(--muted); font-size: 13px; }
+    .test-card .author strong { color: var(--white); display: block; margin-bottom: 2px; }
+
+    /* FOOTER */
+    footer { background: var(--dark); border-top: 1px solid var(--border); padding: 48px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; max-width: 1200px; margin: 0 auto; }
+    .footer-logo { height: 36px; }
+    .footer-links { display: flex; gap: 32px; list-style: none; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { width: 100%; text-align: center; font-size: 12px; color: #444; margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      nav .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero h1 { font-size: 42px; }
+      .how, .plans, .waitlist, .testimonials { padding: 64px 24px; }
+      .waitlist-form { flex-direction: column; }
+      .waitlist-form input { min-width: unset; }
+      .waitlist-form button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://a0yo6e7my93k.space.minimax.io">
+    <img src="https://a0yo6e7my93k.space.minimax.io/imgs/studex-logo-gold.png" alt="Studex Meat" class="nav-logo" onerror="this.style.display='none'" />
+  </a>
+  <span style="color:var(--gold);font-size:14px;letter-spacing:3px;text-transform:uppercase;font-weight:700;">STUDEX MEAT</span>
+  <ul class="nav-links">
+    <li><a href="https://a0yo6e7my93k.space.minimax.io">Biltong</a></li>
+    <li><a href="https://a0yo6e7my93k.space.minimax.io/#caviar">Caviar</a></li>
+    <li><a href="#plans">Subscription</a></li>
+    <li><a href="#order">Order</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>★</span> Halaal Certified Wagyu
+    </div>
+    <h1>Biltong on<br /><em>Auto-Refill.</em></h1>
+    <p>Premium Halaal Wagyu biltong, delivered before you run out. Subscribe once, never run dry. Skip, pause, or cancel anytime — no commitment.</p>
+    <div class="hero-cta">
+      <a href="#plans" class="btn-primary">Choose Your Plan</a>
+      <a href="#how" class="btn-outline">How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>★ Premium Halaal Wagyu &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Hand-Sliced Every Order &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Skip or Cancel Anytime &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Nationwide SA Delivery &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Freshness Guaranteed &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Premium Halaal Wagyu &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Hand-Sliced Every Order &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Skip or Cancel Anytime &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Nationwide SA Delivery &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+    <span>★ Freshness Guaranteed &nbsp;&nbsp;—&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-label">Simple</div>
+  <h2 class="section-title">How the <em>Subscription</em> Works</h2>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Choose Your Plan</h3>
+      <p>Pick your preferred cut, size, and delivery frequency. Start with our most popular Monthly box.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>We Prepare Fresh</h3>
+      <p>Each order is hand-sliced, vacuum-sealed, and dispatched for next-day delivery in temperature-controlled packaging.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Delivered to Your Door</h3>
+      <p>Track your delivery in real time. Change your cut, frequency, or pause anytime via WhatsApp or email.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Never Run Out</h3>
+      <p>Your subscription renews automatically. Skip a month, swap your cut, or pause — entirely on your terms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="plans-header">
+    <div class="section-label">Subscription Plans</div>
+    <h2 class="section-title">Pick Your <em>Biltong Box</em></h2>
+  </div>
+  <div class="plans-grid">
+    <!-- Starter -->
+    <div class="plan-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><sup>R</sup>295<span class="per"> / month</span></div>
+      <p class="plan-desc">200g of our premium Wagyu biltong, delivered monthly. Perfect for personal snacking.</p>
+      <ul class="plan-features">
+        <li>200g Premium Wagyu Biltong</li>
+        <li>Hand-sliced to order</li>
+        <li>Vacuum-sealed + chilled</li>
+        <li>Monthly delivery</li>
+        <li>Skip or pause anytime</li>
+        <li>Halaal certified</li>
+      </ul>
+      <a href="#order" class="plan-cta">Start Starter</a>
+    </div>
+
+    <!-- Connoisseur — Featured -->
+    <div class="plan-card featured">
+      <div class="plan-name">Connoisseur</div>
+      <div class="plan-price"><sup>R</sup>495<span class="per"> / month</span></div>
+      <p class="plan-desc">500g of premium Wagyu biltong + 100g Ox Tail Biltong. Our most popular subscription.</p>
+      <ul class="plan-features">
+        <li>500g Premium Wagyu Biltong</li>
+        <li>100g Ox Tail Biltong</li>
+        <li>Hand-sliced to order</li>
+        <li>Vacuum-sealed + chilled</li>
+        <li>Monthly delivery</li>
+        <li>Skip or pause anytime</li>
+        <li>Priority dispatch</li>
+        <li>Halaal certified</li>
+      </ul>
+      <a href="#order" class="plan-cta">Start Connoisseur</a>
+    </div>
+
+    <!-- Bulk / Gifter -->
+    <div class="plan-card">
+      <div class="plan-name">Bulk / Corporate</div>
+      <div class="plan-price"><sup>R</sup>850<span class="per"> / month</span></div>
+      <p class="plan-desc">1kg mixed biltong pack, ideal for offices, families, or corporate gifting on a recurring basis.</p>
+      <ul class="plan-features">
+        <li>1kg mixed biltong (your choice)</li>
+        <li>Bulk vacuum-sealed pack</li>
+        <li>Monthly delivery</li>
+        <li>Custom branding available</li>
+        <li>Dedicated account manager</li>
+        <li>Halaal certified</li>
+      </ul>
+      <a href="mailto:tumelo@studexmeat.com?subject=Bulk%20Subscription" class="plan-cta">Enquire — Bulk</a>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST / INQUIRE -->
+<section class="waitlist" id="order">
+  <div class="waitlist-inner">
+    <div class="section-label">Subscribe</div>
+    <h2>Start Your <em>Subscription</em></h2>
+    <p>Fill in your details and we'll confirm your plan within 24 hours via WhatsApp or email. No payment taken today — we'll send you a secure link to complete setup.</p>
+    <form class="waitlist-form" id="subForm">
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="tel" name="phone" placeholder="WhatsApp number" required />
+      <input type="email" name="email" placeholder="Email address" required />
+      <input type="text" name="city" placeholder="City (e.g. Sandton, Cape Town)" required />
+      <button type="submit">Submit Interest →</button>
+    </form>
+    <div class="success-msg" id="successMsg">
+      ✅ Interest received! We'll WhatsApp you within 24 hours to confirm your plan and delivery details.
+    </div>
+    <p style="color:#444;font-size:12px;margin-top:16px;">Or WhatsApp us directly: <strong style="color:var(--gold);">+27 83 593 2577</strong></p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <div class="section-label">What People Say</div>
+    <h2 class="section-title">Biltong People <em>Trust</em></h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Best biltong I've had in 20 years. The subscription means I'm never without it. My rugby Sundays have changed forever."</blockquote>
+      <div class="author"><strong>Kgabo M.</strong> Sandton, Johannesburg</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I order for my office — 12 guys who thought they knew biltong. Studex turned the whole team into biltong people. The Connoisseur box is exactly right."</blockquote>
+      <div class="author"><strong>Jaco V.</strong> Four Ways, Johannesburg</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I'm in Canada and my mom in JHB sends me a box every month. She won't stop talking about how good the quality is. Worth every cent."</blockquote>
+      <div class="author"><strong>Lerato K.</strong> Toronto, Canada</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="https://a0yo6e7my93k.space.minimax.io">
+      <img src="https://a0yo6e7my93k.space.minimax.io/imgs/studex-logo-gold.png" alt="Studex Meat" class="footer-logo" onerror="this.style.display='none'" />
+    </a>
+    <ul class="footer-links">
+      <li><a href="https://a0yo6e7my93k.space.minimax.io">Shop Biltong</a></li>
+      <li><a href="https://a0yo6e7my93k.space.minimax.io/#caviar">Shop Caviar</a></li>
+      <li><a href="mailto:tumelo@studexmeat.com">Contact</a></li>
+    </ul>
+    <div class="footer-copy">
+      © 2026 Studex Meat (Pty) Ltd. All rights reserved.<br />
+      Proudly South African. Halaal Certified. | www.studexmeat.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('subForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var data = new FormData(form);
+    var msg = Array.from(data.entries()).map(function([k,v]) { return k + ': ' + v; }).join('\n');
+    var wa = 'https://wa.me/27835932577?text=' + encodeURIComponent('🥩 Biltong Subscription Interest\n\n' + msg);
+    document.getElementById('successMsg').classList.add('show');
+    form.style.display = 'none';
+    // Also open WhatsApp as backup notification channel
+    window.open(wa, '_blank');
+  });
+</script>
+
+</body>
+</html>
