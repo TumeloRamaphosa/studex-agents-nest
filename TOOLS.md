@@ -44,6 +44,10 @@
 | Codex | `rl_sk_0Uz1k7CegkXlN4w77ON8ZpiC_uc2DBpUBKLpWi6SGdM` |
 | Dyatona | `dtn_0ad29d3bdfb7b55f5f97985d2a6c1691e9cff1d8b6a745c76ae4620565887029` |
 
+### Perplexity
+- **API Key:** `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`
+- **Status:** Active ✅
+
 ### Daytona
 - **API Key:** `dtn_0ad29d3bdfb7b55f5f97985d2a6c1691e9cff1d8b6a745c76ae4620565887029`
 - **Status:** API key added — capabilities unknown, needs investigation

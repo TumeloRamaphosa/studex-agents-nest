@@ -80,6 +80,7 @@ function App() {
           <a href="#pricing" className="hover:text-amber-400 transition">Pricing</a>
           <a href="#traceability" className="hover:text-amber-400 transition">Traceability</a>
           <a href="#contact" className="hover:text-amber-400 transition">Contact</a>
+          <a href="/b2b" className="px-3 py-1 bg-emerald-700 hover:bg-emerald-600 text-emerald-300 rounded-md transition text-xs font-medium">B2B SA</a>
         </div>
       </nav>
 
