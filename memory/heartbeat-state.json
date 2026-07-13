@@ -5,18 +5,18 @@
     "midday_check": 1752228120,
     "evening_standup": null,
     "midnight_sync": 1752279600,
-    "eod_vault_sync": null,
+    "eod_vault_sync": 1752279600,
     "vault_sync_1200_sast": 1752228120
   },
   "vault_sync": {
-    "last_sync": "2026-07-11 22:00 UTC / 2026-07-12 00:00 SAST — Commit bf4c8e0 saved locally. Full day consolidated: morning standup + evening standup + EOD log. Push BLOCKED — no GitHub PAT. EOD daily log written: studex-obsidian-vault/daily/2026-07-11.md.",
+    "last_sync": "2026-07-12 22:00 UTC / 2026-07-13 00:00 SAST — Commit f0b9c2f. EOD log: studex-obsidian-vault/daily/2026-07-12.md. Research brief: research/2026-07-12.md. Build report: builds/2026-07-12.md. Push BLOCKED — no GitHub PAT.",
     "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "bf4c8e0",
+    "commit_hash": "f0b9c2f",
     "push_status": "blocked_no_pat",
-    "file": "studex-obsidian-vault/daily/2026-07-11.md"
+    "file": "studex-obsidian-vault/daily/2026-07-12.md"
   },
   "notes": {
-    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2, 7cc6af0, 416dce4, c119635).",
+    "github": "Push blocked — no GitHub PAT. Commits saved locally (703678f, 2c0fdc2, 7cc6af0, 416dce4, c119635, bf4c8e0, f0b9c2f).",
     "blockers": [
       "Shopify Admin API token",
       "Meta permanent access token (expired Jun 22)",
@@ -26,16 +26,18 @@
       "Orgo VM credentials INVALID"
     ],
     "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
-    "coffee_b2b_landing": "https://qs9wz5dta4k7.space.minimax.io",
-    "china_window": "July 20 — 10 days away",
+    "coffee_b2b_landing": "https://juwnp2q7m7gn.space.minimax.io/b2b",
+    "china_window": "July 20 — 8 days away",
     "ciie_booth_deadline": "IMMINENT — this week",
-    "today_output": "Coffee B2B landing page deployed (studex-b2b-coffee)",
+    "today_output": "SA B2B Coffee One-Pager deployed (juwnp2q7m7gn.space.minimax.io/b2b); China outreach emails (Luckin + JD.com) drafted and send-ready",
     "alerts": [
       "🚨 Orgo VM OFFLINE — credentials invalidated",
       "🚨 Naledi BLOCKED — Meta token expired Jun 22, zero content posted today",
       "🚨 Shopify BLOCKED — no API token, orders + revenue unknown",
       "⚠️ CIIE booth application deadline this week — Tumelo must act",
-      "⚠️ Luckin Coffee outreach should go out Monday"
+      "⚠️ Luckin + JD.com emails NOT YET SENT — run: node /workspace/builds/emails/send-china-outreach.js",
+      "✅ SA B2B one-pager BUILT and deployed",
+      "✅ China research brief DONE — July 20 window confirmed, Uganda already moving"
     ]
   }
 }
