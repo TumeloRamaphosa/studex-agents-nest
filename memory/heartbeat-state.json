@@ -1,44 +1,11 @@
 {
   "lastChecks": {
-    "morning_check": 1752305040,
-    "standup_0700_sast": null,
-    "midday_check": 1752305040,
-    "evening_standup": null,
-    "midnight_sync": 1752305040,
-    "eod_vault_sync": null,
-    "vault_sync_1200_sast": 1752305040
+    "email": null,
+    "calendar": null,
+    "weather": null,
+    "github": 1752430080,
+    "memory": 1752430080
   },
-  "vault_sync": {
-    "last_sync": "2026-07-13 12:00 SAST sync — Commit 6f7e2f1. Morning log: studex-obsidian-vault/daily/2026-07-13-MORNING.md. No new agent plans in inbox. 7 blockers unchanged. CIIE deadline 7 days (Jul 20). Push BLOCKED — no GitHub PAT.",
-    "schedule": "12:00 + Midnight SAST",
-    "commit_hash": "6f7e2f1",
-    "push_status": "blocked_no_pat",
-    "file": "studex-obsidian-vault/daily/2026-07-13-MORNING.md"
-  },
-  "notes": {
-    "github": "Push blocked — no GitHub PAT. Commits saved locally (f0b9c2f, 703678f, 2c0fdc2, 7cc6af0, 416dce4, c119635, bf4c8e0). Latest: 6f7e2f1.",
-    "blockers": [
-      "Shopify Admin API token",
-      "Meta permanent access token (expired Jun 22)",
-      "GitHub PAT (CRITICAL — vault sync broken)",
-      "Blotato FB/IG connection",
-      "send.studexmeat.com DNS",
-      "Orgo VM credentials INVALID",
-      "CIIE booth application — DEADLINE Jul 20 — 7 days"
-    ],
-    "war_room_url": "https://dehdxyf8nnyl.space.minimax.io",
-    "coffee_b2b_landing": "https://x3oj1mdkipgh.space.minimax.io",
-    "china_window": "July 20 — 7 days away",
-    "ciie_booth_deadline": "Jul 20 — 7 DAYS — OVERDUE",
-    "today_output": "Morning vault sync done (2026-07-13-MORNING.md). No new agent plans. All 7 blockers unchanged. CIIE booth application is the most urgent outstanding action.",
-    "alerts": [
-      "🚨 Orgo VM OFFLINE — credentials invalidated",
-      "🚨 Naledi BLOCKED — Meta token expired Jun 22, zero content posted",
-      "🚨 Shopify BLOCKED — no API token, orders + revenue unknown",
-      "🚨 CIIE booth application — DEADLINE Jul 20 — Tumelo must act THIS WEEK",
-      "⚠️ Luckin + JD.com emails NOT YET SENT — run: node /workspace/builds/emails/send-china-outreach.js",
-      "✅ Biltong + Caviar site live: a0yo6e7my93k.space.minimax.io",
-      "✅ War Room OS live: dehdxyf8nnyl.space.minimax.io"
-    ]
-  }
+  "today": "2026-07-13",
+  "summary": "Evening standup done. Content OS live. VAPI + Orgo VM + Shopify = top blockers."
 }
