@@ -4,8 +4,15 @@
     "calendar": null,
     "weather": null,
     "github": 1752430080,
-    "memory": 1752430080
+    "memory": 1752430080,
+    "vault_sync": "2026-07-13T22:00:00Z"
+  },
+  "vault_sync": {
+    "last_sync": "2026-07-13T22:00:00Z",
+    "commit_hash": "920ba08",
+    "status": "committed_not_pushed",
+    "push_blocker": "no GitHub PAT token — push requires Tumelo action"
   },
   "today": "2026-07-13",
-  "summary": "Evening standup done. Content OS live. VAPI + Orgo VM + Shopify = top blockers."
+  "summary": "Evening standup done. Caviar landing page live. GitHub push blocked — no PAT token."
 }
