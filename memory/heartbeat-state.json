@@ -8,10 +8,10 @@
     "vault_sync": "2026-07-13T22:00:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-13T22:00:00Z",
-    "commit_hash": "920ba08",
+    "last_sync": "2026-07-14T10:00:00Z",
+    "commit_hash": "8334d8b",
     "status": "committed_not_pushed",
-    "push_blocker": "no GitHub PAT token — push requires Tumelo action"
+    "push_blocker": "no GitHub PAT — push requires Tumelo locally or PAT provision"
   },
   "today": "2026-07-13",
   "summary": "Evening standup done. Caviar landing page live. GitHub push blocked — no PAT token."

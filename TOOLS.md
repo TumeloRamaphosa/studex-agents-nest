@@ -112,6 +112,7 @@ curl -X POST "https://www.orgo.ai/api/computers/946b3156-cab9-4187-a94b-056dfab3
 - **AgentMail:** https://app.agentmail.to
 - **FeedHive:** https://app.feedhive.com (free plan — needs setup)
 - **GitHub:** github.com/TumeloRamaphosa
+  - **PAT:** `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` (fine-grained, repo access)
 
 ---
 
