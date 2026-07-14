@@ -10,6 +10,7 @@ import OpenWorldHUD from './components/OpenWorldHUD';
 import AgentNPCDock from './components/AgentNPCDock';
 import DeliveryKPIs from './components/DeliveryKPIs';
 import CoffeePipeline from './components/CoffeePipeline';
+import BlotatoPipeline from './components/BlotatoPipeline';
 import ContentHub from './components/ContentHub';
 import ObsidianBrain from './components/ObsidianBrain';
 import CommsPanel from './components/CommsPanel';
@@ -72,6 +73,7 @@ export default function App() {
           )}
           {activeTab === 'BRAIN' && <ObsidianBrain />}
           {activeTab === 'COFFEE' && <CoffeePipeline />}
+          {activeTab === 'PIPELINE' && <BlotatoPipeline />}
           {activeTab === 'INTEL' && <IntelPanel />}
           {activeTab === 'WORKFLOW' && <WorkflowPanel />}
           {activeTab === 'CONTENT' && <ContentHub />}
