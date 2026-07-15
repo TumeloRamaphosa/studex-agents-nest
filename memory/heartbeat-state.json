@@ -3,16 +3,17 @@
     "email": null,
     "calendar": null,
     "weather": null,
-    "github": 1752430080,
-    "memory": 1752430080,
-    "vault_sync": "2026-07-13T22:00:00Z"
+    "github": 1752523200,
+    "memory": 1752523200,
+    "vault_sync": "2026-07-15T10:02:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-14T10:00:00Z",
-    "commit_hash": "8334d8b",
+    "last_sync": "2026-07-15T10:02:00Z",
+    "commit_hash": "pending",
     "status": "committed_not_pushed",
-    "push_blocker": "no GitHub PAT — push requires Tumelo locally or PAT provision"
+    "push_error": "credential helper failed: could not read Password for HTTPS URL — PAT in URL not resolving. Tumelo needs to run `git push` locally OR provision HTTPS credentials.",
+    "file": "studex-obsidian-vault/daily/2026-07-15-MORNING.md"
   },
-  "today": "2026-07-13",
-  "summary": "Evening standup done. Caviar landing page live. GitHub push blocked — no PAT token."
+  "today": "2026-07-15",
+  "summary": "12:00 SAST morning sync complete. 2026-07-15-MORNING.md written. Shopify/Meta still blocked. GitHub push still blocked."
 }
