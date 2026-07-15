@@ -9,11 +9,11 @@
   },
   "vault_sync": {
     "last_sync": "2026-07-15T10:02:00Z",
-    "commit_hash": "pending",
+    "commit_hash": "8403d29",
     "status": "committed_not_pushed",
-    "push_error": "credential helper failed: could not read Password for HTTPS URL — PAT in URL not resolving. Tumelo needs to run `git push` locally OR provision HTTPS credentials.",
+    "push_error": "GitHub PAT auth failed — 'could not read Username'. Commit 8403d29 exists locally. Tumelo needs to run `git push` locally OR fix HTTPS credentials on server.",
     "file": "studex-obsidian-vault/daily/2026-07-15-MORNING.md"
   },
   "today": "2026-07-15",
-  "summary": "12:00 SAST morning sync complete. 2026-07-15-MORNING.md written. Shopify/Meta still blocked. GitHub push still blocked."
+  "summary": "12:00 SAST morning sync complete. 2026-07-15-MORNING.md committed (8403d29). GitHub push blocked — auth issue."
 }
