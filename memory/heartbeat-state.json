@@ -3,17 +3,19 @@
     "email": null,
     "calendar": null,
     "weather": null,
-    "github": 1752523200,
-    "memory": 1752523200,
-    "vault_sync": "2026-07-15T10:02:00Z"
+    "github": null,
+    "memory": "2026-07-16T05:03:00Z",
+    "vault_sync": "2026-07-16T09:03:00Z",
+    "shopify": null,
+    "agentmail": null
   },
   "vault_sync": {
-    "last_sync": "2026-07-15T10:02:00Z",
-    "commit_hash": "8403d29",
-    "status": "committed_not_pushed",
-    "push_error": "GitHub PAT auth failed — 'could not read Username'. Commit 8403d29 exists locally. Tumelo needs to run `git push` locally OR fix HTTPS credentials on server.",
-    "file": "studex-obsidian-vault/daily/2026-07-15-MORNING.md"
+    "last_sync": "2026-07-16T00:00:00Z",
+    "status": "blocked_invalid_token",
+    "push_error": "GitHub PAT is INVALID — API returns 401 Bad Credentials. Token has been revoked, expired, or never worked. Tumelo must generate a new classic PAT (not fine-grained) at github.com/settings/tokens with 'repo' scope.",
+    "stuck_commits": "8403d29 + a7ae476 + c7030b1 (all Jul 2026)",
+    "note": "Midday check: tried 3 auth URL formats — all failed. PAT is dead."
   },
-  "today": "2026-07-15",
-  "summary": "12:00 SAST morning sync complete. 2026-07-15-MORNING.md committed (8403d29). GitHub push blocked — auth issue."
+  "today": "2026-07-16",
+  "midday_summary": "GitHub PAT confirmed invalid. All external systems still blocked. No new orders, no emails, no content posts possible today."
 }
