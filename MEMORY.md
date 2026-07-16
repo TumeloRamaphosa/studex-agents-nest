@@ -59,7 +59,22 @@ ORGO.AI VM (StudEx Meat Auto Meat — VM ID: 946b3156-cab9-4187-a94b-056dfab3510
 |------|-----|--------|
 | SrudEx-Agents-Nest-Cloud-VM | github.com/TumeloRamaphosa/SrudEx-Agents-Nest-Cloud-VM | ✅ Synced |
 | robusca-brain | /root/robusca/robusca-brain/ | ✅ Synced |
-| studex-obsidian-vault | /workspace/studex-obsidian-vault/ | ✅ Built |
+| studex-obsidian-vault | /workspace/studex-obsidian-vault/ | ✅ Built — PUSH BLOCKED |
+
+### GitHub PAT — INVALID ❌
+- PAT in TOOLS.md (`github_pat_11AHKA6XY0L...`) returns `401 Bad Credentials` on both API and git push
+- Fine-grained tokens don't work with git — need a **classic** PAT with `repo` scope
+- **Action:** Generate new classic PAT at github.com/settings/tokens
+- Vault has 4+ commits stuck locally (8403d29, a7ae476, c7030b1, + evening standup)
+
+## CRITICAL BLOCKERS — Action Required
+
+| # | Blocker | Impact | Fix |
+|---|---------|--------|-----|
+| 1 | **Shopify API token missing** | 23+ days no order visibility | Get token from Shopify Partners or store admin |
+| 2 | **GitHub PAT invalid** | Vault commits stuck, can't push | Generate classic PAT at github.com/settings/tokens |
+| 3 | **AgentMail DNS INVALID** | charlie/naledi inboxes unreachable | GoDaddy: add MX, SPF, DKIM, DMARC for send.studexmeat.com |
+| 4 | **Meta token expired Jun 22** | Naledi can't post to Facebook | Re-auth Facebook developer app |
 
 ## AgentMail
 - Domain: send.studexmeat.com — PENDING DNS verification

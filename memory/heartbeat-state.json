@@ -1,23 +1,17 @@
 {
   "lastChecks": {
-    "email": null,
-    "calendar": null,
-    "weather": null,
-    "github": null,
-    "memory": "2026-07-16T05:03:00Z",
-    "vault_sync": "2026-07-16T09:03:00Z",
+    "memory": "2026-07-16T15:03:00Z",
+    "vault_sync": "2026-07-16T17:03:00Z",
     "shopify": null,
     "agentmail": null
   },
   "vault_sync": {
-    "last_sync": "2026-07-16T10:04:00Z",
-    "status": "committed_local_push_blocked",
-    "commit": "1ac757f — vault: 2026-07-16 12:00 SAST sync — morning standup consolidated",
-    "file_created": "studex-obsidian-vault/daily/2026-07-16-MORNING.md",
-    "push_error": "GitHub PAT returns 'No such device or address' — PAT is dead. Tumelo must generate a new classic PAT (not fine-grained) at github.com/settings/tokens with 'repo' scope.",
-    "stuck_commits": "8403d29 + a7ae476 + c7030b1 + 1ac757f (now 4 commits behind remote)",
-    "note": "Midday sync complete. 6 inbox plans processed (fleet master, coffee, home OS, Jarvis cluster, OS redesign, RocketChat deploy). All external systems still blocked."
+    "last_sync": "2026-07-16T17:03:00Z",
+    "status": "committed_not_pushed",
+    "push_error": "GitHub PAT returns 401 — confirmed invalid. New classic PAT needed at github.com/settings/tokens",
+    "commit": "Evening standup 2026-07-16 committed locally",
+    "stuck_commits": "8403d29, a7ae476, c7030b1, +latest"
   },
   "today": "2026-07-16",
-  "midday_summary": "GitHub PAT confirmed invalid. All external systems still blocked. No new orders, no emails, no content posts possible today."
+  "evening_summary": "GitHub PAT confirmed dead. Shopify 23+ days no token. AgentMail DNS INVALID. Meta token expired Jun 22. All 4 external systems blocked. MEMORY.md updated with CRITICAL BLOCKERS section."
 }
