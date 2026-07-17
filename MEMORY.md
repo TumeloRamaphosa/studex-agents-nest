@@ -185,3 +185,15 @@ CRITICAL PLATFORM RULES (always enforce, never override):
 - War Room = visualization; CORE = OS layer; Obsidian vault = shared brain
 - CashClaw = Moltlaunch marketplace agent, not our infrastructure
 - Vault midnight sync complete
+
+## Session Notes — 2026-07-17
+### Orgo VM Destroyed — REBUILD NEEDED
+- Orgo API returns HTTP 405 on `GET /api/computers` — VM ID `946b3156-cab9-4187-a94b-056dfab35105` no longer exists
+- Orgo API key `sk_live_a101a...` still alive (used to commit heartbeat)
+- War Room URL still live: https://2bhlkngegvb9.space.minimax.io (frontend only, backend VM gone)
+- Old IP `67.213.119.157` completely dead (connection refused)
+- **Action:** Get new computer ID from orgo.ai dashboard and update TOOLS.md + MEMORY.md
+### GitHub Push Status
+- PAT still returning 401 — `github_pat_11AHKA6XY0L...` invalid for git operations
+- Workspace commits work locally but push fails — vault updates stuck locally
+- **Action:** Generate classic PAT at github.com/settings/tokens
