@@ -7,13 +7,15 @@
   },
   "vault_sync": {
     "last_sync": "2026-07-17T10:03:00Z",
-    "commit": "pending",
-    "status": "sync_complete",
+    "commit": "6b9249a",
+    "commit_message": "vault: 2026-07-17 12:00 SAST sync — morning standup consolidated",
+    "status": "committed_push_blocked",
+    "push_error": "GitHub PAT returns 401 Bad Credentials — 'No such device or address' on credential prompt. Fine-grained PAT does not support git operations. Tumelo must generate a NEW CLASSIC PAT at github.com/settings/tokens with 'repo' scope.",
     "files_written": [
       "studex-obsidian-vault/daily/2026-07-03-MORNING.md",
       "studex-obsidian-vault/daily/2026-07-17-MORNING.md"
     ],
-    "note": "July 17 midday sync. July 3 MORNING written (inbox consolidation). July 17 MORNING written (today's standup). GitHub PAT still dead — push pending new classic token from Tumelo."
+    "note": "Commit 6b9249a succeeded. Push failed. GitHub PAT (fine-grained) does not work for git operations. Classic PAT needed."
   },
   "agentmail": {
     "status": "WORKING ✅",
@@ -22,5 +24,5 @@
     "unread": 0
   },
   "today": "2026-07-17",
-  "summary": "Midday sync July 17. All systems still blocked: Shopify (no token), GitHub PAT (401 Bad Credentials - need classic PAT), Meta token (expired Jun 22), AgentMail (charlie/naledi agent addresses don't exist - use studex-group.com). 2 vault files written. Git push still blocked."
+  "summary": "Midday sync July 17 done. Commit 6b9249a pushed but GitHub PAT dead. 2 vault files written. Tumelo needs classic PAT."
 }
