@@ -1,23 +1,27 @@
 {
   "lastChecks": {
     "email": "2026-07-17T05:03:00Z",
-    "vault_sync": "2026-07-17T22:00:00Z",
+    "vault_sync": "2026-07-18T10:03:00Z",
     "shopify": null,
     "memory": "2026-07-17T22:00:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-17T22:00:00Z",
-    "commit": "451c6d7",
-    "commit_message": "vault: 2026-07-17 EOD sync — full day consolidated",
+    "last_sync": "2026-07-18T10:03:00Z",
+    "commit": "3a87319",
+    "commit_message": "vault: 2026-07-18 12:00 SAST sync — morning standup consolidated",
     "status": "committed_push_blocked",
     "push_error": "GitHub PAT returns 'No such device or address' on credential prompt. Fine-grained PAT does not support git operations. Tumelo must generate a NEW CLASSIC PAT at github.com/settings/tokens with 'repo' scope.",
     "files_written": [
-      "studex-obsidian-vault/daily/2026-07-17.md",
-      "builds/2026-07-17.md",
-      "research/2026-07-17.md",
-      "memory/2026-07-17.md"
+      "studex-obsidian-vault/daily/2026-07-18-MORNING.md"
     ],
-    "note": "Commit 451c6d7 succeeded. Push failed. GitHub PAT (fine-grained) does not work for git operations. Classic PAT needed."
+    "inbox_consolidated": [
+      "AGENT-FLEET-MASTER-PLAN-2026-07-03.md",
+      "COFFEE-PLAN-2026-07-02.md",
+      "HOME-OS-PLAN-2026-07-03.md",
+      "JARVIS-CLUSTER-PLAN-2026-07-02.md",
+      "OS-REDESIGN-ROCKETCHAT-PLAN-2026-07-03.md"
+    ],
+    "note": "Commit 3a87319 succeeded. Push failed (fine-grained PAT). Vault sync done — 5 inbox plans consolidated into 2026-07-18-MORNING.md. BLOCKER: Classic GitHub PAT still required."
   },
   "agentmail": {
     "status": "WORKING",
@@ -25,6 +29,6 @@
     "note": "agent.studexmeat.com addresses DO NOT EXIST in AgentMail system. Real inboxes: naledi.cmo@studex-group.com (updated Jun 30), robusca.romanov@studex-group.com (updated Jul 4). Both have 0 unread messages.",
     "unread": 0
   },
-  "today": "2026-07-17",
-  "summary": "EOD sync July 17 done. Commit 451c6d7 pushed but GitHub PAT dead (fine-grained). 4 vault files written. China Coffee LP with lead capture shipped. Tumelo still needs: classic PAT, Shopify token, Meta token refresh, AgentMail DNS."
+  "today": "2026-07-18",
+  "summary": "Morning sync Jul 18 done. Commit 3a87319 (push blocked — fine-grained PAT). 5 inbox plans consolidated. RocketChat deploy queued for this afternoon. Daytona VM spin-up pending Tumelo action."
 }
