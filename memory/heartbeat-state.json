@@ -1,28 +1,30 @@
 {
   "lastChecks": {
     "email": "2026-07-17T05:03:00Z",
-    "vault_sync": "2026-07-17T10:03:00Z",
+    "vault_sync": "2026-07-17T22:00:00Z",
     "shopify": null,
-    "memory": "2026-07-17T05:03:00Z"
+    "memory": "2026-07-17T22:00:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-17T10:03:00Z",
-    "commit": "6b9249a",
-    "commit_message": "vault: 2026-07-17 12:00 SAST sync — morning standup consolidated",
+    "last_sync": "2026-07-17T22:00:00Z",
+    "commit": "451c6d7",
+    "commit_message": "vault: 2026-07-17 EOD sync — full day consolidated",
     "status": "committed_push_blocked",
-    "push_error": "GitHub PAT returns 401 Bad Credentials — 'No such device or address' on credential prompt. Fine-grained PAT does not support git operations. Tumelo must generate a NEW CLASSIC PAT at github.com/settings/tokens with 'repo' scope.",
+    "push_error": "GitHub PAT returns 'No such device or address' on credential prompt. Fine-grained PAT does not support git operations. Tumelo must generate a NEW CLASSIC PAT at github.com/settings/tokens with 'repo' scope.",
     "files_written": [
-      "studex-obsidian-vault/daily/2026-07-03-MORNING.md",
-      "studex-obsidian-vault/daily/2026-07-17-MORNING.md"
+      "studex-obsidian-vault/daily/2026-07-17.md",
+      "builds/2026-07-17.md",
+      "research/2026-07-17.md",
+      "memory/2026-07-17.md"
     ],
-    "note": "Commit 6b9249a succeeded. Push failed. GitHub PAT (fine-grained) does not work for git operations. Classic PAT needed."
+    "note": "Commit 451c6d7 succeeded. Push failed. GitHub PAT (fine-grained) does not work for git operations. Classic PAT needed."
   },
   "agentmail": {
-    "status": "WORKING ✅",
+    "status": "WORKING",
     "api_base": "https://api.agentmail.to/v0",
     "note": "agent.studexmeat.com addresses DO NOT EXIST in AgentMail system. Real inboxes: naledi.cmo@studex-group.com (updated Jun 30), robusca.romanov@studex-group.com (updated Jul 4). Both have 0 unread messages.",
     "unread": 0
   },
   "today": "2026-07-17",
-  "summary": "Midday sync July 17 done. Commit 6b9249a pushed but GitHub PAT dead. 2 vault files written. Tumelo needs classic PAT."
+  "summary": "EOD sync July 17 done. Commit 451c6d7 pushed but GitHub PAT dead (fine-grained). 4 vault files written. China Coffee LP with lead capture shipped. Tumelo still needs: classic PAT, Shopify token, Meta token refresh, AgentMail DNS."
 }
