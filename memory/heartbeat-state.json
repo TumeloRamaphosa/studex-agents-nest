@@ -1,27 +1,27 @@
 {
   "lastChecks": {
     "email": "2026-07-17T05:03:00Z",
-    "vault_sync": "2026-07-18T10:03:00Z",
+    "vault_sync": "2026-07-18T22:00:00Z",
     "shopify": null,
-    "memory": "2026-07-17T22:00:00Z"
+    "memory": "2026-07-18T22:00:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-18T10:03:00Z",
-    "commit": "3a87319",
-    "commit_message": "vault: 2026-07-18 12:00 SAST sync — morning standup consolidated",
+    "last_sync": "2026-07-18T22:00:00Z",
+    "commit": "ca85cbe",
+    "commit_message": "vault: 2026-07-18 EOD sync — full day consolidated",
     "status": "committed_push_blocked",
-    "push_error": "GitHub PAT returns 'No such device or address' on credential prompt. Fine-grained PAT does not support git operations. Tumelo must generate a NEW CLASSIC PAT at github.com/settings/tokens with 'repo' scope.",
+    "push_error": "GitHub PAT returns 'No such device or address'. Fine-grained PAT does not support git operations. Classic PAT required at github.com/settings/tokens with 'repo' scope.",
     "files_written": [
-      "studex-obsidian-vault/daily/2026-07-18-MORNING.md"
+      "studex-obsidian-vault/daily/2026-07-18.md",
+      "builds/2026-07-18.md",
+      "research/2026-07-18.md",
+      "memory/2026-07-18.md"
     ],
-    "inbox_consolidated": [
-      "AGENT-FLEET-MASTER-PLAN-2026-07-03.md",
-      "COFFEE-PLAN-2026-07-02.md",
-      "HOME-OS-PLAN-2026-07-03.md",
-      "JARVIS-CLUSTER-PLAN-2026-07-02.md",
-      "OS-REDESIGN-ROCKETCHAT-PLAN-2026-07-03.md"
-    ],
-    "note": "Commit 3a87319 succeeded. Push failed (fine-grained PAT). Vault sync done — 5 inbox plans consolidated into 2026-07-18-MORNING.md. BLOCKER: Classic GitHub PAT still required."
+    "today_build": "China Coffee Export LP live: https://yf5aug2jjlbv.space.minimax.io | Studex Wildlife Coffee site: https://1jv769g5ohow.space.minimax.io | Studex Caviar LP: https://f0994k27xgtk.space.minimax.io",
+    "today_research": "China opens MONDAY July 20 — Luckin + Tim Hortons outreach must fire tomorrow. Voicebox = 3-month roadmap item. Orgo VM dead — new ID needed.",
+    "today_blockers": "Shopify API 24+ days | AgentMail DNS | GitHub push blocked | Meta token expired Jun 22 | Orgo VM dead",
+    "tomorrow_urgents": "1) Luckin + Tim Hortons emails July 20 morning 2) Get new Orgo VM ID 3) Classic GitHub PAT 4) China Coffee LP leads capture",
+    "note": "Commit ca85cbe succeeded. Push blocked (fine-grained PAT). Vault complete including EOD daily log at studex-obsidian-vault/daily/2026-07-18.md"
   },
   "agentmail": {
     "status": "WORKING",
@@ -30,5 +30,5 @@
     "unread": 0
   },
   "today": "2026-07-18",
-  "summary": "Morning sync Jul 18 done. Commit 3a87319 (push blocked — fine-grained PAT). 5 inbox plans consolidated. RocketChat deploy queued for this afternoon. Daytona VM spin-up pending Tumelo action."
+  "summary": "EOD vault sync done. Commit ca85cbe (push blocked — fine-grained PAT). China Coffee LP live. China market opens TOMORROW July 20 — outreach emails MUST fire tomorrow morning SAST. Orgo VM dead. All systems status updated in heartbeat-state."
 }
