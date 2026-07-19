@@ -1,34 +1,28 @@
 {
   "lastChecks": {
-    "email": "2026-07-17T05:03:00Z",
-    "vault_sync": "2026-07-18T22:00:00Z",
+    "email": "2026-07-19T13:03:00Z",
+    "vault_sync": "2026-07-19T17:04:00Z",
     "shopify": null,
-    "memory": "2026-07-18T22:00:00Z"
+    "memory": "2026-07-19T17:04:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-18T22:00:00Z",
-    "commit": "ca85cbe",
-    "commit_message": "vault: 2026-07-18 EOD sync — full day consolidated",
-    "status": "committed_push_blocked",
-    "push_error": "GitHub PAT returns 'No such device or address'. Fine-grained PAT does not support git operations. Classic PAT required at github.com/settings/tokens with 'repo' scope.",
-    "files_written": [
-      "studex-obsidian-vault/daily/2026-07-18.md",
-      "builds/2026-07-18.md",
-      "research/2026-07-18.md",
-      "memory/2026-07-18.md"
-    ],
-    "today_build": "China Coffee Export LP live: https://yf5aug2jjlbv.space.minimax.io | Studex Wildlife Coffee site: https://1jv769g5ohow.space.minimax.io | Studex Caviar LP: https://f0994k27xgtk.space.minimax.io",
-    "today_research": "China opens MONDAY July 20 — Luckin + Tim Hortons outreach must fire tomorrow. Voicebox = 3-month roadmap item. Orgo VM dead — new ID needed.",
-    "today_blockers": "Shopify API 24+ days | AgentMail DNS | GitHub push blocked | Meta token expired Jun 22 | Orgo VM dead",
-    "tomorrow_urgents": "1) Luckin + Tim Hortons emails July 20 morning 2) Get new Orgo VM ID 3) Classic GitHub PAT 4) China Coffee LP leads capture",
-    "note": "Commit ca85cbe succeeded. Push blocked (fine-grained PAT). Vault complete including EOD daily log at studex-obsidian-vault/daily/2026-07-18.md"
+    "last_sync": "2026-07-19T17:04:00Z",
+    "commit": "3353f9f",
+    "commit_message": "cleanup test",
+    "status": "success",
+    "push_result": "PUSH WORKING — GitHub PAT resolved. Commit 3353f9f pushed successfully.",
+    "note": "Push confirmed working 2026-07-19. Classic PAT is now active in Cursor/GitHub connection."
   },
   "agentmail": {
     "status": "WORKING",
-    "api_base": "https://api.agentmail.to/v0",
-    "note": "agent.studexmeat.com addresses DO NOT EXIST in AgentMail system. Real inboxes: naledi.cmo@studex-group.com (updated Jun 30), robusca.romanov@studex-group.com (updated Jul 4). Both have 0 unread messages.",
-    "unread": 0
+    "unread": 6,
+    "unread_breakdown": {
+      "robusca.romanov@studex-group.com": 1,
+      "naledi.cmo@studex-group.com": 5
+    },
+    "note": "5 Naledi standup notifications (Jul 17-19) — non-urgent. 1 self-test email."
   },
-  "today": "2026-07-18",
-  "summary": "EOD vault sync done. Commit ca85cbe (push blocked — fine-grained PAT). China Coffee LP live. China market opens TOMORROW July 20 — outreach emails MUST fire tomorrow morning SAST. Orgo VM dead. All systems status updated in heartbeat-state."
+  "today": "2026-07-19",
+  "summary": "Sunday afternoon. GitHub push CONFIRMED WORKING — vault syncs resume. 6 unread AgentMail (standup notifications, non-urgent). China market opens TOMORROW July 20 — Luckin + Tim Hortons outreach fires SAST morning.",
+  "note": "Push resolved — no action needed. China outreach tomorrow."
 }
