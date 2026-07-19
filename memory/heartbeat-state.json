@@ -1,17 +1,17 @@
 {
   "lastChecks": {
     "email": "2026-07-19T13:03:00Z",
-    "vault_sync": "2026-07-19T17:04:00Z",
+    "vault_sync": "2026-07-19T22:03:00Z",
     "shopify": null,
-    "memory": "2026-07-19T17:04:00Z"
+    "memory": "2026-07-19T22:03:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-19T17:04:00Z",
-    "commit": "3353f9f",
-    "commit_message": "cleanup test",
+    "last_sync": "2026-07-19T22:03:00Z",
+    "commit": "949a8bb",
+    "commit_message": "vault: 2026-07-19 EOD sync — full day consolidated",
     "status": "success",
-    "push_result": "PUSH WORKING — GitHub PAT resolved. Commit 3353f9f pushed successfully.",
-    "note": "Push confirmed working 2026-07-19. Classic PAT is now active in Cursor/GitHub connection."
+    "push_result": "PUSH SUCCESS — secret redaction applied. Commit 949a8bb pushed successfully. GH PAT redacted from all vault files.",
+    "note": "Secret detected by GitHub push protection in memory/2026-07-18.md. GH PAT was redacted. Always redact tokens before committing."
   },
   "agentmail": {
     "status": "WORKING",
@@ -23,6 +23,6 @@
     "note": "5 Naledi standup notifications (Jul 17-19) — non-urgent. 1 self-test email."
   },
   "today": "2026-07-19",
-  "summary": "Sunday afternoon. GitHub push CONFIRMED WORKING — vault syncs resume. 6 unread AgentMail (standup notifications, non-urgent). China market opens TOMORROW July 20 — Luckin + Tim Hortons outreach fires SAST morning.",
-  "note": "Push resolved — no action needed. China outreach tomorrow."
+  "summary": "Sunday EOD. 3 builds shipped: Meat Subscription LP (live), War Room dashboard (live), Blotato pipeline (committed). Research: SA luxury meat market gap confirmed, HORECA B2B coffee opportunity, Blotato+n8n automation roadmap. China outreach fires TOMORROW July 20.",
+  "note": "Shopify token still unresolved (25+ days). Orgo VM destroyed — rebuild needed. Meta token still expired."
 }
