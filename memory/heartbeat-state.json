@@ -1,0 +1,28 @@
+{
+  "lastChecks": {
+    "email": "2026-07-19T13:03:00Z",
+    "vault_sync": "2026-07-19T22:03:00Z",
+    "shopify": null,
+    "memory": "2026-07-19T22:03:00Z"
+  },
+  "vault_sync": {
+    "last_sync": "2026-07-20T10:03:00Z",
+    "commit": "959516c",
+    "commit_message": "vault: 2026-07-20 12:00 SAST sync — morning standup consolidated",
+    "status": "success",
+    "push_result": "PUSH SUCCESS — committed 1 new file (daily/2026-07-20-MORNING.md). 4cc5c29..959516c master",
+    "note": "Vault sync complete. Cron job auth (401) alert included in log — Tumelo needs to fix claude-haiku model in cron configs."
+  },
+  "agentmail": {
+    "status": "WORKING",
+    "unread": 6,
+    "unread_breakdown": {
+      "robusca.romanov@studex-group.com": 1,
+      "naledi.cmo@studex-group.com": 5
+    },
+    "note": "5 Naledi standup notifications (Jul 17-19) — non-urgent. 1 self-test email."
+  },
+  "today": "2026-07-20",
+  "summary": "Monday Jul 20 — BUILD + RESEARCH day. Morning standup done. China market outreach (Luckin + Tim Hortons AM) + Wildlife Coffee B2B (3 hotels) on the slate. Shopify token still the #1 blocker (~26 days). Cron jobs all failing 401 — claude-haiku model issue flagged. Blotato FB re-auth needed.",
+  "note": "Shopify token still unresolved (~26+ days). Orgo VM destroyed — rebuild needed. Meta token still expired (~29 days). Cron auth failures need config fix."
+}

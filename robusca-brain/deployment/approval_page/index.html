@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudEx Meat — Auction Approval Queue · Wed 10 Jun 2026</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --panel: #141414;
+    --panel-2: #1c1c1c;
+    --gold: #C9A961;
+    --gold-soft: #b8985a;
+    --ink: #f4f1ea;
+    --ink-dim: #b6b0a2;
+    --line: #2a2a2a;
+    --ok: #6cbf6a;
+    --warn: #d8a444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    line-height: 1.55;
+    padding: 40px 20px 80px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  header.top {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  header.top img.seal { width: 72px; height: 72px; }
+  header.top .hd-text h1 {
+    font-family: "Playfair Display", "Times New Roman", serif;
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: 0.5px;
+    color: var(--gold);
+  }
+  header.top .hd-text p {
+    color: var(--ink-dim);
+    font-size: 14px;
+    margin-top: 4px;
+    letter-spacing: 0.4px;
+  }
+  .meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .meta-strip .cell {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .meta-strip .cell .label {
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    font-size: 10px;
+    color: var(--gold-soft);
+    margin-bottom: 4px;
+  }
+  .meta-strip .cell .val {
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  section.lane {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 28px 32px;
+    margin-bottom: 28px;
+  }
+  section.lane h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 6px;
+    letter-spacing: 0.4px;
+  }
+  section.lane > p.lede {
+    color: var(--ink-dim);
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+
+  .creative-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .creative {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .creative .frame {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+  .creative .frame.video { aspect-ratio: 9/16; }
+  .creative .frame.wide { aspect-ratio: 1.91/1; }
+  .creative img, .creative video {
+    width: 100%; height: 100%; object-fit: contain;
+  }
+  .creative .cap {
+    padding: 12px 14px 14px;
+    border-top: 1px solid var(--line);
+  }
+  .creative .cap .name {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .creative .cap .spec {
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.4px;
+  }
+
+  details {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 18px;
+  }
+  details + details { margin-top: 12px; }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 15px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  details summary::after {
+    content: "+";
+    color: var(--gold);
+    font-size: 22px;
+    line-height: 1;
+  }
+  details[open] summary::after { content: "−"; }
+  details .body {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-dim);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  details .body h4 {
+    color: var(--ink);
+    font-size: 14px;
+    margin: 14px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  details .body h4:first-child { margin-top: 0; }
+  details .body ul, details .body ol { margin: 6px 0 10px 20px; }
+  details .body li { margin-bottom: 4px; }
+  details .body code {
+    background: #000;
+    color: var(--gold);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  details .body pre {
+    background: #000;
+    color: var(--ink);
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    overflow-x: auto;
+    margin: 8px 0;
+    border: 1px solid var(--line);
+  }
+  details .body blockquote {
+    border-left: 2px solid var(--gold);
+    padding: 8px 14px;
+    margin: 10px 0;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .pill {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 3px 9px;
+    border-radius: 99px;
+    border: 1px solid var(--gold-soft);
+    color: var(--gold);
+    margin-left: 8px;
+  }
+  .pill.ok { color: var(--ok); border-color: var(--ok); }
+  .pill.warn { color: var(--warn); border-color: var(--warn); }
+
+  .qbox {
+    background: linear-gradient(180deg, #1a1a1a 0%, #131313 100%);
+    border: 1px solid var(--gold-soft);
+    border-radius: 12px;
+    padding: 24px 26px;
+    margin-top: 36px;
+  }
+  .qbox h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 19px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .qbox ol { margin-left: 22px; color: var(--ink); }
+  .qbox ol li { margin-bottom: 10px; }
+  .qbox ol li b { color: var(--gold-soft); }
+
+  footer {
+    margin-top: 50px;
+    text-align: center;
+    color: var(--ink-dim);
+    font-size: 12px;
+    letter-spacing: 0.6px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <img src="assets/studex_meat_seal_gold.png" alt="StudEx Meat seal" class="seal">
+    <div class="hd-text">
+      <h1>Auction Approval Queue</h1>
+      <p>StudEx Meat — 10kg Wagyu Ribeye · Father's Day 2026 · Reviewed 10 Jun 20:50 SAST</p>
+    </div>
+  </header>
+
+  <div class="meta-strip">
+    <div class="cell"><div class="label">Auction Opens</div><div class="val">Now</div></div>
+    <div class="cell"><div class="label">Closes</div><div class="val">Sat 13 Jun · 12:00 SAST</div></div>
+    <div class="cell"><div class="label">Opening Bid</div><div class="val">R 1,050 / kg</div></div>
+    <div class="cell"><div class="label">Father's Day</div><div class="val">Sun 21 Jun 2026</div></div>
+  </div>
+
+  <!-- ============ POSTERS ============ -->
+  <section class="lane">
+    <h2>Auction creatives <span class="pill ok">brand-fixed v2</span></h2>
+    <p class="lede">All five posters use the correct StudEx Meat gold seal (bull head + digital hand). Text is positioned in the dark/navy band — no collision with the photo. Marble Score 7/8 · CWB Certified · Halaal trust line is consistent.</p>
+
+    <div class="creative-grid">
+      <div class="creative">
+        <div class="frame"><img src="assets/auction_dark_1080x1350.png" alt="Auction dark 1080x1350"></div>
+        <div class="cap"><div class="name">Auction · Dark (Steak in Pan)</div><div class="spec">1080 × 1350 · IG feed · 4:5</div></div>
+      </div>
+      <div class="creative">
+        <div class="frame"><img src="assets/auction_blue_1080x1350.png" alt="Auction blue 1080x1350"></div>
+        <div class="cap"><div class="name">Auction · Blue (Studio Ribeye)</div><div class="spec">1080 × 1350 · IG feed · 4:5</div></div>
+      </div>
+      <div class="creative">
+        <div class="frame video"><img src="assets/auction_dark_1080x1920.png" alt="Auction dark story 1080x1920"></div>
+        <div class="cap"><div class="name">Auction · Dark · Story</div><div class="spec">1080 × 1920 · IG / FB story · 9:16</div></div>
+      </div>
+      <div class="creative">
+        <div class="frame video"><img src="assets/auction_blue_1080x1920.png" alt="Auction blue story 1080x1920"></div>
+        <div class="cap"><div class="name">Auction · Blue · Story</div><div class="spec">1080 × 1920 · IG / FB story · 9:16</div></div>
+      </div>
+      <div class="creative">
+        <div class="frame wide"><img src="assets/auction_blue_1200x628.png" alt="Auction blue landscape 1200x628"></div>
+        <div class="cap"><div class="name">Auction · Landscape (FB / X / LinkedIn)</div><div class="spec">1200 × 628 · 1.91:1</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REELS ============ -->
+  <section class="lane">
+    <h2>Reels <span class="pill ok">end-cards fixed</span></h2>
+    <p class="lede">Two vertical reels for IG / TikTok / FB. End-cards now carry the correct StudEx Meat seal.</p>
+    <div class="creative-grid">
+      <div class="creative">
+        <div class="frame video">
+          <video src="assets/reel_craftsmanship_15s_1080x1920.mp4" controls preload="metadata" playsinline></video>
+        </div>
+        <div class="cap"><div class="name">Reel A — Craftsmanship (cleaver / board)</div><div class="spec">15.0s · 1080 × 1920 · audio</div></div>
+      </div>
+      <div class="creative">
+        <div class="frame video">
+          <video src="assets/reel_thelot_8s_1080x1920.mp4" controls preload="metadata" playsinline muted></video>
+        </div>
+        <div class="cap"><div class="name">Reel B — The Lot (Biltong Gold flat-lay)</div><div class="spec">7.2s · 1080 × 1920 · muted</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOPIFY LISTING ============ -->
+  <section class="lane">
+    <h2>Shopify auction listing <span class="pill">copy + T&amp;Cs</span></h2>
+    <p class="lede">Ready to paste into the product page once the auction app is installed.</p>
+
+    <details open>
+      <summary>Product title &amp; short description</summary>
+      <div class="body">
+        <h4>Title</h4>
+        <p><b>The Lot — 10kg Wagyu Ribeye Auction · Father's Day 2026</b></p>
+        <h4>Short description (above bid widget)</h4>
+        <p>One lot. Ten kilograms. One winner. Opening bid R 1,050/kg. Bidding closes Saturday 13 June at 12:00 noon SAST. Delivered in Johannesburg the same Saturday, nationwide thereafter.</p>
+        <h4>Vendor / collection / tags</h4>
+        <ul>
+          <li>Vendor: <code>StudEx Meat</code></li>
+          <li>Collection: <code>Wagyu</code>, <code>Limited Drops</code></li>
+          <li>Tags: <code>wagyu, ribeye, auction, fathers-day-2026, limited, halaal, cwb-certified, johannesburg-same-day</code></li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Long description (product body)</summary>
+      <div class="body">
+        <h4>What you're bidding on</h4>
+        <p>A single 10kg lot of CWB-Certified Wagyu Ribeye — marble score 7/8 — sourced, broken down, and vacuum-sealed by the StudEx Meat team. Halaal-certified. This is not a retail SKU. It is one premium lot, sold once, to one buyer.</p>
+        <h4>Why this matters</h4>
+        <p>Father's Day is in eleven days. Skip the tie and the box of average chocolates. Give him the most marbled, most respected, most Instagrammable cut of beef on earth — and a story he'll tell at every braai for the next year.</p>
+        <h4>Auction mechanics</h4>
+        <ul>
+          <li><b>Opening bid:</b> R 1,050 / kg (R 10,500 for the full lot)</li>
+          <li><b>Bid increments:</b> R 50 / kg</li>
+          <li><b>Reserve:</b> None — sells to the highest bidder</li>
+          <li><b>Anti-snipe:</b> Bids in the final 2 minutes extend by 2 minutes</li>
+          <li><b>Closes:</b> Saturday 13 June 2026 · 12:00 SAST</li>
+          <li><b>Winner notification:</b> within 15 min, email + WhatsApp</li>
+          <li><b>Payment:</b> within 4 hours — EFT, Yoco, or Shopify Payments</li>
+        </ul>
+        <h4>What's in the lot</h4>
+        <ul>
+          <li>10kg total, cut to ribeye steaks (≈ 12–14 steaks @ 700–850g)</li>
+          <li>Marble score 7/8 · CWB Certified · 100% Halaal · Dry-aged 21 days</li>
+          <li>Vacuum-sealed in StudEx Meat branded packaging</li>
+        </ul>
+        <h4>Delivery</h4>
+        <ul>
+          <li><b>Johannesburg:</b> Saturday 13 June — same-day, free, StudEx refrigerated transport</li>
+          <li><b>Cape Town / Durban / Pretoria / majors:</b> Sun 14 – Tue 16 June, free refrigerated courier</li>
+          <li><b>Remote:</b> confirmed by team after payment, free</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Auction T&amp;Cs (link from product / footer modal)</summary>
+      <div class="body">
+        <ol>
+          <li>Open to South African residents only.</li>
+          <li>Bidders must register a Shopify account and provide a WhatsApp number.</li>
+          <li>Opening bid R 1,050/kg. Increments R 50/kg.</li>
+          <li>Bidding closes Sat 13 June 2026 at 12:00 SAST. Late bids void.</li>
+          <li>Anti-snipe: bids in final 2 minutes extend by 2 minutes, repeatedly, until 2 minutes pass with no new bid.</li>
+          <li>Highest valid bid at close wins.</li>
+          <li>Winner notified within 15 minutes by email and WhatsApp.</li>
+          <li>Payment in full due within 4 hours of notification (EFT / Yoco / Shopify Payments).</li>
+          <li>Non-payment: lot offered to runner-up at their final bid.</li>
+          <li>JHB delivery same Saturday for winners paying before 16:00. Outside JHB: free refrigerated courier 1–3 working days.</li>
+          <li>Sold as-is. Marble 7/8 verified at packing. Weight 10kg ± 2%.</li>
+          <li>StudEx Meat may cancel and refund any auction at its discretion before payment.</li>
+          <li>Disputes: email info@studexmeat.com within 24 hours of delivery.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details>
+      <summary>Shopify product setup (operational)</summary>
+      <div class="body">
+        <ul>
+          <li>Inventory: <b>quantity 1</b>, single lot</li>
+          <li>Variants: none</li>
+          <li>Weight: 10 kg</li>
+          <li>Track quantity: ON · Allow back-orders: OFF · Continue selling out of stock: OFF</li>
+          <li>Tax: standard ZA VAT</li>
+        </ul>
+        <h4>Auction app config (Auction Pro or similar)</h4>
+        <ul>
+          <li>Starting bid: R 10,500</li>
+          <li>Bid increment: R 500 (= R 50/kg)</li>
+          <li>Reserve price: blank</li>
+          <li>Buyout price: blank</li>
+          <li>End: 13 June 2026 12:00 SAST</li>
+          <li>Anti-snipe: ON · 2-minute window</li>
+          <li>Outbid notification: ON</li>
+          <li>Auto-create draft order on win: ON</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ EMAIL ============ -->
+  <section class="lane">
+    <h2>Father's Day email — Send 1 <span class="pill warn">Thu 11 Jun · 07:30 SAST</span></h2>
+    <p class="lede">Two parallel sends. Hero campaign from <code>info@studexmeat.com</code> to the full list. Founder note from <code>tumelo@studexmeat.com</code> to top-10% VIPs only.</p>
+
+    <details open>
+      <summary>Hero send — from info@studexmeat.com (full list)</summary>
+      <div class="body">
+        <h4>Subject lines (A/B)</h4>
+        <ul>
+          <li><b>A · Wagyu-first:</b> "Father's Day deserves gold."</li>
+          <li><b>B · Auction-first:</b> "10kg of Wagyu. One winner. Closes Saturday noon."</li>
+        </ul>
+        <p>Send A to full list, B to 10% test slice. Winner picked for Send 2.</p>
+        <h4>Preview text</h4>
+        <p>The Wagyu Biltong Gold Gift Drop is open — and so is a 10kg ribeye auction that closes Saturday at noon.</p>
+        <h4>Body (HTML, luxury black + gold)</h4>
+        <p><b>Hero:</b> StudEx seal · "Father's Day deserves gold." · sub "The Wagyu Gift Drop is open. So is the 10kg auction."</p>
+        <p><b>Block 1 — The Gift:</b> Wagyu Biltong Gold · R 1,450 · 8 × 70g →
+        <code>studexmeat.com/cart/48029942808818:1</code></p>
+        <p><b>Block 2 — The Lot:</b> 10kg Wagyu Ribeye Auction · marble 7/8 · CWB · opening R 1,050/kg · closes Sat 13 June 12:00 →
+        <code>studexmeat.com/products/wagyu-10kg-auction</code></p>
+        <p><b>Block 3 — Bigger gift:</b> Wagyu Biltong Gold 7kg Box · R 12,500 →
+        <code>studexmeat.com/cart/48030014472434:1</code></p>
+        <h4>Plain-text fallback</h4>
+        <pre>Father's Day deserves gold.
+
+The StudEx Wagyu Gift Drop is open. So is the 10kg auction.
+
+— The Gift —
+Wagyu Biltong Gold. Halaal. 8 x 70g premium packs. R 1,450.
+Shop: https://studexmeat.com/cart/48029942808818:1
+
+— The Lot —
+10kg Wagyu Ribeye, marble 7/8, CWB Certified.
+Opening bid R 1,050/kg. Closes Sat 13 June at noon.
+Bid: https://studexmeat.com/products/wagyu-10kg-auction
+
+— The Bigger Gift —
+Wagyu Biltong Gold 7kg Box. R 12,500.
+Order: https://studexmeat.com/cart/48030014472434:1
+
+CWB Certified Wagyu · 100% Halaal · Cape Town
+Reply or WhatsApp via the website.
+
+StudEx Meat (Pty) Ltd · South Africa</pre>
+      </div>
+    </details>
+
+    <details>
+      <summary>Founder send — from tumelo@studexmeat.com (top-10% VIPs)</summary>
+      <div class="body">
+        <h4>Subject</h4>
+        <p>"Eleven days. One lot."</p>
+        <h4>Preview</h4>
+        <p>A personal note about Father's Day, Wagyu, and what we built.</p>
+        <h4>Body (short, personal, plain-text feel)</h4>
+        <blockquote>
+          Hi [first name],<br><br>
+          Eleven days until Father's Day. I wanted to write to you personally because you've ordered with us before and I think you know the difference our Wagyu makes.<br><br>
+          Two things from us this week:<br><br>
+          1. The Father's Day <b>Wagyu Biltong Gold</b> drop is live. R 1,450 for eight premium 70g packs. Gift-ready. It's what I'm sending my own father.<br><br>
+          2. We're auctioning <b>one 10kg lot of Wagyu Ribeye, marble 7/8</b>. The lot opens at R 1,050/kg and closes Saturday at noon. Johannesburg gets it the same day. If you want to win it, this is the email I send you with a small head start.<br><br>
+          Bid here: studexmeat.com/products/wagyu-10kg-auction<br>
+          Or just reply if you want me to walk you through it on WhatsApp.<br><br>
+          Tumelo<br>
+          Founder, StudEx Meat
+        </blockquote>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ CHANNEL PUSH ============ -->
+  <section class="lane">
+    <h2>Channel push checklist <span class="pill">after listing goes live</span></h2>
+    <p class="lede">Sequence for FeedHive / Slack / manual posts.</p>
+    <details open>
+      <summary>Distribution order</summary>
+      <div class="body">
+        <ol>
+          <li>Shopify auction listing live with one of the dark posters as product hero</li>
+          <li>Instagram feed post — Reel A or Auction Dark 1080×1350</li>
+          <li>Instagram story sequence — 3 frames over 3 days (Wed PM, Thu AM, Fri PM)</li>
+          <li>Facebook page post + landscape 1200×628</li>
+          <li>WhatsApp broadcast to past 18-month customers</li>
+          <li>Email blast via AgentMail from <code>info@studexmeat.com</code> (07:30 Thu)</li>
+          <li>Founder VIP email from <code>tumelo@studexmeat.com</code> (07:45 Thu, 10% slice)</li>
+          <li>Slack <code>#content-approvals</code> ping with this approval page link</li>
+          <li>FeedHive: morning + evening reminder posts queued for Thu / Fri / Sat AM</li>
+        </ol>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PENDING QUESTIONS ============ -->
+  <div class="qbox">
+    <h3>Decisions I need from you before pushing live</h3>
+    <ol>
+      <li><b>Auction app on Shopify:</b> which app is currently installed in your Shopify admin? (Shopify's API token scope didn't let me introspect.) My recommendation if none: <i>Auction Pro</i>, or the free <i>Auction Today</i> plan as a fallback.</li>
+      <li><b>IS One supplier name:</b> voice transcript suggested "OA / NOAA". Please confirm the supplier name spelling so I can wire it into the logistics spec.</li>
+      <li><b>Sequencing:</b> auction launch tonight + Shopify storefront redesign starts Sunday post-close (recommended) — confirm? Or do you want a parallel subagent on the storefront design now?</li>
+      <li><b>Shopify redesign approach:</b> customize Dawn/Impulse theme + custom CSS to ~80% match the Content Hub HTML (2 days, safest), or full custom theme to 100% match (3–5 days)?</li>
+    </ol>
+  </div>
+
+  <footer>
+    StudEx Meat · Approval bundle generated by Charlie · 10 Jun 2026 20:50 SAST<br>
+    Bull head + digital hand seal · Marble 7/8 · CWB Certified · Halaal
+  </footer>
+</div>
+</body>
+</html>

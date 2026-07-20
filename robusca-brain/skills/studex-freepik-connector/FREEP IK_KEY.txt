@@ -1,0 +1,3 @@
+FREEP IK_API_KEY=MS840e4cdb0fb842cdac06973ced3bef0b
+FREEP IK_PROVIDER=freepik
+PROVIDER=freepik

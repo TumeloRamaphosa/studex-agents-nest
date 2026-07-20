@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studex Coffee — Supplier & Buyer Tracker | July 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C9A84C;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --card: #161616;
+      --card-hover: #1e1e1e;
+      --border: #252525;
+      --text: #f0ece4;
+      --muted: #777;
+      --green: #3a8a3a;
+      --amber: #b8860b;
+      --red: #8b2020;
+      --teal: #1a6b6b;
+    }
+    body { background: var(--black); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 56px;
+    }
+    .topbar-brand { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+    .topbar-brand span { color: var(--muted); font-weight: 400; margin-left: 8px; }
+    .topbar-status { display: flex; gap: 24px; font-size: 12px; color: var(--muted); }
+    .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+    .dot-green { background: #3a8a3a; box-shadow: 0 0 6px #3a8a3a; }
+    .dot-amber { background: #b8860b; box-shadow: 0 0 6px #b8860b; }
+    .dot-red { background: #8b2020; }
+
+    .banner {
+      background: linear-gradient(135deg, #0f1a0f 0%, #0a1a12 50%, #0a0a0a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+    }
+    .banner h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .banner h1 em { color: var(--gold); font-style: normal; }
+    .banner p { color: var(--muted); font-size: 14px; max-width: 600px; line-height: 1.6; }
+    .banner-meta { background: var(--card); border: 1px solid var(--border); padding: 20px 24px; min-width: 220px; }
+    .bm-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .bm-item:last-child { border-bottom: none; }
+    .bm-label { color: var(--muted); }
+    .bm-val { color: var(--gold); font-weight: 600; }
+    .bm-val.red { color: var(--red); }
+    .bm-val.amber { color: var(--amber); }
+
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); }
+    .stat-box { padding: 24px 40px; border-right: 1px solid var(--border); }
+    .stat-box:last-child { border-right: none; }
+    .stat-val { font-size: 32px; font-weight: 700; color: var(--text); line-height: 1; }
+    .stat-val.amber { color: var(--amber); }
+    .stat-val.green { color: var(--green); }
+    .stat-val.red { color: var(--red); }
+    .stat-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-top: 6px; }
+
+    .section-head {
+      padding: 16px 40px;
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .section-head h2 { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+    .section-head h2 span { color: var(--muted); font-weight: 400; margin-left: 8px; }
+    .section-head h2.navy { color: #e05050; }
+    .section-head h2.sand { color: #b89060; }
+    .section-head h2.sa { color: #60b0b0; }
+    .badge { font-size: 11px; padding: 3px 10px; border: 1px solid; letter-spacing: 1px; text-transform: uppercase; }
+    .badge-green { color: var(--green); border-color: var(--green); }
+    .badge-amber { color: var(--amber); border-color: var(--amber); }
+    .badge-red { color: var(--red); border-color: var(--red); }
+    .badge-teal { color: var(--teal); border-color: var(--teal); }
+
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { background: var(--dark); }
+    th { padding: 10px 16px; text-align: left; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border); }
+    td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid #1a1a1a; vertical-align: top; line-height: 1.5; }
+    tbody tr:hover td { background: var(--card-hover); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .priority { display: inline-block; padding: 2px 8px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; }
+    .priority.high { background: rgba(139,32,32,0.2); color: #e05050; }
+    .priority.med { background: rgba(184,134,11,0.2); color: var(--amber); }
+    .priority.low { background: rgba(58,138,58,0.2); color: #60b060; }
+    .company { font-weight: 600; font-size: 14px; }
+    .type { color: var(--muted); font-size: 12px; }
+    .contact { color: var(--gold); font-size: 12px; }
+    .status { font-size: 12px; }
+    .status.pending { color: var(--amber); }
+    .status.active { color: var(--green); }
+    .status.done { color: var(--muted); }
+    .status.blocked { color: var(--red); }
+    .notes { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .action-btn {
+      display: inline-block; padding: 5px 12px; font-size: 11px; letter-spacing: 1px;
+      text-transform: uppercase; border: 1px solid var(--gold); color: var(--gold);
+      cursor: pointer; transition: all 0.2s; background: transparent; font-family: inherit;
+      text-decoration: none;
+    }
+    .action-btn:hover { background: var(--gold); color: var(--black); }
+    .action-btn.wa { border-color: #25D366; color: #25D366; }
+    .action-btn.wa:hover { background: #25D366; color: #fff; }
+
+    .tabs { display: flex; border-bottom: 1px solid var(--border); padding: 0 40px; background: var(--dark); }
+    .tab { padding: 14px 20px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .tab:hover { color: var(--text); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; }
+    .panel { border-right: 1px solid var(--border); }
+    .panel:last-child { border-right: none; }
+
+    .supplier-card { border-bottom: 1px solid var(--border); padding: 20px 24px; }
+    .supplier-card:last-child { border-bottom: none; }
+    .supplier-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+    .supplier-name { font-weight: 700; font-size: 15px; }
+    .supplier-location { color: var(--muted); font-size: 12px; margin-top: 2px; }
+    .supplier-grade { font-size: 12px; color: var(--gold); margin-bottom: 6px; }
+    .supplier-detail { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .supplier-detail strong { color: var(--text); }
+
+    footer { padding: 32px 40px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; }
+      .banner { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand">STUDEX COFFEE <span>/ Supplier & Buyer Tracker — July 2026</span></div>
+  <div class="topbar-status">
+    <span><span class="status-dot dot-red"></span>July 20 Window: <strong style="color:var(--gold)">9 days</strong></span>
+    <span><span class="status-dot dot-amber"></span>CIIE: <strong style="color:var(--gold)">Nov 5–10</strong></span>
+  </div>
+</div>
+
+<div class="banner">
+  <div>
+    <h1>Buyer &amp; Supplier <em>Tracker</em></h1>
+    <p>Operational dashboard for Studex Coffee. Buyer outreach pipeline, supplier relationships, CIIE prep, and pipeline status for the July 20 China window. Updated July 11, 2026.</p>
+  </div>
+  <div class="banner-meta">
+    <div class="bm-item"><span class="bm-label">Buyers contacted</span><span class="bm-val amber">0 / 13</span></div>
+    <div class="bm-item"><span class="bm-label">Replies received</span><span class="bm-val">0</span></div>
+    <div class="bm-item"><span class="bm-label">Samples sent</span><span class="bm-val">0</span></div>
+    <div class="bm-item"><span class="bm-label">CIIE meetings booked</span><span class="bm-val">0</span></div>
+    <div class="bm-item"><span class="bm-label">China window</span><span class="bm-val red">Jul 20, 2026</span></div>
+  </div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="stat-val red">3</div><div class="stat-lbl">China High-Priority</div></div>
+  <div class="stat-box"><div class="stat-val amber">4</div><div class="stat-lbl">UAE / MENA Targets</div></div>
+  <div class="stat-box"><div class="stat-val">4</div><div class="stat-lbl">SA Domestic Targets</div></div>
+  <div class="stat-box"><div class="stat-val green">2</div><div class="stat-lbl">Active Suppliers</div></div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('buyers')">Buyer Outreach</div>
+  <div class="tab" onclick="showTab('suppliers')">Suppliers</div>
+  <div class="tab" onclick="showTab('ciie')">CIIE 2026</div>
+</div>
+
+<!-- BUYER OUTREACH -->
+<div class="tab-content active" id="tab-buyers">
+
+  <div class="section-head" style="background:#120808;">
+    <h2 class="navy">China — Top Priority &nbsp;<span style="color:#e05050;font-size:10px;">🇨🇳 JULY 20 WINDOW</span></h2>
+    <span class="badge badge-red">HIGH</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Buyer</th><th>Type</th><th>Contact</th><th>Status</th><th>Priority</th><th>Notes</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="company">Luckin Coffee</div><div class="type">Roaster + Retail · 17,000+ stores</div></td>
+        <td>China's largest coffee chain. Publicly piloting African SO.</td>
+        <td class="contact">procurement@luckincoffee.com</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority high">HIGH</span></td>
+        <td class="notes">Top target. Cupping + sample kit needed. FOB Durban A1 Washed USD 8.50/kg. First mover advantage.</td>
+        <td><a href="mailto:procurement@luckincoffee.com?subject=Rwanda%20A1%20Washed%20Coffee%20-%20South%20Africa%20China%20Access%20July%2020&body=Dear%20Luckin%20Procurement%2C%0A%0AWe%20are%20Studex%20Coffee%2C%20a%20South%20African%20company%20exporting%20Rwanda-origin%20premium%20green%20coffee.%0A%0AJuly%2020%202026%20marks%20the%20opening%20of%20China%E2%80%99s%20market%20to%20African%20coffee%20under%20the%20SA-China%20bilateral%20agricultural%20protocol.%20We%20are%20early%20movers.%0A%0AOffer%3A%0A-%20Rwanda%20A1%20Washed%20(87%2B%20cup%20score)%0A-%20PROWTC%20%2B%20Rainforest%20Alliance%20certified%0A-%20FOB%20Durban%3A%20USD%208.50%E2%80%9310.00%2Fkg%0A-%20MOQ%3A%20500kg%0A%0AWe%20can%20arrange%20a%20sample%20kit%20(1kg%20x%203%20grades)%20for%20your%20roastery.%0A%0ARegards%2C%0ATumelo%20Ramaphosa%0AStudex%20Coffee%0Ctumelo%40studexmeat.com" class="action-btn">Send Email</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">Tim Hortons China</div><div class="type">Chain Roaster · RBI portfolio</div></td>
+        <td>Large volume potential. Accepts samples.</td>
+        <td class="contact">china.procurement@timhortons.cn</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority high">HIGH</span></td>
+        <td class="notes">LinkedIn procurement outreach recommended. Medium-term contract potential.</td>
+        <td><a href="mailto:china.procurement@timhortons.cn?subject=Rwanda%20A1%20Premium%20Coffee%20-%20South%20Africa%20Export" class="action-btn">Send Email</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">Pacific Coffee</div><div class="type">Chain + Roaster · 800+ stores Asia</div></td>
+        <td>Open to African origins. Mid-priority.</td>
+        <td class="contact">purchasing@pacificcoffee.com</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">Work after Luckin. FOB pricing + sample kit approach.</td>
+        <td><a href="mailto:purchasing@pacificcoffee.com?subject=Rwanda%20A1%20Washed%20Coffee%20-%20FOB%20Durban" class="action-btn">Send Email</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">Yaoji Food (要几)</div><div class="type">Food Importer · Shanghai</div></td>
+        <td>Import distributor. Hotels + restaurants.</td>
+        <td class="contact">info@yaoji.com</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">Formal procurement. Mandarin outreach preferred for higher response rate.</td>
+        <td><a href="mailto:info@yaoji.com?subject=Rwanda%20Premium%20Green%20Coffee%20-%20Studex%20Coffee%20SA" class="action-btn">Send Email</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">JD.com</div><div class="type">E-commerce + Food · Beijing</div></td>
+        <td>Massive reach. Slow formal procurement.</td>
+        <td class="contact">food_b2b@jd.com</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">Secondary after initial wins. Long sales cycle but huge volume.</td>
+        <td><a href="mailto:food_b2b@jd.com?subject=Rwanda%20A1%20Green%20Coffee%20-%20South%20Africa" class="action-btn">Send Email</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">Alibaba FreshHema</div><div class="type">Alibaba Group · E-commerce</div></td>
+        <td>Formal procurement process. Medium-term.</td>
+        <td class="contact">Via Alibaba.com B2B portal</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">List on Alibaba.com as Rwanda origin exporter. Low-cost first step.</td>
+        <td><a href="https://www.alibaba.com" target="_blank" class="action-btn">Alibaba.com</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-head" style="background:#080f08;">
+    <h2>UAE / MENA — High Margin &nbsp;<span style="color:#60b060;font-size:10px;">🇦🇪 RE-EXPORT HUB</span></h2>
+    <span class="badge badge-green">MEDIUM</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Buyer</th><th>Type</th><th>Contact</th><th>Status</th><th>Priority</th><th>Notes</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="company">PROWTC Dubai</div><div class="type">Rwanda Gov Org · Dubai hub</div></td>
+        <td>Re-export to China via Dubai. Key strategic partner.</td>
+        <td class="contact">Via Svetlana (WhatsApp)</td>
+        <td><span class="status active">Warm — existing relationship</span></td>
+        <td><span class="priority high">HIGH</span></td>
+        <td class="notes">Svetlana flagged July 20 zero tariff. PROWTC buys RW stock, warehouses Dubai, re-exports to China. Explore forward contract pricing.</td>
+        <td><a href="https://wa.me/27835932577?text=Hi%20Svetlana%2C%20following%20up%20on%20our%20Rwanda%20A1%20coffee%20discussion.%20July%2020%20China%20window%20opens%20soon%20%E2%80%94%20are%20you%20seeing%20increased%20China%20inquiry%3F%20Studex%20Coffee%20can%20supply%20FOB%20Durban%20A1%20Washed%20at%20USD%208.50%E2%80%9310%2Fkg.%20Let's%20discuss%20forward%20contracts." class="action-btn wa">WhatsApp Svetlana</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">Emirates Hospitality Group</div><div class="type">Hotel Group · Dubai</div></td>
+        <td>Multiple properties. Ongoing coffee need.</td>
+        <td class="contact">procurement@emirateshospitality.ae</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">UAE pays USD 8-12/kg. Cupping session + site visit recommended. Specialty programme growth.</td>
+        <td><a href="mailto:procurement@emirateshospitality.ae?subject=Rwanda%20A1%20Premium%20Coffee%20-%20Hotel%20Supply" class="action-btn">Send Email</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">Dubai Specialty Roasters</div><div class="type">Third-wave roasters · Dubai</div></td>
+        <td>Story-driven buyers. DISO, JLT, Downtown.</td>
+        <td class="contact">Via LinkedIn</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">Target individual roasters in Dubai Design District, JLT. Rwanda A1 Natural (blueberry, wine) is a strong story.</td>
+        <td><a href="https://www.linkedin.com" target="_blank" class="action-btn">LinkedIn Outreach</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-head" style="background:#080a0f;">
+    <h2 class="sa">SA Domestic — Foundation &nbsp;<span style="color:#60b0b0;font-size:10px;">🇿🇦 SOUTH AFRICA</span></h2>
+    <span class="badge badge-amber">STEADY</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Buyer</th><th>Type</th><th>Contact</th><th>Status</th><th>Priority</th><th>Notes</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="company">The Table Bay Hotel</div><div class="type">Five-Star · Cape Town Waterfront</div></td>
+        <td>Cupping session. Premium F&B positioning.</td>
+        <td class="contact">procurement@tablebayhotel.co.za</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">International guests expect African origin story. Cupping + trial period before contract.</td>
+        <td><a href="mailto:procurement@tablebayhotel.co.za?subject=Rwanda%20A1%20Coffee%20-%20Table%20Bay%20Hotel%20Supply" class="action-btn">Send Email</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">Radisson Blu Sandton</div><div class="type">Business Hotel · Sandton, JHB</div></td>
+        <td>High-volume corporate events + office coffee.</td>
+        <td class="contact">sales.sandton@radissonblu.com</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">SA B2B decision cycle: cupping + trial period. Corporate account with volume potential.</td>
+        <td><a href="mailto:sales.sandton@radissonblu.com?subject=Rwanda%20Premium%20Coffee%20-%20Office%20%2B%20Events%20Supply" class="action-btn">Send Email</a></td>
+      </tr>
+      <tr>
+        <td><div class="company">Snobworld Coffee</div><div class="type">Specialty Café · Sandton</div></td>
+        <td>Specialty market. Brand ambassador potential.</td>
+        <td class="contact">Via WhatsApp / walk-in</td>
+        <td><span class="status pending">Not contacted</span></td>
+        <td><span class="priority med">MED</span></td>
+        <td class="notes">Cupping needed. Partner café for SA specialty story. Could feature Rwanda on pour-over menu.</td>
+        <td><a href="https://wa.me/27835932577?text=Hi%20Snobworld%20team%20%E2%80%94%20we%20have%20Rwanda%20A1%20Washed%20(87%2B%20cup%20score)%20available%20for%20cupping.%20Would%20love%20to%20show%20you%20the%20origin%20story.%20Interested%3F" class="action-btn wa">WhatsApp</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SUPPLIERS -->
+<div class="tab-content" id="tab-suppliers">
+  <div class="section-head">
+    <h2>Supplier &amp; Origin Partners</h2>
+    <span class="badge badge-teal">SUPPLY SIDE</span>
+  </div>
+  <div class="two-col">
+    <div class="panel">
+      <div class="section-head" style="padding:10px 24px;background:#061008;">
+        <h2 style="font-size:11px;">Rwanda — Origin Supply</h2>
+      </div>
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div>
+            <div class="supplier-name">PROWTC — Kigali</div>
+            <div class="supplier-location">Kigali, Rwanda</div>
+          </div>
+          <span class="priority high">PRIMARY</span>
+        </div>
+        <div class="supplier-grade">Grades: A1 Washed, A2 Washed, A1 Natural</div>
+        <div class="supplier-detail"><strong>Cup Score:</strong> A1 Washed 87+, A2 84+, A1 Natural 86+</div>
+        <div class="supplier-detail"><strong>MOQ:</strong> 500kg (A1), 1,000kg (A2)</div>
+        <div class="supplier-detail"><strong>FOB:</strong> A1 Washed USD 8.50-10.00/kg · A2 Washed USD 7.20-8.80/kg · A1 Natural USD 9.00-11.00/kg</div>
+        <div class="supplier-detail"><strong>Certifications:</strong> PROWTC, Rainforest Alliance, UTZ, Fairtrade (A2)</div>
+        <div class="supplier-detail"><strong>Status:</strong> <span class="status active">Active — contact Svetlana Dubai for forward contracts</span></div>
+        <div style="margin-top:12px;"><a href="https://wa.me/27835932577?text=Hi%20Svetlana%2C%20I%27d%20like%20to%20discuss%20forward%20contracts%20for%20Rwanda%20A1%20Washed%20and%20A1%20Natural.%20China%20July%2020%20window%20opens%20soon.%20What%27s%20your%20best%20FOB%20Kigali%20pricing%20for%20Q3-Q4%3F" class="action-btn wa">WhatsApp Svetlana (PROWTC Dubai)</a></div>
+      </div>
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div>
+            <div class="supplier-name">Nyamasheke Cooperative</div>
+            <div class="supplier-location">Nyamasheke, Rusizi District, Rwanda · 1,800m ASL</div>
+          </div>
+          <span class="priority med">SECONDARY</span>
+        </div>
+        <div class="supplier-grade">Grade: A1 Washed only</div>
+        <div class="supplier-detail"><strong>Cup Score:</strong> 87+ (wet polished, raised beds, sun-dried)</div>
+        <div class="supplier-detail"><strong>MOQ:</strong> 500kg · <strong>FOB:</strong> USD 9.50-10.50/kg</div>
+        <div class="supplier-detail"><strong>Traceability:</strong> GPS-tagged farms, direct cooperative</div>
+        <div class="supplier-detail"><strong>Status:</strong> <span class="status pending">Relationship being established via PROWTC</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="section-head" style="padding:10px 24px;background:#0a0808;">
+        <h2 style="font-size:11px;">UAE — Re-Export Hub</h2>
+      </div>
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div>
+            <div class="supplier-name">PROWTC Dubai Office</div>
+            <div class="supplier-location">Dubai, UAE — Africa to China re-export hub</div>
+          </div>
+          <span class="priority high">KEY HUB</span>
+        </div>
+        <div class="supplier-detail"><strong>Role:</strong> Rwanda gov-backed. Buys RW stock, Dubai warehouse, re-exports to China.</div>
+        <div class="supplier-detail"><strong>Why it matters:</strong> SA-China bilateral zero tariff + Dubai hub = fastest path to China market.</div>
+        <div class="supplier-detail"><strong>Contact:</strong> Svetlana</div>
+        <div class="supplier-detail"><strong>Status:</strong> <span class="status active">Warm relationship — needs Tumelo follow-up email</span></div>
+        <div style="margin-top:12px;"><a href="https://wa.me/27835932577" class="action-btn wa">WhatsApp Svetlana</a></div>
+      </div>
+      <div class="section-head" style="padding:10px 24px;background:#080a0a;">
+        <h2 style="font-size:11px;">SA — Domestic Roasting Partner</h2>
+      </div>
+      <div class="supplier-card">
+        <div class="supplier-header">
+          <div>
+            <div class="supplier-name">SA Partner Roaster</div>
+            <div class="supplier-location">Johannesburg, SA — TBC</div>
+          </div>
+          <span class="priority med">TBC</span>
+        </div>
+        <div class="supplier-detail"><strong>Role:</strong> Roasts Studex Coffee green beans for SA domestic market</div>
+        <div class="supplier-detail"><strong>Status:</strong> <span class="status blocked">Not yet identified — Tumelo to leverage network</span></div>
+        <div class="supplier-detail"><strong>What to look for:</strong> Specialty roaster, JHB-based, interested in African origin story, MOQ 50-200kg/month</div>
+        <div style="margin-top:12px;"><a href="https://wa.me/27835932577?text=I%20need%20a%20recommendation%20for%20a%20Johannesburg-based%20specialty%20coffee%20roaster%20who%20might%20be%20interested%20in%20partnering%20on%20Rwanda%20origin%20beans." class="action-btn wa">Ask Tumelo Network</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CIIE TAB -->
+<div class="tab-content" id="tab-ciie">
+  <div class="section-head">
+    <h2>CIIE 2026 &nbsp;<span>Nov 5–10 · Shanghai · China International Import Expo</span></h2>
+    <span class="badge badge-red">APPLY SOON</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Task</th><th>Owner</th><th>Deadline</th><th>Status</th><th>Notes</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Booth application</strong></td><td>Tumelo</td><td>~Sep 30, 2026</td>
+        <td><span class="status blocked">Not done</span></td>
+        <td>ciie.org → exhibitor registration → South Africa pavilion → Food & Agriculture Hall → company details</td>
+        <td><a href="https://www.ciie.org" target="_blank" class="action-btn">Apply at CIIE.org</a></td>
+      </tr>
+      <tr>
+        <td><strong>Sample stock — export ready</strong></td><td>Robusca / Tumelo</td><td>Oct 2026</td>
+        <td><span class="status pending">Not arranged</span></td>
+        <td>5-10kg per grade, export-packaged, COA, PROWTC attestation, cupping notes</td>
+        <td><button class="action-btn">Arrange via PROWTC</button></td>
+      </tr>
+      <tr>
+        <td><strong>Export collateral printed</strong></td><td>Robusca</td><td>Oct 2026</td>
+        <td><span class="status pending">Not started</span></td>
+        <td>Price lists, PROWTC certs, origin story one-pager, Rwanda photos, grade cards</td>
+        <td><a href="https://x3oj1mdkipgh.space.minimax.io" target="_blank" class="action-btn">View Coffee Site</a></td>
+      </tr>
+      <tr>
+        <td><strong>Interpreter / Mandarin liaison</strong></td><td>Tumelo</td><td>Oct 2026</td>
+        <td><span class="status pending">Not arranged</span></td>
+        <td>Need Mandarin speaker for CIIE buyer meetings. SA Embassy Beijing or CIIE-provided.</td>
+        <td><a href="mailto:tumelo@studexmeat.com" class="action-btn">Tumelo to Arrange</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="padding:40px;background:#0f1a0f;border-top:1px solid #252525;text-align:center;">
+    <div style="font-size:28px;margin-bottom:12px;">🇨🇳</div>
+    <h3 style="font-size:18px;margin-bottom:8px;color:#f0ece4;">CIIE 2026 — Are You Ready?</h3>
+    <p style="color:#777;font-size:14px;margin-bottom:24px;line-height:1.7;">Booth application closes approximately Sep 30, 2026.<br/>Early applications get better booth positions in the South Africa pavilion.</p>
+    <a href="https://www.ciie.org" target="_blank" style="display:inline-block;background:#C9A84C;color:#0a0a0a;padding:12px 32px;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;">Apply for CIIE Booth Now</a>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(function(el){ el.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(el){ el.classList.remove('active'); });
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>

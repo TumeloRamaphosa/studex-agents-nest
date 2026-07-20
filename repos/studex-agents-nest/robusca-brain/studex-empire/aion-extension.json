@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/aion-extension-v1.json",
+  "name": "studex-empire",
+  "displayName": "Studex Empire",
+  "version": "1.0.0",
+  "description": "Studex Group multi-agent system — Hermes CEO, OpenClaw Marketing, Goose Dev, CashClaw Finance. Powered by Tumi's RALF loop.",
+  "author": "Tumelo Ramaphosa",
+  "icon": "assets/studex-gold-logo.svg",
+  "i18n": {
+    "localesDir": "i18n",
+    "defaultLocale": "en-US"
+  },
+  "engine": {
+    "aionui": "^1.0.0"
+  },
+  "lifecycle": {
+    "onActivate": "scripts/activate.js",
+    "onDeactivate": "scripts/deactivate.js"
+  },
+  "permissions": {
+    "storage": true,
+    "network": true,
+    "shell": true,
+    "filesystem": "extension-only",
+    "events": true
+  },
+  "contributes": {
+    "acpAdapters": "$file:contributes/acp-adapters.json",
+    "agents": "$file:contributes/agents.json",
+    "assistants": "$file:contributes/assistants.json"
+  }
+}

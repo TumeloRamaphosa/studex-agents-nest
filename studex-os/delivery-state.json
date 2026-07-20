@@ -1,0 +1,49 @@
+{
+  "orders": {},
+  "drivers": {
+    "dinkoko": {
+      "name": "Derrick Selepe",
+      "phone": "+27676813076",
+      "whatsapp_group_id": null,
+      "active_orders": [],
+      "status": "available",
+      "coverage_area": "Nationwide"
+    },
+    "mycourier": {
+      "name": "Willy",
+      "phone": "+27613623448",
+      "whatsapp_group_id": null,
+      "active_orders": [],
+      "status": "available",
+      "coverage_area": "Gauteng Metro"
+    }
+  },
+  "suppliers": {
+    "silent_valley": {
+      "name": "Silent Valley",
+      "phone": "+27713465083",
+      "address": "190 Rooiberg St, N4 Gateway Park, The Willows, Pretoria, Gauteng, 0184, South Africa",
+      "lat": null,
+      "lng": null,
+      "contact_person": null,
+      "notes": "Primary lamb and specialty meat supplier"
+    },
+    "noags_butchery": {
+      "name": "Noags Butchery",
+      "phone": null,
+      "address": "19 Pomona Rd, Pomona AH, Kempton Park, Gauteng, 1623, South Africa",
+      "lat": null,
+      "lng": null,
+      "contact_person": null,
+      "notes": "Central Gauteng depot — primary origin point for JHB metro deliveries"
+    }
+  },
+  "moutloe_farm": {
+    "name": "Moutloe Farm",
+    "address": null,
+    "phone": null,
+    "notes": "Provenance layer visible on studexmeat.com product pages. Address to be confirmed from existing product data."
+  },
+  "last_sync": "2026-06-29T10:08:59Z",
+  "last_shopify_check": null
+}

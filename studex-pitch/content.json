@@ -1,0 +1,68 @@
+[
+  {"type":"h1", "text":"Who We Are"},
+  {"type":"body", "text":"Studex Meat is South Africa's premium farm-to-table online butchery — sourcing heritage and luxury breeds directly from verified farms and delivering premium halal meat directly to homes and businesses across the country."},
+  {"type":"callout", "text":"Our difference: full provenance transparency. Every cut shows the farm, the animal age, and the slaughter date. Customers know exactly what they're buying."},
+
+  {"type":"h1", "text":"Our Products"},
+  {"type":"h2", "text":"Wagyu Biltong Gold"},
+  {"type":"body", "text":"Premium grade A5 Wagyu beef, dry-aged and slow-cured in the traditional South African biltong style. Heritage Japanese breed meets South African craft."},
+  {"type":"table",
+    "headers": ["Product", "Origin", "Price"],
+    "rows": [
+      ["Wagyu Biltong Gold 500g", "Moutloe Farm, SA", "R549"],
+      ["Wagyu Biltong Gold 1kg", "Moutloe Farm, SA", "R999"],
+      ["Premium Beef Short Ribs", "Moutloe Farm, SA", "R499"],
+      ["Fresh Farm Lamb Chops", "Moutloe Farm, SA", "R549"],
+      ["Beef Sausage Bulk Pack", "Moutloe Farm, SA", "R399"]
+    ]
+  },
+
+  {"type":"h2", "text":"Ankole Cattle — Coming Soon"},
+  {"type":"body", "text":"The Ankole breed — drought-resistant, native to East and Southern Africa — produces intensely flavoured, lean beef from cattle raised on natural savannah. Studex is working to bring Ankole beef to market as a premium product category."},
+
+  {"type":"h1", "text":"Our Farm Network"},
+  {"type":"table",
+    "headers": ["Farm", "Location", "Speciality"],
+    "rows": [
+      ["Moutloe Farm", "South Africa", "Wagyu, Lamb, Beef"],
+      ["Silent Valley", "The Willows, Pretoria", "Supplier — fresh cuts"],
+      ["Noags Butchery", "Kempton Park", "Supplier — bulk orders"]
+    ]
+  },
+
+  {"type":"h1", "text":"Our Delivery Partners"},
+  {"type":"body", "text":"We work with a vetted network of specialist food delivery providers to ensure your meat arrives fresh and on time."},
+  {"type":"table",
+    "headers": ["Company", "Contact", "Coverage"],
+    "rows": [
+      ["Dinkoko Pty Ltd", "Derrick Selepe — +27 67 681 3076", "Nationwide"],
+      ["My Courier", "Willy — +27 61 362 3448", "Gauteng Metro"]
+    ]
+  },
+
+  {"type":"h1", "text":"Why Customers Choose Studex Meat"},
+  {"type":"bullet", "text":"100% Halal certified — every product, every supplier"},
+  {"type":"bullet", "text":"Farm provenance on every product page"},
+  {"type":"bullet", "text":"Same-day delivery available in Gauteng"},
+  {"type":"bullet", "text":"Dry-aged and premium cuts not available in retail stores"},
+  {"type":"bullet", "text":"Direct farm relationships — no middlemen markup"},
+  {"type":"bullet", "text":"Online ordering with real-time delivery scheduling"},
+
+  {"type":"h1", "text":"Business Model"},
+  {"type":"body", "text":"Studex Meat operates a vertically integrated farm-to-door model:"},
+  {"type":"numbered", "text":"Customer places order at studexmeat.com"},
+  {"type":"numbered", "text":"Order routed to Charlie (AI orchestrator) and assigned to delivery team"},
+  {"type":"numbered", "text":"Product sourced from Moutloe Farm or our supplier network"},
+  {"type":"numbered", "text":"Packed and dispatched via Dinkoko or My Courier"},
+  {"type":"numbered", "text":"Client receives live tracking updates via WhatsApp"},
+  {"type":"numbered", "text":"Post-delivery review request sent automatically"},
+
+  {"type":"h1", "text":"The Opportunity"},
+  {"type":"body", "text":"South Africa's premium meat e-commerce market is growing rapidly as consumers seek quality, transparency, and convenience. Studex Meat is positioned to be the leading online specialist for heritage and luxury breeds in Southern Africa."},
+  {"type":"callout", "text":"Market tailwinds: rising middle class demand for premium food, farm-to-table transparency trends, and the shift to online grocery accelerated by convenience culture."},
+
+  {"type":"h1", "text":"Contact"},
+  {"type":"body", "text":"Studex Meat — Farm to Table, Studex to Door."},
+  {"type":"body", "text":"studexmeat.com  |  orders@studexmeat.com"},
+  {"type":"body", "text":"© 2026 Studex Meat (Pty) Ltd. All rights reserved."}
+]

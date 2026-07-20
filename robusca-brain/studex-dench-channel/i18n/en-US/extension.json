@@ -1,0 +1,18 @@
+{
+  "extension": {
+    "name": "Studex DenchClaw Channel",
+    "description": "DenchClaw CRM channel + Hermes CEO agent for Studex Group"
+  },
+  "denchclaw": {
+    "channelName": "DenchClaw CRM",
+    "gateway": "https://www.dench.com/studeex-group/gateway",
+    "purpose": "CRM channel for Studex sales, customer management, and pipeline"
+  },
+  "hermes": {
+    "agentName": "Hermes CEO",
+    "role": "Chief Executive Officer — coordinates all Studex agents",
+    "port": 3000,
+    "model": "qwen2.5:1.5b",
+    "ralfLoop": "00:00 SAST daily"
+  }
+}

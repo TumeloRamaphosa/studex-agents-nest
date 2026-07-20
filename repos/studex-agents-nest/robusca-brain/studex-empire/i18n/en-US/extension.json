@@ -1,0 +1,12 @@
+{
+  "extension": {
+    "name": "Studex Empire",
+    "description": "Studex Group multi-agent system for AionUI"
+  },
+  "agents": {
+    "hermes-agent": "Hermes CEO — coordinates mesh, runs RALF loop",
+    "openclaw-agent": "OpenClaw CMO — marketing, content, campaigns",
+    "goose-agent": "Goose CDO — development, architecture, Adam Smasher operator",
+    "cashclaw-agent": "CashClaw CFO — revenue tracking, R4M ZAR target, Adam Smasher chief"
+  }
+}

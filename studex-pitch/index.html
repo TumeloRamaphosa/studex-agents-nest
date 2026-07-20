@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studex Meat — Pitch Deck 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0505;
+    --dark: #14100e;
+    --red: #8B1A1A;
+    --red-bright: #c0392b;
+    --gold: #d4a017;
+    --cream: #f5f0e8;
+    --cream-dim: #c8c0b0;
+    --white: #ffffff;
+    --steel: #1e3a5f;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Scrollbar ─────────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+  /* ── Section base ─────────────────────────── */
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+    opacity: 0.4;
+  }
+
+  /* ── Cover ────────────────────────────────── */
+  #cover {
+    background: var(--black);
+    text-align: center;
+    position: relative;
+  }
+
+  #cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(139,26,26,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 2px;
+    margin-bottom: 40px;
+  }
+
+  .cover-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 14vw, 160px);
+    color: var(--cream);
+    letter-spacing: 8px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .cover-logo span {
+    color: var(--red-bright);
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 28px auto;
+  }
+
+  .cover-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  .cover-meta {
+    font-size: 13px;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 2px;
+  }
+
+  .cover-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(245,240,232,0.3);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  .cover-scroll svg { opacity: 0.4; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── Section labels ───────────────────────── */
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  /* ── Headings ─────────────────────────────── */
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    letter-spacing: 3px;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    color: var(--cream);
+  }
+
+  h1 .accent { color: var(--red-bright); }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: 2px;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    margin-top: 28px;
+  }
+
+  /* ── Body text ────────────────────────────── */
+  p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--cream-dim);
+    max-width: 680px;
+    margin-bottom: 16px;
+  }
+
+  p.lead {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--cream);
+    max-width: 720px;
+  }
+
+  /* ── Callout ──────────────────────────────── */
+  .callout {
+    border-left: 3px solid var(--gold);
+    padding: 16px 24px;
+    background: rgba(212,160,23,0.06);
+    margin: 32px 0;
+    font-size: 16px;
+    color: var(--cream);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ── Tables ───────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+  }
+
+  thead tr {
+    border-bottom: 2px solid var(--red);
+  }
+
+  th {
+    text-align: left;
+    padding: 10px 16px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(139,26,26,0.2);
+    color: var(--cream-dim);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tr:hover td { background: rgba(139,26,26,0.08); }
+
+  td:first-child { color: var(--cream); font-weight: 500; }
+  td:last-child { color: var(--gold); font-weight: 600; }
+
+  /* ── Bullets ──────────────────────────────── */
+  ul.bullets {
+    list-style: none;
+    margin: 20px 0;
+  }
+
+  ul.bullets li {
+    padding: 10px 0 10px 32px;
+    position: relative;
+    font-size: 17px;
+    color: var(--cream-dim);
+    border-bottom: 1px solid rgba(139,26,26,0.15);
+  }
+
+  ul.bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--red-bright);
+    font-size: 14px;
+    top: 12px;
+  }
+
+  /* ── Numbered ─────────────────────────────── */
+  ol.numbers {
+    list-style: none;
+    counter-reset: num;
+    margin: 20px 0;
+  }
+
+  ol.numbers li {
+    counter-increment: num;
+    padding: 12px 0 12px 52px;
+    position: relative;
+    font-size: 17px;
+    color: var(--cream-dim);
+    border-bottom: 1px solid rgba(139,26,26,0.15);
+  }
+
+  ol.numbers li::before {
+    content: counter(num);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background: var(--red);
+    color: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  /* ── Grid layouts ─────────────────────────── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 32px;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  /* ── Stat cards ───────────────────────────── */
+  .stat-card {
+    background: var(--dark);
+    border: 1px solid rgba(139,26,26,0.3);
+    border-radius: 4px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── Product card ─────────────────────────── */
+  .product-card {
+    background: var(--dark);
+    border: 1px solid rgba(139,26,26,0.3);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .product-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+  }
+
+  .product-body { padding: 20px; }
+
+  .product-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .product-origin {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .product-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cream);
+  }
+
+  /* ── CTA ──────────────────────────────────── */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--red);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    margin-top: 32px;
+    transition: background 0.2s;
+  }
+
+  .cta:hover { background: var(--red-bright); }
+
+  /* ── Partners section ─────────────────────── */
+  #partners { background: var(--dark); }
+
+  .partner-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(139,26,26,0.2);
+  }
+
+  .partner-row:last-child { border-bottom: none; }
+
+  .partner-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .partner-contact {
+    font-size: 14px;
+    color: var(--cream-dim);
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .partner-coverage {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(212,160,23,0.1);
+    border: 1px solid rgba(212,160,23,0.3);
+    padding: 6px 16px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ── Footer ──────────────────────────────── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(139,26,26,0.3);
+    padding: 48px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: var(--cream);
+  }
+
+  .footer-brand span { color: var(--red-bright); }
+
+  .footer-meta {
+    font-size: 13px;
+    color: rgba(245,240,232,0.3);
+    letter-spacing: 1px;
+  }
+
+  /* ── Nav dot ──────────────────────────────── */
+  .nav-dots {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+  }
+
+  .nav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(139,26,26,0.4);
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .nav-dot.active {
+    background: var(--red-bright);
+    height: 24px;
+    border-radius: 3px;
+  }
+
+  /* ── Responsive ───────────────────────────── */
+  @media (max-width: 768px) {
+    section { padding: 60px 6%; }
+    .two-col, .three-col { grid-template-columns: 1fr; }
+    .nav-dots { display: none; }
+    .partner-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ── Print ────────────────────────────────── */
+  @media print {
+    section { min-height: auto; page-break-after: always; }
+    .nav-dots, .cover-scroll { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation dots -->
+<div class="nav-dots">
+  <button class="nav-dot active" onclick="scrollTo(0)" title="Cover"></button>
+  <button class="nav-dot" onclick="scrollTo(1)" title="Who We Are"></button>
+  <button class="nav-dot" onclick="scrollTo(2)" title="Products"></button>
+  <button class="nav-dot" onclick="scrollTo(3)" title="Farm Network"></button>
+  <button class="nav-dot" onclick="scrollTo(4)" title="Delivery"></button>
+  <button class="nav-dot" onclick="scrollTo(5)" title="Why Studex"></button>
+  <button class="nav-dot" onclick="scrollTo(6)" title="Business Model"></button>
+  <button class="nav-dot" onclick="scrollTo(7)" title="Opportunity"></button>
+  <button class="nav-dot" onclick="scrollTo(8)" title="Contact"></button>
+</div>
+
+<!-- ── COVER ──────────────────────────────────────── -->
+<section id="cover">
+  <div class="cover-badge">Investor Pitch Deck · June 2026</div>
+  <div class="cover-logo">STUDEX <span>MEAT</span></div>
+  <div class="cover-divider"></div>
+  <div class="cover-tagline">Premium Halal Meat — Farm to Table</div>
+  <div class="cover-meta">studexmeat.com &nbsp;·&nbsp; South Africa &nbsp;·&nbsp; 2026</div>
+  <div class="cover-scroll">
+    <span>Scroll</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ── WHO WE ARE ─────────────────────────────────── -->
+<section id="who">
+  <span class="section-label">About Us</span>
+  <h1>FROM THE <span class="accent">FARM</span><br>TO YOUR DOOR</h1>
+  <p class="lead">Studex Meat is South Africa's premium online butchery — sourcing heritage and luxury breeds directly from verified farms and delivering to homes and businesses across the country.</p>
+  <div class="callout">Our difference: full provenance transparency. Every cut shows the farm, the animal age, and the slaughter date. Customers know exactly what they're buying.</div>
+  <div class="three-col">
+    <div class="stat-card">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Halal Certified</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Supplier Farms</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Delivery Partners</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ───────────────────────────────────── -->
+<section id="products">
+  <span class="section-label">Our Products</span>
+  <h1>PREMIUM <span class="accent">BREEDS</span></h1>
+  <p class="lead">From slow-cured Wagyu biltong to heritage lamb chops — every product is traceable, premium, and professionally packed.</p>
+
+  <h2>Wagyu Biltong Gold</h2>
+  <p>Premium grade A5 Wagyu beef, dry-aged and slow-cured in the traditional South African biltong style. Heritage Japanese breed meets South African craft.</p>
+
+  <table>
+    <thead><tr><th>Product</th><th>Origin</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td>Wagyu Biltong Gold — 500g</td><td>Moutloe Farm</td><td>R549</td></tr>
+      <tr><td>Wagyu Biltong Gold — 1kg</td><td>Moutloe Farm</td><td>R999</td></tr>
+      <tr><td>Premium Beef Short Ribs</td><td>Moutloe Farm</td><td>R499</td></tr>
+      <tr><td>Fresh Farm Lamb Chops</td><td>Moutloe Farm</td><td>R549</td></tr>
+      <tr><td>Beef Sausage Bulk Pack</td><td>Moutloe Farm</td><td>R399</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Coming Soon — Ankole Cattle</h3>
+  <p>The Ankole breed — drought-resistant, native to East and Southern Africa — produces intensely flavoured, lean beef from cattle raised on natural savannah. Studex is working to bring Ankole beef to market as a premium new product category.</p>
+</section>
+
+<!-- ── FARM NETWORK ───────────────────────────────── -->
+<section id="farms">
+  <span class="section-label">Our Farm Network</span>
+  <h1>VERIFIED <span class="accent">SOURCES</span></h1>
+  <p class="lead">We maintain direct relationships with our farms and suppliers — no middlemen, full transparency, and consistent quality.</p>
+  <table>
+    <thead><tr><th>Farm / Supplier</th><th>Location</th><th>Speciality</th></tr></thead>
+    <tbody>
+      <tr><td>Moutloe Farm</td><td>South Africa</td><td>Wagyu, Lamb, Premium Beef</td></tr>
+      <tr><td>Silent Valley</td><td>The Willows, Pretoria (190 Rooiberg St, N4 Gateway Park)</td><td>Fresh cuts, supplier</td></tr>
+      <tr><td>Noags Butchery</td><td>19 Pomona Rd, Pomona AH, Kempton Park, 1623</td><td>Bulk orders, supplier</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ── DELIVERY ───────────────────────────────────── -->
+<section id="partners">
+  <span class="section-label">Delivery Network</span>
+  <h1>BUILT TO <span class="accent">DELIVER</span></h1>
+  <p class="lead">We work with vetted specialist food delivery providers to ensure every order arrives fresh, on time, and in perfect condition.</p>
+
+  <div class="partner-row">
+    <div>
+      <div class="partner-name">Dinkoko Pty Ltd</div>
+      <div class="partner-contact">Derrick Selepe &nbsp;·&nbsp; +27 67 681 3076</div>
+    </div>
+    <div class="partner-coverage">Nationwide</div>
+  </div>
+
+  <div class="partner-row">
+    <div>
+      <div class="partner-name">My Courier</div>
+      <div class="partner-contact">Willy &nbsp;·&nbsp; +27 61 362 3448</div>
+    </div>
+    <div class="partner-coverage">Gauteng Metro</div>
+  </div>
+
+  <div class="callout" style="margin-top: 40px;">
+    All deliveries include real-time tracking updates sent directly to clients via WhatsApp. Orders are assigned to the optimal delivery partner based on routing zone and order value.
+  </div>
+</section>
+
+<!-- ── WHY STUDEX ─────────────────────────────────── -->
+<section id="why">
+  <span class="section-label">Why Choose Studex</span>
+  <h1>THE <span class="accent">STUDEX</span> DIFFERENCE</h1>
+  <div class="two-col">
+    <div>
+      <ul class="bullets">
+        <li>100% Halal certified — every product, every supplier</li>
+        <li>Farm provenance on every product page</li>
+        <li>Same-day delivery in Gauteng</li>
+        <li>Dry-aged and premium cuts unavailable in retail stores</li>
+        <li>Direct farm relationships — no middlemen markup</li>
+        <li>Online ordering with real-time delivery scheduling</li>
+        <li>AI-powered order management (Charlie orchestrator)</li>
+        <li>Post-delivery automated review requests</li>
+      </ul>
+    </div>
+    <div>
+      <div class="stat-card" style="margin-bottom: 16px;">
+        <div class="stat-number">R14k+</div>
+        <div class="stat-label">Monthly Revenue (Current)</div>
+      </div>
+      <div class="stat-card" style="margin-bottom: 16px;">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Client Satisfaction Target</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">AI Agent Coverage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BUSINESS MODEL ─────────────────────────────── -->
+<section id="model">
+  <span class="section-label">How It Works</span>
+  <h1>THE <span class="accent">PIPELINE</span></h1>
+  <p class="lead">A fully AI-orchestrated farm-to-door operation — from order receipt to delivery confirmation.</p>
+  <ol class="numbers">
+    <li>Customer places order at <strong>studexmeat.com</strong> — Shopify-powered storefront with live inventory</li>
+    <li>Order is routed to <strong>Charlie</strong>, the AI orchestrator, which assigns delivery and fulfilment</li>
+    <li>Product sourced from <strong>Moutloe Farm</strong> or our supplier network (Silent Valley / Noags Butchery)</li>
+    <li>Packed and dispatched via <strong>Dinkoko</strong> or <strong>My Courier</strong> based on routing zone</li>
+    <li>Client receives <strong>WhatsApp tracking updates</strong> at every stage — confirmed, dispatched, delivered</li>
+    <li>Automated <strong>review request</strong> sent 24 hours after confirmed delivery</li>
+  </ol>
+</section>
+
+<!-- ── OPPORTUNITY ────────────────────────────────── -->
+<section id="opportunity">
+  <span class="section-label">The Opportunity</span>
+  <h1>MARKET <span class="accent">REALITY</span></h1>
+  <div class="two-col">
+    <div>
+      <p class="lead">South Africa's premium meat e-commerce market is growing rapidly as consumers seek quality, transparency, and convenience.</p>
+      <div class="callout">Studex is positioned to be the leading online specialist for heritage and luxury breeds in Southern Africa.</div>
+      <h3>Market Tailwinds</h3>
+      <ul class="bullets">
+        <li>Rising middle class demand for premium food</li>
+        <li>Farm-to-table transparency trends</li>
+        <li>Shift to online grocery accelerated by convenience culture</li>
+        <li>African luxury meat market growing to 2034</li>
+        <li>China–Africa commodity trade accelerating</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Strategic Focus Areas</h3>
+      <ul class="bullets">
+        <li>Wagyu and Ankole premium positioning</li>
+        <li>Corporate and hospitality bulk supply</li>
+        <li>B2B restaurant and hotel partnerships</li>
+        <li>National delivery expansion</li>
+        <li>Content-driven brand building via Naledi (CMO agent)</li>
+      </ul>
+      <h3 style="margin-top: 24px;">Agent Infrastructure</h3>
+      <ul class="bullets">
+        <li>Charlie — AI Operations Orchestrator</li>
+        <li>Naledi — Content & Marketing Agent</li>
+        <li>Delivery Agent — 15-minute order cycle</li>
+        <li>Robusca — CEO Agent (this system)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT / FOOTER ───────────────────────────── -->
+<section id="contact">
+  <span class="section-label">Get In Touch</span>
+  <h1>LET'S <span class="accent">TALK</span></h1>
+  <p class="lead">Interested in partnering, investing, or supplying? We'd love to hear from you.</p>
+  <div class="two-col" style="margin-top: 40px;">
+    <div>
+      <h3>Orders & Customer Care</h3>
+      <p>studexmeat.com<br>orders@studexmeat.com</p>
+      <h3>Business Development</h3>
+      <p>Tumelo Ramaphosa<br>Director, Studex Meat (Pty) Ltd</p>
+    </div>
+    <div>
+      <h3>Delivery Partners</h3>
+      <p>Dinkoko Pty Ltd — Derrick Selepe<br>+27 67 681 3076</p>
+      <p>My Courier — Willy<br>+27 61 362 3448</p>
+      <h3 style="margin-top: 20px;">Supplier Inquiries</h3>
+      <p>Silent Valley — +27 71 346 5083<br>Noags Butchery — 19 Pomona Rd, Kempton Park</p>
+    </div>
+  </div>
+  <a href="https://studexmeat.com" class="cta">
+    Visit studexmeat.com
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<footer>
+  <div class="footer-brand">STUDEX <span>MEAT</span></div>
+  <div class="footer-meta">© 2026 Studex Meat (Pty) Ltd. All rights reserved. &nbsp;·&nbsp; studexmeat.com</div>
+</footer>
+
+<script>
+  // Smooth scroll nav dots
+  const sections = document.querySelectorAll('section');
+  const dots = document.querySelectorAll('.nav-dot');
+
+  function scrollTo(index) {
+    sections[index].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(sections).indexOf(entry.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

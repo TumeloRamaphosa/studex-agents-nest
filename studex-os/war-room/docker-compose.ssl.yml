@@ -1,0 +1,44 @@
+# ============================================================
+# docker-compose.ssl.yml — SSL/HTTPS mode override
+# Studex Meat OS — War Room
+# ============================================================
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.ssl.yml up -d
+# ============================================================
+
+version: "3.8"
+
+services:
+
+  # Rocket.Chat: don't bind to 127.0.0.1 — Caddy handles all external access
+  rocketchat:
+    ports:
+      - "3000"  # Remove local-only binding so Caddy can reach it via Docker network
+
+  # Enable Caddy reverse proxy with Let's Encrypt
+  caddy:
+    enabled: true
+    image: caddy:2-alpine
+    container_name: rocketchat_caddy
+    restart: unless-stopped
+    networks:
+      - studex-net
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN:-warroom.studexmeat.com}
+      ADMIN_EMAIL_SSL: ${ADMIN_EMAIL_SSL:-ceo@studexmeat.com}
+    mem_limit: 256m
+    cpus: 0.25
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

@@ -1,0 +1,124 @@
+# Studex OS — Agent Registry
+# Every agent in the group registers here
+# Updated by each agent on join and daily
+
+registry_version: "1.0"
+last_updated: "2026-06-28"
+
+agents:
+  - name: robusca
+    role: Chief of Staff / CEO
+    business: studex-group
+    entity: Robusca Romanov
+    vm: MaxClaw Cloud (this system)
+    ports:
+      api: 8001
+      ws: 8001
+    status: active
+    last_seen: "2026-06-28T22:00:00Z"
+    brief: /businesses/studex-meat/AGENTS.md
+    notes: Primary reasoning agent. Reports to Tumelo. Coordinates all sub-agents.
+
+  - name: charlie
+    role: Orchestrator
+    business: studex-group
+    entity: Charlie Agent (Node.js/Express)
+    vm: 67.213.119.157
+    ports:
+      api: 3001
+      ws: 3002
+      db: 5432
+    status: active
+    last_seen: "2026-06-28T22:35:00Z"
+    brief: /businesses/studex-meat/AGENTS.md
+    notes: Task dispatch. Sub-agent coordination. Winston logging. PostgreSQL backend.
+
+  - name: naledi
+    role: CMO — Content & Social
+    business: studex-meat
+    entity: Naledi Agent
+    vm: 67.213.119.157
+    ports:
+      api: 3002
+    status: standby
+    last_seen: "2026-06-28T00:00:00Z"
+    brief: /businesses/studex-meat/AGENTS.md
+    notes: Content pipeline. Facebook/Instagram posting. Needs Blotato API key.
+
+  - name: hermes
+    role: CTO — Infrastructure
+    business: studex-group
+    entity: Hermes Agent
+    vm: 67.213.119.157
+    ports:
+      api: 3003
+    status: standby
+    last_seen: "2026-06-28T00:00:00Z"
+    brief: /businesses/studex-meat/AGENTS.md
+    notes: VM management, DNS, deployments, security hardening.
+
+  - name: shopify
+    role: E-Commerce Agent
+    business: studex-meat
+    entity: Shopify Agent
+    vm: 67.213.119.157
+    ports:
+      api: 3004
+    status: standby
+    last_seen: "2026-06-28T00:00:00Z"
+    brief: /businesses/studex-meat/AGENTS.md
+    notes: Order management. Needs SHOPIFY_ACCESS_TOKEN from Tumelo.
+
+businesses:
+  - id: studex-meat
+    name: Studex Meat (SEAM)
+    entity: Studex Holdings Pty Ltd
+    status: active
+    lead_agent: robusca
+    vm: 67.213.119.157
+    stack: [Node.js, Express, PostgreSQL, n8n]
+    websites:
+      store: https://studexmeat.com
+      admin: https://studexmeat.myshopify.com/admin
+
+  - id: studex-wildlife
+    name: Studex Wildlife
+    entity: Studex Holdings
+    status: active_deal
+    lead_agent: robusca
+    vm: 67.213.119.157
+    stack: [AgentMail, Shopify]
+    websites:
+      contact: t.ramaphosa@studexwildlife.com
+    active_deal:
+      name: PROWTC Dubai Coffee
+      contact: Svetlana Savinova
+      stage: Pricing — awaiting Tumelo approval
+      deal_value: "USD 4,200–4,800/MT (Rwanda A1)"
+
+  - id: studex-caviar
+    name: Studex Caviar
+    entity: Studex Holdings
+    status: building
+    lead_agent: robusca
+    vm: null
+    stack: [AgentMail, Landing page needed]
+    websites:
+      supplier: Belyashov / Grandtrade World
+    notes: Russian caviar import. Landing page required before market entry.
+
+  - id: statix-global-markets
+    name: Statix Global Markets
+    entity: Statix Global
+    status: building
+    lead_agent: item_smasher
+    vm: pending
+    notes: B2B infrastructure. VM not yet provisioned.
+
+  - id: dark-factory
+    name: Dark Factory
+    entity: Dark Factory Labs
+    status: building
+    lead_agent: cypher
+    vm: pending
+    notes: Open-core dev environment. gstack embedded. VM not yet provisioned.

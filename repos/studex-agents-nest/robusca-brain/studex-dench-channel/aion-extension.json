@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schemas/aion-extension-v1.json",
+  "name": "studex-dench-channel",
+  "displayName": "Studex Empire — DenchClaw + Hermes",
+  "version": "1.0.0",
+  "description": "Studex Group CRM channel (DenchClaw) + Hermes CEO agent for AionUI",
+  "author": "Tumelo Ramaphosa",
+  "icon": "assets/denchclaw-icon.svg",
+  "i18n": {
+    "localesDir": "i18n",
+    "defaultLocale": "en-US"
+  },
+  "engine": {
+    "aionui": "^1.0.0"
+  },
+  "contributes": {
+    "acpAdapters": "$file:contributes/acp-adapters.json",
+    "channelPlugins": "$file:channels/denchclaw-channel.js"
+  }
+}
