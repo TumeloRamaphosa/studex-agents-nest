@@ -1,4 +1,9 @@
 {
+  "vault_sync": {
+    "last_sync": "2026-07-20T22:05:00+02:00",
+    "commit": "485d1ca",
+    "branch": "ciie2026-build"
+  },
   "lastChecks": {
     "email": "2026-07-19T13:03:00Z",
     "vault_sync": "2026-07-19T22:03:00Z",
