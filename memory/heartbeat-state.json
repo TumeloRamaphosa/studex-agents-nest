@@ -6,17 +6,17 @@
   },
   "lastChecks": {
     "email": "2026-07-19T13:03:00Z",
-    "vault_sync": "2026-07-19T22:03:00Z",
+    "vault_sync": "2026-07-21T10:02:00Z",
     "shopify": null,
-    "memory": "2026-07-19T22:03:00Z"
+    "memory": "2026-07-21T10:02:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-20T10:03:00Z",
-    "commit": "959516c",
-    "commit_message": "vault: 2026-07-20 12:00 SAST sync — morning standup consolidated",
+    "last_sync": "2026-07-21T10:02:00Z",
+    "commit": "ca90b44",
+    "commit_message": "vault: 2026-07-21 12:00 SAST sync — morning standup consolidated",
     "status": "success",
-    "push_result": "PUSH SUCCESS — committed 1 new file (daily/2026-07-20-MORNING.md). 4cc5c29..959516c master",
-    "note": "Vault sync complete. Cron job auth (401) alert included in log — Tumelo needs to fix claude-haiku model in cron configs."
+    "push_result": "PUSH SUCCESS — committed daily/2026-07-21-MORNING.md. 485d1ca..ca90b44 ciie2026-build",
+    "note": "Tuesday Jul 21 morning sync done. All critical blockers unchanged. China B2B outreach (Luckin + Tim Hortons AM) still queued — Tumelo to action Shopify + Meta tokens TODAY."
   },
   "agentmail": {
     "status": "WORKING",
@@ -27,7 +27,7 @@
     },
     "note": "5 Naledi standup notifications (Jul 17-19) — non-urgent. 1 self-test email."
   },
-  "today": "2026-07-20",
-  "summary": "Monday Jul 20 — BUILD + RESEARCH day. Morning standup done. China market outreach (Luckin + Tim Hortons AM) + Wildlife Coffee B2B (3 hotels) on the slate. Shopify token still the #1 blocker (~26 days). Cron jobs all failing 401 — claude-haiku model issue flagged. Blotato FB re-auth needed.",
+  "today": "2026-07-21",
+  "summary": "Tuesday Jul 21 — Morning standup done. Vault sync complete. China outreach (Luckin + Tim Hortons AM) + Wildlife Coffee B2B still queued. Shopify token ~27 days blocked. Meta token ~29 days expired. Orgo VM rebuild needed. Cron 401 errors persisting — model fix needed.",
   "note": "Shopify token still unresolved (~26+ days). Orgo VM destroyed — rebuild needed. Meta token still expired (~29 days). Cron auth failures need config fix."
 }
