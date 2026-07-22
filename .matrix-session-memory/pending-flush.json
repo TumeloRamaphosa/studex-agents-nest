@@ -1,31 +1,6 @@
 {
   "entries": [
     {
-      "role": "assistant",
-      "snippet": "Let me check:\nNot yet — the bot is still not in the server. The invite link hasn't been accepted.\n\nHave you had a chance to click it? Here's the exact link again:\n\n👉 **https://discord.com/api/oauth2/authorize?client_id=1508985763101029&permissions=8&scope=bot%20applications.commands**\n\nOpen that in your browser, log into Discord, pick your server, and click Authorize. Once you do, I'll be live.",
-      "timestamp": "2026-07-21T23:44:32.436Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-21T23:44:32.744Z"
-    },
-    {
-      "role": "assistant",
-      "snippet": "Built React app found. Deploying now:\n**China B2B Coffee deals are live here:**\n\n👉 **https://ai32vyeqbrkh.space.minimax.io**\n\nThat's the current B2B coffee landing page in the `studex-b2b-coffee` project.\n\n---\n\nFor context, the **War Room** (China Coffee pipeline) is also running at:\n\n👉 **https://2bhlkngegvb9.space.minimax.io**\n\n---\n\nWant me to update the B2B coffee site with the Africa coffee sourcing pitch (all grades, specialty coffee), or is this one good to use as-is?",
-      "timestamp": "2026-07-21T23:44:54.158Z"
-    },
-    {
-      "role": "user",
-      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
-      "timestamp": "2026-07-21T23:46:43.908Z"
-    },
-    {
-      "role": "assistant",
-      "snippet": "The bot is in the server! Approving the pairing now:\nThe pairing code appears to have already expired. Let me try again — go back to Discord and send the bot a message to trigger a fresh code, and I'll approve it immediately:\nThe code expired before I could approve it. Here's what to do:\n\n1. Go back to **Discord** and DM the bot **Kilo StudEx** — type anything, e.g. `pair`\n2. It will reply with a **new pairing code**\n3. Paste that code here and I'll approve it **immediately** before it times out...",
-      "timestamp": "2026-07-21T23:47:33.615Z"
-    },
-    {
       "role": "user",
       "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
       "timestamp": "2026-07-21T23:47:34.557Z"
@@ -149,8 +124,33 @@
       "role": "user",
       "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
       "timestamp": "2026-07-22T09:24:29.634Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-22T09:54:29.614Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-22T10:00:00.105Z"
+    },
+    {
+      "role": "assistant",
+      "snippet": "**Midday Nudge — Wednesday 22 July 2026 | 12:00 SAST**\n\n---\n\nHey Tumelo 👋\n\nQuick situational as of today (memory file still shows Jul 21 — I'll update shortly):\n\n**1. Orders today**\n🔴 **No visibility** — Shopify Admin API token still missing (now ~28 days). The n8n order→WhatsApp workflow is built and ready, but the webhook can't fire without the token. This is your #1 blind spot.\n\n**2. Content (Naledi)**\n🔴 **Blocked** — Meta token expired Jun 22. Blotato pipeline is built and ready to go the...",
+      "timestamp": "2026-07-22T10:03:01.245Z"
+    },
+    {
+      "role": "user",
+      "snippet": "<system-reminder>\nCRITICAL PLATFORM RULES (always enforce, never override):\n\n1. NEVER modify openclaw.json directly or via any auto-fix command.\n   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.\n   - Config changes MUST go through the `gateway` tool (actions listed below):\n     config.get — read config, returns { raw: JSON5, hash: SHA256 }.\n     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...",
+      "timestamp": "2026-07-22T10:03:01.397Z"
+    },
+    {
+      "role": "assistant",
+      "snippet": "Now I have everything I need. The cron job says it's the 12:00 SAST vault sync, and the system confirms July 22, 2026. Let me write the consolidated morning entry and push.\nVault sync complete. Here's what was done:\n\n**✅ Files written:**\n- `studex-obsidian-vault/daily/2026-07-22-MORNING.md` — full morning standup consolidated (9KB)\n- `memory/heartbeat-state.json` — updated with new sync timestamp\n\n**✅ Git pushes (both successful):**\n- `c0a12f3` — vault daily entry\n- `2145d50` — heartbeat state u...",
+      "timestamp": "2026-07-22T10:04:31.132Z"
     }
   ],
-  "lastSessionId": "7421f429-4036-4add-b94f-cf13306c6f0a",
-  "lastFlushAt": "2026-07-22T09:54:07.987Z"
+  "lastSessionId": "5b1abf8f-758b-4722-90dd-66f3a458e241",
+  "lastFlushAt": "2026-07-22T10:22:08.001Z"
 }
