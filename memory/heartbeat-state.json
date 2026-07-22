@@ -1,22 +1,17 @@
 {
-  "vault_sync": {
-    "last_sync": "2026-07-20T22:05:00+02:00",
-    "commit": "485d1ca",
-    "branch": "ciie2026-build"
-  },
   "lastChecks": {
     "email": "2026-07-19T13:03:00Z",
-    "vault_sync": "2026-07-21T10:02:00Z",
+    "vault_sync": "2026-07-21T22:00:00Z",
     "shopify": null,
-    "memory": "2026-07-21T10:02:00Z"
+    "memory": "2026-07-21T22:00:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-21T10:02:00Z",
-    "commit": "ca90b44",
-    "commit_message": "vault: 2026-07-21 12:00 SAST sync — morning standup consolidated",
+    "last_sync": "2026-07-21T22:00:00Z",
+    "commit": "14c3f7f",
+    "commit_message": "vault: 2026-07-21 EOD sync — full day consolidated",
     "status": "success",
-    "push_result": "PUSH SUCCESS — committed daily/2026-07-21-MORNING.md. 485d1ca..ca90b44 ciie2026-build",
-    "note": "Tuesday Jul 21 morning sync done. All critical blockers unchanged. China B2B outreach (Luckin + Tim Hortons AM) still queued — Tumelo to action Shopify + Meta tokens TODAY."
+    "push_result": "PUSH SUCCESS — committed daily/2026-07-21.md. 4861d18..14c3f7f ciie2026-build",
+    "note": "Tuesday Jul 21 EOD sync complete. Build Hour (War Room deal pipeline, 8 deals, $295K weighted), Research Hour (China market + agent automation), EOD log written. All blockers unchanged. China B2B outreach still queued for Tumelo."
   },
   "agentmail": {
     "status": "WORKING",
@@ -24,10 +19,8 @@
     "unread_breakdown": {
       "robusca.romanov@studex-group.com": 1,
       "naledi.cmo@studex-group.com": 5
-    },
-    "note": "5 Naledi standup notifications (Jul 17-19) — non-urgent. 1 self-test email."
+    }
   },
   "today": "2026-07-21",
-  "summary": "Tuesday Jul 21 — Morning standup done. Vault sync complete. China outreach (Luckin + Tim Hortons AM) + Wildlife Coffee B2B still queued. Shopify token ~27 days blocked. Meta token ~29 days expired. Orgo VM rebuild needed. Cron 401 errors persisting — model fix needed.",
-  "note": "Shopify token still unresolved (~26+ days). Orgo VM destroyed — rebuild needed. Meta token still expired (~29 days). Cron auth failures need config fix."
+  "summary": "Tuesday Jul 21 EOD — Build Hour deployed War Room China pipeline (8 deals, $295K weighted). Research Hour confirmed China market open + Blotato/Make.com for Naledi. EOD log complete. Shopify/Meta/Orgo VM blockers all unresolved. Luckin + Tim Hortons emails queued. CIIE booth deadline Aug 31."
 }
