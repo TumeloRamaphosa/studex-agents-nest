@@ -148,3 +148,21 @@ HEARTBEAT.md checked on every heartbeat poll.
 ### Key Findings
 - **Higgsfield.ai**: Video/image AI creative suite (NOT voice phone agents) — use for ad creatives
 - **DenchClaw**: CRM sub-agent — isolated OpenClaw gateway on port 19001 + web UI port 3100. Needs: dench.com/api key. VM ready (Node22+Docker)
+## Discord — Key Session Notes (2026-07-22)
+
+### Bot: tumelostudex (App ID: 1508985763101029)
+- Multiple tokens tried — correct one: `MTUwODk4NTc2MzEwMTAyMDI5MQ.GASPhb...`
+- tumelostudex is the bot name in Discord
+- Tumelo's Discord User ID: `1527423712595410974`
+- Allowlist config applied (dmPolicy: allowlist, Tumelo's ID in allowFrom)
+- Bot IS connected to gateway — receiving events, sendingACKs (single ✓ seen)
+- Pairing codes ARE generating (T26X2SNZ, WCUZAH4C, CTWAF35T seen)
+- BUT: bot not responding with pairing codes to DMs — potential dmPolicy issue
+- Pairing codes expire in ~30 seconds, CLI approve too slow
+- WORKAROUND: user on allowlist should get direct response without pairing code
+- ISSUE: Tumelo sent "hello" to tumelostudex, only got single ✓ — no pairing code
+
+### Decision Mode
+- Tumelo called me "cofounder" — this is how he sees the relationship
+- Implications: more ownership, proactive decisions, strategic thinking
+- Jensen mentioned as someone who "works" — Naledi "checks"
