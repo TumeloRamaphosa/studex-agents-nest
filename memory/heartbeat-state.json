@@ -1,17 +1,17 @@
 {
   "lastChecks": {
     "email": "2026-07-19T13:03:00Z",
-    "vault_sync": "2026-07-21T22:00:00Z",
+    "vault_sync": "2026-07-22T10:00:00Z",
     "shopify": null,
-    "memory": "2026-07-21T22:00:00Z"
+    "memory": "2026-07-22T10:00:00Z"
   },
   "vault_sync": {
-    "last_sync": "2026-07-21T22:00:00Z",
-    "commit": "14c3f7f",
-    "commit_message": "vault: 2026-07-21 EOD sync — full day consolidated",
+    "last_sync": "2026-07-22T10:00:00Z",
+    "commit": "c0a12f3",
+    "commit_message": "vault: 2026-07-22 12:00 SAST sync — morning standup consolidated",
     "status": "success",
-    "push_result": "PUSH SUCCESS — committed daily/2026-07-21.md. 4861d18..14c3f7f ciie2026-build",
-    "note": "Tuesday Jul 21 EOD sync complete. Build Hour (War Room deal pipeline, 8 deals, $295K weighted), Research Hour (China market + agent automation), EOD log written. All blockers unchanged. China B2B outreach still queued for Tumelo."
+    "push_result": "PUSH SUCCESS — committed daily/2026-07-22-MORNING.md. 63735c7..c0a12f3 ciie2026-build",
+    "note": "Wednesday Jul 22 12:00 SAST morning sync complete. 9 priority blockers documented. Charlie: Shopify/Meta tokens critical. Naledi: Meta token + Blotato setup. Coffee Jarvis: RUKUNDO pipeline tracked. All inbox plans from Jul 2-3 triaged and consolidated. CIIE booth Aug 31 deadline carried forward."
   },
   "agentmail": {
     "status": "WORKING",
@@ -21,6 +21,6 @@
       "naledi.cmo@studex-group.com": 5
     }
   },
-  "today": "2026-07-21",
-  "summary": "Tuesday Jul 21 EOD — Build Hour deployed War Room China pipeline (8 deals, $295K weighted). Research Hour confirmed China market open + Blotato/Make.com for Naledi. EOD log complete. Shopify/Meta/Orgo VM blockers all unresolved. Luckin + Tim Hortons emails queued. CIIE booth deadline Aug 31."
+  "today": "2026-07-22",
+  "summary": "Wednesday Jul 22 12:00 SAST — Morning standup consolidated. 9 blockers documented. Shopify and Meta tokens remain CRITICAL. RocketChat deploy queued. Daytona agent fleet active planning. CIIE booth deadline Aug 31."
 }
