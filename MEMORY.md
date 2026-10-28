@@ -66,7 +66,7 @@
 | `j439h3l2g94g.space.mcode.io` | Studex Meat wholesale/partner offer |
 | `z7p9urw22jwb.space.mcode.io` | Institutional/GCC sales sheet |
 | `de6xdoikz95g.space.mcode.io` | Wildlife Coffee B2B export |
-| `psq9xaisb9kf.space.mcode.io` | South African hospitality coffee |
+| `i09hd71cvt06.space.mcode.io` | South African hospitality coffee |
 | `ess0ocgcd9f0.space.mcode.io` | Studex Caviar trade/hospitality |
 | `fr7m7fzyailo.space.mcode.io` | Rwanda Premium Coffee China/CIIE |
 | `oi28dhtke3yk.space.mcode.io` | Corporate Gifting Christmas 2026 |
@@ -173,3 +173,38 @@ A guard that cries wolf gets switched off. Three traps closed in `price-ladder-g
 Also: a per-kg premium on a smaller pack is normal SA butcher merchandising, not
 automatically a defect. 🔑 *Category-scoped severity limits — biltong and coffee strict,
 beef lenient — beat one global threshold.*
+
+### 🔑 Heartbeat 22:24 UTC — "the page was fine, the REGISTRY was stale" (ladder-lock drift)
+
+The Build Hour redeployed the retail page at 21:20 with the new ladder
+(R325 / R1,250 / R8,400) and caviar off the retail sale path. The drift checker
+then failed 4 pages — and the live pages were **not** the problem:
+`studex-meat/PRICE-SOURCE-REGISTRY.md` §2.1 still pointed every retail
+"Must appear on" at the **retired** build `nudsduvyrc12`. Consequences:
+- the live v5 page carried **zero assertions** ("NO ASSERTIONS — registry slug
+  no longer resolves") — a green that meant nothing;
+- the retired build was being policed for prices it could never change again;
+- the per-kg prose figures `R1,200` and `R8,750` were parsed as prices that must
+  appear on the page, so they could never pass.
+
+Fixed at source, then redeployed: registry page map + §2.1 ladder rows + §2.3
+caviar scope + prose de-assertions; `studex-biltong/index.html` re-synced with
+`dist/` (the Build Hour had edited the deploy copy only); SA-hospitality page
+rebuilt (ladder synced, caviar prices removed, two dead links repointed) →
+`i09hd71cvt06`; `ops/price-ladder-guard.py` repointed at the live pages; new
+control `ops/test-ladder-lock.py` (67 assertions, in the suite); two orphaned
+checkers classified in `ops/heartbeat-checkers.tsv`.
+**Result: drift 18/18 CLEAN · ladder-lock test 67/67.**
+
+🔑 *Three rules from it:*
+1. **A deploy changes the URL — the registry's page map changes in the SAME
+   commit.** The registry is the contract; a stale map is a false green.
+2. **"Must appear on" may only name pages you are willing to redeploy.** Point it
+   at a retired URL and you have built permanent drift.
+3. **Keep the hand-edited master and the deploy copy byte-identical.** Editing
+   `dist/` only lets the two drift apart within the hour — and the next rebuild
+   silently reverts the change.
+
+⏳ Owner action still open: the live **Shopify storefront still sells the old
+ladder** (500g R450 · 1kg R1,450 · 7kg case R12,500) while the site now says
+R325 / R1,250 / R8,400. Shopify Admin API is 401 from this box.

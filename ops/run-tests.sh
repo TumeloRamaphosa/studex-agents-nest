@@ -53,6 +53,7 @@ PY_TESTS=(
   ops/test-http-probe.py
   ops/test-runner-contract.py
   ops/test-heartbeat-registry.py
+  ops/test-ladder-lock.py
   ops/test-discord-credential-checker.py
   ops/test-cred-name-filter.py
   ops/test-git-pre-push-guard.py
@@ -61,6 +62,8 @@ PY_TESTS=(
   ops/test-empty-repo-false-green.py
   ops/test-credential-slots.py
   ops/test-credential-slots-short.py
+  ops/test-audit-credential-fragments.py
+  ops/test-mask-credential-fragments.py
   ops/test-dead-service-instructions.py \
 )
 JS_TESTS=(

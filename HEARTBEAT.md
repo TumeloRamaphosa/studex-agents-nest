@@ -757,17 +757,17 @@ must never be reported as "the suite failed" or as a pass.
 
 | Deploy URL | Actual page | Product | Status |
 |---|---|---|---|
-| **`nudsduvyrc12.space.mcode.io`** | **Studex Biltong — retail store (v4)** — prices synced to live Shopify; caviar block aligned to the caviar trade page | 🥩 Meat | 200 ✅ **CANONICAL MEAT SITE** |
+| **`t56b7vkncytt.space.mcode.io`** | **Studex Biltong — retail store (v5, ladder-locked 2026-10-28)** — ladder R325 / R1,250 / R8,400; caviar OFF the retail sale path (2027 register-interest); Katia nav | 🥩 Meat | 200 ✅ **CANONICAL MEAT SITE** |
 | **`hhsmhunf1xci.space.mcode.io`** | **Studex Meat — Institutional & Corporate Sales sell sheet** | 🥩☕ B2B | 200 ✅ **SEND WITH RFQ/GCC ENQUIRIES** |
 | **`ess0ocgcd9f0.space.mcode.io`** | **Studex Caviar — trade & hospitality** (static, full pricing + import process + DAFF permit lead time) | 🐟 Caviar | 200 ✅ **CANONICAL CAVIAR PAGE** |
 | **`de6xdoikz95g.space.mcode.io`** | **Studex Wildlife Coffee — B2B green coffee export** (6 origins, FOB USD/MT pricing, container tiers, inquiry form, live caviar, **Origin/Compliance/Trade Terms panel**) | ☕ Coffee | 200 ✅ **CANONICAL COFFEE PAGE** |
 | `4mak476g6rmo.space.mcode.io` | Studex Meat — Two Products. One Supply Chain (institutional) — **now with a working contact block + sell-sheet link** | 🥩☕ B2B | 200 ✅ |
-| **`psq9xaisb9kf.space.mcode.io`** | **Specialty Coffee for South African Hospitality** (static, built from scratch — roasted R270–R400/kg + green origins, volume tiers) | ☕ Coffee | 200 ✅ **CANONICAL SA COFFEE PAGE** |
+| **`i09hd71cvt06.space.mcode.io`** | **Specialty Coffee for South African Hospitality** (static — roasted R270–R400/kg + green origins, volume tiers; biltong ladder synced to R325 / R1,250 / R8,400; caviar prices removed, 2027 register-interest; dead links repointed) | ☕ Coffee | 200 ✅ **CANONICAL SA COFFEE PAGE** |
 | **`fr7m7fzyailo.space.mcode.io`** | **Rwanda Premium Coffee — Export to China (CIIE asset)** — CIF Shanghai pricing, available lots, 0% tariff **to 30 Apr 2028**, 5–7wk lead, **Origin/Compliance/Trade Terms panel** | ☕ Coffee | 200 ✅ **SEND TO CHINA BUYERS / CIIE** |
 | `3zryumjeuemk.space.mcode.io` | Studex Computer — The Always-On Agent Machine | 🤖 Stud-Bot | 200 ✅ |
 | **`oi28dhtke3yk.space.mcode.io`** | **Corporate Gifting — Christmas 2026** (3 boxes, R1,299 / R2,499 / R4,999 per box, MOQs, early-bird code, delivery calendar) | 🎁 Gifting | 200 ✅ **SEND TO HR / CORPORATE BUYERS** |
 
-⛔ **RETIRED (superseded, still live — ignore):** `nhlcdtr7ritv` · `6hchke5o5dui` · `fu8qyf0qg18j` (pre-contact-fix versions) `9xms7l52m71c` (SA Hospitality coffee shell — **no static source existed**, replaced by `psq9xaisb9kf`) `y0r9ilfj96mj` (CIIE coffee landing was a **blank shell — 19 visible chars**) `suzfmm8at06c` · `ddnave0dco76` (React coffee shells — **no content in HTML**) `gr1swkg77b8o` · `1poi6r0sw6a1` (retail v2/v3) · `f4345txsmlkw` (retail v1) · `0osny82hcvj4` · `2eumijearf87` (React caviar shells — **no content in HTML, blank in WhatsApp previews**) · `fprncut7na9x` · `jy13ixd8o4sl` · `hrji88f70666` · `nzj87hus15vc` (retail) · `z7p9urw22jwb` · `hhsmhunf1xci` (institutional) · `fa4xt0vnu67u` (caviar — **old lead-time claim**) · `anvkfflansa9` · `klre58fvhmdc` (B2B coffee) · `hketvigqcs2f` · `x2tvaieb5qgz` (China — **old tariff/no-expiry copy**) · `yuq0txpfa4nq` (SA hospitality)
+⛔ **RETIRED (superseded, still live — ignore):** `nhlcdtr7ritv` · `6hchke5o5dui` · `fu8qyf0qg18j` (pre-contact-fix versions) `9xms7l52m71c` (SA Hospitality coffee shell — **no static source existed**, replaced by `psq9xaisb9kf`) `y0r9ilfj96mj` (CIIE coffee landing was a **blank shell — 19 visible chars**) `suzfmm8at06c` · `ddnave0dco76` (React coffee shells — **no content in HTML**) `gr1swkg77b8o` · `1poi6r0sw6a1` (retail v2/v3) · `f4345txsmlkw` (retail v1) · `0osny82hcvj4` · `2eumijearf87` (React caviar shells — **no content in HTML, blank in WhatsApp previews**) · `fprncut7na9x` · `jy13ixd8o4sl` · `hrji88f70666` · `nzj87hus15vc` (retail) · `z7p9urw22jwb` (institutional — superseded) · `fa4xt0vnu67u` (caviar — **old lead-time claim**) · `anvkfflansa9` · `klre58fvhmdc` (B2B coffee) · `hketvigqcs2f` · `x2tvaieb5qgz` (China — **old tariff/no-expiry copy**) · `yuq0txpfa4nq` (SA hospitality) · `nudsduvyrc12` (retail v4 — old ladder R650/R1,450/R12,500 + caviar sold at retail) · `bkqn328wj5a6` (retail — Katia nav, pre-ladder-lock prices) · `psq9xaisb9kf` (SA hospitality — old biltong ladder + caviar prices)
 
 ### ⛔ THE OPS BRIEFING PUBLISHED TWO FALSE CLAIMS EVERY MORNING — FIXED 2026-10-22
 `discord-ops-bot/src/sendSummary.js` and `index.js` **hardcoded** their status lines, so they published:
@@ -1080,11 +1080,11 @@ python3 /workspace/ops/check-price-on-feed.py --no-live  # staged only, offline
 ### LIVE DEPLOYMENTS
 | Project | URL | Notes |
 |---------|-----|-------|
-| Biltong/Meat retail (canonical) | https://nudsduvyrc12.space.mcode.io | ✅ static, WhatsApp-shareable |
+| Biltong/Meat retail (canonical) | https://t56b7vkncytt.space.mcode.io | ✅ static, WhatsApp-shareable |
 | Institutional & Corporate Sales | https://hhsmhunf1xci.space.mcode.io | ✅ send with RFQ / GCC enquiries |
 | Studex Meat B2B (institutional) | https://4mak476g6rmo.space.mcode.io | ✅ static |
 | Wildlife Coffee B2B | https://de6xdoikz95g.space.mcode.io | ✅ static — CANONICAL coffee page |
-| Coffee — SA Hospitality | https://psq9xaisb9kf.space.mcode.io | ✅ static — roasted + green, SA volumes |
+| Coffee — SA Hospitality | https://i09hd71cvt06.space.mcode.io | ✅ static — roasted + green, SA volumes |
 | China / CIIE coffee | https://fr7m7fzyailo.space.mcode.io | ✅ static — CIF Shanghai pricing, for China buyers |
 | Caviar (canonical) | https://ess0ocgcd9f0.space.mcode.io | ✅ static, trade pricing + import process |
 | Corporate Gifting — Christmas 2026 | https://oi28dhtke3yk.space.mcode.io | ✅ static — R1,299 / R2,499 / R4,999 per box |
@@ -1155,7 +1155,7 @@ by the drift check for the same claims.
 - "MJC Halal Trust" — the certifier's misspelling. Correct: **MJC Halaal Trust**.
 
 ### Current URLs (share ONLY these — earlier URLs still serve the old copy)
-- Retail: https://nudsduvyrc12.space.mcode.io
+- Retail: https://t56b7vkncytt.space.mcode.io
 - Green-coffee B2B: https://de6xdoikz95g.space.mcode.io
 - China / CIIE: https://fr7m7fzyailo.space.mcode.io
 - Institutional sales sheet: https://hhsmhunf1xci.space.mcode.io
@@ -1617,7 +1617,7 @@ the same check 8 hours earlier costs nothing.
 The CIIE outreach was sent from **`project-2571-studex-agent-2077@agentmail.to`**, which belongs to a
 **different AgentMail account** than `sales@studex-group.com`. The inbox **404s for the main key**
 (`am_us_d7922…`) and does **not appear in `GET /v0/inboxes`** for that key. It is only visible with
-the **ciie-nurture key** (`am_us_e4b30fcc…`, the "dedicated" key in TOOLS.md).
+the **ciie-nurture key** (`**************…`, the "dedicated" key in TOOLS.md).
 **Consequence: every sweep of the main account reported ZERO CIIE sends — correctly, because it was
 looking at the wrong account.** The sends were real (29 of them).
 🔑 **Before believing "we sent nothing", ask WHICH ACCOUNT.** AgentMail inboxes are per-account, and

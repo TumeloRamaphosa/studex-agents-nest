@@ -15,41 +15,40 @@
 ### 2.1 Retail biltong & bundles — owner: `studex-biltong/dist/index.html` (mirrored to live Shopify `studexmeat.com`)
 | Product | Price | Must appear on |
 |---|---|---|
-| Luxury Wagyu Biltong | From **R650** (1kg = R650/kg) | `nudsduvyrc12` |
-| Luxury Wagyu Biltong, 500g | **R325** (R650/kg — parity with 1kg) | `nudsduvyrc12` |
-| Wagyu Biltong Gold, 1kg | **R1,250** (R1,250/kg) | `nudsduvyrc12` · `psq9xaisb9kf` |
-| Wagyu Biltong Gold, 7kg case | **R8,400** (R1,200/kg — beats 7 × 1kg = R8,750) | `nudsduvyrc12` |
-| Subscription — Starter (200g/mo) | **R295** | `nudsduvyrc12` |
-| Subscription — Connoisseur (500g + 100g Ox Tail/mo) | **R495** | `nudsduvyrc12` |
-| Subscription — Bulk / Corporate (per mo) | **R850** | `nudsduvyrc12` |
-| Fire & Feast Box | **R999** | `nudsduvyrc12` |
-| StudBot Rise Bundle | **R4,599** | `nudsduvyrc12` |
+| Luxury Wagyu Biltong, 500g | From **R325** (500g pack) | `t56b7vkncytt` |
+| Wagyu Biltong Gold, 1kg | **R1,250** (per kg) | `t56b7vkncytt` · `i09hd71cvt06` |
+| Wagyu Biltong Gold, 7kg case | **R8,400** (1,200/kg — beats seven 1kg bags) | `t56b7vkncytt` |
+| Subscription — Starter (200g/mo) | **R295** | `t56b7vkncytt` |
+| Subscription — Connoisseur (500g + 100g Ox Tail/mo) | **R495** | `t56b7vkncytt` |
+| Subscription — Bulk / Corporate (per mo) | **R850** | `t56b7vkncytt` |
+| Fire & Feast Box | **R999** | `t56b7vkncytt` |
+| StudBot Rise Bundle | **R4,599** | `t56b7vkncytt` |
 | Biltong Gold 200g (gift box) | included in hamper | `oi28dhtke3yk` |
 | Premium Beef Biltong 300g (gift box) | included in hamper | `oi28dhtke3yk` |
 
 ### 2.2 Roasted coffee (SA) — owner: live Shopify `studexmeat.com`
 | Process | Price /kg | Must appear on |
 |---|---|---|
-| Washed | **R400** | `nudsduvyrc12` · `psq9xaisb9kf` |
-| Honey | **R350** | `nudsduvyrc12` · `psq9xaisb9kf` |
-| Aerobic | **R380** | `nudsduvyrc12` · `psq9xaisb9kf` |
-| Natural | **R270** | `nudsduvyrc12` · `psq9xaisb9kf` |
-| Trade MOQ (roasted) | **50 kg** | `psq9xaisb9kf` |
+| Washed | **R400** | `t56b7vkncytt` · `i09hd71cvt06` |
+| Honey | **R350** | `t56b7vkncytt` · `i09hd71cvt06` |
+| Aerobic | **R380** | `t56b7vkncytt` · `i09hd71cvt06` |
+| Natural | **R270** | `t56b7vkncytt` · `i09hd71cvt06` |
+| Trade MOQ (roasted) | **50 kg** | `i09hd71cvt06` |
 
 ### 2.3 Caviar — owner: `deploy-caviar/index.html` (AUTHORITATIVE — units are per 100g)
-**Retail, per 100g — must appear on all three pages:**
+**Retail, per 100g — caviar page only (caviar came off the retail sale path on 2026-10-28):**
 | Product | Retail /100g | Must appear on |
 |---|---|---|
-| Oscietra Imperial | **R4,200** | `ess0ocgcd9f0` · `nudsduvyrc12` · `psq9xaisb9kf` |
-| Kaluga Prestige | **R2,800** | `ess0ocgcd9f0` · `nudsduvyrc12` · `psq9xaisb9kf` |
-| Sevtruga Medium | **R1,600** | `ess0ocgcd9f0` · `nudsduvyrc12` · `psq9xaisb9kf` |
+| Oscietra Imperial | **R4,200** | `ess0ocgcd9f0` |
+| Kaluga Prestige | **R2,800** | `ess0ocgcd9f0` |
+| Sevtruga Medium | **R1,600** | `ess0ocgcd9f0` |
 
-**Trade, per kg — must appear on the caviar page and the retail page (the SA hospitality page lists retail only):**
+**Trade, per kg — caviar page only:**
 | Product | Trade /kg | Must appear on |
 |---|---|---|
-| Oscietra Imperial | **R34,000** | `ess0ocgcd9f0` · `nudsduvyrc12` |
-| Kaluga Prestige | **R22,000** | `ess0ocgcd9f0` · `nudsduvyrc12` |
-| Sevtruga Medium | **R12,500** | `ess0ocgcd9f0` · `nudsduvyrc12` |
+| Oscietra Imperial | **R34,000** | `ess0ocgcd9f0` ·  |
+| Kaluga Prestige | **R22,000** | `ess0ocgcd9f0` ·  |
+| Sevtruga Medium | **R12,500** | `ess0ocgcd9f0` ·  |
 
 **Caviar page only:**
 | Item | Detail | Must appear on |
@@ -85,19 +84,19 @@
 ### 2.6 Green coffee, FOB — owner: `studex-wildlife-coffee-vite/dist/index.html` (indicative, as at Oct 2026)
 | Origin | From | Cupping | Must appear on |
 |---|---|---|---|
-| Rwanda A1 Washed (Nyamasheke) | **USD 4,200/MT** FOB Djibouti | 84–87 | `de6xdoikz95g` · `psq9xaisb9kf` |
-| Ethiopia Yirgacheffe (Gedeo) | **USD 4,500/MT** FOB Djibouti | 86–90 | `de6xdoikz95g` · `psq9xaisb9kf` |
-| Kenya AA Nyeri | **USD 4,800/MT** FOB Mombasa | 87–89 | `de6xdoikz95g` · `psq9xaisb9kf` |
-| Uganda Bugisu AA (Elgon) | **USD 3,400/MT** FOB Djibouti | 83–86 | `de6xdoikz95g` · `psq9xaisb9kf` |
-| South Africa Bourbon (Mpumalanga) | **USD 5,200/MT** CIF Durban | 82–85 | `de6xdoikz95g` · `psq9xaisb9kf` |
-| Custom blend (MOQ 5 MT) | **USD 3,800/MT** FOB Djibouti | — | `de6xdoikz95g` · `psq9xaisb9kf` |
+| Rwanda A1 Washed (Nyamasheke) | **USD 4,200/MT** FOB Djibouti | 84–87 | `de6xdoikz95g` · `i09hd71cvt06` |
+| Ethiopia Yirgacheffe (Gedeo) | **USD 4,500/MT** FOB Djibouti | 86–90 | `de6xdoikz95g` · `i09hd71cvt06` |
+| Kenya AA Nyeri | **USD 4,800/MT** FOB Mombasa | 87–89 | `de6xdoikz95g` · `i09hd71cvt06` |
+| Uganda Bugisu AA (Elgon) | **USD 3,400/MT** FOB Djibouti | 83–86 | `de6xdoikz95g` · `i09hd71cvt06` |
+| South Africa Bourbon (Mpumalanga) | **USD 5,200/MT** CIF Durban | 82–85 | `de6xdoikz95g` · `i09hd71cvt06` |
+| Custom blend (MOQ 5 MT) | **USD 3,800/MT** FOB Djibouti | — | `de6xdoikz95g` · `i09hd71cvt06` |
 | A1 Premium — 17+ screen, wet polished, 20 MT | **USD 4,200–4,800/MT** | — | `de6xdoikz95g` |
 | A2 Commercial — 15–16 screen, 40 MT | **USD 3,600–4,000/MT** | — | `de6xdoikz95g` |
 | Sample shipment (5–10 kg) | **USD 28–45/kg** | — | `de6xdoikz95g` |
-| Hospitality | 50–200 kg/mo per client | — | `de6xdoikz95g` · `psq9xaisb9kf` |
-| Office | 20–100 kg/mo per office | — | `de6xdoikz95g` · `psq9xaisb9kf` |
-| Retail & specialty | 200–2,000 kg/mo | — | `de6xdoikz95g` · `psq9xaisb9kf` |
-| Commodity traders | 60–240 MT/container | — | `de6xdoikz95g` · `psq9xaisb9kf` |
+| Hospitality | 50–200 kg/mo per client | — | `de6xdoikz95g` · `i09hd71cvt06` |
+| Office | 20–100 kg/mo per office | — | `de6xdoikz95g` · `i09hd71cvt06` |
+| Retail & specialty | 200–2,000 kg/mo | — | `de6xdoikz95g` · `i09hd71cvt06` |
+| Commodity traders | 60–240 MT/container | — | `de6xdoikz95g` · `i09hd71cvt06` |
 
 ### 2.7 Green coffee, CIF Shanghai (China) — owner: `china-coffee-export/index.html`
 | Lot | Price | MOQ | Must appear on |
@@ -134,7 +133,7 @@
 > entry price by **R1,000 (105%)**. The convention already set on 21 Oct (see §2.1) is to
 > quote **live Shopify sale pricing**.
 >
-> ⚠️ **The canonical static retail site (`nudsduvyrc12`) does not carry the steak range at
+> ⚠️ **The canonical static retail site (`t56b7vkncytt`) does not carry the steak range at
 > all**, though the live store sells it. The store's `Steaks` collection includes ribeye,
 > chuckeye, sirloin, t-bone, tri-tip, tomahawk, rump, fillet, picanha and the Ankole cuts.
 > **Tumelo to confirm** whether the static sales surface should carry that range.
@@ -159,20 +158,19 @@
 | `agent.studexmeat.com` | ❌ **NO DNS — never use** | removed from all pages, posts, signatures, agent docs |
 | `studexwildlife.com` | ⚠️ parked (AWS parking IPs), no verifiable mail route | `t.ramaphosa@studexwildlife.com` removed from coffee page |
 
-> ⚠️ The **retail order form** (`nudsduvyrc12`) routes to `wa.me/27835932577` = **Tumelo's personal line**. Every other page uses the store line. Left deliberately — do not change without owner approval.
+> ⚠️ The **retail order form** (`t56b7vkncytt`) routes to `wa.me/27835932577` = **Tumelo's personal line**. Every other page uses the store line. Left deliberately — do not change without owner approval.
 
 ---
 
 ## 4. PAGE → SOURCE → URL
 | Page | Source dir | Live URL |
 |---|---|---|
-| Retail store | `studex-biltong/dist/` | `bkqn328wj5a6.space.mcode.io` |
-| Retail store (previous) | `studex-biltong/dist/` | `nudsduvyrc12.space.mcode.io` |
+| Retail store | `studex-biltong/dist/` | `t56b7vkncytt.space.mcode.io` |
 | Institutional & corporate sales | `studex-sales-static/` | `hhsmhunf1xci.space.mcode.io` |
 | Corporate gifting | `corporate-gifting/` | `oi28dhtke3yk.space.mcode.io` |
 | Caviar trade | `deploy-caviar/` | `ess0ocgcd9f0.space.mcode.io` |
 | Coffee B2B green | `studex-wildlife-coffee-vite/dist/` | `de6xdoikz95g.space.mcode.io` |
-| Coffee SA hospitality | `sa-hospitality-coffee/` | `psq9xaisb9kf.space.mcode.io` |
+| Coffee SA hospitality | `sa-hospitality-coffee/` | `i09hd71cvt06.space.mcode.io` |
 | Coffee China / CIIE | `china-coffee-export/` | `fr7m7fzyailo.space.mcode.io` |
 | B2B narrative | `studex-meat-static/` | `4mak476g6rmo.space.mcode.io` |
 | Stud-Bot | `studex-computer/` | `3zryumjeuemk.space.mcode.io` |
@@ -185,23 +183,23 @@
 > **⛔ SUPERSEDED URLS — still live, do not share (2026-10-21).** Each redeploy creates a new URL and the old one keeps serving the **old** copy.
 > | Superseded URL | What it still says | Replaced by |
 > |---|---|---|
-> | `hrji88f70666.space.mcode.io` | *"Every product we produce is certified Halaal… No exceptions"* | `nudsduvyrc12.space.mcode.io` |
+> | `hrji88f70666.space.mcode.io` | *"Every product we produce is certified Halaal… No exceptions"* | `t56b7vkncytt.space.mcode.io` |
 > | `x2tvaieb5qgz.space.mcode.io` | *"Rainforest Alliance certified"* + *"Full RA certification across all supply chain stages"* | `fr7m7fzyailo.space.mcode.io` |
 > | `z7p9urw22jwb.space.mcode.io` | *"All products Halaal certified"* | `hhsmhunf1xci.space.mcode.io` |
-> | `lyf0l7cahlbd.space.mcode.io` | badge spelled *MJC Halal Trust* | `nudsduvyrc12.space.mcode.io` |
+> | `lyf0l7cahlbd.space.mcode.io` | badge spelled *MJC Halal Trust* | `t56b7vkncytt.space.mcode.io` |
 > | `j439h3l2g94g.space.mcode.io` | linked the old sales sheet | `4mak476g6rmo.space.mcode.io` |
 > | `lqzo3q09yntr.space.mcode.io` | *"The 0% tariff window closes on 30 April 2028"* — **wrong for a Rwandan LDC origin** (our zero-tariff has no expiry) | `fr7m7fzyailo.space.mcode.io` |
 > | `eukr32nxiptw.space.mcode.io` | *"0% for all 53 African countries, 1 May 2026 – 30 April 2028"* — the expiry was **theirs, not ours** | `de6xdoikz95g.space.mcode.io` |
 > | `o1xo4h5m6u9u.space.mcode.io` | *"0% — and no expiry for our Rwandan LDC origin"* — correct for Rwanda, but the non-Rwandan origins’ 30 April 2028 window was missing | `de6xdoikz95g.space.mcode.io` |
-| `llox95u1dtfg.space.mcode.io` | marquee + footer said *100% Halaal Certified* | `nudsduvyrc12.space.mcode.io` |
+| `llox95u1dtfg.space.mcode.io` | marquee + footer said *100% Halaal Certified* | `t56b7vkncytt.space.mcode.io` |
 | `klre58fvhmdc.space.mcode.io` | said *certified farms* | `de6xdoikz95g.space.mcode.io` |
-| `tex91uns0obh.space.mcode.io` | craft block said *100% Halaal Certified*; order CTA said *Halaal guaranteed* | `nudsduvyrc12.space.mcode.io` |
-| `8fk34ak7bp5o.space.mcode.io` | no visible contact block (the source file had drifted) | `nudsduvyrc12.space.mcode.io` |
+| `tex91uns0obh.space.mcode.io` | craft block said *100% Halaal Certified*; order CTA said *Halaal guaranteed* | `t56b7vkncytt.space.mcode.io` |
+| `8fk34ak7bp5o.space.mcode.io` | no visible contact block (the source file had drifted) | `t56b7vkncytt.space.mcode.io` |
 | `fa4xt0vnu67u.space.mcode.io` | caviar page published **"7–14 days from order confirmation"** as the total lead time (the DAFF veterinary permit needs 4 weeks + 5–10 working days) and **"duty (±20%)"** — an unsourced duty estimate | `ess0ocgcd9f0.space.mcode.io` |
 | `anvkfflansa9.space.mcode.io` | coffee B2B page had no Origin/Compliance/Trade Terms panel, said *"ethically sourced"*, published the caviar lead time as **7–14 days**, and linked the old caviar page | `de6xdoikz95g.space.mcode.io` |
 | `hketvigqcs2f.space.mcode.io` | China page showed the 0% tariff **with no expiry date**, carried an unsourced *"Direct Trade Origin"* badge, and had no Origin/Compliance/Trade Terms panel | `fr7m7fzyailo.space.mcode.io` |
-| `yuq0txpfa4nq.space.mcode.io` | coffee SA hospitality page linked the old caviar page | `psq9xaisb9kf.space.mcode.io` |
-| `nzj87hus15vc.space.mcode.io` | retail store linked the old caviar page | `nudsduvyrc12.space.mcode.io` |
+| `yuq0txpfa4nq.space.mcode.io` | coffee SA hospitality page linked the old caviar page | `i09hd71cvt06.space.mcode.io` |
+| `nzj87hus15vc.space.mcode.io` | retail store linked the old caviar page | `t56b7vkncytt.space.mcode.io` |
 > **🔑 RETIRED 2026-10-23 — these served a LEAKED API KEY. Do not share, do not reuse.**
 > | Retired URL | What it served | Replaced by |
 > |---|---|---|
@@ -241,6 +239,9 @@
 
 | Fact | Value | Must appear on |
 |---|---|---|
+
+| `nudsduvyrc12.space.mcode.io` | legacy retail build — pre-ladder-lock prices, caviar sold at retail | `t56b7vkncytt.space.mcode.io` |
+| `bkqn328wj5a6.space.mcode.io` | retail build with the Katia nav but the pre-ladder-lock prices | `t56b7vkncytt.space.mcode.io` |
 | Rwanda A1 Washed, CIF Shanghai | **$4,800 – $5,400/MT** | `fr7m7fzyailo` |
 | Rwanda A2 Washed, CIF Shanghai | **$4,200 – $4,700/MT** | `fr7m7fzyailo` |
 | China import tariff start | `1 May 2026` | `fr7m7fzyailo` |
@@ -254,21 +255,21 @@
 
 | Contact fact | Value | Must appear on |
 |---|---|---|
-| Support email | `info@studexmeat.com` | `nudsduvyrc12` · `ess0ocgcd9f0` · `de6xdoikz95g` · `psq9xaisb9kf` · `fr7m7fzyailo` · `4mak476g6rmo` · `3zryumjeuemk` · `hhsmhunf1xci` |
+| Support email | `info@studexmeat.com` | `t56b7vkncytt` · `ess0ocgcd9f0` · `de6xdoikz95g` · `i09hd71cvt06` · `fr7m7fzyailo` · `4mak476g6rmo` · `3zryumjeuemk` · `hhsmhunf1xci` |
 | Gifting enquiry email | `info@studex-group.com` | `oi28dhtke3yk` |
-| Store phone | +27 84 421 6035 | `nudsduvyrc12` · `ess0ocgcd9f0` · `de6xdoikz95g` · `4mak476g6rmo` · `hhsmhunf1xci` |
-| Store WhatsApp | +27 94 988 8737 | `nudsduvyrc12` · `ess0ocgcd9f0` · `psq9xaisb9kf` · `fr7m7fzyailo` · `4mak476g6rmo` · `oi28dhtke3yk` · `3zryumjeuemk` · `hhsmhunf1xci` |
-| Order line (personal mobile) | +27 83 593 2577 | `nudsduvyrc12` · `de6xdoikz95g` |
-| Trading entity | `Studex Meat (Pty) Ltd` | `nudsduvyrc12` |
-| Locations | `Cape Town, South Africa & Kigali, Rwanda` | `nudsduvyrc12` · `hhsmhunf1xci` |
+| Store phone | +27 84 421 6035 | `t56b7vkncytt` · `ess0ocgcd9f0` · `de6xdoikz95g` · `4mak476g6rmo` · `hhsmhunf1xci` |
+| Store WhatsApp | +27 94 988 8737 | `t56b7vkncytt` · `ess0ocgcd9f0` · `i09hd71cvt06` · `fr7m7fzyailo` · `4mak476g6rmo` · `oi28dhtke3yk` · `3zryumjeuemk` · `hhsmhunf1xci` |
+| Order line (personal mobile) | +27 83 593 2577 | `t56b7vkncytt` · `de6xdoikz95g` |
+| Trading entity | `Studex Meat (Pty) Ltd` | `t56b7vkncytt` |
+| Locations | `Cape Town, South Africa & Kigali, Rwanda` | `t56b7vkncytt` · `hhsmhunf1xci` |
 
 ## 4d. COPY CLAIMS — headline / product strings that must appear
 | Claim | Value | Must appear on |
 |---|---|---|
-| Caviar tier — Oscietra | `Oscietra Imperial` | `ess0ocgcd9f0` · `nudsduvyrc12` |
-| Caviar tier — Kaluga | `Kaluga Prestige` | `ess0ocgcd9f0` · `nudsduvyrc12` |
-| Caviar tier — Sevtruga | `Sevtruga Medium` | `ess0ocgcd9f0` · `nudsduvyrc12` |
-| Caviar retail unit | `per 100g` | `ess0ocgcd9f0` · `nudsduvyrc12` |
+| Caviar tier — Oscietra | `Oscietra Imperial` | `ess0ocgcd9f0` · `t56b7vkncytt` |
+| Caviar tier — Kaluga | `Kaluga Prestige` | `ess0ocgcd9f0` · `t56b7vkncytt` |
+| Caviar tier — Sevtruga | `Sevtruga Medium` | `ess0ocgcd9f0` · `t56b7vkncytt` |
+| Caviar retail unit | `per 100g` | `ess0ocgcd9f0` |
 | Coffee origin — Rwanda | `Rwanda` | `de6xdoikz95g` |
 | Coffee origin — Ethiopia | `Ethiopia` | `de6xdoikz95g` |
 | Coffee origin — Kenya | `Kenya` | `de6xdoikz95g` |
@@ -278,7 +279,7 @@
 | Gift box — The Boardroom | `The Boardroom` | `oi28dhtke3yk` · `hhsmhunf1xci` |
 | Gifting discount code | `STUDEXGIFT10` | `oi28dhtke3yk` · `hhsmhunf1xci` |
 | Gifting final order date | `20 December 2026` | `oi28dhtke3yk` |
-| Halaal scope — retail page | `Our Wagyu range is certified Halaal` | `nudsduvyrc12` |
+| Halaal scope — retail page | `Our Wagyu range is certified Halaal` | `t56b7vkncytt` |
 | Halaal scope — sales sheet | `Our Wagyu range is Halaal certified` | `hhsmhunf1xci` |
 
 ## 4e. REQUIRED LINKS — hrefs that must exist on the page
@@ -290,12 +291,12 @@
 ## 4f. FORBIDDEN STRINGS — must NOT appear on the page
 | Forbidden string | Reason | Must not appear on |
 |---|---|---|
-| `agent.studexmeat.com` | dead domain, no DNS | `3zryumjeuemk` · `ess0ocgcd9f0` · `nudsduvyrc12` · `4mak476g6rmo` · `de6xdoikz95g` · `oi28dhtke3yk` · `fr7m7fzyailo` · `psq9xaisb9kf` · `hhsmhunf1xci` · `9yk65ajlg1s9` · `qefqcvvpd8al` · `jqbgl8pu0uyh` · `jgk62vzamgtk` |
+| `agent.studexmeat.com` | dead domain, no DNS | `3zryumjeuemk` · `ess0ocgcd9f0` · `t56b7vkncytt` · `4mak476g6rmo` · `de6xdoikz95g` · `oi28dhtke3yk` · `fr7m7fzyailo` · `i09hd71cvt06` · `hhsmhunf1xci` · `9yk65ajlg1s9` · `qefqcvvpd8al` · `jqbgl8pu0uyh` · `jgk62vzamgtk` |
 | `charlie@agent.studexmeat.com` | dead domain | `ess0ocgcd9f0` |
 | `27 82 555 0194` | unverified phone, replaced | `ess0ocgcd9f0` |
-| `Sevruga Premium` | retired caviar name | `ess0ocgcd9f0` · `nudsduvyrc12` |
-| `Siberian Reserve` | retired caviar name | `ess0ocgcd9f0` · `nudsduvyrc12` |
-| `per 250g` | wrong caviar unit | `ess0ocgcd9f0` · `nudsduvyrc12` |
+| `Sevruga Premium` | retired caviar name | `ess0ocgcd9f0` · `t56b7vkncytt` |
+| `Siberian Reserve` | retired caviar name | `ess0ocgcd9f0` · `t56b7vkncytt` |
+| `per 250g` | wrong caviar unit | `ess0ocgcd9f0` · `t56b7vkncytt` |
 | `R 4 999` | spaced price format | `3zryumjeuemk` |
 | `R 8 999` | spaced price format | `3zryumjeuemk` |
 | `R 18 999` | spaced price format | `3zryumjeuemk` |
@@ -309,19 +310,19 @@
 | `R1,450` | per-kg meat price, wrong in a gifting context | `oi28dhtke3yk` |
 | `R850` | per-kg meat price, wrong in a gifting context | `oi28dhtke3yk` |
 | `STUDESGIFT10` | wrong code (missing the X) | `oi28dhtke3yk` · `hhsmhunf1xci` |
-| `June 2026` | stale date | `de6xdoikz95g` · `psq9xaisb9kf` |
-| `Coming Soon` | stale, caviar now ships | `de6xdoikz95g` · `psq9xaisb9kf` |
-| `500+ MT` | unverified volume claim | `de6xdoikz95g` · `psq9xaisb9kf` |
-| `svetlana@prowtc.com` | a real prospect, not our contact | `de6xdoikz95g` · `psq9xaisb9kf` · `fr7m7fzyailo` |
-| `PROWTC` | a prospect's brand, not ours | `de6xdoikz95g` · `psq9xaisb9kf` · `fr7m7fzyailo` |
-| `Rainforest Alliance` | no source document exists for any Studex coffee — claim removed 2026-10-21 | `fr7m7fzyailo` · `de6xdoikz95g` · `psq9xaisb9kf` · `9yk65ajlg1s9` · `qefqcvvpd8al` · `jqbgl8pu0uyh` · `jgk62vzamgtk` |
-| `Every product we produce` | MJC certificate covers 4 Wagyu products only — not caviar, coffee or game | `nudsduvyrc12` |
+| `June 2026` | stale date | `de6xdoikz95g` · `i09hd71cvt06` |
+| `Coming Soon` | stale, caviar now ships | `de6xdoikz95g` · `i09hd71cvt06` |
+| `500+ MT` | unverified volume claim | `de6xdoikz95g` · `i09hd71cvt06` |
+| `svetlana@prowtc.com` | a real prospect, not our contact | `de6xdoikz95g` · `i09hd71cvt06` · `fr7m7fzyailo` |
+| `PROWTC` | a prospect's brand, not ours | `de6xdoikz95g` · `i09hd71cvt06` · `fr7m7fzyailo` |
+| `Rainforest Alliance` | no source document exists for any Studex coffee — claim removed 2026-10-21 | `fr7m7fzyailo` · `de6xdoikz95g` · `i09hd71cvt06` · `9yk65ajlg1s9` · `qefqcvvpd8al` · `jqbgl8pu0uyh` · `jgk62vzamgtk` |
+| `Every product we produce` | MJC certificate covers 4 Wagyu products only — not caviar, coffee or game | `t56b7vkncytt` |
 | `All products Halaal certified` | same overclaim — scoped to the Wagyu range | `hhsmhunf1xci` |
-| `MJC Halal Trust` | wrong spelling of the certifier name (MJC Halaal Trust) | `nudsduvyrc12` · `hhsmhunf1xci` |
-| `100% Halaal Certified` | the certificate covers 4 Wagyu products, not caviar, coffee or game | `nudsduvyrc12` |
+| `MJC Halal Trust` | wrong spelling of the certifier name (MJC Halaal Trust) | `t56b7vkncytt` · `hhsmhunf1xci` |
+| `100% Halaal Certified` | the certificate covers 4 Wagyu products, not caviar, coffee or game | `t56b7vkncytt` |
 | `certified farms` | certification claim with no document behind it | `de6xdoikz95g` |
-| `Halaal guaranteed` | page-level absolute — the certificate covers the Wagyu range only | `nudsduvyrc12` |
-| `certified Russian caviar houses` | the caviar source page makes no such claim | `nudsduvyrc12` |
+| `Halaal guaranteed` | page-level absolute — the certificate covers the Wagyu range only | `t56b7vkncytt` |
+| `certified Russian caviar houses` | the caviar source page makes no such claim | `t56b7vkncytt` |
 | `certified Russian caviar houses` | the React caviar page made this claim while UNCHECKED — live 2026-10-23 | `jgk62vzamgtk` |
 | `ethically sourced` | retired unsourced claim (removed from the coffee pages 2026-10-21) | `jgk62vzamgtk` |
 | `Direct Trade` | retired unsourced badge — "single washing station" is the honest line | `jqbgl8pu0uyh` · `9yk65ajlg1s9` · `qefqcvvpd8al` |

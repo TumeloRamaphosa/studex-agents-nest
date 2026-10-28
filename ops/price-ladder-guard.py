@@ -82,10 +82,11 @@ LIVE_PAGES = {
     "ujlho19swr48": "Price & provenance sheet (festive)",
     "oi28dhtke3yk": "Corporate gifting",
     "ess0ocgcd9f0": "Caviar page",
-    "psq9xaisb9kf": "Coffee & hospitality (SA)",
-    # legacy — superseded 2026-10-28 by t56b7vkncytt. Still live, still
-    # carrying the old prices plus a caviar sale path. Retire it.
-    "nudsduvyrc12": "Retail / biltong landing (LEGACY — retire)",
+    "i09hd71cvt06": "Coffee & hospitality (SA)",
+    # 2026-10-28 — the retired retail builds (nudsduvyrc12, bkqn328wj5a6) are
+    # out of this list on purpose: they still serve the old prices and a caviar
+    # sale path, so checking them produces findings nobody can act on. The
+    # do-not-share rule for those URLs lives in the registry's superseded table.
 }
 
 # ---------------------------------------------------------------- compliance
