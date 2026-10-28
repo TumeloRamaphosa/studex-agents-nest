@@ -1,0 +1,334 @@
+{
+  "copy_files": {
+    "china-coffee-sheet-copy-paste.md": {
+      "claims": {
+        "EXHIBITING_CLAIM": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 93,
+              "snippet": " origin is capable of when the picking and the processing are right.  We're exhibiting at CIIE (China International Import Expo) in November"
+            }
+          ]
+        },
+        "APPLY_INSTRUCTION": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 259,
+              "snippet": "NCY, 11 days to the event** | | Action required | Apply at ciie.org \u2192 exhibitor registration \u2192 Food & Agriculture |  ---  ## TAB 5: COMPETIT"
+            }
+          ]
+        },
+        "STATUS_NOT_APPLIED": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 258,
+              "snippet": "Products | | Booth size needed | Minimum 9sqm | | Studex status | \ud83d\udd34 **NOT YET APPLIED \u2014 EMERGENCY, 11 days to the event** | | Action require"
+            }
+          ]
+        },
+        "HALL_STAND": {
+          "count": 0,
+          "hits": []
+        },
+        "SURGE_145": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 222,
+              "snippet": "a lot comparison | | Market pull | African coffee exports to China **+145.7% YoY (Jan\u2013May 2026)**; China bought **$246M** of African coffee "
+            }
+          ]
+        }
+      }
+    },
+    "china-coffee-outreach.md": {
+      "claims": {
+        "EXHIBITING_CLAIM": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 100,
+              "snippet": " clearance. You receive the coffee, you pay the landed cost. Simple.  We're exhibiting at CIIE (China International Import Expo) in November"
+            }
+          ]
+        },
+        "APPLY_INSTRUCTION": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 186,
+              "snippet": ", printed collateral, business cards  **Action:** Apply at ciie.org \u2192 exhibitor registration \u2192 select South Africa country pavilion \u2192 food &"
+            }
+          ]
+        },
+        "STATUS_NOT_APPLIED": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 176,
+              "snippet": "melo  ---  ## CIIE NOVEMBER 2026 \u2014 BOOTH APPLICATION  **Status:** \ud83d\udd34 **NOT YET APPLIED \u2014 EMERGENCY.** The ~30 September 2026 deadline has pas"
+            }
+          ]
+        },
+        "HALL_STAND": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 179,
+              "snippet": "**Website:** ciie.org **Section:** Food & Agricultural Products Hall (Hall 8.2 or similar)  **Booth package needed:** - Minimum 9sqm standar"
+            }
+          ]
+        },
+        "SURGE_145": {
+          "count": 0,
+          "hits": []
+        }
+      }
+    },
+    "ciie-bundle-pitch.md": {
+      "claims": {
+        "EXHIBITING_CLAIM": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 64,
+              "snippet": "s  | Requirement | Status | Owner | |------------|--------|-------| | CIIE booth registration | \ud83d\udd34 UNVERIFIED \u2014 2026 exhibitor booking closed"
+            }
+          ]
+        },
+        "APPLY_INSTRUCTION": {
+          "count": 0,
+          "hits": []
+        },
+        "STATUS_NOT_APPLIED": {
+          "count": 0,
+          "hits": []
+        },
+        "HALL_STAND": {
+          "count": 0,
+          "hits": []
+        },
+        "SURGE_145": {
+          "count": 0,
+          "hits": []
+        }
+      }
+    },
+    "ciie-nurture/prospects.json": {
+      "claims": {
+        "EXHIBITING_CLAIM": {
+          "count": 0,
+          "hits": []
+        },
+        "APPLY_INSTRUCTION": {
+          "count": 0,
+          "hits": []
+        },
+        "STATUS_NOT_APPLIED": {
+          "count": 0,
+          "hits": []
+        },
+        "HALL_STAND": {
+          "count": 0,
+          "hits": []
+        },
+        "SURGE_145": {
+          "count": 0,
+          "hits": []
+        }
+      }
+    },
+    "ciie-nurture/send-sequence.js": {
+      "claims": {
+        "EXHIBITING_CLAIM": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 183,
+              "snippet": ") && !args.includes('-n')) {   console.log('[CIIE Nurture] DISARMED \u2014 CIIE booth status unverified and the buyer list was already sent unver"
+            }
+          ]
+        },
+        "APPLY_INSTRUCTION": {
+          "count": 0,
+          "hits": []
+        },
+        "STATUS_NOT_APPLIED": {
+          "count": 0,
+          "hits": []
+        },
+        "HALL_STAND": {
+          "count": 0,
+          "hits": []
+        },
+        "SURGE_145": {
+          "count": 0,
+          "hits": []
+        }
+      }
+    }
+  },
+  "page_sources": {
+    "ciie-nurture/src/cli.ts": {
+      "claims": {
+        "EXHIBITING_CLAIM": {
+          "count": 2,
+          "hits": [
+            {
+              "line": 4,
+              "snippet": "==================== // KILL SWITCH \u2014 added 2026-10-21 (Katia) // The CIIE booth claimed in these emails is UNVERIFIED, and official // 2026"
+            },
+            {
+              "line": 12,
+              "snippet": "ss.env.CIIE_NURTURE_ARMED) {   console.log('[CIIE Nurture] DISARMED \u2014 CIIE booth status unverified. Set CIIE_NURTURE_ARMED=1 to send.');   p"
+            }
+          ]
+        },
+        "APPLY_INSTRUCTION": {
+          "count": 0,
+          "hits": []
+        },
+        "STATUS_NOT_APPLIED": {
+          "count": 0,
+          "hits": []
+        },
+        "HALL_STAND": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 5,
+              "snippet": "cial // 2026 exhibitor booking for CIIE is CLOSED (Country Pavilion = Hall 5.2; // SA pavilion applications closed 22 Jun 2026). Do not send"
+            }
+          ]
+        },
+        "SURGE_145": {
+          "count": 0,
+          "hits": []
+        }
+      }
+    },
+    "studex-ciie-coffee/src/App.jsx": {
+      "claims": {
+        "EXHIBITING_CLAIM": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 221,
+              "snippet": "2\">             250g Rwanda AA + 30g Wagyu Biltong. Delivered to your CIIE booth or hotel in Shanghai.           </p>           <p className"
+            }
+          ]
+        },
+        "APPLY_INSTRUCTION": {
+          "count": 0,
+          "hits": []
+        },
+        "STATUS_NOT_APPLIED": {
+          "count": 0,
+          "hits": []
+        },
+        "HALL_STAND": {
+          "count": 4,
+          "hits": [
+            {
+              "line": 31,
+              "snippet": "-widest uppercase mb-6\">             November 5\u201310, 2026 \u00b7 Shanghai \u00b7 Hall 7.2 Stand A5-01           </div>           <h1 className=\"text-5x"
+            },
+            {
+              "line": 31,
+              "snippet": "ppercase mb-6\">             November 5\u201310, 2026 \u00b7 Shanghai \u00b7 Hall 7.2 Stand A5-01           </div>           <h1 className=\"text-5xl md:text"
+            },
+            {
+              "line": 292,
+              "snippet": "v>           <div className=\"text-emerald-200/30 text-xs\">CIIE 2026 \u00b7 Hall 7.2 \u00b7 Stand A5-01</div>         </div>       </footer>     </div>"
+            },
+            {
+              "line": 292,
+              "snippet": "  <div className=\"text-emerald-200/30 text-xs\">CIIE 2026 \u00b7 Hall 7.2 \u00b7 Stand A5-01</div>         </div>       </footer>     </div>   ) }  exp"
+            }
+          ]
+        },
+        "SURGE_145": {
+          "count": 3,
+          "hits": [
+            {
+              "line": 59,
+              "snippet": "md:grid-cols-4 gap-8 text-center\">           {[             { value: '145.7%', label: 'China Africa Coffee Import Surge (100 Days)' },      "
+            },
+            {
+              "line": 133,
+              "snippet": "},               {                 icon: '\ud83d\udcc8',                 title: '145.7% Import Surge',                 body: 'In the first 100 days, Af"
+            },
+            {
+              "line": 134,
+              "snippet": "ody: 'In the first 100 days, African coffee imports into China surged 145.7%. Buyers are actively seeking African origin suppliers. The wave"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "public_dist": {
+    "studex-ciie-coffee/dist/assets/index-Dl6dsPRn.js": {
+      "claims": {
+        "EXHIBITING_CLAIM": {
+          "count": 1,
+          "hits": [
+            {
+              "line": 9,
+              "snippet": "mb-2`,children:`250g Rwanda AA + 30g Wagyu Biltong. Delivered to your CIIE booth or hotel in Shanghai.`}),(0,f.jsx)(`p`,{className:`text-eme"
+            }
+          ]
+        },
+        "APPLY_INSTRUCTION": {
+          "count": 0,
+          "hits": []
+        },
+        "STATUS_NOT_APPLIED": {
+          "count": 0,
+          "hits": []
+        },
+        "HALL_STAND": {
+          "count": 4,
+          "hits": [
+            {
+              "line": 9,
+              "snippet": "ing-widest uppercase mb-6`,children:`November 5\u201310, 2026 \u00b7 Shanghai \u00b7 Hall 7.2 Stand A5-01`}),(0,f.jsxs)(`h1`,{className:`text-5xl md:text-7"
+            },
+            {
+              "line": 9,
+              "snippet": "t uppercase mb-6`,children:`November 5\u201310, 2026 \u00b7 Shanghai \u00b7 Hall 7.2 Stand A5-01`}),(0,f.jsxs)(`h1`,{className:`text-5xl md:text-7xl font-b"
+            },
+            {
+              "line": 9,
+              "snippet": "(`div`,{className:`text-emerald-200/30 text-xs`,children:`CIIE 2026 \u00b7 Hall 7.2 \u00b7 Stand A5-01`})]})})]})}(0,u.createRoot)(document.getElement"
+            },
+            {
+              "line": 9,
+              "snippet": "ssName:`text-emerald-200/30 text-xs`,children:`CIIE 2026 \u00b7 Hall 7.2 \u00b7 Stand A5-01`})]})})]})}(0,u.createRoot)(document.getElementById(`root`"
+            }
+          ]
+        },
+        "SURGE_145": {
+          "count": 3,
+          "hits": [
+            {
+              "line": 9,
+              "snippet": " grid grid-cols-2 md:grid-cols-4 gap-8 text-center`,children:[{value:`145.7%`,label:`China Africa Coffee Import Surge (100 Days)`},{value:`$"
+            },
+            {
+              "line": 9,
+              "snippet": " where before African Arabica faced 8\u201315% tariffs.`},{icon:`\ud83d\udcc8`,title:`145.7% Import Surge`,body:`In the first 100 days, African coffee impor"
+            },
+            {
+              "line": 9,
+              "snippet": "body:`In the first 100 days, African coffee imports into China surged 145.7%. Buyers are actively seeking African origin suppliers. The wave"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

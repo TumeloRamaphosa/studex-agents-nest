@@ -1,0 +1,113 @@
+{
+  "wedding": [
+    {
+      "id": "foodbarn",
+      "name": "The Foodbarn Café & Deli",
+      "contact": "",
+      "location": "Cape Town",
+      "notes": "Renowned for Winelands + CPT weddings. Strong foodie rep.",
+      "angle": "Cold brew welcome drinks + biltong canapés — two signature items, one supplier",
+      "status": "pending",
+      "messages": {
+        "first": "Hi [Name]! 👋\n\nI'm Robusca — I run Studex Meat. We do specialty coffee (Rwanda A1/A2) + premium biltong.\n\nI'm reaching out because wedding season in Cape Town is hitting right now, and I noticed [Caterer Name] does beautiful events — I think we have something you'd love.\n\nWe're one of the only suppliers in SA with a proper cold brew programme AND premium biltong packs — perfect for:\n• Canapé service (biltong + cold brew = 2 signature items, one supplier)\n• Welcome drinks (cold brew serve, non-alcoholic option)\n• Gifting bags (custom packs for wedding guests)\n\nWe also do white-label packaging — [Caterer Name] on the label, our product inside.\n\nI'd love to drop off a sample box for you to try. No commitment — just want you to taste what we're working with.\n\nFree this week for a 15-minute chat?\n\nRobusca\n+27 82 555 0181",
+        "followup": "Hi [Name]! Just following up on my message from earlier 😊\n\nTotally understand if timing isn't right — wedding season is hectic.\n\nQuick note: we're offering trial boxes to 3 Cape Town caterers this month at no cost. If you'd like one to keep for your events, just say the word.\n\nRobusca\n+27 82 555 0181",
+        "closing": "Hi [Name]! Last one from me 🙏\n\nWe'd still love to get you a free sample box — cold brew + biltong, no strings attached. It could be a great fit for your upcoming events.\n\nIf it's not the right fit, totally understood. But if you're curious, I'm a message away.\n\nRobusca\n+27 82 555 0181"
+      }
+    },
+    {
+      "id": "delicate-dance",
+      "name": "Delicate Dance Catering",
+      "contact": "",
+      "location": "Cape Town",
+      "notes": "High-end weddings. Strong repeat client base.",
+      "angle": "White-label packaging for events + cold brew programme",
+      "status": "pending",
+      "messages": {
+        "first": "Hi [Name]! 👋\n\nI'm Robusca — I run Studex Meat. We do specialty coffee (Rwanda A1/A2) + premium biltong.\n\nI'm reaching out because wedding season in Cape Town is hitting right now, and I noticed [Caterer Name] does beautiful events — I think we have something you'd love.\n\nWe're one of the only suppliers in SA with a proper cold brew programme AND premium biltong packs — perfect for:\n• Canapé service (biltong + cold brew = 2 signature items, one supplier)\n• Welcome drinks (cold brew serve, non-alcoholic option)\n• Gifting bags (custom packs for wedding guests)\n\nWe also do white-label packaging — [Caterer Name] on the label, our product inside.\n\nI'd love to drop off a sample box for you to try. No commitment — just want you to taste what we're working with.\n\nFree this week for a 15-minute chat?\n\nRobusca\n+27 82 555 0181",
+        "followup": "Hi [Name]! Just following up on my message from earlier 😊\n\nTotally understand if timing isn't right — wedding season is hectic.\n\nQuick note: we're offering trial boxes to 3 Cape Town caterers this month at no cost. If you'd like one to keep for your events, just say the word.\n\nRobusca\n+27 82 555 0181",
+        "closing": "Hi [Name]! Last one from me 🙏\n\nWe'd still love to get you a free sample box — cold brew + biltong, no strings attached. It could be a great fit for your upcoming events.\n\nIf it's not the right fit, totally understood. But if you're curious, I'm a message away.\n\nRobusca\n+27 82 555 0181"
+      }
+    },
+    {
+      "id": "inkvine",
+      "name": "Inkvine Catering",
+      "contact": "",
+      "location": "Cape Town",
+      "notes": "Boutique, quality-over-volume. Target clients match Studex profile.",
+      "angle": "Exclusive supplier story, origin-led narrative fits their brand",
+      "status": "pending",
+      "messages": {
+        "first": "Hi [Name]! 👋\n\nI'm Robusca — I run Studex Meat. We do specialty coffee (Rwanda A1/A2) + premium biltong.\n\nI'm reaching out because wedding season in Cape Town is hitting right now, and I noticed [Caterer Name] does beautiful events — I think we have something you'd love.\n\nWe're one of the only suppliers in SA with a proper cold brew programme AND premium biltong packs — perfect for:\n• Canapé service (biltong + cold brew = 2 signature items, one supplier)\n• Welcome drinks (cold brew serve, non-alcoholic option)\n• Gifting bags (custom packs for wedding guests)\n\nWe also do white-label packaging — [Caterer Name] on the label, our product inside.\n\nI'd love to drop off a sample box for you to try. No commitment — just want you to taste what we're working with.\n\nFree this week for a 15-minute chat?\n\nRobusca\n+27 82 555 0181",
+        "followup": "Hi [Name]! Just following up on my message from earlier 😊\n\nTotally understand if timing isn't right — wedding season is hectic.\n\nQuick note: we're offering trial boxes to 3 Cape Town caterers this month at no cost. If you'd like one to keep for your events, just say the word.\n\nRobusca\n+27 82 555 0181",
+        "closing": "Hi [Name]! Last one from me 🙏\n\nWe'd still love to get you a free sample box — cold brew + biltong, no strings attached. It could be a great fit for your upcoming events.\n\nIf it's not the right fit, totally understood. But if you're curious, I'm a message away.\n\nRobusca\n+27 82 555 0181"
+      }
+    }
+  ],
+  "cafes": [
+    {
+      "id": "haarloo",
+      "name": "Haarloo Coffee",
+      "contact": "",
+      "location": "Gardens, Cape Town",
+      "notes": "Craft coffee rep. Gardens area.",
+      "status": "pending",
+      "messages": {
+        "first": "Hi! I'm Robusca from Studex Meat.\n\nWe supply Rwanda A1/A2 specialty coffee to cafés — white-label bags, cold brew programme, barista training.\n\nHaarloo has an incredible reputation for craft. I'd love to show you what we'd bring to your offering.\n\nFree sample box this week — no strings.\n\nRobusca | +27 82 555 0181",
+        "followup": "Hi! Just following up — I'd still love to get you a free tasting box. No pressure at all, but if you're curious about what we're building with Studex, I'm here.\n\nRobusca | +27 82 555 0181",
+        "closing": "Hi! Last message from me 🙏 Still happy to drop off a free sample box — Rwanda A1/A2 cold brew + biltong. Let me know if you'd like one.\n\nRobusca | +27 82 555 0181"
+      }
+    },
+    {
+      "id": "grove",
+      "name": "Grove Coffee",
+      "contact": "",
+      "location": "Wynberg, Cape Town",
+      "notes": "Quality-focused. Wynberg area.",
+      "status": "pending",
+      "messages": {
+        "first": "Hi! Robusca here, Studex Meat.\n\nWe supply specialty coffee to Cape Town cafés — Rwanda A1/A2, white-label options, cold brew capability.\n\nGrove Coffee is doing exactly the kind of quality-focused work we'd love to be associated with.\n\nCan I drop off a tasting box this week?\n\nRobusca | +27 82 555 0181",
+        "followup": "Hi! Just following up — I'd still love to get you a free tasting box. No pressure at all, but if you're curious about what we're building with Studex, I'm here.\n\nRobusca | +27 82 555 0181",
+        "closing": "Hi! Last message from me 🙏 Still happy to drop off a free sample box — Rwanda A1/A2 cold brew + biltong. Let me know if you'd like one.\n\nRobusca | +27 82 555 0181"
+      }
+    },
+    {
+      "id": "kent-y",
+      "name": "Kent y Coffee",
+      "contact": "",
+      "location": "Sea Point, Cape Town",
+      "notes": "Vietnamese-influenced menu. Sea Point.",
+      "status": "pending",
+      "messages": {
+        "first": "Hi! Robusca from Studex Meat.\n\nWe do specialty coffee + cold brew + biltong — all with a strong origin story.\n\nYour Vietnamese-influenced menu is brilliant. Our cold brew would pair perfectly with what you're doing.\n\nHappy to bring a free sample box — worth 15 minutes of your time.\n\nRobusca | +27 82 555 0181",
+        "followup": "Hi! Just following up — I'd still love to get you a free tasting box. No pressure at all, but if you're curious about what we're building with Studex, I'm here.\n\nRobusca | +27 82 555 0181",
+        "closing": "Hi! Last message from me 🙏 Still happy to drop off a free sample box — Rwanda A1/A2 cold brew + biltong. Let me know if you'd like one.\n\nRobusca | +27 82 555 0181"
+      }
+    },
+    {
+      "id": "giovanni",
+      "name": "Giovanni's Deliworld",
+      "contact": "",
+      "location": "Green Point, Cape Town",
+      "notes": "Strong loyal following. Deli format.",
+      "status": "pending",
+      "messages": {
+        "first": "Hi! Robusca from Studex Meat.\n\nWe supply specialty coffee to cafés — Rwanda A1/A2, consistent quality, white-label bags.\n\nYour deli has an incredible loyal following. We'd love to be the coffee behind it.\n\nFree sample this week?\n\nRobusca | +27 82 555 0181",
+        "followup": "Hi! Just following up — I'd still love to get you a free tasting box. No pressure at all, but if you're curious about what we're building with Studex, I'm here.\n\nRobusca | +27 82 555 0181",
+        "closing": "Hi! Last message from me 🙏 Still happy to drop off a free sample box — Rwanda A1/A2 cold brew + biltong. Let me know if you'd like one.\n\nRobusca | +27 82 555 0181"
+      }
+    },
+    {
+      "id": "bootlegger",
+      "name": "Bootlegger Coffee",
+      "contact": "",
+      "location": "Various CT locations",
+      "notes": "Growing fast. Multiple CT locations.",
+      "status": "pending",
+      "messages": {
+        "first": "Hi! Robusca from Studex Meat.\n\nWe supply specialty coffee to cafés — Rwanda A1/A2, white-label, cold brew programme.\n\nBootlegger is growing fast and we're impressed with what you're building. We'd love to talk wholesale supply.\n\nCan I send you a sample box and proposal?\n\nRobusca | +27 82 555 0181",
+        "followup": "Hi! Just following up — I'd still love to get you a free tasting box. No pressure at all, but if you're curious about what we're building with Studex, I'm here.\n\nRobusca | +27 82 555 0181",
+        "closing": "Hi! Last message from me 🙏 Still happy to drop off a free sample box — Rwanda A1/A2 cold brew + biltong. Let me know if you'd like one.\n\nRobusca | +27 82 555 0181"
+      }
+    }
+  ]
+}

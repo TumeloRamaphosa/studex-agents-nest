@@ -1,0 +1,225 @@
+#!/usr/bin/env python3
+"""
+Pre-commit guard: refuse to commit credentials into a PUBLIC repo.
+
+The remote `github.com/TumeloRamaphosa/studex-agents-nest` is PUBLIC (verified:
+unauthenticated raw fetch returns 200). Anything committed here is world-readable
+the moment it is pushed. On 2026-10-23 an AgentMail API key was found hardcoded
+in two live landing-page JS bundles; this guard exists so that class of mistake
+cannot reach the index at all.
+
+Install once per clone:
+    git config core.hooksPath .githooks
+
+Behaviour:
+  - scans STAGED files only (what would actually be committed)
+  - fails on live-looking credential patterns
+  - allows obvious placeholders so template files stay committable
+
+TWO FIXES MADE HERE, BOTH FOUND BY THE REGRESSION SUITE
+-------------------------------------------------------
+1. THE PLACEHOLDER RULE NOW LOOKS AT THE VALUE, NOT AT ITS NEIGHBOURS.
+   The old rule scanned a 120-character window AROUND the match and skipped
+   the hit if ANYWHERE in that window it found the word "placeholder" /
+   "example" / "xxx". So this line passed the guard:
+
+       const key = 'am_us_REALKEEPhere'; // example credential
+
+   ...and so would any real key that happened to sit near the word
+   "example" in a comment. The rule now judges the MATCHED TEXT ONLY.
+   A context-based skip is a false-negative generator: the one case it was
+   designed to protect (a template file) has its own explicit exemption
+   list below, so it does not need a fuzzy context rule to survive.
+
+2. THE PATTERN SET NOW MATCHES ops/credential-resolution-check.py.
+   The guard was missing blt_ (Blotato), rl_sk_ (MaxClaw relay), EAAS (Meta),
+   pk_ (ClickUp), AIza (Google), tskey- (Tailscale), sk-ws- (Alibaba MAAS),
+   pplx- (Perplexity) and the ElevenLabs shape. A guard that only knows some
+   of the credential shapes in use is a guard with holes in it.
+"""
+import re
+import subprocess
+import sys
+
+# (pattern, human label) - kept in step with ops/credential-resolution-check.py
+PATTERNS = [
+    (r"am_us_[A-Za-z0-9]{30,}", "AgentMail API key"),
+    (r"sk-ant-[A-Za-z0-9_\-]{20,}", "Anthropic API key"),
+    (r"sk-proj-[A-Za-z0-9_\-]{20,}", "OpenAI API key"),
+    (r"cfat_[A-Za-z0-9_\-]{20,}", "Cloudflare API token"),
+    (r"sk_live_[A-Za-z0-9]{20,}", "sk_live_ secret key"),
+    (r"ghp_[A-Za-z0-9]{30,}", "GitHub PAT"),
+    (r"xox[baprs]-[A-Za-z0-9-]{20,}", "Slack token"),
+    (r"AKIA[0-9A-Z]{16}", "AWS access key id"),
+    (r"LTAI[0-9A-Za-z]{12,}", "Alibaba Cloud access key id"),
+    (r"pcsk_[A-Za-z0-9]{30,}", "Pinecone API key"),
+    (r"prtapi_[A-Za-z0-9]{20,}", "Shopify Admin token"),
+    (r"hyrve_ak_[A-Za-z0-9_]{20,}", "Hyvare API key"),
+    (r"nvapi-[A-Za-z0-9_\-]{20,}", "NVIDIA API key"),
+    (r"MTUw[A-Za-z0-9]{20,}\.[A-Za-z0-9_.\-]{20,}", "Discord bot token"),
+    (r"blt_[A-Za-z0-9]{20,}", "Blotato API key"),
+    (r"rl_sk_[A-Za-z0-9_\-]{20,}", "MaxClaw relay token"),
+    (r"pplx-[A-Za-z0-9_\-]{20,}", "Perplexity API key"),
+    (r"sk-ws-[A-Za-z0-9._\-]{20,}", "Alibaba MAAS key"),
+    (r"sk_[0-9a-f]{32}", "ElevenLabs API key"),
+    (r"EAAS[A-Za-z0-9]{40,}", "Meta Graph API token"),
+    (r"pk_\d{9}_[A-Za-z0-9]{20,}", "ClickUp API token"),
+    (r"sk-r[A-Za-z0-9]{30,}", "Kimi/Moonshot API key"),
+    (r"AIza[A-Za-z0-9_\-]{30,}", "Google API key"),
+    (r"tskey-[A-Za-z0-9\-_]{20,}", "Tailscale auth key"),
+    (r"glpat-[A-Za-z0-9_\-]{20,}", "GitLab PAT"),
+    (r"fh_[0-9a-f]{40,}", "FeedHive API key"),
+]
+
+# A raw hex value assigned to a credential-named variable. Cloudflare R2
+# access key ids and Higgsfield keys have no prefix, so shape alone cannot
+# catch them - the ASSIGNMENT can.
+HEX_ASSIGNED = re.compile(
+    r"^\s*(?:export\s+)?[A-Z_][A-Z_0-9]*(?:KEY|SECRET|TOKEN|PASSWORD|CREDENTIAL)"
+    r"[A-Z_0-9]*\s*[:=]\s*[\"']?([0-9a-f]{32}|[0-9a-f]{64})[\"']?\s*$"
+)
+
+# An opaque mixed-case token with no recognisable prefix, assigned to a
+# credential-named variable. Some providers issue keys with no prefix at
+# all, so shape alone cannot catch them - the ASSIGNMENT can.
+OPAQUE_ASSIGNED = re.compile(
+    r"^\s*(?:export\s+)?[A-Z_][A-Z_0-9]*(?:KEY|SECRET|TOKEN|PASSWORD|CREDENTIAL)"
+    r"[A-Z_0-9]*\s*[:=]\s*[\"']?([A-Za-z0-9_\-]{32,64})[\"']?\s*$"
+)
+
+# A bare KEY / SEC pair. The pattern above requires at least one character
+# before the credential word, so `KEY = "..."` and `SEC = "..."` did not match
+# it - which is exactly the shape GoDaddy's sso-key pair takes. That let a
+# live GoDaddy key+secret into the public remote. A guard that only covers
+# what it scans is decoration.
+BARE_PAIR_ASSIGNED = re.compile(
+    r"^\s*(?:export\s+)?(?:KEY|SEC)(?:RET)?[A-Z_0-9]*\s*[:=]\s*"
+    r"[\"']?([A-Za-z0-9_\-]{16,64})[\"']?\s*$"
+)
+
+# Files that are allowed to contain credential-shaped strings because they are
+# examples, templates, or the tooling that hunts for credentials.
+ALLOW = re.compile(
+    r"(^\.githooks/)"
+    r"|(\.example$)"
+    r"|(^templates?/)"
+    r"|(^scripts/.*guard)"
+    r"|(^ops/secret_leak_scan\.py$)"
+    r"|(^ops/credential-resolution-check\.py$)"
+    r"|(^ops/test-credential-resolution\.py$)",
+    re.I,
+)
+
+# Obvious placeholders, judged against the MATCHED TEXT ONLY.
+#
+# The word-markers below are safe as a substring test because a real
+# credential does not contain the literal string "placeholder" or "example".
+# The character-run markers are NOT safe as a substring test - a real key can
+# contain "xxxx" - so they are matched against the WHOLE value.
+DUMMY_WORDS = re.compile(
+    r"(xxx+|YOUR_|_YOUR_|REDACTED|placeholder|dummy|fake|test[-_]?key|"
+    r"sk_xxxxxxxxx|example)",
+    re.I,
+)
+DUMMY_WHOLE = re.compile(
+    r"(AKIAIOSFODNN7EXA|sk-ant-api03-rea\w*|sk-proj-abc123de\w*|"
+    r"ghp_abcdefghij12\w*|1234567890abcd|0123456789abcdef|"
+    r"sk_live_\w{0,8}|blt_\w{0,8}|am_us_\w{0,8})",
+    re.I,
+)
+
+
+def is_dummy(matched_text):
+    """True when the matched credential is an obvious placeholder.
+
+    Judged on the WHOLE match, never on its surroundings. A context-based
+    rule lets a real key through whenever it sits near the word "example".
+    """
+    if DUMMY_WHOLE.fullmatch(matched_text):
+        return True
+    return bool(DUMMY_WORDS.search(matched_text))
+
+
+def staged_files():
+    try:
+        out = subprocess.run(
+            ["git", "diff", "--cached", "--name-only", "--diff-filter=ACMR"],
+            capture_output=True, text=True, check=True,
+        ).stdout
+    except subprocess.CalledProcessError:
+        return []
+    return [f for f in out.split("\n") if f.strip()]
+
+
+def main():
+    hits = []
+    for path in staged_files():
+        if ALLOW.search(path):
+            continue
+        try:
+            with open(path, "r", encoding="utf-8", errors="ignore") as fh:
+                content = fh.read()
+        except OSError:
+            continue
+        for pat, label in PATTERNS:
+            for m in re.finditer(pat, content):
+                if is_dummy(m.group(0)):
+                    continue
+                line = content[: m.start()].count("\n") + 1
+                hits.append(f"  {path}:{line}  {label}  -> {m.group(0)[:18]}...")
+
+        for i, line in enumerate(content.splitlines(), 1):
+            hm = HEX_ASSIGNED.match(line)
+            if hm and not is_dummy(hm.group(1)):
+                hits.append(
+                    f"  {path}:{i}  raw hex credential  -> {hm.group(1)[:12]}..."
+                )
+
+            om = OPAQUE_ASSIGNED.match(line)
+            if om and not is_dummy(om.group(1)):
+                hits.append(
+                    f"  {path}:{i}  opaque credential  -> {om.group(1)[:12]}..."
+                )
+
+            # A bare KEY = / SEC = pair (GoDaddy's sso-key shape). The
+            # variable name is too short for the patterns above to see it.
+            bm = BARE_PAIR_ASSIGNED.match(line)
+            if bm and not is_dummy(bm.group(1)):
+                hits.append(
+                    f"  {path}:{i}  bare KEY/SEC credential  -> {bm.group(1)[:12]}..."
+                )
+
+    if hits:
+        print("\n🚫 COMMIT BLOCKED — credential(s) in staged files.")
+        print("This repo's remote is PUBLIC. Committing these would publish live credentials.")
+        print()
+        for h in hits:
+            print(h)
+        print()
+        print("Fix: move the credential into a secret store / Worker secret / untracked .env,")
+        print("     or rotate it first. Do not use --no-verify.")
+        return 1
+
+    # --- guard 2: a long-term memory file must not SILENTLY lose a section ---
+    #
+    # On 2026-10-23 a concurrent session rewrote MEMORY.md and it dropped
+    # every live P0 (CIIE badge, Blotato roster, Zatsepilov lead, GitHub PAT
+    # blocker, Saudi RFQ) while still being a syntactically valid file.
+    # "Build Hour" commits with `git add .`, so an unremarked rewrite would
+    # have been published to the public remote. The credential guard cannot
+    # see this class of loss, so it needs its own check.
+    if "MEMORY.md" in staged_files():
+        r = subprocess.run(
+            [sys.executable, "ops/memory-shrink-guard.py", "--staged"],
+            capture_output=True, text=True,
+        )
+        if r.returncode != 0:
+            sys.stdout.write(r.stdout)
+            sys.stderr.write(r.stderr)
+            return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

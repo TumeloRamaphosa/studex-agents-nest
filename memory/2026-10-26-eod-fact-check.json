@@ -1,0 +1,331 @@
+{
+  "scanned_at": "2026-10-26T22:0x:00Z",
+  "files": {
+    "sheet": {
+      "path": "/workspace/china-coffee-sheet-copy-paste.md",
+      "exists": true,
+      "claims": {
+        "GROWTH_145": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 222,
+              "snippet": "arison | | Market pull | African coffee exports to China **+145.7% YoY (Jan\u2013May 2026)**; China bought **$246M** of Afric"
+            }
+          ]
+        },
+        "BOOTH_PROMISE": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 259,
+              "snippet": "ys to the event** | | Action required | Apply at ciie.org \u2192 exhibitor registration \u2192 Food & Agriculture |  ---  ## TAB 5"
+            }
+          ]
+        },
+        "STALE_APPLY": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 258,
+              "snippet": " | Booth size needed | Minimum 9sqm | | Studex status | \ud83d\udd34 **NOT YET APPLIED \u2014 EMERGENCY, 11 days to the event** | | Acti"
+            }
+          ]
+        },
+        "DEADLINE_PASSED": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 255,
+              "snippet": "ciie.org | | Application deadline | ~September 30, 2026 \u2014 **PASSED. Late entry must be confirmed with the organiser toda"
+            }
+          ]
+        },
+        "HALL_STAND": {
+          "count": 0,
+          "samples": []
+        },
+        "PROWTC": {
+          "count": 5,
+          "samples": [
+            {
+              "line": 30,
+              "snippet": "2:** the subject lines and bullets below still contain > **\"PROWTC Certified\"** and **\"Rainforest Alliance certified\"**."
+            },
+            {
+              "line": 32,
+              "snippet": "oved from the coffee pages on 2026-10-21 as unsourced, and \"PROWTC\" is a *prospect's* brand, > not ours. **Fix both befo"
+            },
+            {
+              "line": 160,
+              "snippet": " > \u26a0\ufe0f **Certifications column.** \"Rainforest Alliance\" and \"PROWTC\" are placeholders here, NOT claims we > can make \u2014 se"
+            },
+            {
+              "line": 288,
+              "snippet": "RE YOU SEND \u2014 four things this file still gets wrong  1. **\"PROWTC Certified\" / \"Rainforest Alliance certified\" \u2014 remove"
+            }
+          ]
+        },
+        "RAINFOREST": {
+          "count": 5,
+          "samples": [
+            {
+              "line": 30,
+              "snippet": "bullets below still contain > **\"PROWTC Certified\"** and **\"Rainforest Alliance certified\"**. Per `PRICE-SOURCE-REGISTRY"
+            },
+            {
+              "line": 31,
+              "snippet": "document exists for any Studex coffee certification** \u2014 the Rainforest Alliance claim > was removed from the coffee page"
+            },
+            {
+              "line": 160,
+              "snippet": "partner decides which.** > > \u26a0\ufe0f **Certifications column.** \"Rainforest Alliance\" and \"PROWTC\" are placeholders here, NOT"
+            },
+            {
+              "line": 288,
+              "snippet": "ings this file still gets wrong  1. **\"PROWTC Certified\" / \"Rainforest Alliance certified\" \u2014 remove both.**    `studex-m"
+            }
+          ]
+        },
+        "WILDLIFE": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 296,
+              "snippet": " all of which we can evidence from the cupping table. 2. **\"Wildlife Verified\"** in the subject lines \u2014 same problem, sa"
+            }
+          ]
+        },
+        "STALE_PRICE_480": {
+          "count": 3,
+          "samples": [
+            {
+              "line": 20,
+              "snippet": "g green-equivalent, 24 Oct 2026). The July sheet quoted > **USD 4.80/kg** \u2014 a single legacy number, ~29% under the excha"
+            },
+            {
+              "line": 147,
+              "snippet": "e, stone fruit, clean finish | \u26a0\ufe0f see note below | 60kg | ~~USD 4.80~~ *(legacy)* | **6.07 \u2013 6.75** | 60kg bags | | Rwan"
+            },
+            {
+              "line": 297,
+              "snippet": "ix. 3. **The old price sentence** (\"FOB Kigali pricing from USD 4.80/kg\") \u2014 replaced in v2 with the live    band. See EM"
+            }
+          ]
+        },
+        "WINDOW_JUL20": {
+          "count": 3,
+          "samples": [
+            {
+              "line": 212,
+              "snippet": "any China-facing buyer conversation.** It replaces the old \"window opens July 20\" line, which was wrong on the date, wro"
+            },
+            {
+              "line": 217,
+              "snippet": "ed | |---|---|---|---| | Effective date | **1 May 2026** | \"window opens July 20\" | The window had been open for 4 month"
+            },
+            {
+              "line": 300,
+              "snippet": "d in v2 with the live    band. See EMAIL 1 below. 4. **The \"window opens July 20 / SA-China bilateral agricultural proto"
+            }
+          ]
+        },
+        "CO_CITATION": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 89,
+              "snippet": "(HS code + FOB value), bill of lading, packing list \u2014 and a Certificate of Origin that **explicitly cites China's zero-t"
+            }
+          ]
+        },
+        "ROASTED_ORIGIN": {
+          "count": 2,
+          "samples": [
+            {
+              "line": 85,
+              "snippet": "t the ICE Arabica C benchmark - Minimum order: 60kg bags  **Roasting at origin available.** Green and roasted both enter"
+            },
+            {
+              "line": 229,
+              "snippet": "nlike South Africa's, which expires 30 April 2028.\"*  ### \ud83d\udce6 Roasting at origin \u2014 the revenue line still missing from the"
+            }
+          ]
+        },
+        "LDC_NO_EXPIRY": {
+          "count": 7,
+          "samples": [
+            {
+              "line": 8,
+              "snippet": "tocol\" (which does not > exist); and because **Rwanda is an LDC origin our zero-tariff treatment has NO expiry**, while "
+            },
+            {
+              "line": 74,
+              "snippet": "hich previously carried 8\u201315% duty.  Because **Rwanda is an LDC (Least Developed Country) origin, that zero-tariff treat"
+            },
+            {
+              "line": 74,
+              "snippet": "ral advantage, and it applies to our lots specifically. Non-LDC African origins (South Africa, Kenya, Nigeria, Egypt) on"
+            },
+            {
+              "line": 219,
+              "snippet": "at one is a credibility hit | | Our origin | **Rwanda is an LDC \u2014 zero tariff has NO expiry** | *(never mentioned)* | We"
+            }
+          ]
+        }
+      }
+    },
+    "outreach": {
+      "path": "/workspace/china-coffee-outreach.md",
+      "exists": true,
+      "claims": {
+        "GROWTH_145": {
+          "count": 0,
+          "samples": []
+        },
+        "BOOTH_PROMISE": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 186,
+              "snippet": "collateral, business cards  **Action:** Apply at ciie.org \u2192 exhibitor registration \u2192 select South Africa country pavilio"
+            }
+          ]
+        },
+        "STALE_APPLY": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 176,
+              "snippet": " ## CIIE NOVEMBER 2026 \u2014 BOOTH APPLICATION  **Status:** \ud83d\udd34 **NOT YET APPLIED \u2014 EMERGENCY.** The ~30 September 2026 deadli"
+            }
+          ]
+        },
+        "DEADLINE_PASSED": {
+          "count": 0,
+          "samples": []
+        },
+        "HALL_STAND": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 179,
+              "snippet": "** ciie.org **Section:** Food & Agricultural Products Hall (Hall 8.2 or similar)  **Booth package needed:** - Minimum 9s"
+            }
+          ]
+        },
+        "PROWTC": {
+          "count": 2,
+          "samples": [
+            {
+              "line": 35,
+              "snippet": "h/2026-10-24-price-reality-check.md`. > > **Credentials:** \"PROWTC Certified\", \"Rainforest Alliance certified\" and \"Wild"
+            },
+            {
+              "line": 38,
+              "snippet": "ed > from the coffee pages on 2026-10-21 as unsourced, and \"PROWTC\" is a *prospect's* brand, not ours. > These lines wer"
+            }
+          ]
+        },
+        "RAINFOREST": {
+          "count": 2,
+          "samples": [
+            {
+              "line": 35,
+              "snippet": "eality-check.md`. > > **Credentials:** \"PROWTC Certified\", \"Rainforest Alliance certified\" and \"Wildlife Verified\" have "
+            },
+            {
+              "line": 37,
+              "snippet": "document exists for any Studex coffee certification** \u2014 the Rainforest Alliance claim was stripped > from the coffee pag"
+            }
+          ]
+        },
+        "WILDLIFE": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 35,
+              "snippet": "** \"PROWTC Certified\", \"Rainforest Alliance certified\" and \"Wildlife Verified\" have been > **removed from the subject li"
+            }
+          ]
+        },
+        "STALE_PRICE_480": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 29,
+              "snippet": "ess a specialty differential. The old copy > quoted **\"from USD 4.80/kg\"** \u2014 a legacy number ~29% under the exchange com"
+            }
+          ]
+        },
+        "WINDOW_JUL20": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 6,
+              "snippet": "RE SENDING.** > > The old opening line said *\"a rare market window opens July 20 \u2014 South African green coffee > gains ac"
+            }
+          ]
+        },
+        "CO_CITATION": {
+          "count": 2,
+          "samples": [
+            {
+              "line": 20,
+              "snippet": "irrevocable LC** line added to the first-touch email; the **Certificate of Origin > requirement** added; and a **roasted"
+            },
+            {
+              "line": 93,
+              "snippet": "(HS code + FOB value), bill of lading, packing list \u2014 and a Certificate of Origin that **explicitly cites China's zero-t"
+            }
+          ]
+        },
+        "ROASTED_ORIGIN": {
+          "count": 1,
+          "samples": [
+            {
+              "line": 89,
+              "snippet": "t the ICE Arabica C benchmark - Minimum order: 60kg bags  **Roasting at origin available.** Green and roasted both enter"
+            }
+          ]
+        },
+        "LDC_NO_EXPIRY": {
+          "count": 5,
+          "samples": [
+            {
+              "line": 12,
+              "snippet": "es); and the origin that governs our lots > (**Rwanda is an LDC, so our zero-tariff treatment has NO expiry** \u2014 unlike S"
+            },
+            {
+              "line": 48,
+              "snippet": "## BUYER TARGET LIST \u2014 China Coffee (permanent zero-tariff, LDC origin)  | Company | Contact Type | Website | Priority |"
+            },
+            {
+              "line": 78,
+              "snippet": "hich previously carried 8\u201315% duty.  Because **Rwanda is an LDC (Least Developed Country) origin, that zero-tariff treat"
+            },
+            {
+              "line": 78,
+              "snippet": "ral advantage, and it applies to our lots specifically. Non-LDC African origins (South Africa, Kenya, Nigeria, Egypt) on"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "manifest_pages": 14,
+  "artefacts": {
+    "builds/2026-10-26.md": {
+      "exists": false,
+      "size": 0
+    },
+    "research/2026-10-26.md": {
+      "exists": true,
+      "size": 21721
+    },
+    "memory/2026-10-26.md": {
+      "exists": true,
+      "size": 114170
+    }
+  }
+}

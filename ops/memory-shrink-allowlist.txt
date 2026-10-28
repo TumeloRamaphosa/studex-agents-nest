@@ -1,0 +1,2 @@
+# Sections deliberately dropped from MEMORY.md, one title per line.
+# Each line here is an explicit, human decision to remove that section.

@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-10-28T06:55:06.506Z",
+  "product": "biltong-gold-1kg",
+  "productName": "Wagyu Biltong Gold — 1kg",
+  "category": "biltong",
+  "price": "R1,450",
+  "status": "POSTED_VIA_FALLBACK",
+  "blocker": "Facebook 190: Error validating access token: Session has expired on Saturday, 27-Jun-26 05:00:00 PDT. The current time is Tuesday, 27-Oct-26 23:55:39 PDT.",
+  "postTo": {
+    "platform": "facebook",
+    "pageId": "108934711902801",
+    "pageName": "Studex Meat"
+  },
+  "caption": "You know the heartbreak of reaching into the cupboard and finding the biltong finished? We've fixed that. Our Wagyu Biltong Gold 1kg box (R1,450) comes as fourteen 70g resealable packets, so it stays fresh on the counter, packs cleanly for the road trip, and never leaves a mess in the car. It's the stocking-up staple South Africans swear by, and the gift that earns you legend status at any braai. Keep a few packets at work, a few at home, and a few hidden where nobody else can find them — because once the family knows it's there, it won't last the week. One box, fourteen little victories, delivered straight to your door anywhere in SA. So tell us: where would you stash yours, or is this one going straight to someone special?\n\n#biltong #wagyubiltong #southafrica #gourmetgifts #studex",
+  "media": {
+    "image": "https://agent-cdn.minimax.io/mcp/cdn_upload/364053150926602246/376428811559175/1793146771_07631fde.png"
+  },
+  "fallback": {
+    "posted": [
+      "threads"
+    ],
+    "failed": [
+      "linkedin:422"
+    ],
+    "attemptedAt": "2026-10-28T06:59:23.435Z"
+  }
+}

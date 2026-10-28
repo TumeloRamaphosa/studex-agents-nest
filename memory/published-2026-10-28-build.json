@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-28",
+  "pillar": "Build",
+  "results": {
+    "posted": [
+      "instagram",
+      "threads"
+    ],
+    "failed": [
+      "facebook",
+      "linkedin"
+    ]
+  },
+  "posted": [
+    "instagram",
+    "threads"
+  ],
+  "at": "2026-10-28T13:28:28.453700+02:00"
+}

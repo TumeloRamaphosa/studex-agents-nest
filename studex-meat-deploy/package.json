@@ -1,0 +1,11 @@
+{
+  "name": "studex-meat-deploy",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && echo 'static site built into dist/'",
+    "preview": "node -e \"console.log('static output in dist/')\""
+  }
+}

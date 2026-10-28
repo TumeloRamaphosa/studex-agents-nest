@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-25T06:55:03.601Z",
+  "product": "coffee-roasted-washed",
+  "productName": "Roasted Coffee — Washed (Wet Process)",
+  "category": "coffee",
+  "price": "R400/kg",
+  "status": "APPROVED_PENDING_FB_TOKEN",
+  "blocker": "Facebook 190: Error validating access token: Session has expired on Saturday, 27-Jun-26 05:00:00 PDT. The current time is Saturday, 24-Oct-26 23:55:54 PDT.",
+  "postTo": {
+    "platform": "facebook",
+    "pageId": "108934711902801",
+    "pageName": "Studex Meat"
+  },
+  "caption": "Some mornings deserve better than instant. Our washed-process roasted coffee is clean, bright and chocolate-forward, the kind of cup that makes you close your eyes on that first sip. Roasted right here in South Africa and shipped worldwide, it's available per kilogram at R400/kg for home brewers, with trade orders welcome from 50kg if you're stocking a café or office. It's the brew our own team reaches for before the biltong knives even come out, smooth, honest and proudly local. Fancy a proper cup? Order your kilo today, or drop a comment and tell us how you take yours, black, flat white or something with a little more flair? #washedcoffee #southafricancoffee #specialtycoffee #coffeelovers #studex"
+}

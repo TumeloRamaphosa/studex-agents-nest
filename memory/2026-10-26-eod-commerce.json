@@ -1,0 +1,21 @@
+{
+  "storefront": {
+    "status": 200,
+    "products": 30
+  },
+  "shopify_admin": {
+    "status": 401,
+    "body": "{\"errors\":\"[API] Invalid API key or access token (unrecognized login or wrong password)\"}"
+  },
+  "blotato": {
+    "status": 200,
+    "count": 0,
+    "posts": []
+  },
+  "ledgers": [
+    {
+      "path": "studex-os/delivery-state.json",
+      "orders": 0
+    }
+  ]
+}

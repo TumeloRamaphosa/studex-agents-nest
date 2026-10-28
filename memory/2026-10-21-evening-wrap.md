@@ -1,0 +1,9 @@
+# CEO Evening Wrap — 2026-10-21, 20:00 SAST (18:05 UTC)
+
+**Best thing today:** catching our own outbound lie before a Chinese buyer did. The CIIE nurture sequence had sent **29 emails to 12 real buyers** promising a CIIE meeting that never happened, claiming a PROWTC certification that is not ours, an unverified "Rainforest Alliance" cert, per-kg prices for a per-MT product, a dead catalogue link, and two fabricated prospects' interest. Both senders are now **disabled with a sender safety switch**, the copy lives in one place, and a checker renders every email and scans it against **43 rules** before anything can send. Also today: 5 live customer sites shipped, a drift checker (10 pages / 10 clean / 0 drift) wired to the price registry, and a research brief proving our China coffee pricing is correctly placed while our caviar is structurally single-sourced on Russia.
+
+**Orders:** 0 confirmed, **no visibility** — Shopify Admin token re-verified INVALID (401) at 18:05 UTC. Storefront `studexmeat.com` live (429 = rate-limit, serving). No order ledger created yet; WhatsApp intake routes to a personal line, off-system.
+
+**Tomorrow's first three:** (1) Saudi RFQ sign-off — 36 days waiting, ask Katjana for exact line items; (2) CIIE visitor badge payment — **deadline Fri 23 Oct 16:00 UTC**, pay Thursday; (3) create the manual order ledger + live-test WhatsApp intake before Kigali (28–30 Oct).
+
+**Still open:** unverified "Rainforest Alliance certified" on the live China page + `ciie-buyer-brief` (PROWTC still in that file) · caviar "7–14 day import lead" wording vs DAFF's 4-week permit · GitHub PAT expired (21+ commits unpushed) · Meta + Shopify + FeedHive tokens dead · Zatsepilov reply 8 weeks silent (and may not exist — check Gmail) · two decisions for Tumelo: certification status, and the Russia/caviar position.

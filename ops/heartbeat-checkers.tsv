@@ -1,0 +1,63 @@
+# CANONICAL HEARTBEAT CHECKER REGISTRY
+#
+# This file is the SINGLE source of truth for which checkers belong to the
+# recurring heartbeat pass. The runner (ops/run-heartbeat-checks.py) reads it,
+# and ops/test-heartbeat-registry.py enforces it.
+#
+# WHY A REGISTRY: the orphaned-publisher bug (2026-10-26) was structural.
+# `blotato-fallback.js` had no cron, no checklist entry, and nothing invoked
+# it - so it did nothing for days. Later the SAME shape was found again:
+# `ops/dead-inbox-check.py` was a working, tested checker that HEARTBEAT.md
+# named NOWHERE. A checker on disk that no pass runs is a comment, not a
+# control. So: every checker file in ops/ MUST appear below, classified as
+# PASS (runs every pass) or SCOPE (deliberately not recurring, with a reason).
+# A new checker that nobody classified FAILS the suite. That is the point.
+#
+# COLUMNS (pipe-separated, one checker per line):
+#   name      | short id used in the runner's summary
+#   path      | path relative to the repo root
+#   scope     | PASS = runs every heartbeat pass
+#              | SCOPE = deliberately not recurring (a reason is REQUIRED)
+#   contract  | exit codes: 0=clean, 1=finding, 2=could-not-prove, - = n/a
+#   known     | yes = a non-zero here is an ALREADY-ESCALATED condition
+#   purpose   | one line: what this checker actually checks
+#   reason    | required when scope=SCOPE; blank otherwise
+#
+# name | path | scope | contract | known | purpose | reason
+drift | ops/drift-check.py | PASS | 0,1,2 | no | live pages vs the registry that owns them |
+price-on-feed | ops/check-price-on-feed.py | PASS | 0,1,2 | yes | rule [10]: no price on a public feed |
+staged-publish | ops/check-staged-publish.py | PASS | 0,1,- | yes | staged captions that never reached any platform |
+cost-model | ops/check-cost-model-exposure.py | PASS | 0,1,2 | yes | a public page leaking our cost model |
+tmp-surface | ops/tmp-shape-surface-audit.py | PASS | 0,3,- | no | credential literals under /tmp |
+tracked-creds | ops/check-tracked-live-credentials.py | PASS | 0,1,- | no | live credential literals in tracked files |
+dead-inbox | ops/dead-inbox-check.py | PASS | 0,1,- | no | code referencing a mailbox nobody can read |
+mail | ops/check-latest-mail.py | PASS | 0,-,2 | no | newest inbound AgentMail message |
+scanner-log | ops/check-scanner-log-exposure.py | PASS | 0,1,- | no | live credential literals in the gateway log, the cron run history, the session transcripts AND the agent's memory database |
+cron-payload-claims | ops/check-cron-payload-claims.py | PASS | 0,1,- | no | no cron payload hardcodes a system-status claim |
+cron-times | ops/check-cron-times.py | PASS | 0,1,- | no | every cron job fires when its own name promises |
+client-secret | ops/check-client-secret-exposure.py | PASS | 0,1,- | no | a browser bundle can hold a secret |
+leak-sources | ops/check-leak-sources.py | PASS | 0,1,- | no | which files and scripts can still leak a credential value |
+discord-credential | ops/check-discord-credential-exposure.py | PASS | 0,1,2 | no | a live credential literal in a Discord message we posted |
+public-exposure | ops/check-public-exposure.py | PASS | 0,1,2 | yes | a credential that still authenticates is reachable from the public remote |
+blotato-placement | ops/check-blotato-placement.py | SCOPE | 0,-,- | no | one-off diagnostic: where the live Blotato key lives on disk | forensic, not a standing condition - run it when investigating a Blotato finding, not every pass
+catalog | ops/check-catalog.py | SCOPE | 0,-,- | no | one-off content-catalog audit plus a Perplexity probe | audits a specific catalog state that only changes on a deliberate rebuild
+content-agent | ops/check-content-agent.py | SCOPE | 0,-,- | no | one-off LLM-provider probe and timeout tuning for the content agent | a repair tool for a specific incident, not a standing control
+surfaced-candidates | ops/check-surfaced-candidates.py | SCOPE | 0,-,- | no | checks three specific credential-shaped candidates from one scan | the candidates are a closed set from a past scan; resolving them is a project, not a check
+surfaced-candidates-live | ops/check-surfaced-candidates-live.py | SCOPE | 0,-,- | no | liveness-probes two remaining surfaced candidates | a one-time liveness resolution of a closed set
+pre-push-guard | ops/check-pre-push-guard.py | PASS | 0,1,2 | no | the pre-push guard that stops a live credential being published to the public repo is installed and matches its source |
+git-index | ops/check-git-index.py | PASS | 0,1,2 | no | the git index is intact and consistent with HEAD - an emptied index makes every tracked file look staged for deletion |
+blotato-fragments | ops/audit-blotato-fragments.py | PASS | 0,1,2 | yes | a fragment of the LIVE Blotato key sits in tracked source | it closes a DOCUMENTED blind spot in check-tracked-live-credentials.py, whose regex is prefix-anchored and cannot see a split or wrapped key; it was an ORPHAN until 2026-10-27, which is how the fragment footprint went untracked. Known escalation because the full key is already published in the public remote - ROTATION is the fix and only Tumelo can rotate a credential
+cred-resolution | ops/credential-resolution-check.py | PASS | 0,1,- | no | a credential reference in tracked source that does not resolve, or a hardcoded credential | the language-aware SHAPE checker, complementary to check-tracked-live-credentials.py which asks the VALUE question. The 2026-10-24 incident was exactly the case where the shape checker said CLEAN over 4202 files holding 10 live credentials, so the value checker was added - running only one of the pair is how it happened
+preflight-daily-post | ops/preflight-daily-post.py | SCOPE | 0,1,- | no | the 09:00 publish and the path-B fallback caption | it is the GATE, not a checker: the 08:00 and 09:20 crons run it via scripts/preflight-cron.sh and its cron instruction is "if it exits 0, do NOTHING". It is deliberately outside the pass because the pass must not post to Discord
+git-pre-push-hook | ops/git-pre-push-guard.py | SCOPE | 0,1,- | no | blocks a push that would expose a credential | it is invoked by GIT as a pre-push hook, not by the pass - git is its runner. The suite exercises it via ops/test-git-pre-push-guard.py
+memory-shrink-guard | ops/memory-shrink-guard.py | SCOPE | 0,1,- | no | a long-term memory file silently loses a committed section | a guard the SUITE runs (ops/run-tests.sh), not a pass checker; it needs a stable git index, which the pass does not guarantee
+eod-blotato | ops/eod-blotato-check.py | SCOPE | 0,1,2 | yes | end-of-day Blotato state | a one-off end-of-day diagnostic on its own schedule
+probe-blotato-posts | ops/probe-blotato-posts.py | SCOPE | 0,1,2 | no | read-only listing of published Blotato posts | an ad-hoc read-only probe, run by hand when a post needs to be located
+probe-live-bundles | ops/probe-live-bundles.py | SCOPE | 0,1,2 | no | read-only listing of live bundles | an ad-hoc read-only probe
+probe-providers | ops/probe-providers.py | SCOPE | 0,1,2 | no | which LLM providers answer | a one-off provider probe from 2026-08; superseded by ops/check-content-agent.py
+probe-providers2 | ops/probe-providers2.py | SCOPE | 0,1,2 | no | which LLM providers answer (second pass) | a one-off provider probe from 2026-08; superseded by ops/check-content-agent.py
+probe-shopify-admin | ops/probe-shopify-admin.py | SCOPE | 0,1,2 | no | read-only Shopify Admin check | an ad-hoc read-only probe used when a storefront price is in doubt
+heartbeat-legacy | ops/heartbeat-check.py | SCOPE | 0,1,2 | no | the pre-registry consolidated heartbeat check | SUPERSEDED by ops/run-heartbeat-checks.py, which is the canonical pass; kept for history only
+patch-correction-scan | ops/patch-correction-scan.py | SCOPE | 0,1,2 | no | scans a correction patch for unapplied changes | a one-off patch audit; not a control because it only means something against one specific patch
+patch-draft-scan | ops/patch-draft-scan.py | SCOPE | 0,1,2 | no | scans a draft patch for unapplied changes | a one-off patch audit; not a control because it only means something against one specific patch
+secret-leak-scan | ops/secret_leak_scan.py | SCOPE | 0,1,2 | no | credential-shaped literals in browser-served assets | it is a LIBRARY imported by ops/drift-check.py, which runs it as the "Secret leak scan" step - it has no standalone entry point of its own

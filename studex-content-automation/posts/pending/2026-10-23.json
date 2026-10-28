@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-23T06:55:28.614Z",
+  "product": "wagyu-ribeye",
+  "productName": "Wagyu Ribeye Steak",
+  "category": "wagyu",
+  "price": "From R1,950",
+  "status": "APPROVED_PENDING_FB_TOKEN",
+  "blocker": "Facebook 190: Error validating access token: Session has expired on Saturday, 27-Jun-26 05:00:00 PDT. The current time is Thursday, 22-Oct-26 23:56:11 PDT.",
+  "postTo": {
+    "platform": "facebook",
+    "pageId": "108934711902801",
+    "pageName": "Studex Meat"
+  },
+  "caption": "Some steaks are dinner. This one is the whole occasion. Our Wagyu ribeye carries the deepest marbling in our range — marbling grade 5 — and it's cut for the home cook chasing a restaurant result at their own table. From R1,950, it's the steak you bring out when the promotion lands, when the in-laws visit, or when an ordinary Saturday in Mzansi deserves something extraordinary. Sear it hot, rest it well, and let that marbling do all the talking — no fancy chef tricks needed. Not sure how much to order? Ask us for the portion size that suits your table and we'll sort you out. So tell us — who's searing one this weekend? Tag the steak lover who owes you a proper dinner.\n\n#wagyu #steaklovers #studex #southafricanfood #gourmetathome"
+}

@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-26T06:55:06.232Z",
+  "product": "bundle-fire-feast",
+  "productName": "Fire & Feast Box",
+  "category": "bundles",
+  "price": "R999",
+  "status": "APPROVED_PENDING_FB_TOKEN",
+  "blocker": "Facebook 190: Error validating access token: Session has expired on Saturday, 27-Jun-26 05:00:00 PDT. The current time is Sunday, 25-Oct-26 23:55:31 PDT.",
+  "postTo": {
+    "platform": "facebook",
+    "pageId": "108934711902801",
+    "pageName": "Studex Meat"
+  },
+  "caption": "Some gifts get opened. This one gets remembered. The Fire & Feast Box is our ultimate braai-in-a-box: premium biltong, our famous biltong gold and a melt-in-your-mouth Wagyu cut, all packed together for R999. It's the kind of gift that lands, whether it's a birthday, a thank-you, or that mate who finally invited you over for a braai. Picture it: coals going, biltong doing the rounds while the Wagyu sizzles, and everyone asking where you got it. That's proper SA braai culture in one box, packed with care and delivered straight to your door. One box, every premium taste. So who are you surprising with a Fire & Feast Box this weekend? Tag them below and grab yours at the link in bio before they're gone.\n\n#biltong #wagyu #braai #southafrica #giftideas"
+}

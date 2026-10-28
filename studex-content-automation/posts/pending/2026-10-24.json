@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-24T06:55:11.010Z",
+  "product": "caviar-oscietra",
+  "productName": "Oscietra Imperial Caviar",
+  "category": "caviar",
+  "price": "R4,200 per 100g",
+  "status": "APPROVED_PENDING_FB_TOKEN",
+  "blocker": "Facebook 190: Error validating access token: Session has expired on Saturday, 27-Jun-26 05:00:00 PDT. The current time is Friday, 23-Oct-26 23:55:42 PDT.",
+  "postTo": {
+    "platform": "facebook",
+    "pageId": "108934711902801",
+    "pageName": "Studex Meat"
+  },
+  "caption": "Some moments deserve more than champagne. Our Oscietra Imperial Caviar is the aristocrat of the sea — deep, nutty, with a clean finish and that unmistakable pop that turns a quiet evening into a proper occasion. Whether you're plating up for a milestone celebration in Joburg, spoiling someone special in Cape Town, or simply treating yourself because it's Tuesday, this is the tin that says you've arrived. At R4,200 per 100g, it's an indulgence best savoured slowly, ideally on a mother of pearl spoon with good company and something cold in the glass. Trade buyers, we see you too — R34,000/kg. Proudly delivered across South Africa by Studex. So tell us, how would you serve yours: classic blinis, or straight off the spoon? Drop your answer in the comments below.\n\n#oscietracaviar #studexsa #luxuryfood #southafrica #gourmetgifts"
+}

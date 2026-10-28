@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-27T06:55:07.792Z",
+  "product": "biltong-wagyu-luxury",
+  "productName": "Luxury Wagyu Biltong",
+  "category": "biltong",
+  "price": "From R650",
+  "status": "APPROVED_PENDING_FB_TOKEN",
+  "blocker": "Facebook 190: Error validating access token: Session has expired on Saturday, 27-Jun-26 05:00:00 PDT. The current time is Monday, 26-Oct-26 23:55:34 PDT.",
+  "postTo": {
+    "platform": "facebook",
+    "pageId": "108934711902801",
+    "pageName": "Studex Meat"
+  },
+  "caption": "Some things in life are worth slowing down for, and our Luxury Wagyu Biltong is one of them. We take premium Wagyu beef, dry-cure it with salt, coriander and vinegar, then slow-air-dry it the traditional South African way until the flavour runs deep and the texture is beautifully firm. It's the biltong that elevates a Sunday braai, a long road trip or a quiet glass of red into something properly special. Our regulars tell us one pack is never enough, which is why it comes in 500g and 1kg sizes. From R650, it's a little taste of luxury, proudly made for Mzansi and delivered straight to your door. So tell us, are you a 500g taster or a 1kg committer? Drop your answer in the comments below, we love hearing how South Africa snacks.\n\n#biltong #wagyu #southafrica #gourmetfood #studex"
+}

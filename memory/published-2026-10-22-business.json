@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-22",
+  "pillar": "Business",
+  "results": {
+    "posted": ["instagram", "threads"],
+    "failed": ["facebook", "linkedin"]
+  },
+  "note": "Published via Blotato at 21:15 UTC 2026-10-22. Facebook (38744) and LinkedIn (26628) Blotato account connections expired - need reconnect. Marker written so a re-run does not double-post."
+}

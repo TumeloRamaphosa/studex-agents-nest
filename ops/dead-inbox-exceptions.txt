@@ -1,0 +1,95 @@
+# Deliberate references to an address that is NOT reachable.
+# Format: <address>|<path-glob>
+#
+# An address may appear in a code file ONLY if it is on the live allowlist
+# (ops/live-inbox-allowlist.txt) OR listed here for THAT EXACT FILE.
+# The exception is per-file on purpose: a watcher may deliberately watch a
+# dead address so we can DETECT it - but the same address appearing in a
+# live sending path is a bug, and this file makes that difference enforceable.
+#
+# --- healthyprocess394@agentmail.to : UNREACHABLE (re-probed 2026-10-26) ---
+# It WAS on the live allowlist and is now 404 on every key we hold
+# (not listed by any key; direct GET 404 on both main and CIIE). The
+# allowlist claimed it was reachable - that claim was false and would have
+# let a send land somewhere nobody can read.
+healthyprocess394@agentmail.to|scripts/standup-1022.py
+
+# --- studex-2571@agentmail.to : LIVE again (re-probed 2026-10-26) -------
+# Was 404 on every key on 2026-10-24. Now 200 on the MAIN key, so it is
+# on ops/live-inbox-allowlist.txt and the entries below are inert. They are
+# KEPT deliberately: if it dies again, these watchers must still be allowed
+# to name it, so the outage stays detectable instead of becoming a new
+# class of silent bug.
+studex-2571@agentmail.to|scripts/agentmail_watch.py
+studex-2571@agentmail.to|scripts/check-send-inbox.py
+studex-2571@agentmail.to|scripts/verify-ciii-breach-count.py
+studex-2571@agentmail.to|scripts/standup-1022.py
+studex-2571@agentmail.to|ops/test-badge-sweep-coverage.py
+# Comments documenting the 404, so the next reader knows why.
+studex-2571@agentmail.to|orchestrix/start-war.sh
+studex-2571@agentmail.to|orchestrix/start-warroom.py
+studex-2571@agentmail.to|studex-email-warmup/index.js
+studex-2571@agentmail.to|sa-b2b-coffee-outreach/send.js
+studex-2571@agentmail.to|studex-lead-proxy/wrangler.toml
+#
+# --- naledi.cmo@studex-group.com : dead, dotted. Live one is naledi-cmo@ ---
+naledi.cmo@studex-group.com|ops/test-badge-sweep-coverage.py
+naledi.cmo@studex-group.com|scripts/agentmail_watch.py
+# A test that asserts the inventory stays honest about this address, so it
+# names it on purpose - the thing under test is the claim, not the address.
+naledi.cmo@studex-group.com|ops/test-agentmail-inventory.py
+#
+# --- charlie@agent.studexmeat.com : no DNS ever configured ---
+# A status panel that correctly REPORTS it as dead. This is the reference
+# working as intended - removing it would hide a real outage.
+charlie@agent.studexmeat.com|discord-ops-bot/src/index.js
+charlie@agent.studexmeat.com|discord-ops-bot/src/sendSummary.js
+charlie@agent.studexmeat.com|orchestrix/start-war.sh
+charlie@agent.studexmeat.com|orchestrix/start-warroom.py
+# A tracked TODO that asks for the DNS to be set - it names the address on
+# purpose, as the thing to be fixed.
+charlie@agent.studexmeat.com|studex-war-room-ui/src/CaviarTab.tsx
+# The drift manifest lists it as an EXPECTED string that must not appear on a
+# published page - a denylist entry, which is the opposite of a contact.
+charlie@agent.studexmeat.com|ops/drift-manifest.json
+# Scripts that name the forbidden claim on purpose, so the guard can catch it.
+charlie@agent.studexmeat.com|ops/fix-spa-forbidden-claims.py
+ceo@agent.studexmeat.com|ops/fix-spa-forbidden-claims.py
+charlie@agent.studexmeat.com|ops/patch-spa-checking.py
+ceo@agent.studexmeat.com|ops/patch-spa-checking.py
+charlie@agent.studexmeat.com|ops/point-registry-at-new-spa-urls.py
+ceo@agent.studexmeat.com|ops/point-registry-at-new-spa-urls.py
+charlie@agent.studexmeat.com|scripts/add-leak-incident.py
+ceo@agent.studexmeat.com|scripts/add-leak-incident.py
+# A one-off script that probes the known-dead addresses to report on them.
+charlie@agent.studexmeat.com|scripts/final-check.py
+ceo@agent.studexmeat.com|scripts/final-check.py
+naledi@agent.studexmeat.com|scripts/final-check.py
+#
+# --- studexgroup@agentmail.to : dead, and only ever a doc comment ---
+# The schema column's comment shows the shape of an inbox address. The value
+# is illustrative, not a route. The LIVE poll that used it was fixed.
+studexgroup@agentmail.to|**/war-room/shared/schema.ts
+#
+# --- team@agentmail.to : dead, and only ever a test fixture ---
+team@agentmail.to|**/war-room/server/__tests__/routes.test.ts
+#
+# --- dmarc@send.studexmeat.com : an RFC 7489 aggregate-report mailbox ---
+# This is a DMARC `rua=` destination, not a person. It is never mailed by us.
+dmarc@send.studexmeat.com|studex-os/godaddy-fix-emails.py
+#
+# --- letsencrypt@studexmeat.com : an ACME account, not a mailbox ---
+letsencrypt@studexmeat.com|wwe-hub/clickclack-deploy.sh
+#
+# --- Nostr identities (NIP-05 style), not mailboxes ---
+# These are key identifiers for the Nostr relay tooling. Nothing sends to them.
+president-robusca@studex-group.com|nostr-keys/generate.js
+openclaw@studex-group.com|nostr-keys/generate.js
+goose@studex-group.com|nostr-keys/generate.js
+cashclaw@studex-group.com|nostr-keys/generate.js
+support@studex-group.com|nostr-keys/generate.js
+#
+# --- historical standup recipients (one-shot script from 10-22) ---
+tumoragencies@agentmail.to|scripts/standup-1022.py
+phiri@agentmail.to|scripts/standup-1022.py
+charlie@agent.studexmeat.com|studex-war-room-ui/dist/assets/*.js

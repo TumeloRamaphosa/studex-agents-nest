@@ -1,0 +1,30 @@
+[
+  {
+    "platform": "facebook",
+    "accountId": "38744",
+    "ok": false,
+    "status": 422,
+    "body": "{\"message\":\"Account connection has expired. Please reconnect your account.\",\"code\":5002}"
+  },
+  {
+    "platform": "instagram",
+    "accountId": "76978",
+    "ok": true,
+    "status": 201,
+    "body": "{\"postSubmissionId\":\"39c611a9-b138-4ff9-ac2f-4d22249076e2\"}"
+  },
+  {
+    "platform": "linkedin",
+    "accountId": "26628",
+    "ok": false,
+    "status": 422,
+    "body": "{\"message\":\"Account connection has expired. Please reconnect your account.\",\"code\":5002}"
+  },
+  {
+    "platform": "threads",
+    "accountId": "7701",
+    "ok": true,
+    "status": 201,
+    "body": "{\"postSubmissionId\":\"0167ac43-66de-475d-9422-052ea8d791d3\"}"
+  }
+]

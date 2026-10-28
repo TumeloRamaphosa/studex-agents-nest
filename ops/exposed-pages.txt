@@ -1,0 +1,6 @@
+# Live pages that MUST NOT EXIST - public URLs that leak our internal cost model.
+# Format: <slug-or-url> <TAB> <reason>
+# Checked by ops/check-cost-model-exposure.py -> exit 1 = EXPOSED, 2 = UNCHECKED.
+# NOT a blocking gate in run-tests.sh: the state is unfixable from this host, and a
+# permanently-red scheduled build is a self-inflicted outage. See registry section 4k.
+awyjxfplygag.space.mcode.io	caviar trade desk - superseded by the price reference desk; publishes farm-gate cost, landed cost, margin floor, the superseded hardcoded FX and our trade prices. DELETE the deploy.

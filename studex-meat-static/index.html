@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StudEx Meat — Biltong &amp; Specialty Coffee from Africa</title>
+<meta name="description" content="Premium South African biltong and Rwandan specialty coffee. Wholesale, distribution, creator partnerships and direct trade. Cape Town & Kigali." />
+<meta property="og:title" content="StudEx Meat — Biltong & Specialty Coffee from Africa" />
+<meta property="og:description" content="Premium South African biltong and Rwandan specialty coffee — sourced with purpose, roasted to order, shipped worldwide." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --gold:#C9A84C; --gold-light:#E8C86B; --gold-dark:#9A7A2E;
+    --black:#0A0A0A; --dark:#111111; --card:#171717; --card-2:#1A1A1A;
+    --border:#222; --border-light:#2E2A20; --white:#FAFAF8; --muted:#8B8B8B; --dim:#5A5A5A;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  .label{font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .h2{font-size:clamp(26px,4.2vw,44px);font-weight:900;line-height:1.1;letter-spacing:-1px;margin-bottom:20px}
+  .h2 em{font-style:normal;color:var(--gold)}
+  .sub{color:var(--muted);font-size:16px;line-height:1.8;max-width:640px}
+  .btn{display:inline-block;padding:15px 34px;border-radius:3px;font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:1px solid transparent;transition:.2s}
+  .btn-gold{background:var(--gold);color:var(--black)}
+  .btn-gold:hover{background:var(--gold-light)}
+  .btn-line{border-color:var(--border-light);color:var(--white)}
+  .btn-line:hover{border-color:var(--gold);color:var(--gold)}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:10px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:20px 32px;max-width:1120px;margin:0 auto}
+  .logo{font-size:20px;font-weight:900;letter-spacing:-.5px}
+  .logo .g{color:var(--gold)}
+  .logo .d{color:#333}
+  .nav-links{display:flex;gap:30px}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px}
+  .nav-links a:hover{color:var(--gold)}
+
+  /* HERO */
+  .hero{text-align:center;padding:110px 32px 90px;background:radial-gradient(ellipse at top,rgba(201,168,76,.13) 0%,#0A0A0A 68%)}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:99px;padding:7px 18px;font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--gold);margin-bottom:30px}
+  .hero h1{font-size:clamp(38px,6.5vw,74px);font-weight:900;line-height:1.03;letter-spacing:-2.5px;margin-bottom:24px}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p{font-size:18px;color:var(--muted);max-width:580px;margin:0 auto 38px;line-height:1.7}
+  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* PRODUCTS */
+  .products{padding:90px 32px}
+  .prod{display:grid;grid-template-columns:1.1fr .9fr;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--card);margin-bottom:28px}
+  .prod-text{padding:52px}
+  .prod-text h3{font-size:40px;font-weight:900;letter-spacing:-1px;margin-bottom:6px}
+  .prod-tag{color:var(--gold);font-size:12px;font-style:italic;margin-bottom:22px;font-weight:600}
+  .prod-text p{color:var(--muted);font-size:16px;line-height:1.75;margin-bottom:30px}
+  .prod-visual{display:flex;align-items:center;justify-content:center;min-height:340px;background:radial-gradient(ellipse at center,rgba(201,168,76,.16) 0%,transparent 70%)}
+  .orb{width:200px;height:200px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:78px;background:#0A0A0A;border:1px solid rgba(201,168,76,.35)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:24px}
+  .stat{background:var(--card);padding:30px 18px;text-align:center}
+  .stat b{display:block;font-size:27px;font-weight:900;color:var(--gold);margin-bottom:6px}
+  .stat span{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1.5px}
+
+  /* STORY */
+  .story{padding:90px 32px;background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+  .story .sub{margin:0 auto 44px}
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .trio .card{padding:30px 22px}
+  .trio .e{font-size:38px;margin-bottom:12px}
+  .trio h4{font-size:19px;font-weight:800;margin-bottom:6px}
+  .trio p{font-size:13px;color:var(--dim)}
+
+  /* MISSION */
+  .mission{padding:90px 32px;text-align:center}
+  .mission .sub{margin:0 auto 44px}
+  .mstat b{display:block;font-size:38px;font-weight:900;color:var(--gold);margin-bottom:8px}
+  .mstat p{font-size:13px;color:var(--muted);line-height:1.5}
+
+  /* PARTNER */
+  .partner{padding:90px 32px;background:var(--dark);border-top:1px solid var(--border)}
+  .partner-head{text-align:center;margin-bottom:48px}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+  .pbox{padding:36px 30px}
+  .pbox h3{font-size:22px;font-weight:800;margin-bottom:10px}
+  .pbox>p{color:var(--muted);font-size:15px;margin-bottom:24px}
+  .tiers{display:grid;gap:12px;margin-bottom:22px}
+  .tier{background:#0A0A0A;border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .tier .t{font-size:10px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase}
+  .tier .r{font-size:11px;color:var(--dim);margin:3px 0 0}
+  .tier .p{font-size:15px;font-weight:800;white-space:nowrap}
+  .moq{background:#0A0A0A;border:1px solid var(--border);border-radius:8px;padding:22px;margin-bottom:22px}
+  .moq .k{font-size:11px;color:var(--dim);letter-spacing:1.5px;margin-bottom:6px}
+  .moq .v{font-size:15px;margin-bottom:16px}
+  .moq .v:last-child{margin-bottom:0}
+  .note{font-size:13px;color:var(--dim);margin-bottom:22px}
+
+  /* CTA */
+  .cta{padding:96px 32px;text-align:center;background:radial-gradient(ellipse at bottom,rgba(201,168,76,.12) 0%,#0A0A0A 70%)}
+  .cta .h2{margin-bottom:18px}
+  .cta p{color:var(--muted);max-width:520px;margin:0 auto 32px;font-size:16px}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{padding:36px 32px;border-top:1px solid var(--border);text-align:center;color:#3D3D3D;font-size:13px}
+  footer .logo{color:#3D3D3D}
+  footer .sep{color:#1F1F1F;margin:0 12px}
+
+  @media(max-width:880px){
+    .prod,.trio,.pgrid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .nav-links{display:none}
+    .prod-text{padding:36px 28px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav">
+    <div class="logo"><span class="g">STUD</span>EX<span class="d">.</span><span class="g">MEAT</span></div>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#story">Story</a>
+      <a href="#mission">Mission</a>
+      <a href="#partner">Partner</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="pill">🌱 NEW — RWANDAN SINGLE-ORIGIN NOW SHIPPING</div>
+  <h1>Two Products.<br /><em>One Supply Chain.</em></h1>
+  <p>Premium South African biltong and Rwandan specialty coffee — sourced with purpose, roasted to order, shipped worldwide.</p>
+  <div class="hero-btns">
+    <a class="btn btn-gold" href="#products">Explore Our Products</a>
+    <a class="btn btn-line" href="#partner">Become a Partner</a>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="wrap">
+
+    <div class="prod">
+      <div class="prod-text">
+        <div class="label">StudEx Meat — Biltong</div>
+        <h3>Biltong</h3>
+        <div class="prod-tag">Wind-dried. Heritage-crafted. Unapologetically South African.</div>
+        <p>Premium biltong from grass-fed beef, cured with coriander, salt, and time. Zero preservatives. Zero sugar. 40g protein per 100g. This is the original — not jerky.</p>
+        <a class="btn btn-gold" href="#partner">Partner With Us →</a>
+      </div>
+      <div class="prod-visual"><div class="orb">🥩</div></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>40g</b><span>Protein per 100g</span></div>
+      <div class="stat"><b>0g</b><span>Sugar</span></div>
+      <div class="stat"><b>0</b><span>Preservatives</span></div>
+      <div class="stat"><b>100%</b><span>Grass-Fed Beef</span></div>
+    </div>
+
+    <div class="prod" style="margin-top:28px">
+      <div class="prod-text">
+        <div class="label">StudEx Meat — Ngagi Coffee</div>
+        <h3>Ngagi Coffee</h3>
+        <div class="prod-tag">From Rwanda's women farmers, direct to your cup.</div>
+        <p>Single-origin Rwandan Arabica sourced from women-led cooperatives. 86+ SCA score. $2 per bag funds farmer cooperatives directly. Roasted to order.</p>
+        <a class="btn btn-gold" href="#partner">Invest in the Supply Chain →</a>
+      </div>
+      <div class="prod-visual"><div class="orb">☕</div></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>86+</b><span>SCA Score</span></div>
+      <div class="stat"><b>$2/bag</b><span>To Farmer Cooperative</span></div>
+      <div class="stat"><b>56,000+</b><span>Women Farmers</span></div>
+      <div class="stat"><b>0</b><span>Middlemen</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="label">The Ngagi Story</div>
+    <h2 class="h2">Your morning cup has a name behind it.</h2>
+    <p class="sub">Rwanda exported $148.6M in coffee last year. Most of that value never reached the women who grew it. Ngagi Coffee is the direct trade pipeline — from a Rwandan cooperative to your French press, with $2 per bag going directly to the women who grew it. No trading houses. No intermediaries.</p>
+    <div class="trio">
+      <div class="card"><div class="e">🏔️</div><h4>Rwanda</h4><p>Kigali Hills, 1,800m altitude</p></div>
+      <div class="card"><div class="e">👩‍🌾</div><h4>56,000 Women</h4><p>In Rwanda's coffee cooperatives</p></div>
+      <div class="card"><div class="e">☕</div><h4>86+ Points</h4><p>Specialty grade, SCA scored</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="wrap">
+    <div class="label">Our Mission</div>
+    <h2 class="h2">Africa's best products. The world's buying power. <em>The farmers' pockets.</em></h2>
+    <p class="sub">We don't run a charity. We run a supply chain. Biltong supports South African cattle farmers. Rwanda coffee funds women cooperatives directly. Every transaction is designed to get more money to the people who grow, cure, and process our products.</p>
+    <div class="trio">
+      <div class="mstat"><b>$2/bag</b><p>Direct to Rwanda women's cooperative, every time</p></div>
+      <div class="mstat"><b>40g/100g</b><p>Protein in our biltong — no preservatives, no sugar</p></div>
+      <div class="mstat"><b>86+</b><p>SCA score on every Rwandan single-origin batch</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="partner" id="partner">
+  <div class="wrap">
+    <div class="partner-head">
+      <div class="label">Partner With Us</div>
+      <h2 class="h2" style="margin-bottom:0">Let's Build Together</h2>
+    </div>
+
+    <div class="pgrid">
+
+      <div class="pbox card">
+        <h3>🎥 Creator Program</h3>
+        <p>South Africa — fitness, food and lifestyle creators. We pay per post + free product + affiliate commission.</p>
+        <div class="tiers">
+          <div class="tier"><div><div class="t">Micro</div><div class="r">1K–10K followers</div></div><div class="p">R500–R1,500/post</div></div>
+          <div class="tier"><div><div class="t">Mid</div><div class="r">10K–100K followers</div></div><div class="p">R1,500–R5,000/post</div></div>
+          <div class="tier"><div><div class="t">Macro</div><div class="r">100K+ followers</div></div><div class="p">R5,000+/post</div></div>
+        </div>
+        <p class="note">Free product + affiliate link + volume bonuses for real engagement.</p>
+        <a class="btn btn-line" href="https://wa.me/27835932577?text=Hi%20StudEx%20Meat%20%E2%80%94%20I'd%20like%20to%20apply%20for%20the%20Creator%20Program." target="_blank" rel="noopener">Apply Now →</a>
+      </div>
+
+      <div class="pbox card">
+        <h3>🏪 Wholesale &amp; Distribution</h3>
+        <p>Hotels, restaurants, butchers, coffee shops and retailers. We supply Cape Town and can ship nationally.</p>
+        <div class="moq">
+          <div class="k">BILTONG</div>
+          <div class="v">Minimum order: 5kg · Supply weekly · Branded or white-label packaging</div>
+          <div class="k">COFFEE</div>
+          <div class="v">Minimum order: 10 bags · Supply fortnightly · Green bean or roasted available</div>
+        </div>
+        <a class="btn btn-gold" href="https://wa.me/27835932577?text=Hi%20StudEx%20Meat%20%E2%80%94%20please%20send%20wholesale%20pricing%20for%20biltong%20and%2For%20coffee." target="_blank" rel="noopener">Contact for Pricing →</a>
+      </div>
+
+      <div class="pbox card">
+        <h3>💼 Invest in the Supply Chain</h3>
+        <p>We're raising capital for the Rwanda origin facility, the Cape Town AI café, and export infrastructure.</p>
+        <div class="tiers">
+          <div class="tier"><div><div class="t">Phase 1</div><div class="r">Rwanda green bean sourcing + export licence</div></div><div class="p">R2.4M</div></div>
+          <div class="tier"><div><div class="t">Phase 2</div><div class="r">Cape Town AI robotic café build-out</div></div><div class="p">R1.8M</div></div>
+          <div class="tier"><div><div class="t">Phase 3</div><div class="r">Cold-chain export to Middle East + EU</div></div><div class="p">R3.0M</div></div>
+        </div>
+        <a class="btn btn-line" href="mailto:robusca.romanov@studex-group.com?subject=Investor%20Deck%20Request%20%E2%80%94%20StudEx%20Meat%20Supply%20Chain">Request Investor Deck →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="label">Ready?</div>
+  <h2 class="h2">Let's move product, <em>not emails.</em></h2>
+  <p>Order biltong, request wholesale pricing, or talk distribution — WhatsApp is the fastest way to reach us.</p>
+  <div class="cta-btns">
+    <a class="btn btn-gold" href="https://wa.me/27835932577?text=Hi%20StudEx%20Meat%20%E2%80%94%20I%27d%20like%20to%20talk%20about%20your%20products." target="_blank" rel="noopener">WhatsApp Us</a>
+    <a class="btn btn-line" href="mailto:info@studexmeat.com?subject=StudEx%20Meat%20Enquiry">Email Us</a>
+  </div>
+</section>
+
+<footer>
+  <span class="logo"><span class="g">STUD</span>EX<span class="d">.</span><span class="g">MEAT</span></span>
+  <span class="sep">|</span> Cape Town, South Africa &amp; Kigali, Rwanda
+  <span class="sep">|</span> © 2026 — All rights reserved
+</footer>
+
+
+<section style="background:#0B4F3C;color:#fff;padding:44px 24px;text-align:center;font-family:Helvetica,Arial,sans-serif">
+  <h2 style="margin:0 0 10px;font-size:26px">Pricing, volumes &amp; contact</h2>
+  <p style="margin:0 auto 22px;max-width:560px;color:#d8e4de;font-size:16px">Full institutional and corporate pricing, MOQs and lead times are on the sell sheet &mdash; or talk to us directly for a quote.</p>
+  <p style="margin:0 0 20px">
+    <a href="https://hhsmhunf1xci.space.mcode.io" style="display:inline-block;background:#C9A84C;color:#0d0f0e;padding:13px 26px;border-radius:3px;font-weight:700;text-decoration:none;margin:4px">View full sell sheet</a>
+    <a href="https://wa.me/27794988737" style="display:inline-block;border:2px solid rgba(255,255,255,.55);color:#fff;padding:13px 26px;border-radius:3px;font-weight:600;text-decoration:none;margin:4px">WhatsApp +27 94 988 8737</a>
+  </p>
+  <p style="margin:0;color:#b9c1bd;font-size:15px"><a href="mailto:info@studexmeat.com" style="color:#C9A84C">info@studexmeat.com</a> &nbsp;&middot;&nbsp; +27 84 421 6035 &nbsp;&middot;&nbsp; <a href="https://studexmeat.com" style="color:#C9A84C">studexmeat.com</a></p>
+</section>
+</body>
+</html>

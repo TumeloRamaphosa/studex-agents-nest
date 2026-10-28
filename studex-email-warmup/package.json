@@ -1,0 +1,17 @@
+{
+  "name": "studex-email-warmup",
+  "version": "1.0.0",
+  "description": "Studex Exchange email warmup system — builds domain reputation for email deliverability",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "warmup": "node index.js",
+    "status": "node index.js --status",
+    "reset": "node index.js --reset",
+    "dry-run": "node index.js --dry-run"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

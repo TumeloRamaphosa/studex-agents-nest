@@ -1,0 +1,95 @@
+node_modules/
+
+# mailbox dumps (contain prospect PII)
+agentmail*.json
+ciie_ids.json
+ciie_bodies.json
+__pycache__/
+*.pyc
+
+# --- CREDENTIAL FILES ---
+# This repo's remote is PUBLIC. These files hold live API keys and must never
+# be committed, or a push publishes working credentials to the world.
+# 2026-10-23: the AgentMail GENERAL key was found hardcoded in two live
+# landing-page JS bundles. Rotating it was not enough - the fix was to keep
+# credentials out of anything that can be served or pushed.
+.env
+.env.*
+!.env.example
+*.env
+!.env.production.local
+TOOLS.md
+TOOLS_SUPPLEMENT.md
+studex-os/.vscode/*.env
+studex-os/*.env
+studex-workflows/.env
+matrix-chat-history/
+.matrix-chat-history/
+
+# Credential-scrubbing tools. They contain live credentials by design
+# (a scrubber needs the list of secrets it is removing), so they must
+# never be tracked - the repo's remote is PUBLIC.
+scripts/scrub-tracked-credentials.py
+scripts/fix-ciii-env-loader.py
+
+# mcporter-generated MCP wrapper. It embeds the MCP server's auth
+# header, so it must not be committed. Regenerate with mcporter.
+blotato.ts
+
+# VS Code MCP server definitions carry the server's auth token in an
+# "env" block. It is a local secret: the working copy stays on disk, but
+# the PUBLIC repo must not carry the token. Configure it with mcporter.
+studex-os/.vscode/casey-clickup-mcp.json
+
+# One-shot credential migration scripts. They were applied on 2026-10-23;
+# they contained live credential literals and ${...} search anchors, so they
+# are NOT part of the source of truth. The checker enforces the end state.
+_migrate_credentials*.py
+
+# Vendored third-party clones (not ours to track)
+vendor/
+
+# credential carriers - never publish these
+robusca-brain/skills/studex-freepik-connector/FREEP IK_KEY.txt
+
+# Volatile session runtime artifact - changes on every commit and adds diff noise.
+# Kept on disk (other tooling reads it) but no longer tracked.
+.matrix-session-memory/
+
+# Session artifacts (2026-10-28 incident forensics) - never tracked.
+.safety-backup/
+.tmp-heartbeat/
+.tmp-chain.sh
+
+# --- 2026-10-28 baseline commit ---
+# Credentials file. This repo's remote is PUBLIC: .netrc holds GitHub
+# credentials and must never be tracked.
+.netrc
+
+# Vendored third-party project clones (not ours to track) and their binaries.
+Agent-Reach/
+Android-Dex/
+Decepticon/
+MegaMemory/
+OBLITERATUS/
+OpenJarvis/
+*.mp4
+*.gif
+  memory/honcho-api-test-2026-08-20.md
+
+# 2026-10-28: files that carry a credential literal - never tracked
+
+# Tooling state and other sessions' scratch files - not ours to track.
+.cursor/
+.netlify/
+.openclaw/
+.tmp-*.sh
+.tmp-*.py
+
+# Media binaries: 2.2 MB of video has no place in a PUBLIC repo, and
+# a binary in the tracked set is a fragment-matching risk. The deploy
+# copies them from the working tree, not from git.
+studex-meat/public/media/*.mp4
+studex-meat/public/media/*.mp3
+studex-meat/public/media/*.mov
+studex-meat/public/media/*.wav

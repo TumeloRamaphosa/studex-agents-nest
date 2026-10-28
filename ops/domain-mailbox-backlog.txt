@@ -1,0 +1,22 @@
+# Domain mailboxes whose deliverability could NOT be proven from this host.
+#
+# SMTP egress on port 25 is blocked here, so we cannot ask the domain's MX
+# whether it would accept mail for these. That makes them UNVERIFIED, not
+# proven-dead - which is a different claim and must stay a different claim.
+#
+# They do not fail ops/dead-inbox-check.py, but the checker reports any
+# address here that is NOT in this file as NEW, so the backlog cannot grow
+# silently. Verify each in the domain's mail provider (GoDaddy), then:
+#   - if it works  -> promote it to ops/live-inbox-allowlist.txt
+#   - if it does not -> repoint the sites at a live address and delete it
+#
+# Recorded 2026-10-24. Re-verify and close this file out.
+
+tumelo@studexmeat.com
+orders@studexmeat.com
+coffee@studexmeat.com
+admin@studexmeat.com
+ceo@studexmeat.com
+trade@studexmeat.com
+studbot@studexmeat.com
+studex@studexmeat.com

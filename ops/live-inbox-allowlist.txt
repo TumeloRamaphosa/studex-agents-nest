@@ -1,0 +1,33 @@
+# Addresses proven REACHABLE, verified against the live AgentMail API.
+# Format: <address>            - visible to at least one live AgentMail key
+#         <address>  # note    - same, with a note
+#
+# Verification method: GET https://api.agentmail.to/v0/inboxes with each live
+# key from /workspace/.env, and the address appears in the response.
+# Re-verify with:  python3 ops/dead-inbox-check.py --verify
+#
+# An address that is NOT on this list, and has no entry in
+# ops/dead-inbox-exceptions.txt for the exact file it appears in, is a
+# FINDING. AgentMail accepts sends to an address that nobody can read, and
+# reports success - so a wrong address here loses a lead silently.
+#
+# --- AgentMail inboxes (verified live) ---
+robusca.romanov@studex-group.com    # war-room / chief of staff channel - 15 threads
+naledi-cmo@studex-group.com         # hyphenated. NOT naledi.cmo@ - that one is dead
+sales@studex-group.com              # proven deliverable - 4 live keys see it
+info@studex-group.com               # general enquiries
+meat@studex-group.com
+support.superagents@studex-group.com
+t-ramaphosa-ceo@studex-group.com
+cto-darkfactory@studex-group.com
+cypher-trace-cto-superagents@studex-group.com
+project-2571-studex-agent-2077@agentmail.to
+t.ramaphosa@agentmail.to
+uglyrestaurant62@agentmail.to
+# RE-VERIFIED 2026-10-26: live on the MAIN account, 200 but 0 messages.
+# It was 404 on every key on 2026-10-24 - it has come back. It is on the
+# main account, NOT the CIIE one, so a CIIE-key sweep still cannot see it.
+studex-2571@agentmail.to
+#
+# --- Domain mailboxes (not AgentMail - verified by publication, not by API) ---
+info@studexmeat.com                 # published on every live customer page

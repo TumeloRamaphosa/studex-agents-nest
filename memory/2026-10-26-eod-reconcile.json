@@ -1,0 +1,24 @@
+{
+  "https://studexmeat.com/products.json": {
+    "status": 200,
+    "count": 30,
+    "note": "root feed"
+  },
+  "https://studexmeat.com/products.json?limit=250": {
+    "status": 200,
+    "count": 48,
+    "note": "root feed"
+  },
+  "https://studexmeat.com/collections/all/products.json?limit=250": {
+    "status": 200,
+    "count": 48,
+    "note": "collections/all"
+  },
+  "blotato": {
+    "status": 200,
+    "top_level_keys": [
+      "items"
+    ],
+    "list_items": 8
+  }
+}

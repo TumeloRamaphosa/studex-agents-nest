@@ -1,0 +1,85 @@
+{
+  "updated": "2026-10-22",
+  "_source_of_truth": "Every price below is copied from studex-meat/PRICE-SOURCE-REGISTRY.md (section 2) or the live Shopify storefront studexmeat.com. The Facebook caption generator publishes these prices verbatim, so a price that is not listed here must never appear in a caption. `allowed_prices` is the whitelist the script checks the generated caption against.",
+  "_warning": "Do NOT add a price here that is not owned by the registry. Prices change — change the registry first, then this file, then re-run. See /workspace/studex-meat/PRICE-SOURCE-REGISTRY.md.",
+  "products": [
+    {
+      "id": "biltong-wagyu-luxury",
+      "name": "Luxury Wagyu Biltong",
+      "category": "biltong",
+      "price": "From R650",
+      "price_raw": 650,
+      "tagline": "Air-dried the traditional South African way",
+      "description": "Our flagship biltong. Premium Wagyu beef, dry-cured with salt, coriander and vinegar, then slow-air-dried until the flavour is deep and the texture is firm. Sold in 500g and 1kg sizes.",
+      "variants": ["500g", "1kg"],
+      "allowed_prices": [650],
+      "available": true,
+      "image_prompt": "Sliced premium biltong on a rustic wooden board, warm South African kitchen, natural light, professional food photography"
+    },
+    {
+      "id": "biltong-gold-1kg",
+      "name": "Wagyu Biltong Gold — 1kg",
+      "category": "biltong",
+      "price": "R1,450",
+      "price_raw": 1450,
+      "tagline": "14 × 70g resealable packets",
+      "description": "Our premium 1kg box of Wagyu Biltong Gold — fourteen 70g resealable packets, so it stays fresh on the counter and travels without a mess. The gift and stocking-up staple.",
+      "variants": ["1kg (14 × 70g packets)"],
+      "allowed_prices": [1450, 12500],
+      "available": true,
+      "image_prompt": "Premium biltong packets arranged in an open gift box on a marble counter, elegant packaging, warm studio lighting"
+    },
+    {
+      "id": "wagyu-ribeye",
+      "name": "Wagyu Ribeye Steak",
+      "category": "wagyu",
+      "price": "From R950",
+      "price_raw": 950,
+      "tagline": "Marbling grade 5 Wagyu",
+      "description": "Our Wagyu ribeye — the deepest marbling in the range, cut for the home cook who wants a restaurant result. Available as a 500g steak at R950 and a 1kg at R1,950.",
+      "variants": ["500g", "1kg"],
+      "allowed_prices": [950, 1950],
+      "available": true,
+      "image_prompt": "Wagyu ribeye steak with exceptional marbling on a dark surface, professional food photography, dramatic lighting"
+    },
+    {
+      "id": "caviar-oscietra",
+      "name": "Oscietra Imperial Caviar",
+      "category": "caviar",
+      "price": "R4,200 per 100g",
+      "price_raw": 4200,
+      "tagline": "The aristocrat of the sea",
+      "description": "Oscietra Imperial caviar — the richest and most sought-after tier we carry. Deep, nutty, with a clean finish and the unmistakable pop. Priced per 100g. Trade buyers: R34,000/kg.",
+      "variants": ["100g"],
+      "allowed_prices": [4200, 34000],
+      "available": true,
+      "image_prompt": "Elegant oscietra caviar served on a mother of pearl spoon, crystal bowl, luxury dark background"
+    },
+    {
+      "id": "coffee-roasted-washed",
+      "name": "Roasted Coffee — Washed (Wet Process)",
+      "category": "coffee",
+      "price": "R400/kg",
+      "price_raw": 400,
+      "tagline": "Roasted in South Africa, shipped worldwide",
+      "description": "Our washed-process roasted coffee — clean, bright and chocolate-forward, roasted in South Africa. Available per kilogram, trade MOQ 50kg.",
+      "variants": ["Per kg"],
+      "allowed_prices": [400, 350, 380, 270],
+      "available": true,
+      "image_prompt": "Freshly roasted coffee beans spilling from a kraft bag, dark roast, moody studio lighting"
+    },
+    {
+      "id": "bundle-fire-feast",
+      "name": "Fire & Feast Box",
+      "category": "bundles",
+      "price": "R999",
+      "price_raw": 999,
+      "tagline": "One box. Every premium taste.",
+      "description": "Our Fire & Feast Box — biltong, biltong gold and a Wagyu cut packed together. A gift that lands, and a braai that gets talked about.",
+      "variants": [],
+      "allowed_prices": [999],
+      "available": true,
+      "image_prompt": "Open premium gourmet gift box on a white marble surface, biltong and coffee visible, warm studio lighting"
+    }
+  ]
+}
