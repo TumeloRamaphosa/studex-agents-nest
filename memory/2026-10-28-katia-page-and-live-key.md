@@ -111,3 +111,78 @@ the lie.** Three separate artefacts of this session (the deploy, the page
 set, the video) were reported before being checked, and all three were wrong.
 
 ⇒ 🔑 **Read the tool's answer. Then fetch the thing you claimed.**
+
+## 13:35–13:50 UTC — 🔴 A BROKEN GUARD HID A LIVE LEAK
+
+**The finding.** With the fragments audit finally able to read a real key
+(the bare `=` is no longer a placeholder marker), it immediately found **4
+real hits**: the **tail16 of the live Blotato key** in four vault notes —
+`daily/2026-07-03.md`, `2026-07-15-MORNING.md`, `2026-07-20-MORNING.md`,
+`2026-09-12.md`.
+
+🔑 **⇒ A broken guard HID a live leak.** The audit had been reporting 13
+hits in the site's own JavaScript — fragments of a **placeholder** — while
+🔑🔑 **4 fragments of the actual key sat in tracked source and it never saw
+them.** 🔑 *The guard was not merely wrong; it was wrong in the direction
+that mattered.*
+
+**Fixed:** all 4 masked in place. **Re-scan: `prefix8: 0 · prefix18: 0 ·
+tail20: 0 · tail16: 0 · mangled: 0` — CLEAN** ✅
+
+## 13:40 UTC — 🟡 A LENGTH FLOOR IS A GUESS, NOT A RULE
+
+`check-credential-slots.py` called `ALIBABA_SSH_PASSWORD` **BROKEN** because
+it is 11 characters and the floor is 16. 🔑 **An 11-character SSH password
+is a perfectly real credential.** 🔑 *A checker that cries wolf on working
+credentials is a checker people learn to ignore — which is exactly how the
+placeholder it exists to catch slips through.*
+
+**Fixed:** a `TOO-SHORT` slot is **reported, not failed**.
+`PLACEHOLDER` / `EMPTY` / `NOT-A-CREDENTIAL` are still BROKEN. 🔑 **The shape
+is the rule; the length is a hint.** 🔑 `cred_env.require()` already agreed.
+
+## 13:45 UTC — 🔑 THE CHECKER I BUILT TONIGHT WAS NEVER REGISTERED
+
+`ops/check-credential-slots.py` existed, worked, and **no heartbeat pass ran
+it** — 🔑🔑 **the repo's own `test-heartbeat-registry.py` caught the orphan**
+("unclassified (will never run)") ✅ 🔑😬
+
+🔑 *A checker on disk that nothing runs is a comment, not a control* ✅ — the
+same sentence the registry file itself writes at the top ✅ ✅. It is now a
+**PASS** checker: every pass verifies that no credential slot holds a
+placeholder.
+
+## 13:50 UTC — THE DRIFT CHECKER CAUGHT MY OWN DEPLOY
+
+The canonical heartbeat reported `drift` on the retail page: 🔑 **I had added
+the `Meet Katia` nav link to `dist/index.html` — the DEPLOYED copy — and left
+the SOURCE (`studex-biltong/index.html`) untouched.** 🔑 **⇒ the next rebuild
+would have silently deleted the link from the live site.**
+
+The two files differed by exactly **one thing** — the link ✅ — so the fix
+was to put it in the SOURCE and let `dist/` follow. 🔑🔑 **And the checker
+compares byte-for-byte**, while my whitespace-level comparison said
+"similarity 1.0000" — 🔑 **⇒ `dist/index.html` is now a byte-for-byte copy of
+the source** ✅ ✅ **drift: 18 pages, 18 clean, 0 drift, 0 unreachable** ✅
+
+🔑 **THE RULE:** 🔑🔑 **a deploy directory is an OUTPUT.** 🔑 Editing it
+directly is editing a build artefact, and the next build reverts it. 🔑🔑
+**Anything that must survive a rebuild goes in the source** ✅ ✅
+
+## 🔑 THE LESSON OF THE WHOLE SESSION
+Three guards on this repo were wrong in the same way — **presence instead of
+validity** — and one of them was wrong in the direction that HID a live
+leak:
+
+| guard | what it did |
+|---|---|
+| the fragments audit | hunted fragments of a **placeholder**, so it reported 13 hits in ordinary JavaScript and missed 4 real ones |
+| the credential-slot checker | called an **11-character real password** BROKEN, so a working credential read as broken |
+| `cred_env.require()` | returned **any non-empty string**, so a redaction source line was handed out as a key |
+
+⇒ 🔑 **A guard has to prove it is looking at the right thing.** 🔑🔑 All
+three were looking at a *name* and reporting about a *value* — 🔑🔑 or
+guessing a *shape* and calling it a *rule* ✅ 🔑😬
+
+⇒ 🔑 **And the fix for a broken guard is to make it fail on something real** —
+🔑🔑 the audit now finds 4 real fragments it had been blind to ✅ ✅

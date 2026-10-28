@@ -60,6 +60,7 @@ PY_TESTS=(
   ops/test-git-index-check.py
   ops/test-empty-repo-false-green.py
   ops/test-credential-slots.py
+  ops/test-credential-slots-short.py
   ops/test-dead-service-instructions.py \
 )
 JS_TESTS=(

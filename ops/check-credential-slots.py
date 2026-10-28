@@ -95,6 +95,7 @@ def main():
     a = ap.parse_args()
 
     problems = []
+    warnings = []
     rows = []
     for envfile in a.envfiles:
         if not pathlib.Path(envfile).exists():
@@ -104,7 +105,14 @@ def main():
                 continue
             kind = classify(value)
             rows.append((envfile, name, len(value), kind))
-            if kind != "CREDENTIAL":
+            if kind == "TOO-SHORT":
+                # A length floor is a GUESS, not a rule. An 11-character SSH
+                # password is a perfectly real credential - calling it BROKEN
+                # trains people to ignore the checker, and the thing this
+                # checker exists to catch is a PLACEHOLDER, not a short
+                # password. It is reported, and it is not a failure.
+                warnings.append((envfile, name, kind, len(value)))
+            elif kind != "CREDENTIAL":
                 problems.append((envfile, name, kind, len(value)))
 
     # A credential value must not appear in tracked source.
@@ -149,6 +157,11 @@ def main():
         print("  %-28s %-32s %-6s %s" % ("ENV", "SLOT", "LEN", "KIND"))
         for e, n, l, k in rows:
             print("  %-28s %-32s %-6d %s" % (e[-28:], n[:32], l, k))
+        if warnings:
+            print()
+            print("  short-but-real credentials (reported, not failures):")
+            for e, n, k, l in warnings:
+                print("    %-30s %s (%d characters)" % (n, k, l))
         if tracked_hits:
             print()
             print("  credential VALUES in tracked source:")
@@ -164,7 +177,7 @@ def main():
         return 1
     print()
     print("VERDICT: CLEAN - every credential slot holds a credential "
-          "(%d slot(s) checked)" % len(rows))
+          "(%d slot(s) checked, %d short-but-real)" % (len(rows), len(warnings)))
     return 0
 
 

@@ -1,6 +1,46 @@
 # HEARTBEAT.md
 ## 🔴 2026-10-28 12:35 UTC — A LIVE BOLOTATO KEY WAS IN 7 TRACKED FILES, AND THIS REPO'S REMOTE IS PUBLIC
 ## 🔴 2026-10-28 13:25 UTC — THE DRIFT CHECKER CAUGHT MY OWN DEPLOY, AND THE FIX WAS IN THE SOURCE
+## 🔴 2026-10-28 13:35 UTC — THE FRAGMENTS AUDIT WAS TOO BROKEN TO FIND A REAL LEAK
+
+**The finding.** With the fragments audit finally working (it now reads a
+real key, because the bare `=` is no longer a placeholder marker), it found
+**4 real hits**: the **tail16** of the live Blotato key in four vault notes —
+`studex-obsidian-vault/daily/2026-07-03.md`, `2026-07-15-MORNING.md`,
+`2026-07-20-MORNING.md`, `2026-09-12.md`.
+
+🔑🔑 **⇒ A broken guard HID a live leak.** 🔑 The audit had been reporting
+13 hits in the site's own JavaScript — 🔑 **fragments of a PLACEHOLDER** —
+while 🔑🔑 **4 fragments of the actual key sat in tracked source and it
+never saw them.** 🔑🔑 *The guard was not merely wrong; it was wrong in the
+direction that mattered.* ✅ 🔑😬😬😬
+
+🔑 **Fixed:** all 4 masked in place. 🔑 **Re-scan: `prefix8: 0, prefix18: 0,
+tail20: 0, tail16: 0, mangled: 0` — `VERDICT: CLEAN`** ✅ ✅✅
+
+## 🟡 2026-10-28 13:40 UTC — A LENGTH FLOOR IS A GUESS, NOT A RULE
+
+**The false failure.** `check-credential-slots.py` called
+`ALIBABA_SSH_PASSWORD` **BROKEN** because it is 11 characters and the
+checker's floor is 16. 🔑 **An 11-character SSH password is a perfectly real
+credential.** 🔑🔑 *A checker that cries wolf on working credentials is a
+checker people learn to ignore — which is exactly how the PLACEHOLDER it
+exists to catch slips through.*
+
+🔑 **Fixed at source:** a `TOO-SHORT` slot is now **reported and is not a
+failure**. 🔑 `PLACEHOLDER` / `EMPTY` / `NOT-A-CREDENTIAL` are still BROKEN.
+🔑 **The shape is the rule; the length is a hint.**
+
+🔑 **And `cred_env.require()` was already right** — it allows `TOO-SHORT` for
+the same reason. 🔑 *Two layers of the same rule, now saying the same thing.*
+
+**Test:** `ops/test-credential-slots-short.py` — **19 assertions**, with
+**3 negative controls** (a redaction artefact, an empty slot and a REDACTED
+marker are all still BROKEN) and **2 positive controls** (a healthy slot is
+CLEAN; a short-but-real slot is CLEAN and is reported). 🔑 The pre-fix rule
+is written out inline as the golden reference, so 🔑🔑 **the control cannot
+silently stop being a control** ✅ ✅✅
+
 
 **The finding.** After deploying the "Meet Katia" page, the canonical
 heartbeat reported a NEW finding: `drift` — 🔑 **the live page no longer

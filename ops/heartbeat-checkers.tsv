@@ -29,6 +29,7 @@ price-on-feed | ops/check-price-on-feed.py | PASS | 0,1,2 | yes | rule [10]: no 
 staged-publish | ops/check-staged-publish.py | PASS | 0,1,- | yes | staged captions that never reached any platform |
 cost-model | ops/check-cost-model-exposure.py | PASS | 0,1,2 | yes | a public page leaking our cost model |
 tmp-surface | ops/tmp-shape-surface-audit.py | PASS | 0,3,- | no | credential literals under /tmp |
+credential-slots | ops/check-credential-slots.py | PASS | 0,1,- | no | a credential slot that holds a placeholder instead of a credential |
 tracked-creds | ops/check-tracked-live-credentials.py | PASS | 0,1,- | no | live credential literals in tracked files |
 dead-inbox | ops/dead-inbox-check.py | PASS | 0,1,- | no | code referencing a mailbox nobody can read |
 mail | ops/check-latest-mail.py | PASS | 0,-,2 | no | newest inbound AgentMail message |
