@@ -28,6 +28,13 @@
 - “Created by MiniMax Agent” is injected by mcode.io and cannot be removed through content changes.
 - Assertions prove presence, not validity or scope; verify every registry claim before relying on it.
 
+### Christmas Gifting + Biltong Ladder — 2026-10-28
+- **Deploy divergence (urgent):** `studex-corporate-gifting/src/App.tsx` defines Silver R3,000 / Gold R7,000 / Platinum R15,000 with **caviar in Gold ("50g Oscietra, CITES-certified") and Platinum ("100g Imperial Beluga")**. The **live page `oi28dhtke3yk` and `dist/` still show the older R1,299 / R2,499 / R4,999 (no caviar)**. The caviar source has **never been built or deployed**. Do not ship it as-is — the SA caviar permit stack (DFFE → ITAC → DAFF → SARS → CITES) is unassembled.
+- **Price-ladder defects on studexmeat.com:** "Luxury Wagyu Biltong" 1kg R650 (R650/kg, well-placed) but **500g R450 = R900/kg — inverted**; "Wagyu Biltong Gold" 1kg box R1,450/kg and **7kg case R12,500 = R1,785/kg, but 7×1kg at list = R10,150 → 19% case arbitrage**. Highest visible SA biltong benchmark is Woolworths R1,053/kg (150g chilli snapsticks).
+- SA market ladder 2026: Butcher Brothers R269.99/kg · Vanni Vrystaat R279.90/kg · Biltong Boytjies slabs R349.99–R449.99/kg · Mooiplaats Wagyu R600/kg · Woolworths sliced 400g R279.99 (R700/kg) · gift hampers R199.95–R720 · Angus Biltong owns the corporate-gifting keyword.
+- Caviar is **not** in `studex-products-catalog.csv`. **Resolved 2026-10-28 22:00 SAST:** the live storefront catalogue has **30 products, 0 caviar → caviar is NOT purchasable on studexmeat.com.** But caviar IS still advertised with live retail+trade prices (R4,200/R2,800/R1,600 and R34,000/R22,000/R12,500) on the public caviar trade page `ess0ocgcd9f0.space.mcode.io` — that page has **no cart** (WhatsApp + mailto only), so it is lead-gen, not checkout. "Advertised ≠ purchasable" — but the trade page is public.
+- **Festive close = 13–15 Nov 2026** (SA hamper window opened 29 Oct). Caviar-free biltong+coffee box is the 2026 product; caviar is 2027.
+
 ### Git / GitHub
 - Git is **diverged**: `master` has no upstream, **928 local-only commits**, and **106 remote-only commits**. Plain push is rejected non-fast-forward.
 - Reconcile only after Tumelo approves; resetting could discard remote work.
@@ -76,6 +83,8 @@
 - Coffee: Rwanda A1 FOB USD 4,200–4,800/MT; A2 USD 3,600–4,000/MT; samples USD 28–45/kg.
 - Christmas gifting: Classic R1,299/MOQ5; Executive R2,499/MOQ3; Boardroom R4,999/MOQ2; code `STUDEXGIFT10`.
 - Public social-feed captions must not contain prices; path-B pre-flight enforces this.
+- **Price ladder verified live 2026-10-28 22:00 SAST** (storefront `products.json` variants): Luxury Wagyu Biltong 1kg **R650** vs 500g **R450 = R900/kg** (inverted) · Wagyu Biltong Gold 1kg **R1,450** vs 7kg case **R12,500 = R1,785/kg**, while 7×1kg = R10,150 (**19% case arbitrage**) · Fire & Feast R999 · StudBot Rise R4,599. Live prices live in **Shopify** → every fix needs the Admin token (401 as of 28 Oct).
+- **Guard regression 2026-10-28 22:00 SAST:** `ops/test-credential-resolution.py` FAILS — a hardcoded ClickUp token no longer trips the checker (returned GREEN, should be RED). 29/30 tests pass. The credential checker that protects the repo has a hole; fix before trusting it.
 - Caviar floor tool was built
 
 ## Recent Session Notes (2026-10-28 12:01)
