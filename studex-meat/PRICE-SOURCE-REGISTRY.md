@@ -15,9 +15,10 @@
 ### 2.1 Retail biltong & bundles — owner: `studex-biltong/dist/index.html` (mirrored to live Shopify `studexmeat.com`)
 | Product | Price | Must appear on |
 |---|---|---|
-| Luxury Wagyu Biltong | From **R650** | `nudsduvyrc12` |
-| Wagyu Biltong Gold, 1kg | **R1,450** | `nudsduvyrc12` · `psq9xaisb9kf` |
-| Wagyu Biltong Gold, 7kg case | **R12,500** | `nudsduvyrc12` |
+| Luxury Wagyu Biltong | From **R650** (1kg = R650/kg) | `nudsduvyrc12` |
+| Luxury Wagyu Biltong, 500g | **R325** (R650/kg — parity with 1kg) | `nudsduvyrc12` |
+| Wagyu Biltong Gold, 1kg | **R1,250** (R1,250/kg) | `nudsduvyrc12` · `psq9xaisb9kf` |
+| Wagyu Biltong Gold, 7kg case | **R8,400** (R1,200/kg — beats 7 × 1kg = R8,750) | `nudsduvyrc12` |
 | Subscription — Starter (200g/mo) | **R295** | `nudsduvyrc12` |
 | Subscription — Connoisseur (500g + 100g Ox Tail/mo) | **R495** | `nudsduvyrc12` |
 | Subscription — Bulk / Corporate (per mo) | **R850** | `nudsduvyrc12` |

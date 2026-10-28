@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>StudEx — Price &amp; Provenance Sheet · 2026 Festive</title>
+<meta name="description" content="StudEx 2026 festive gifting: Wagyu biltong and single-origin African coffee, priced against public benchmarks. Order closes 13 November 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e0d0b; --ink-2:#171512; --card:#1c1916; --line:#2e2924;
+    --gold:#d4a017; --gold-soft:#e8c46a; --cream:#f3ece0; --muted:#a2988a;
+    --ok:#4ea172; --warn:#d98b3a; --red:#c85450;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--cream);
+    font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.015em;margin:0}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin:0 0 14px}
+  section{padding:72px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:0}
+
+  /* ---- hero ---- */
+  .hero{padding:88px 0 72px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(900px 420px at 12% -8%,rgba(212,160,23,.16),transparent 62%),
+               radial-gradient(700px 380px at 92% 4%,rgba(120,90,40,.14),transparent 60%);pointer-events:none}
+  .hero .wrap{position:relative}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.05;max-width:17ch}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .lede{color:var(--muted);font-size:1.06rem;max-width:58ch;margin:22px 0 0}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0;padding:0;list-style:none}
+  .pills li{font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:7px 15px;color:var(--cream);
+    background:var(--ink-2)}
+  .pills li b{color:var(--gold);font-weight:600}
+  .cta{display:inline-flex;align-items:center;gap:9px;margin-top:34px;background:var(--gold);color:#17130a;
+    text-decoration:none;font-weight:600;font-size:15px;padding:14px 26px;border-radius:4px}
+  .cta:hover{background:var(--gold-soft)}
+  .cta.ghost{background:transparent;color:var(--cream);border:1px solid var(--line);margin-left:10px}
+  .cta.ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* ---- tier cards ---- */
+  .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:20px;margin-top:38px}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;position:relative}
+  .tier.featured{border-color:var(--gold);box-shadow:0 0 0 1px rgba(212,160,23,.25),0 22px 50px -30px rgba(212,160,23,.4)}
+  .tier .flag{position:absolute;top:-11px;left:24px;background:var(--gold);color:#17130a;
+    font-size:10.5px;font-weight:700;letter-spacing:.14em;padding:4px 11px;border-radius:3px;text-transform:uppercase}
+  .tier h3{font-size:1.5rem}
+  .tier .tag{color:var(--muted);font-size:13px;margin:3px 0 16px}
+  .tier .price{font-family:Fraunces,serif;font-size:2.1rem;color:var(--gold);line-height:1}
+  .tier .perkg{font-size:12.5px;color:var(--muted);margin:7px 0 18px}
+  .tier ul{list-style:none;margin:0;padding:0;font-size:13.8px;color:#ded5c6}
+  .tier li{padding:7px 0 7px 20px;border-top:1px solid var(--line);position:relative}
+  .tier li:first-child{border-top:0}
+  .tier li::before{content:"";position:absolute;left:2px;top:14px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  .tier .best{margin-top:16px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+
+  /* ---- tables ---- */
+  .tbl-wrap{overflow-x:auto;margin-top:30px;border:1px solid var(--line);border-radius:9px}
+  table{width:100%;border-collapse:collapse;font-size:13.8px;min-width:620px}
+  th{text-align:left;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);
+    font-weight:600;padding:14px 16px;background:var(--ink-2);border-bottom:1px solid var(--line)}
+  td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  tbody tr:hover td{background:rgba(212,160,23,.045)}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .strike{color:var(--muted);text-decoration:line-through}
+  .new{color:var(--ok);font-weight:600}
+  .note{font-size:12.8px;color:var(--muted);margin-top:14px;max-width:70ch}
+
+  /* ---- benchmark cards ---- */
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+  .bm{background:var(--ink-2);border:1px solid var(--line);border-radius:9px;padding:22px}
+  .bm .k{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .bm .v{font-family:Fraunces,serif;font-size:1.85rem;color:var(--gold);margin:9px 0 4px}
+  .bm .d{font-size:13px;color:var(--muted)}
+
+  /* ---- honesty panel ---- */
+  .panel{border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:8px;
+    background:var(--ink-2);padding:24px 26px;margin-top:28px}
+  .panel.warn{border-left-color:var(--warn)}
+  .panel h3{font-size:1.15rem;margin-bottom:10px}
+  .panel p{font-size:13.6px;color:#cfc6b7;margin:0 0 10px}
+  .panel ol,.panel ul{margin:10px 0 0;padding-left:20px;font-size:13.4px;color:#cfc6b7}
+  .panel li{margin:5px 0}
+  .stamp{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    border:1px solid var(--warn);color:var(--warn);border-radius:3px;padding:3px 9px;margin-bottom:12px}
+  .stamp.ok{border-color:var(--ok);color:var(--ok)}
+
+  footer{padding:48px 0 64px;color:var(--muted);font-size:12.8px}
+  footer a{color:var(--gold)}
+  .fgrid{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+  @media(max-width:640px){section{padding:52px 0}.hero{padding:60px 0 48px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">StudEx · Price &amp; Provenance Sheet</p>
+    <h1>Wagyu biltong and single-origin African coffee — priced in the open.</h1>
+    <p class="lede">
+      Our 2026 festive box is biltong, coffee, packaging and delivery — nothing we cannot yet
+      deliver inside the window. Every price below is shown against a public benchmark so your
+      procurement team can verify it without calling us first.
+    </p>
+    <ul class="pills">
+      <li><b>Order closes</b> 13 Nov 2026</li>
+      <li><b>Delivery</b> by mid-November</li>
+      <li>MJC Halaal · farm-direct · batch-traceable</li>
+      <li>Prices verified 28 Oct 2026</li>
+    </ul>
+    <a class="cta" href="#boxes">See the boxes &rarr;</a>
+    <a class="cta ghost" href="#transparency">How we price</a>
+  </div>
+</header>
+
+<section id="boxes">
+  <div class="wrap">
+    <p class="eyebrow">The 2026 festive proposition</p>
+    <h2 style="font-size:2.2rem;max-width:20ch">Three boxes. No caviar — yet.</h2>
+    <p class="lede">
+      We have removed caviar from the 2026 boxes on purpose. The South African import permit stack
+      for sturgeon is not yet assembled, and a first shipment needs roughly two months end to end.
+      We would rather sell you a box that arrives on time than a box that arrives with paperwork
+      problems. The caviar tier is a 2027 proposition — register interest below.
+    </p>
+
+    <div class="tiers">
+      <div class="tier">
+        <h3>Silver</h3>
+        <p class="tag">Executive Introductions</p>
+        <div class="price">R2,650</div>
+        <div class="perkg">Biltong + 250g single-origin coffee, delivered</div>
+        <ul>
+          <li>200g Wagyu Biltong (vacuum-sealed)</li>
+          <li>250g Rwanda Single-Origin Coffee</li>
+          <li>Studex gift card (handwritten note)</li>
+          <li>Branded luxury box + ribbon</li>
+          <li>Delivery to 1 address nationwide</li>
+        </ul>
+        <p class="best">Best for client appreciation and team thank-yous.</p>
+      </div>
+
+      <div class="tier featured">
+        <span class="flag">Most ordered</span>
+        <h3>Gold</h3>
+        <p class="tag">Boardroom Indulgence</p>
+        <div class="price">R5,500</div>
+        <div class="perkg">Biltong + 500g single-origin coffee, delivered</div>
+        <ul>
+          <li>300g Premium Wagyu Biltong</li>
+          <li>200g Wagyu Biltong Gold</li>
+          <li>500g Rwanda Single-Origin Coffee</li>
+          <li>Studex leather-bound note holder</li>
+          <li>Custom engraved card</li>
+          <li>Delivery to 3 addresses nationwide</li>
+        </ul>
+        <p class="best">Best for board meetings, year-end rewards and investor relations.</p>
+      </div>
+
+      <div class="tier">
+        <h3>Platinum</h3>
+        <p class="tag">Legacy Impressions</p>
+        <div class="price">R12,000</div>
+        <div class="perkg">Biltong + 1kg four-origin coffee, delivered</div>
+        <ul>
+          <li>500g Heritage Wagyu Biltong (aged 30 days)</li>
+          <li>1kg African Coffee Selection (4 origins)</li>
+          <li>Wagyu Biltong Gold accessory set</li>
+          <li>Studex leather briefcase insert</li>
+          <li>Custom engraved crystal decanter</li>
+          <li>White-glove delivery + presentation</li>
+          <li>Delivery to 10 addresses nationwide</li>
+        </ul>
+        <p class="best">Best for C-suite gifting, deal closes and mining &amp; banking VIPs.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>How these sit against the SA hamper market</h3>
+      <p>
+        Published SA gift hampers run from <b>R199.95</b> (Richmeats gift box) and <b>R295</b>
+        (Richmeats standard hamper) up to <b>R720</b> (buildyourbasket.co.za deluxe). Our Silver
+        box is built and delivered as a corporate gifting piece rather than a supermarket hamper,
+        so it is priced above that band — and we would rather tell you that than have you discover
+        it in a procurement comparison.
+      </p>
+      <p>
+        The previous Silver entry price was R3,000. It is now <b>R2,650</b> — a 12% reduction,
+        applied because the box no longer carries an item whose import paperwork was incomplete.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="transparency">
+  <div class="wrap">
+    <p class="eyebrow">Biltong price ladder</p>
+    <h2 style="font-size:2.2rem;max-width:22ch">We corrected our own ladder.</h2>
+    <p class="lede">
+      Two of our prices were wrong in a way that worked against us: the 500g pack cost more per
+      kilo than the 1kg, and the 7kg case cost more than buying seven 1kg boxes. A buyer doing
+      the arithmetic on our own sheet would have been right to take it. Both are fixed.
+    </p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th class="num">Was</th>
+            <th class="num">Now</th>
+            <th class="num">Per kg</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Luxury Wagyu Biltong — 1kg</td>
+            <td class="num strike">R650</td>
+            <td class="num">R650</td>
+            <td class="num">R650</td>
+            <td>Mid-premium. Above commodity biltong (R270–450/kg), below Woolworths free-range (R700/kg).</td>
+          </tr>
+          <tr>
+            <td>Luxury Wagyu Biltong — 500g</td>
+            <td class="num strike">R450</td>
+            <td class="num new">R325</td>
+            <td class="num new">R650</td>
+            <td>Now identical per-kilo to the 1kg. The smaller pack was penalising buyers — that is fixed.</td>
+          </tr>
+          <tr>
+            <td>Wagyu Biltong Gold — 1kg</td>
+            <td class="num strike">R1,450</td>
+            <td class="num new">R1,250</td>
+            <td class="num new">R1,250</td>
+            <td>Premium line. Above the highest openly quoted SA biltong price (R1,053/kg) by 19%.</td>
+          </tr>
+          <tr>
+            <td>Wagyu Biltong Gold — 7kg case</td>
+            <td class="num strike">R12,500</td>
+            <td class="num new">R8,400</td>
+            <td class="num new">R1,200</td>
+            <td>Now beats seven 1kg boxes (R8,750) by R350. The bulk case is finally the obvious choice.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">
+      Benchmarks: Butcher Brothers R269.99/kg · Vanni Vrystaat R279.90/kg · Biltong Boss R305.95/kg ·
+      Biltong Boytjies R349.99–449.99/kg · Mooiplaats Wagyu R600/kg · Woolworths free-range sliced
+      R700/kg · Woolworths chilli snapsticks R1,053/kg (highest openly quoted SA price).
+      Verified 28 Oct 2026.
+    </p>
+  </div>
+</section>
+
+<section id="coffee">
+  <div class="wrap">
+    <p class="eyebrow">Coffee — trade pricing, stated against named benchmarks</p>
+    <h2 style="font-size:2.2rem;max-width:24ch">We quote a band, and we name what anchors it.</h2>
+    <p class="lede">
+      A bare number invites a buyer to re-anchor it against whatever benchmark they hold. So here
+      are ours, stated in full, with the date each was observed.
+    </p>
+
+    <div class="grid3">
+      <div class="bm">
+        <div class="k">Volume benchmark</div>
+        <div class="v">$6.30/kg</div>
+        <div class="d">ICE Arabica C, 28 Oct 2026 ($2.8569/lb × 2.20462). Lowest since 9 Oct, −26.9% YoY. Rabobank guides $2.50–3.00/lb into late 2026 — we are on the floor of that band.</div>
+      </div>
+      <div class="bm">
+        <div class="k">Specialty floor reference</div>
+        <div class="v">$205/kg</div>
+        <div class="d">NAEB Best of Rwanda 2026 auction average, 21 Oct 2026. This is the reference our band is stated against.</div>
+      </div>
+      <div class="bm">
+        <div class="k">Ceiling proof only</div>
+        <div class="v">$452/kg</div>
+        <div class="d">Top lot — Geisha, K-Organics, Huye. A single micro-lot, ~66× the average international price. We quote it as proof of what this origin can do, never as a market rate.</div>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Reference</th><th class="num">Price</th><th class="num">vs live C</th><th>Date</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ICE Arabica C (volume)</td><td class="num">$6.30/kg</td><td class="num">100%</td><td>28 Oct 2026</td></tr>
+          <tr><td>NAEB auction average (specialty floor)</td><td class="num">$205/kg</td><td class="num">3,258%</td><td>21 Oct 2026</td></tr>
+          <tr><td>Our FOB Kigali band</td><td class="num">$6.07–6.75/kg</td><td class="num">96–107%</td><td>Live desk — re-verify before quoting</td></tr>
+          <tr><td>Roasted &amp; packed at origin</td><td class="num">~$8.50/kg</td><td class="num">~135%</td><td>Same lane, same duty position</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <span class="stamp ok">Two doors, not one</span>
+      <h3>Both China gates are open for Rwanda</h3>
+      <p>
+        <b>1 May 2026</b> — China applied zero tariff to 100% of tariff lines on imports from the 53
+        African countries with diplomatic ties. Rwanda is an LDC origin, so that duty-free position
+        <b>has no expiry</b> (other African origins hold it only to 30 April 2028).
+      </p>
+      <p>
+        <b>20 July 2026</b> — coffee from all 53 African countries moved under a
+        <b>unified phytosanitary system</b>. Reporting was explicit: for Rwanda, both doors open
+        immediately.
+      </p>
+      <p>
+        Most of the market is still telling buyers one door opened. Both are open for us, and the
+        phytosanitary unification is a compliance advantage worth having — it is not just a date.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="caviar">
+  <div class="wrap">
+    <p class="eyebrow">Caviar — a 2027 proposition</p>
+    <h2 style="font-size:2.2rem;max-width:22ch">We are not selling caviar until the paperwork exists.</h2>
+
+    <div class="panel warn">
+      <span class="stamp">Not yet available</span>
+      <h3>The South African caviar permit stack is not assembled.</h3>
+      <p>
+        Caviar is not in the 2026 boxes, and we will not quote you a delivery date for it until a
+        registered clearing agent has this stack in hand:
+      </p>
+      <ol>
+        <li>DFFE — Department of Forestry, Fisheries and the Environment</li>
+        <li>ITAC frozen-fish notification</li>
+        <li>DAFF importer registration</li>
+        <li>SARS importer code and duty line</li>
+        <li>NRCS conformity assessment</li>
+        <li>CITES export permit and registered exporter code</li>
+      </ol>
+      <p>
+        A DAFF veterinary import permit is applied for at least four weeks before shipment and
+        takes 5–10 working days to issue once approved — roughly two months end to end for a first
+        shipment. Our December and January stock is reserved against existing customers.
+      </p>
+      <p><b>Register interest and we will contact you the week the stack clears.</b></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fgrid">
+    <div style="max-width:46ch">
+      <p style="margin:0 0 8px;color:var(--cream)"><b>StudEx Group (Pty) Ltd</b> — Wagyu biltong &amp; single-origin African coffee.</p>
+      <p style="margin:0">
+        Prices verified 28 October 2026. Market data is a point-in-time observation, not a published
+        price — re-verify before quoting. Coffee C-price is live and volatile.
+      </p>
+    </div>
+    <div>
+      <p style="margin:0 0 8px;color:var(--cream)"><b>Enquiries</b></p>
+      <p style="margin:0">
+        <a href="mailto:sales@studex-group.com">sales@studex-group.com</a> ·
+        <a href="https://wa.me/27794988737">WhatsApp +27 94 988 8737</a>
+      </p>
+    </div>
+    <div>
+      <p style="margin:0 0 8px;color:var(--cream)"><b>Order close</b></p>
+      <p style="margin:0">13 November 2026 · Delivery by mid-November</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
