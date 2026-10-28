@@ -403,6 +403,14 @@
     "shopify-storefront-ladder": {
       "state": "OPEN \u2014 owner action",
       "detail": "Live storefront still sells 500g R450 / 1kg R1,450 / 7kg case R12,500; the site now shows R325 / R1,250 / R8,400. Shopify Admin API is 401 from this box."
+    },
+    "ladder-lock-drift": {
+      "state": "FIXED \u2014 2026-10-28 22:24 UTC",
+      "detail": "Registry pointed at the retired retail build -> live page had zero assertions. Re-pointed (retail t56b7vkncytt, SA hospitality i09hd71cvt06), ladder rows + caviar scope corrected, prose false-assertions removed, master re-synced with dist/, SA page rebuilt and redeployed. Drift 18/18 CLEAN. Guard repointed; ops/test-ladder-lock.py added (67/67).",
+      "discord_channel": "1538825048465481728",
+      "discord_message_id": "1565117891844513974",
+      "commit": "53f3f03",
+      "pushed_to": "origin/standup/2026-10-28"
     }
   },
   "external_leads": {
@@ -2519,5 +2527,8 @@
       "psq9xaisb9kf"
     ]
   },
-  "last_heartbeat_pass": "2026-10-28T22:24Z"
+  "last_heartbeat_pass": "2026-10-28T22:24Z",
+  "open_owner_actions": [
+    "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
+  ]
 }
