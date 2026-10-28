@@ -437,3 +437,113 @@ This matters for tomorrow: Friday's Threads post went out early (`8384240`), so 
 **Status:** PARTIAL — posted: none
 **Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
 ---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T13:44:56Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T13:44:57Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T13:53:58Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T13:54:00Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T13:59:40Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T13:59:42Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T14:06:57Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T14:06:58Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T14:40:10Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
+
+## 2026-10-27 (Tuesday — Africa) — daily-post cron
+
+**Content:** **Africa's Coffee Is Traceable to the Washing Station. Now the Trade Rules Have Caught Up.**  A Rwandan washed lot doesn't just come with a grade. It comes with a washing station, a lot number, and a chain of custody that can actually be followed.  That traceability used to be a marketing line. It's...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-28T14:40:12Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793084861_067a8111.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: none
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
+---
