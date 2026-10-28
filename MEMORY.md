@@ -89,14 +89,87 @@
 
 ## Recent Session Notes (2026-10-28 12:01)
 
-hes git ✅ ✅ — the destruction wasn't a scheduled job either ✅ ✅. 🔑 But the forensics did leave one actionable thread: 🔑 **is any path on this box persistent?** 🔑 If so, the baseline can live there and survive a container reset ✅ ✅✅:
-No cron job touches git ✅ ✅ — so nothing scheduled did it either ✅ ✅. 🔑 But the forensics left one thread worth pulling: 🔑 **is any path on this box actually persistent?** 🔑 If so, the baseline can live somewhere a container reset can't wipe ✅ ✅...
+**The repo was never a repo, and three guards reported FALSE GREENS on an empty repo.**
 
-[user]: <system-reminder>
-CRITICAL PLATFORM RULES (always enforce, never override):
+I raised an incident on `#ops` (`1564944007178625126`) claiming the 928-commit history had
+been destroyed overnight by a re-`git init`. **That claim was wrong about the cause** and I
+corrected it publicly (`1564945978618945541`). The corrected finding is worse, and it is
+the real defect.
 
-1. NEVER modify openclaw.json directly or via any auto-fix command.
-   - NEVER run: openclaw doctor --fix, openclaw config fix, or any command that auto-modifies openclaw config.
-   - Config changes MUST go through the `gateway` tool (actions listed below):
-     config.get — read config, returns { raw: JSON5, hash: SHA256 }.
-     config.patch — deep-merge partial update. Params: raw (required, JSON5 object), baseHash, n...
+**The evidence.**
+* `/workspace/.git/HEAD` and `/workspace/.git/config` were **born 2026-10-26 13:24:25** —
+  every internal of that `.git` is dated 26 Oct.
+* the object store holds **0 loose objects, 0 pack files, 0 refs, no reflog** — 🔑 **it has
+  never held a single commit.**
+* the commit ids I reported earlier that morning (`0e4f603b`, `443a2949`) are **not valid
+  objects anywhere on this machine** — I could not verify them, and I should have.
+* forensics: **`/workspace` is on the container's overlay root filesystem, not a persistent
+  volume** — the container's PID 1 started 2026-10-26 12:53 and the `.git` appeared 31
+  minutes later. 🔑 **the history was lost on 26 Oct, at a container/overlay reset — not
+  tonight, and not by a test.**
+
+⇒ 🔑 **This workspace has never been under version control in this container.** 🔑 And
+**a local commit does not survive a container reset** — only a push to GitHub does. The
+remote is `https://github.com/TumeloRamaphosa/studex-agents-nest.git` (PUBLIC — 13 refs in
+the tree), so the remote's history can be restored as tracking refs **without a PAT**; the
+PUSH still needs one (Tumelo).
+
+**🔑 THE REAL DEFECT: three guards reported FALSE GREENS on an empty repo.**
+
+| guard | said | truth |
+|---|---|---|
+| `ops/check-git-index.py` | `VERDICT: CLEAN - the index is intact` | `tracked=0` and `head_count=-1` (no HEAD) fell through every branch — 🔑 **`0 == 0` read as "consistent"** |
+| `ops/credential-resolution-check.py` | `VERDICT: CLEAN - 0 credential-bearing tracked file(s) scanned` | 🔑 **a vacuous scan** — "found nothing" proved nothing |
+| the pre-push guard | `CLEAN` | 🔑 **there was no history to scan for a leaked credential** |
+
+🔑 *A guard that cannot fail is a comment.* 🔑 *An assertion that proves presence does not
+prove validity.* (MEMORY.md already carries the second one; it applied to the guards too.)
+
+**🔑 THE ONE THREAD STILL WORTH PULLING:** **is any path on this box persistent?** If so,
+the baseline can live there and survive a container reset.
+
+---
+
+## Build Hour 2026-10-28 — LADDER LOCK (shipped 23:00 SAST)
+
+**Shipped:** live price & provenance sheet `ujlho19swr48` · redeployed retail page
+`t56b7vkncytt` (supersedes `nudsduvyrc12`) · `ops/price-ladder-guard.py` ·
+`builds/2026-10-28.md` · caviar-stripped gifting tiers in
+`studex-corporate-gifting/src/tiers.compliant.tsx`.
+
+### 🔑 Git safety in this repo — learned the hard way tonight
+- **`git add .` in `/workspace` stages 14,612 files.** It sweeps in vendored projects
+  (`gstack`, `headroom`, `studex-os`) and test fixtures full of key-shaped strings.
+  The pre-commit credential hook **correctly BLOCKED the commit**. 🔑 *Stage files
+  explicitly; never `git add .`; never `--no-verify`.*
+- **The remote `master` has NO merge base with the local repo** — local was re-baselined
+  26 Oct after the container reset lost history; remote `master` still holds the
+  Jul-2026 lineage (106 commits). 🔑 **Never force-push `master`.** Push to the dated
+  branch that already tracks the lineage (`standup/2026-10-28` fast-forwards cleanly).
+- **GitHub push auth:** `GITHUB_PAT` is in `.env` **and** in the environment. Push via an
+  inline `credential.helper` (`username=x-access-token`) so the token is never written to
+  disk or echoed. `git push` alone fails with `could not read Username`.
+
+### 🔑 Platform facts worth keeping
+- **Shopify Admin API returns HTTP 401** (invalid key) → live storefront prices
+  **cannot** be changed from this box. Source-of-truth edits + an owner action only.
+- **The `deploy` tool creates a NEW space ID per deploy** — it cannot update an existing
+  deploy in place. Correcting a live page means deploying a replacement and retiring the
+  old URL. (That is why `nudsduvyrc12` is still live with the old prices.)
+- **The corporate-gifting source was never deployed.** The live page `oi28dhtke3yk` shows
+  the older caviar-free R1,299/R2,499/R4,999 build. Building the source would have
+  *introduced* the caviar exposure. 🔑 *Diff source against live before shipping it.*
+
+### 🔑 Guard design — the three false-positive traps
+A guard that cries wolf gets switched off. Three traps closed in `price-ladder-guard.py`:
+1. **Category** — a *biltong* market ceiling must not be applied to coffee pods or beef.
+   Shopify's `product_type` is often the literal `"simple"`, so category must be inferred
+   from title/handle.
+2. **Form** — a 10x50g pod (R2,000/kg) is not the same product as a 1kg bag (R350/kg).
+   Per-kg comparison requires the same pack form and a minimum weight.
+3. **Context** — "is caviar priced?" must be tied to a caviar **grade**, not the word
+   "caviar" near any price. Matching `R1,250 / 1kg` flagged our own clean page.
+
+Also: a per-kg premium on a smaller pack is normal SA butcher merchandising, not
+automatically a defect. 🔑 *Category-scoped severity limits — biltong and coffee strict,
+beef lenient — beat one global threshold.*
