@@ -2794,5 +2794,34 @@
   "error": "I wrote that the Vault Sync 'has been dying quietly, every day' off ONE kill. The history is 2 kills in 100 runs, the first since 21 Oct",
   "rule": "a single data point is a data point, not a pattern. Asserting a pattern is cheaper than reading the history",
   "today_three_of_this_family": "the typed clock (09:45 vs the derived 09:33), the two-post ids (there was one post), and now 'every day' off one kill"
+ },
+ "vault_sync_growth_diagnosed_2026_10_29": {
+  "growth_curve_s": {
+   "10-13": 127727,
+   "10-14": 99857,
+   "10-15": 80714,
+   "10-16": 99642,
+   "10-17": 111273,
+   "10-19": 150144,
+   "10-20": 150327,
+   "10-21": 300460,
+   "10-22": 201221,
+   "10-23": 361599,
+   "10-24": 280251,
+   "10-26": 101152,
+   "10-27": 270842,
+   "10-28": 572999,
+   "10-29": 620349
+  },
+  "kills": [
+   "2026-10-21 (300s)",
+   "2026-10-29 (620s)"
+  ],
+  "budget_was_set_on": "2026-10-22 against a 201s measurement; the work has tripled since",
+  "not_the_cause": "the vault it stages is only 2.9 MB / 281 files",
+  "the_cause": "the repo it commits into is 1.6 GB with a 392 MB .git (219 MiB loose + 172 MiB packed, 12142 loose objects) and 888 tracked files, and the credential guard every commit must pass is O(repo size): the full-tree audit measured 317s - more than half the old 600s budget. The pre-commit guard itself is O(staged) (1s with nothing staged)",
+  "structural_fix": "the per-commit hook should scan the STAGED CHANGE (O(change)); the full-tree audit belongs in the canonical pass where O(tree) is the point. NOT weakening the guard - the guarantee is unchanged (a fragment is caught on the commit that introduces it)",
+  "not_measured": "the split of the 620s between the agent turn and the commit's guard cost - I did not run the sync because its payload ends in git push to a PUBLIC remote; the guard's share is bounded at ~0.36s per staged file (~100s for 281 files)",
+  "housekeeping_owner_approved_only": "the standing git gc warnings have a cause: 12142 loose objects / 219 MiB, half the repo's size"
  }
 }

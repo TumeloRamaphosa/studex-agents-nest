@@ -1,5 +1,19 @@
 # HEARTBEAT.md
 
+## 🔙 11:06 UTC — WHY THE VAULT SYNC IS 6× SLOWER: MEASURED, NOT GUESSED
+**The vault is not the problem — the repo is.** The vault it stages is **2.9 MB / 281 files**; the
+repo it commits into is **1.6 GB · 392 MB `.git` · 888 tracked files**, and the credential guard
+every commit must pass is **O(repo size)**: I timed the full-tree audit at **317 s** ⇒ **more than
+half the old 600 s budget**. The growth curve: **80 s (15 Oct) → 620 s (29 Oct)**, killed twice
+(21 Oct, 29 Oct). The budget was set on 22 Oct against a 201 s measurement.
+
+🔑 **The fix is NOT to weaken the guard:** the **per-commit** hook should scan the **staged change**
+(O(change)); the **full-tree** audit belongs in the **canonical pass**, where O(tree) is the point.
+The guarantee is unchanged — a fragment is caught on the commit that introduces it. 🔑 *A per-commit
+safety scan that is O(repo) makes every job that commits grow with the repo.*
+
+⚠️ **I did not run the sync to test it** — its payload ends in `git push` to a **PUBLIC** remote.
+
 ## 🔴 10:46 UTC — A GUARD BUILT THIS MORNING CAUGHT A SECOND JOB DYING EVERY DAY, AND MY 09:45 CLAIM WAS WRONG
 **The 10:37 pass — 22 checkers (the first with both new guards): 17 clean · 5 findings (cron-kills) · 0 broken · 0 could-not-prove** — the one NEW finding is `cron-kills` (the Vault Sync 12:00 kill, fixed at 10:43Z, guard now CLEAN). Pass end **2026-10-29T10:55:35Z**.
 The **`Vault Sync — 12:00 SAST (Post-Meeting)`** job was **killed at 620349 ms against a 600 s
