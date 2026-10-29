@@ -1,4 +1,34 @@
 # HEARTBEAT.md
+## 🔴 2026-10-29 08:30 UTC — THE 09:00 STANDUP DIED 3.5 SECONDS PAST A 300-SECOND BUDGET, AND SAID NOTHING
+
+### 🔑 THE FAILURE WAS SILENT BECAUSE A JOB THAT IS "SUPPOSED TO" WORK GETS NO ATTENTION
+`ceo-standup-0900` runs at 09:00 SAST and delivers to `#ops`. This morning it ran **303,478 ms**
+and was killed by its own timeout — **3.5 seconds past the line** — with an **empty summary** and
+`deliveryStatus: unknown`. ⇒ **Tumelo received no 09:00 standup at all.** No report, no error in
+the channel, the brief simply did not exist. The run record has said `error` all along; nobody
+looked at a job that was "supposed to" work.
+
+### 🔑 THE ROOT CAUSE WAS A NUMBER, NOT A CODE PATH
+`timeoutSeconds` was **300**. Every sibling has 1800–3600 — 17:00 & 22:00 standups **1800**, Morning
+Nudge **1800**, Evening Standup **2400**, Build Hour **2400**, Studex Daily Post **1800**. The
+22 Oct "raise the cron timeouts to 1800s" round **never included this job** — one number away from
+working, and nobody diffed the fleet against its own siblings.
+
+✅ **Fixed** — `openclaw cron edit ceo-standup-0900 --timeout-seconds 1800`, verified by reading the
+API back: timeout 300 → 1800 · enabled · schedule `0 9 * * 1-6` · agentId main · delivery
+(discord → `#ops`, bestEffort) · payload message byte-identical (466 chars) · only `updatedAtMs`
+moved. 🔑 *A fleet is a set of siblings — a job's timeout is only meaningful next to its siblings'.*
+
+### 📣 TODAY'S PUBLISHING PATH IS HEALTHY — AND CLEAN
+Path A → **Instagram `8634450`** (1180 chars, 4 hashtags, brand image) ✅ · Path B → **Threads 201** ✅
+· **neither caption carries a price** — `check-price-on-feed.py` names **no 2026-10-29 post** ✅
+(the known 3 live price posts are 22 Oct ×2 + 28 Oct ×1; the 28 Oct one carries `R1,450` and went
+live via the fallback *before* the path-B policy gate landed). The 5 staged captions carrying
+prices (23–27 Oct) are **historical** — nothing re-publishes an old date, so the live breach count
+cannot grow from them.
+
+Posted to `#ops` (`1565277861030396016`).
+
 ## 🟡 2026-10-29 06:20 UTC — TWO CRON JOBS DID THEIR WORK AND WERE STILL MARKED `error`
 
 ### 🔑 THE ERROR NAMED THE BOOKKEEPING, SO THE REAL FAILURE READ AS A SIDE ISSUE
