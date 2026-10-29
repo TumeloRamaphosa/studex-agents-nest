@@ -2606,7 +2606,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T15:42:29Z",
+ "last_heartbeat_pass": "2026-10-29T16:40:48Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2973,5 +2973,32 @@
   "new_finding_was_in_my_own_new_job": "cron-times: my new job had no declared timezone (tz=None) - the only enabled job in the fleet firing by default rather than by declaration. It FIXED it at the source (schedule.tz = UTC), re-ran ops/check-cron-times.py (rc=0) and verified the next run moved exactly +3600s (same phase) from jobs.json, not from the expression.",
   "my_budget_was_wrong_again": "I set 2400s from the PASS's runtime (~18 min), but the JOB is the pass PLUS the agent turn that reads the output, derives the counts and records them: the observed job runtime was 2237s = 93% of the budget, so a second run could plausibly have been killed. A budget set from the work's runtime is not the job's runtime. Raised to 3600s (the fleet max, so cron-timeouts will not call it an outlier), verified in jobs.json; the spec now also updates last_heartbeat_pass (it had gone stale at 14:55:32Z while the per-pass key moved on). Next run 16:23:00Z.",
   "manual_passes_stop": "the cron owns the cadence now - the 15:06 hand-launched pass overlapped the 15:23 cron run (both read-only, so harmless, but wasteful)"
+ },
+ "pass_16_40_2026_10_29": {
+  "broken": [],
+  "checkers": 22,
+  "clean": 18,
+  "could_not_prove": [],
+  "cron_times": "CLEAN (rc=0) - the tz=UTC fix from the 15:42 pass HELD through the 16:23 firing, so the job now fires by declaration. This was the 15:42 pass's only NEW finding and it is now closed.",
+  "discord": "NOT POSTED - every finding is in the known set (price-on-feed, staged-publish, cost-model, public-exposure), 0 new, 0 broken, 0 could-not-prove. The 4 findings' detail lines are byte-identical to the 15:42 pass, so there was no content change to report either.",
+  "end": "2026-10-29T16:40:48Z",
+  "end_source": "mtime of the pass output file (ops/logs/heartbeat-pass-2026-10-29_1623.log), not the time the run started",
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "known": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "lesson": "The 15:42 pass's new finding (cron-times: this job had no declared timezone) was fixed at the source and has now survived a real firing. A fix that has only been verified by re-running the checker is a hypothesis; a fix that survives the next scheduled fire is evidence.",
+  "new": [],
+  "note": "22/22 checkers proved their answer: 0 broken, 0 could-not-prove. 18 clean (up from 17 - cron-times closed). This pass was READ-ONLY: nothing was mutated, no credential was touched, no surface was written. The 4 known escalations were unchanged in content and were NOT re-posted.",
+  "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
+  "start": "2026-10-29T16:23:00Z"
  }
 }
