@@ -2613,7 +2613,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T18:41:14Z",
+ "last_heartbeat_pass": "2026-10-29T19:37:48Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3087,5 +3087,28 @@
   "spec_hardened": "the job spec now says: start the pass with nohup into ops/logs/heartbeat-pass-<date>_<hhmm>.log and wait with ONE bounded command (tail --pid=<pid> -f /dev/null) - no polling loops, no long sleeps",
   "schedule_health": "the job has run 4 times (15:23/16:23/17:23/18:23), all ok, all CLEAN 22/22 with 18 clean and 0 new/broken/cnp; the last two posted nothing because every finding was in the known set with byte-identical detail; no fleet job errored between 15:30Z and 19:11Z",
   "agent_lesson": "to ask 'was it recorded?', LIST the keys - never probe for one you guessed (an invented key name read as 'nothing was recorded' when it had been)"
+ },
+ "pass_1923_2026_10_29": {
+  "end": "2026-10-29T19:37:48Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-29_1923.log (the pass END time, not the time reading started)",
+  "checkers": 22,
+  "clean": 18,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
+  "known_set_exact": true,
+  "discord": "NOT POSTED - 0 new findings, 0 broken, 0 could-not-prove, and every finding is in the known set (price-on-feed, staged-publish, cost-model, public-exposure). The entire log is byte-identical to the 18:23 and 17:23 passes (diff empty, 0 lines differ), so there was no content change to report.",
+  "cron_times": "CLEAN (rc=0) - the tz=UTC fix from the 15:42 pass has now held through FOUR consecutive scheduled firings (16:23, 17:23, 18:23, 19:23).",
+  "cron_kills": "CLEAN (rc=0) - the vault-sync 1200s budget fix holds inside the runner again.",
+  "read_only": true,
+  "mutations": "none - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified",
+  "content_change_vs_18_23_pass": "NONE - the whole log is byte-identical to the 18:23 pass (diff empty, 0 lines differ)."
  }
 }
