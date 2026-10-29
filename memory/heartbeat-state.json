@@ -2684,6 +2684,30 @@
  "record_clock_correction_2026_10_29_0933": {
   "finding": "the 09:13 cycle's end time was TYPED by hand as 09:45; the pass log's own mtime says it finished at 09:33 - the same hand-typed-clock mistake corrected at 08:43, and then repeated inside the very sentence explaining it (I typed 09:38 there too, when the truth was 09:33)",
   "corrected": "HEARTBEAT.md heading, memory/2026-10-29.md heading (allowlisted as a rename - a daily note is append-only), ops/memory-shrink-allowlist.txt comment and memory/heartbeat-state.json last_heartbeat_pass now all derive from the pass log's mtime",
-  "lesson": "a clock in a record must be DERIVED from a clock, never typed - two slips in one day is a rule, not an accident"
+  "lesson": "a clock in a record must be DERIVED from a clock, never typed - two slips in one day is a rule, not an accident; and the SAME slip happened inside the sentence explaining it (I typed 09:38 there too, when the truth was 09:33)"
+ },
+ "path_b_unsourced_spec_2026_10_29": {
+  "finding": "today's caption (Threads 8633885 + Instagram 8634450) says the Wagyu Ribeye carries 'marbling grade 5'; that phrase appears in exactly three files in the repo - the caption machine's own output - while the owning source studex-products-catalog.csv says 'marble scores 8+ to 11+'",
+  "root_cause": "path A is bound by traceability (every figure traces to PRICE-SOURCE-REGISTRY.md - no invented statistics); path B has NO traceability rule - its guard checks that a PRICE is registry-owned, never that a SPEC is sourced. A satisfied clause is not evidence about the others",
+  "owner_action": "the claim is live on two channels - edit both posts to the catalogue's wording, or leave them and fix the generator",
+  "proposed_guard": "a caption's grade/score/marbling claim must appear in the catalogue"
+ },
+ "backlog_sharpened_2026_10_29": {
+  "publishable_price_stripped": [
+   "2026-10-26 Fire & Feast R999",
+   "2026-10-25 coffee R400/kg",
+   "2026-10-27 Luxury biltong R650"
+  ],
+  "must_not_publish": [
+   "2026-10-24 Oscietra caviar R4,200 / R34,000 - the SA permit stack is unassembled and caviar is off the retail sale path"
+  ],
+  "hold": [
+   "2026-10-23 Wagyu Ribeye R1,950 - today's caption is the same cut; two ribeye posts in six days reads like a loop"
+  ],
+  "ask": "one word from Tumelo and 3 posts go out price-stripped to IG + Threads (the two connected channels)"
+ },
+ "caption_product_repetition_2026_10_29": {
+  "finding": "the same Wagyu Biltong Gold 1kg box went live on Threads on 22 Oct AND 28 Oct with near-identical copy; the duplicate check compares TEXT and near-identical text is not identical text, so it passed",
+  "fix": "dedupe on the product, not the copy - not built tonight: the product extractor needs the catalogue's own titles and a half-built guard that cries wolf is worse than none"
  }
 }

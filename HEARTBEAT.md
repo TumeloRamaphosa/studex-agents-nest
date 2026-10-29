@@ -1,5 +1,28 @@
 # HEARTBEAT.md
 
+## 🔴 09:45 UTC — PATH B INVENTED A PRODUCT SPEC AND PUBLISHED IT, AND THE BACKLOG IS 3 CAPTIONS, NOT 5
+**09:13 pass CLEAN** (20 checkers · 16 clean · 4 known escalations · 0 new findings) · hosts
+unchanged ⇒ no post for them · mail CLEAN (1061 / 13).
+
+**🔴 The caption machine asserted a spec no source supports, and it is LIVE.** Today's caption
+(Threads `8633885` + Instagram `8634450`) says the Wagyu Ribeye carries *"marbling grade 5"*.
+**That phrase appears in exactly three files in the repo — the machine's own output.** The owning
+source (`studex-products-catalog.csv`) says **marble scores 8+ to 11+**. 🔑 *Path A is bound by
+traceability ("no invented statistics"); path B has no traceability rule at all — its guard checks
+that a PRICE is registry-owned, never that a SPEC is sourced.*
+
+**🔑 The backlog is 3 captions, not 5.** Publishable price-stripped: 26 Oct Fire & Feast, 25 Oct
+coffee, 27 Oct Luxury biltong. **Must not publish: 24 Oct caviar** (permit stack unassembled).
+**Hold: 23 Oct ribeye** (today's caption is the same cut). ⇒ one word from Tumelo and 3 posts go
+out to IG + Threads.
+
+**🔑 And the machine repeated a product** — the same Wagyu Biltong Gold 1kg box went live on
+Threads on 22 Oct AND 28 Oct, near-identical copy, because the duplicate check compares TEXT and
+near-identical text is not identical text. Dedupe on the product, not the copy.
+
+**The clock, again:** the 09:13 cycle's end time was typed as 09:45; the pass log's mtime says
+**09:33**. 🔑 *A clock in a record must be DERIVED from a clock.*
+
 ## 🟢 2026-10-29 09:33 UTC — THE 09:13 PASS WAS CLEAN, AND THE PASS CAN NOW SEE A JOB THAT DIED
 **09:13 canonical pass: 20 checkers · 16 clean · 4 known escalations · 0 new findings · 0
 could-not-prove · 0 broken.** `VERDICT: CLEAN - every checker proved its answer.`
