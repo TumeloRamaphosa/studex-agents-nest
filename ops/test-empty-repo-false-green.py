@@ -110,8 +110,22 @@ def pre_fix_source(path_rel, dest):
 
 
 def main():
-    work = pathlib.Path(tempfile.mkdtemp(prefix=".tmp-empty-repo-",
-                                          dir=str(REPO)))
+    # The scratch repo MUST live OUTSIDE /workspace.
+    #
+    # It used to be created INSIDE the repo (dir=str(REPO)) with the prefix
+    # ".tmp-empty-repo-". Two things went wrong with that:
+    #   1. .gitignore covers ".tmp-*.sh" and ".tmp-*.py" but NOT a
+    #      ".tmp-*/" DIRECTORY, so the scratch tree was never ignored;
+    #   2. the scratch tree contains its OWN .git directories, so
+    #      `git add .` stages them as embedded repositories -> gitlink
+    #      (mode 160000) entries -> every clone gets an empty directory.
+    # That is the same class of damage as the emptied index this file
+    # exists to guard against, and it was INVISIBLE: the index was
+    # consistent with HEAD, so every checker stayed green.
+    #
+    # A test that builds a repo must build it somewhere that cannot end up
+    # in the repo it is testing.
+    work = pathlib.Path(tempfile.mkdtemp(prefix="studex-empty-repo-"))
     try:
         vacuous = make_repo(work / "vacuous", commit=False, empty_index=True)
         healthy = make_repo(work / "healthy", commit=True)

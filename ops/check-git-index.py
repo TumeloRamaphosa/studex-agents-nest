@@ -27,12 +27,31 @@ WHAT IT CHECKS
   1. The index exists and is non-empty.
   2. The number of tracked files in the index matches HEAD's tree.
   3. The index does not report a mass deletion.
+  4. The index contains NO gitlink (mode 160000) entries.
 
   If the index is empty while HEAD tracks thousands of files, this reports
   the damage and gives the exact repair (`git reset --mixed HEAD`, which
   rebuilds the index from HEAD and touches no file in the working tree).
-"""
 
+WHY 4 EXISTS
+-------------
+A gitlink is git's record of "this path is ANOTHER repository". It is not
+a file, so every content-based checker reads a clone of this repo and
+finds an EMPTY DIRECTORY where the content should be, with no error
+anywhere.
+
+On 2026-10-29 a leftover scratch directory from
+`ops/test-empty-repo-false-green.py` sat in the repo root. It held its own
+`.git` directories, and `.gitignore` only ignored `.tmp-*.sh`/`.tmp-*.py` -
+FILES, not DIRECTORIES. The next `git add .` (the Build Hour job runs one)
+would have staged both nested repos as gitlinks and shipped them to a
+PUBLIC remote. The index was perfectly consistent with HEAD, every other
+checker was green, and the damage was one command away.
+
+A guard that only checks what the damage LOOKS LIKE cannot catch damage
+that changes what a clone CONTAINS. So this one reads git's own record of
+the index, entry by entry, including the mode.
+"""
 import os
 import pathlib
 import subprocess
@@ -100,6 +119,34 @@ def _staged_deletions():
         return 0
 
 
+def _gitlinks():
+    """Return the paths staged as gitlinks (mode 160000).
+
+    `git ls-files -s` prints one record per index entry:
+        <mode> <sha> <stage>\t<path>
+    A gitlink is mode 160000 - a path that is ANOTHER repository, not a
+    file. It is invisible to every content-based checker: a clone of this
+    repo would contain an EMPTY directory at that path, with no error
+    anywhere to say so.
+    """
+    try:
+        r = subprocess.run(["git", "ls-files", "-s"], cwd=str(REPO),
+                           capture_output=True, text=True, timeout=300)
+        if r.returncode != 0:
+            return []
+        links = []
+        for line in r.stdout.splitlines():
+            if not line.strip():
+                continue
+            meta, _, path = line.partition("\t")
+            parts = meta.split()
+            if parts and parts[0] == "160000":
+                links.append(path if path else meta)
+        return links
+    except Exception:  # noqa: BLE001
+        return []
+
+
 def main():
     findings = []
 
@@ -140,6 +187,20 @@ def main():
             findings.append(
                 "%d files are staged for DELETION - if those files exist on "
                 "disk, the index is corrupt, not the worktree" % dels)
+
+        # A gitlink in the index is a path that is ANOTHER repository. It
+        # is not a file, so a clone of this repo would contain an EMPTY
+        # DIRECTORY there - and no content-based checker could ever see
+        # it. One `git add .` is all it takes to create one.
+        links = _gitlinks()
+        if links:
+            findings.append(
+                "%d path(s) are staged as GITLINKS (mode 160000) - each is "
+                "another REPOSITORY, not a file: %s. A clone of this repo "
+                "would carry an EMPTY DIRECTORY at each of those paths, and "
+                "no content-based checker can see it. Remove them from the "
+                "index and ignore the source." % (len(links),
+                                                   ", ".join(links[:10])))
 
     if findings:
         print()
