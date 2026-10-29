@@ -24,6 +24,7 @@ import tempfile
 REPO = pathlib.Path("/workspace")
 CHECKER = REPO / "ops" / "check-pre-push-guard.py"
 SOURCE = REPO / "ops" / "git-pre-push-guard.py"
+SOURCE_PRE_COMMIT = REPO / "ops" / "git-pre-commit-guard.py"
 
 fails = []
 
@@ -53,6 +54,14 @@ def make_repo(root, hooks_path=None):
     (root / "ops").mkdir(exist_ok=True)
     shutil.copy2(CHECKER, root / "ops" / "check-pre-push-guard.py")
     shutil.copy2(SOURCE, root / "ops" / "git-pre-push-guard.py")
+    # The checker verifies BOTH hooks git actually runs, each against its
+    # own source. When the pre-commit source was added, this fixture was
+    # NOT updated - it still copied one source - so every case reported
+    # "the pre-commit guard source is missing" and the whole suite went
+    # red for a reason that had nothing to do with the assertion under
+    # test. A fixture must be updated with the checker it feeds.
+    if SOURCE_PRE_COMMIT.exists():
+        shutil.copy2(SOURCE_PRE_COMMIT, root / "ops" / "git-pre-commit-guard.py")
     if hooks_path:
         subprocess.run(["git", "config", "core.hooksPath", hooks_path],
                        cwd=str(root), capture_output=True, timeout=60)
@@ -77,6 +86,14 @@ def main():
     (r2 / ".githooks").mkdir(exist_ok=True)
     (r2 / ".githooks" / "pre-push").write_bytes(SOURCE.read_bytes())
     os.chmod(r2 / ".githooks" / "pre-push", 0o755)
+    # The checker now verifies BOTH hooks git actually runs. This case is
+    # about the DECOY (a hook in .git/hooks/ must not satisfy the check on
+    # its own), so the effective pre-commit hook has to be installed too -
+    # otherwise the case fails on a missing pre-commit hook and never
+    # reaches the decoy it is supposed to be testing.
+    if SOURCE_PRE_COMMIT.exists():
+        (r2 / ".githooks" / "pre-commit").write_bytes(SOURCE_PRE_COMMIT.read_bytes())
+        os.chmod(r2 / ".githooks" / "pre-commit", 0o755)
     # A decoy in .git/hooks/ - the exact trap that shipped the bug.
     (r2 / ".git" / "hooks").mkdir(parents=True, exist_ok=True)
     (r2 / ".git" / "hooks" / "pre-push").write_bytes(SOURCE.read_bytes())

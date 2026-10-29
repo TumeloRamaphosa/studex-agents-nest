@@ -35,9 +35,24 @@ SECRET_NAME = re.compile(
 # A plausible credential: long, and made of the characters real keys use.
 CREDENTIAL_SHAPE = re.compile(r"^[A-Za-z0-9_\-\.\+/=~]{16,}$")
 
+# Unambiguous redaction ARTEFACTS: the value IS a mask, not a credential.
+#
+# These are tested BEFORE the length check, and that order is the point.
+# A mask is a mask whatever its length, and TOO-SHORT is a class the
+# resolver ALLOWS - so a 12-asterisk masked credential used to be
+# classified TOO-SHORT and handed to a caller as if it were a live key.
+# The credential masker writes exactly that shape, so the tool that
+# removes a leak was manufacturing one.
+#
+# Only the bare-artefact forms live here. The WORD markers (example,
+# dummy, TODO...) stay in PLACEHOLDER, after the length test, because a
+# short real credential containing one of those words must not be newly
+# refused - a false positive in the direction that blocks working keys.
+MASK = re.compile(r"(\*{3,}|x{6,}|<[^>]{2,}>)")
+
 # Things that are definitely not credentials, however they are spelled.
 PLACEHOLDER = re.compile(
-    r"(\*{3,}|x{6,}|<[^>]{2,}>|REDACTED|PLACEHOLDER|CHANGEME|YOUR_|"
+    r"(REDACTED|PLACEHOLDER|CHANGEME|YOUR_|"
     r"example|EXAMPLE|dummy|DUMMY|not[_-]?set|TODO|\.\.\.|replace\(|"
     r"os\.environ|process\.env|\bimport\b|\bdef\b|\breturn\b)",
     # A bare "=" is NOT a placeholder marker: it is how a base64 credential
@@ -55,6 +70,8 @@ def classify(value):
     v = value.strip()
     if not v:
         return "EMPTY"
+    if MASK.search(v):
+        return "PLACEHOLDER"
     if len(v) < 16:
         return "TOO-SHORT"
     if PLACEHOLDER.search(v):

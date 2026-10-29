@@ -251,8 +251,18 @@ try:
     # tokens were sitting in tracked source while the checker said CLEAN.
     @case("hardcoded ClickUp token -> checker RED")
     def _():
+        # SYNTHETIC token: correct SHAPE (pk_ + 9 digits + _ + 32 alnum) but
+        # built from a made-up account id, so it shares no 12-char slice with
+        # any live credential.
+        #
+        # It used to be a LIVE-shaped token whose account prefix matched a
+        # real key in .env. The credential masker did its job and replaced
+        # that prefix with asterisks - which silently DESTROYED this
+        # negative control: the masked string no longer has the shape the
+        # checker looks for, so the checker correctly returned GREEN and
+        # this test failed. A test fixture must never hold a live slice.
         (SANDBOX / "bad.js").write_text(
-            "const token = 'pk_302689978_Zx7Qw2Er4Ty6Ui8Op0As3Df5Gh7Jk9Lz1Xc3Vv5';\n"
+            "const token = 'pk_519283746_Qw7Zx4Rt2Nm8Vb3Kd6Lf0Hg5Jc1Sp9Ay2';\n"
         )
         subprocess.run(["git", "add", "-A"], cwd=SANDBOX, check=True)
         expect_red(SANDBOX, "HARDCODED")

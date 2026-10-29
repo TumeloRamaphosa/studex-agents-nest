@@ -311,7 +311,7 @@ Spoken back via RileyJarvis
 
 ### 11Labs Voice Config
 - Voice ID: Nova (warm, slightly British) — preferred
-- ElevenLabs API key: [REDACTED:35 chars - rotate this key]dfe53fdd0ae790b5
+- ElevenLabs API key: [REDACTED:35 chars - rotate this key]****************
 - Already set in: /workspace/.env as ELEVENLABS_API_KEY
 
 ### RocketChat Voice Integration

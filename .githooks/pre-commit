@@ -8,6 +8,16 @@ the moment it is pushed. On 2026-10-23 an AgentMail API key was found hardcoded
 in two live landing-page JS bundles; this guard exists so that class of mistake
 cannot reach the index at all.
 
+THIS FILE IS THE SOURCE OF TRUTH. Git reads `.githooks/pre-commit` (because
+`core.hooksPath = .githooks`), so the installed hook is a COPY of this file.
+Editing only one of the two leaves the stale policy in force, silently - the
+exact failure that happened to the pre-push guard on 2026-10-27. After any
+change here, reinstall:
+
+    cp ops/git-pre-commit-guard.py .githooks/pre-commit && chmod 755 .githooks/pre-commit
+
+`ops/check-pre-push-guard.py` verifies that for both hooks.
+
 Install once per clone:
     git config core.hooksPath .githooks
 
@@ -151,6 +161,23 @@ def staged_files():
     return [f for f in out.split("\n") if f.strip()]
 
 
+def staged_paths_including_deletions():
+    """Every path in the index change, INCLUDING deletions.
+
+    A deleted memory file is the most complete loss there is, so the shrink
+    guard must see it. `staged_files()` above filters deletions out (there is
+    no file left to scan for credentials), so this needs its own list.
+    """
+    try:
+        out = subprocess.run(
+            ["git", "diff", "--cached", "--name-only", "--diff-filter=ACMRD"],
+            capture_output=True, text=True, check=True,
+        ).stdout
+    except subprocess.CalledProcessError:
+        return []
+    return [f for f in out.split("\n") if f.strip()]
+
+
 def main():
     hits = []
     for path in staged_files():
@@ -208,7 +235,20 @@ def main():
     # "Build Hour" commits with `git add .`, so an unremarked rewrite would
     # have been published to the public remote. The credential guard cannot
     # see this class of loss, so it needs its own check.
-    if "MEMORY.md" in staged_files():
+    #
+    # 2026-10-28: the same failure happened to a DAILY NOTES file. The
+    # "Research Hour" cron job wrote its own note to memory/2026-10-28.md -
+    # the file that holds that day's accumulated notes - with a whole-file
+    # overwrite, replacing 789 lines / 36 sections with 28 lines. The guard
+    # below only fired for MEMORY.md, so it said nothing. The guard now
+    # covers memory/*.md as well, and this hook must therefore trigger on
+    # ANY staged memory file, not just MEMORY.md.
+    staged = staged_paths_including_deletions()
+    memory_staged = [
+        p for p in staged
+        if p == "MEMORY.md" or (p.startswith("memory/") and p.endswith(".md"))
+    ]
+    if memory_staged:
         r = subprocess.run(
             [sys.executable, "ops/memory-shrink-guard.py", "--staged"],
             capture_output=True, text=True,

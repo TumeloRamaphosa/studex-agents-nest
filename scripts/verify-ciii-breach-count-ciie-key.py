@@ -7,7 +7,7 @@ inbox project-2571-studex-agent-2077@agentmail.to belongs to a DIFFERENT
 AgentMail account and 404s for the main key. Its "0 / 12, MISMATCH" verdict is
 an artefact of the wrong credential, not evidence that nothing was sent.
 
-This script uses the ciie-nurture key (am_us_e4b30fcc...), asserts that the
+This script uses the ciie-nurture key (**************...), asserts that the
 message count is BELOW the limit (i.e. NOT truncated), and recounts from the
 sent side.
 

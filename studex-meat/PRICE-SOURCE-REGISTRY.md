@@ -302,6 +302,10 @@
 | `R 18 999` | spaced price format | `3zryumjeuemk` |
 | `R 1 999` | spaced price format | `3zryumjeuemk` |
 | `R500/mo` | retired spec price | `3zryumjeuemk` |
+| `0% window runs to 30 April 2028` | the 30 Apr 2028 expiry was THEIRS, not ours - a Rwandan LDC origin has no expiry | `fr7m7fzyailo` · `9yk65ajlg1s9` · `jqbgl8pu0uyh` · `qefqcvvpd8al` · `4mak476g6rmo` |
+| `Zero Tariff — to 30 Apr 2028` | the 30 Apr 2028 expiry was THEIRS, not ours - a Rwandan LDC origin has no expiry | `fr7m7fzyailo` · `9yk65ajlg1s9` · `jqbgl8pu0uyh` · `qefqcvvpd8al` · `4mak476g6rmo` |
+| `tariff window closes on 30 April 2028` | the 30 Apr 2028 expiry was THEIRS, not ours - a Rwandan LDC origin has no expiry | `fr7m7fzyailo` · `9yk65ajlg1s9` · `jqbgl8pu0uyh` · `qefqcvvpd8al` · `4mak476g6rmo` |
+| `0% for all 53 African countries, 1 May 2026 – 30 April 2028` | the 30 Apr 2028 expiry was THEIRS, not ours - a Rwandan LDC origin has no expiry | `fr7m7fzyailo` · `9yk65ajlg1s9` · `jqbgl8pu0uyh` · `qefqcvvpd8al` · `4mak476g6rmo` |
 | `R1,500/mo` | retired spec price | `3zryumjeuemk` |
 | `R4,000/mo` | retired spec price | `3zryumjeuemk` |
 | `R2,600` | retired caviar price | `oi28dhtke3yk` · `hhsmhunf1xci` |

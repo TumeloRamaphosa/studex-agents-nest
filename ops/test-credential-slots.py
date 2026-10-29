@@ -108,7 +108,16 @@ def main():
         check("and it names the file", "leak.py" in out, out[-400:])
 
         print("--- the pre-flight refuses to publish without a credential ---")
-        env = {k: v for k, v in os.environ.items() if k != "BLOTATO_API_KEY"}
+        # The publisher reads the .env FILE, so stripping the variable from
+        # the ENVIRONMENT proves nothing - the credential was still in the
+        # file and the case passed without exercising the path it claimed
+        # to. STUDEX_ENV_FILE points the publisher at a scratch file with
+        # no credential in it, so "no credential" is now a REAL state.
+        noenv = work / "no-credential.env"
+        noenv.write_text("# deliberately empty\n", encoding="utf-8")
+        env = {k: v for k, v in os.environ.items()
+               if k not in ("BLOTATO_API_KEY", "STUDEX_ENV_FILE")}
+        env["STUDEX_ENV_FILE"] = str(noenv)
         p = subprocess.run([sys.executable, str(REPO / "scripts" / "daily-post.py"),
                             "2026-10-27"], capture_output=True, text=True,
                            env=env, timeout=200, cwd=str(REPO))
@@ -116,7 +125,7 @@ def main():
         check("the publisher refuses without a credential (rc!=0)", p.returncode != 0,
               "rc=%d" % p.returncode)
         check("and it says it is refusing to publish",
-              "refusing to publish" in out, out[-300:])
+              "refusing to publish" in out.lower(), out[-300:])
 
         env2 = dict(env)
         env2["BLOTATO_API_KEY"] = 't = t.replace(secret, "***")'

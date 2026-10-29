@@ -59,6 +59,17 @@ FACEBOOK_PAGE_ID = "108934711902801"
 
 
 def load_env(paths=("/workspace/.env", os.path.expanduser("~/.env"))):
+    """Read KEY=VALUE lines from each file, first hit wins.
+
+    STUDEX_ENV_FILE overrides the list. WITHOUT it, the "publisher refuses
+    without a credential" case could not be tested at all: the test strips
+    BLOTATO_API_KEY from the ENVIRONMENT, but the publisher reads the .env
+    FILE, so the credential was still there and the case passed for the
+    wrong reason - it never exercised the path it claimed to.
+    """
+    override = os.environ.get("STUDEX_ENV_FILE")
+    if override:
+        paths = [override]
     env = {}
     for f in paths:
         if not os.path.exists(f):
@@ -395,6 +406,44 @@ def write_marker(date_str, pillar, results):
                    "at": datetime.now(SAST).isoformat()}, f, indent=2)
 
 
+def resolve_blotato_key():
+    """Return the Blotato key, or (None, reason) if it is not usable.
+
+    2026-10-28. The publisher used to read the key and publish. It had no
+    guard at all, so a redaction artefact left in the .env slot was sent
+    straight to the Blotato API - and a redaction artefact is exactly what
+    the credential slot checker refuses to call a credential.
+
+    THE ORDER IS THE POINT. The credential is a PRECONDITION: if it is not
+    a credential, nothing downstream can be trusted, and the message must
+    come BEFORE any content validation. Otherwise a broken credential is
+    only ever reported when the caption happens to be valid - the guard
+    was in the wrong place to protect anything.
+
+    The classification is SHARED with ops/check-credential-slots.py (via
+    cred_env) so the pre-flight and the checker cannot disagree about
+    what a credential is.
+    """
+    env = load_env()
+    raw = os.environ.get("BLOTATO_API_KEY")
+    source = "the environment"
+    if not raw:
+        raw = env.get("BLOTATO_API_KEY")
+        source = "the .env file"
+    if not raw:
+        return None, ("BLOTATO_API_KEY is not set in the environment or the "
+                      ".env file")
+    try:
+        import cred_env
+        kind = cred_env._classify_credential(raw)
+    except Exception:
+        kind = "UNKNOWN"
+    if kind != "CREDENTIAL":
+        return None, ("BLOTATO_API_KEY is not shaped like a credential "
+                      "(it is %s, from %s)" % (kind, source))
+    return raw, None
+
+
 def main():
     date_str = sys.argv[1] if len(sys.argv) > 1 else datetime.now(SAST).strftime("%Y-%m-%d")
     day = datetime.strptime(date_str, "%Y-%m-%d")
@@ -403,6 +452,18 @@ def main():
     now = datetime.now(SAST)
     print("=== Studex Daily Post ===")
     print("Date: %s (%s) | Pillar: %s | Now: %s SAST" % (date_str, dow, pillar, now.isoformat()))
+
+    # 🔑 PRECONDITION FIRST. The credential gate runs BEFORE the pillar
+    # check, before the queue lookup and before any content validation.
+    # A publisher with an unusable key must refuse before it does
+    # anything at all - otherwise "no post queued" masks "your credential
+    # is broken", and the operator fixes the wrong thing.
+    key, key_problem = resolve_blotato_key()
+    if key_problem:
+        print("REFUSING TO PUBLISH: %s." % key_problem)
+        print("A credential that is not shaped like a credential cannot "
+              "publish anything - fix the slot, then re-run.")
+        return 1
 
     if pillar is None:
         print("No pillar for %s — skipping." % dow)
@@ -456,8 +517,6 @@ def main():
     fh_ok, fh_detail = try_feedhive(content, media_url, publish_at_utc)
     print("FeedHive: %s (%s)" % ("SCHEDULED" if fh_ok else "unavailable", fh_detail))
 
-    env = load_env()
-    key = os.environ.get("BLOTATO_API_KEY") or env.get("BLOTATO_API_KEY")
     bres = {}
     if key:
         bres = try_blotato(content, media_url, key, skip=already)

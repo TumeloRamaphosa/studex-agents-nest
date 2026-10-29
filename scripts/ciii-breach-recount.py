@@ -3,7 +3,7 @@
 
 INPUT: the AgentMail send records for the CIIE sender inbox
        project-2571-studex-agent-2077@agentmail.to (a SEPARATE AgentMail account from
-       sales@studex-group.com — it needs the ciie-nurture key, am_us_e4b30fcc..., and it
+       sales@studex-group.com — it needs the ciie-nurture key, **************..., and it
        404s for the main key).
 
 WHY THE ORIGINAL COUNTS DISAGREED:

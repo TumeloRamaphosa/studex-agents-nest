@@ -93,7 +93,7 @@ t, _ = sub1(t,
     "from**, so the correction lands in the same thread they remember. ⚠️ `sales@studex-group.com` exists and "
     "works, but it is a *different* AgentMail account; an apology from an address they were never contacted "
     "from reads like phishing and undermines the correction. The CIIE inbox needs the **ciie-nurture key** "
-    "(`am_us_e4b30fcc…`); the main key 404s it.",
+    "(`**************…`); the main key 404s it.",
     "send-from line")
 
 if t != orig:
