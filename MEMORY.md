@@ -15,6 +15,22 @@
 - If blocked by permissions, do not modify other config files; inform Tumelo and ask how to proceed.
 - Discord exec approvals are unavailable; `approval-timeout` means the command did not run. Avoid repeated retries.
 
+## 🎯 PLAN FOR TODAY — 29 Oct 2026
+**Owner's five minutes (each releases something):** Shopify Admin token for `57228b-3` (P1 — the
+only revenue blind spot + the biltong ladder sync; the store still sells R450/R1,450/R12,500 with
+the 19% case arbitrage live) · caviar sign-off + take `ess0ocgcd9f0` down (**Christmas window
+closes 13–15 Nov**) · **one word and the 3 parked captions publish** (26/25/27 Oct, price-stripped)
+· edit Threads `8633885` ("marble score 8+ to 11+", ONE post) · confirm the phone digits
+`+27 94 988 8737` on 8 live pages · delete 4 public deploys (`awyjxfplygag` cost model,
+`nudsduvyrc12`+`bkqn328wj5a6` old prices, `ess0ocgcd9f0` caviar) · GitHub PAT + rotate Blotato &
+GoDaddy · reconnect Blotato fb `38744` + LinkedIn `26628` · coffee FOB re-base now or at CIIE (5 days).
+**My build list:** make the canonical pass a **cron job** (today it was silent 3 h 45 m because it
+only runs when a session is awake) · fix the vault-sync payload (drop the PAT-gated `git push`,
+bound the turn's scope) · caption set ready for one-word release · build the caviar-free gifting
+page but **do not deploy** before sign-off · propose `git gc`/prune (219 MiB loose objects).
+**Money order:** see the money → stop selling below the site's own prices → capture Christmas before
+15 Nov → turn reach into replies → take the cost model off the public internet.
+
 ## Critical Live Risks
 
 ### Storefront Audit — 2026-10-27

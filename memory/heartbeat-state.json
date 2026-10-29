@@ -433,6 +433,13 @@
    "topic": "12:00 SAST Vault Sync crossed its 600s budget (620349ms) and was killed - raised to 1200s, verified by the checker that found it; NOT a daily death (2 kills in 100 runs); the real question is the 6x runtime growth; plus my two corrections (Threads 8633885 ONLY for the wrong spec; pass end 09:33 not 09:45)",
    "ts": "2026-10-29T10:56:32Z",
    "ts_source": "discord snowflake (the message id IS the send time)"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565321264271196161",
+   "topic": "closing the loop on my own hypothesis: the vault sync's 620s is its AGENT TURN (git plumbing 0s; the pre-commit hook is O(staged) by design - the 317s was the PASS's full-tree checker, not the hook); the real defect is in the payload - it ends 'git commit && git push' to a PUBLIC remote whose push is PAT-gated, so its last step can never succeed; fixes: drop the push, bound the turn's scope",
+   "ts": "2026-10-29T11:07:51Z",
+   "ts_source": "discord snowflake (the message id IS the send time)"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
@@ -2830,6 +2837,46 @@
    "the_real_fix": "the payload, not the guard: (1) it ends `git commit && git push` to a PUBLIC remote whose push is PAT-gated, so its last step can never succeed from this box - drop it or gate it on a credential being present; (2) bound the agent turn's scope (read the N most-recent inbox notes, not all 281 files). A budget is a ceiling; a scope is the actual fix",
    "housekeeping_measured": "the untracked bulk (user_input_files 132M, OpenJarvis 104M, repos 81M, headroom 61M, gstack 57M, core 52M, herdr 48M, user_content 46M = ~580MB) is untracked and costs 0s - it is NOT the growth term. The 219 MiB of loose objects (12142) is the real gc housekeeping, owner-approved only",
    "lesson": "measure before blaming: the biggest thing in the tree is not the thing that is slow - and I recommended a fix for a mechanism I had not read"
+  }
+ },
+ "plan_2026_10_29": {
+  "owner_decisions_requested": [
+   "Shopify Admin token for 57228b-3 (P1: revenue visibility + the biltong ladder sync; the live store still sells R450/R1,450/R12,500 with the 19% case arbitrage live)",
+   "caviar sign-off: flip the gifting default to tiers.compliant.tsx and take ess0ocgcd9f0 down - the SA Christmas window closes 13-15 Nov",
+   "the 3 parked captions (26/25/27 Oct, price-stripped): one word and they publish",
+   "edit Threads 8633885: 'marbling grade 5' -> 'marble score 8+ to 11+' (ONE post)",
+   "confirm the phone digits +27 94 988 8737 on 8 live pages (094 is not an allocated SA prefix)",
+   "delete 4 public deploys: awyjxfplygag (cost model), nudsduvyrc12 + bkqn328wj5a6 (old prices), ess0ocgcd9f0 (caviar trade)",
+   "GitHub PAT (contents:write) + rotate Blotato & GoDaddy (fragments in the PUBLIC remote)",
+   "reconnect Blotato facebook 38744 + linkedin 26628; coffee FOB re-base now or at CIIE (5 days)"
+  ],
+  "agent_work_today": [
+   "make the canonical pass a cron job - it only ran when a session was awake (3h45m silent today)",
+   "keep the pass green and land cron-kills CLEAN inside the runner",
+   "fix the vault-sync payload: drop the doomed PAT-gated git push, bound the turn's scope",
+   "prepare the caption set for one-word release (price-stripped, validated)",
+   "build the caviar-free gifting page but DO NOT deploy before sign-off",
+   "propose git gc/prune (12142 loose objects, 219 MiB)"
+  ],
+  "money_order": [
+   "see the money (Shopify token)",
+   "stop selling below the site's own prices (ladder sync)",
+   "capture the Christmas gifting window before 15 Nov, caviar-free",
+   "turn reach into replies (captions + Threads fix + phone digits)",
+   "take the cost model off the public internet"
+  ],
+  "overdue_pass_found_on_arrival": {
+   "last_heartbeat_pass_before": "2026-10-29T10:55:35Z",
+   "no_pass_logs_for": [
+    "11:37",
+    "12:37",
+    "13:37"
+   ],
+   "cause": "the canonical pass only runs when a session is awake - it is not a cron job",
+   "relaunched": "2026-10-29T14:37Z",
+   "pid": "1233953",
+   "log": "/tmp/hb-pass-1437.log",
+   "checkers": 22
   }
  }
 }
