@@ -394,6 +394,12 @@
    "messageId": "1565262073339056179",
    "topic": "FOLLOW-UP - the orphan-fallback fix fired on its first live run: today's Daily Content Agent published to THREADS (201) where it would have published nowhere; also the content agent's own .env-loader fix (8e668e8): 'FB_PAGE_TOKEN not set' while the token was present",
    "ts": "2026-10-29T07:12:29Z"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565277861030396016",
+   "topic": "CRON - the 09:00 standup was killed by a 300-second budget (303,478 ms, empty summary, nothing delivered); root cause was timeoutSeconds=300 while every sibling has 1800-3600; raised to 1800 and verified",
+   "ts": "2026-10-29T08:15:35Z"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
@@ -2546,7 +2552,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T07:12:29Z",
+ "last_heartbeat_pass": "2026-10-29T08:15:35Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2583,5 +2589,12 @@
   "committed_as": "c94bc35",
   "warmup_log_bug": "index.js prepended + sliced the HEAD while daily-warmup-runner.js appends at the TAIL, so every build-hour cycle destroyed the runner's [SENT] audit trail (2+ weeks). Now appends chronologically, trims the OLDEST lines, trailing newline.",
   "posted": "#ops 1565257448355274776"
+ },
+ "cron_0900_timeout_2026_10_29": {
+  "finding": "ceo-standup-0900 (09:00 SAST, delivers to #ops) ran 303,478 ms and was killed by its own 300s timeout - 3.5 seconds past the line - with an empty summary and deliveryStatus unknown, so Tumelo received NO 09:00 standup. The failure was silent.",
+  "root_cause": "timeoutSeconds was 300 while every sibling job has 1800-3600 (17:00 & 22:00 standups 1800, Morning Nudge 1800, Evening Standup 2400, Build Hour 2400, Daily Post 1800). The 22 Oct 'raise the cron timeouts to 1800s' round never included this job.",
+  "fix": "openclaw cron edit ceo-standup-0900 --timeout-seconds 1800 - verified by reading the API back: timeout 300->1800, enabled, schedule 0 9 * * 1-6, agentId main, delivery (discord -> #ops, bestEffort) and the 466-char payload message unchanged; only updatedAtMs moved.",
+  "lesson": "a standup silently killed by a 5-minute budget is the worst kind of missing - no report, no error in the channel, the brief simply does not exist; the run record said 'error' all along and nobody looked at a job that was 'supposed to' work.",
+  "posted": "#ops 1565277861030396016"
  }
 }
