@@ -93,3 +93,11 @@ support@studex-group.com|nostr-keys/generate.js
 tumoragencies@agentmail.to|scripts/standup-1022.py
 phiri@agentmail.to|scripts/standup-1022.py
 charlie@agent.studexmeat.com|studex-war-room-ui/dist/assets/*.js
+
+# --- 2026-10-29: the 09:00 standup's live probe scripts -------------
+# A standup probe deliberately sweeps the WHOLE roster - live and dead -
+# so it can REPORT which mailboxes answer. Probing a dead address is the
+# point of a probe; sending to one is the bug. The glob covers every
+# scratch probe of that kind, so a new one does not re-open the FAIL.
+# (The address itself is still unreachable on every key we hold.)
+healthyprocess394@agentmail.to|ops/tmp-*

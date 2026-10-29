@@ -85,7 +85,14 @@ OpenJarvis/
 .openclaw/
 .tmp-*.sh
 .tmp-*.py
-
+# Scratch DIRECTORIES too. ".tmp-*.sh"/".tmp-*.py" only match FILES, so a
+# ".tmp-something/" directory was never ignored - and one of those held
+# nested .git repos, which `git add .` would stage as embedded repos
+# (gitlink entries) and break every clone. The canonical checker
+# `git-index` now fails on that class of damage; this rule stops it
+# reaching the index in the first place.
+.tmp-*/
+</newString>
 # Media binaries: 2.2 MB of video has no place in a PUBLIC repo, and
 # a binary in the tracked set is a fragment-matching risk. The deploy
 # copies them from the working tree, not from git.
@@ -96,3 +103,9 @@ studex-meat/public/media/*.wav
 
 # Moved-out-of-service checkers live here, recoverable, never tracked.
 .trash-*/
+
+# One-shot scratch scripts written into ops/ by cron agents (standup probes,
+# EOD sweeps). They are scratch, they are kept on disk, and they must not
+# reach the PUBLIC remote - the existing '.tmp-*.py' rule does not match them
+# because they carry no leading dot. Untracked 2026-10-29.
+ops/tmp-*
