@@ -308,3 +308,26 @@ table — **before CIIE, 5 days**; (2) delete `ess0ocgcd9f0`, `i09hd71cvt06`,
 10-name coffee outreach; (6) confirm the two phone numbers (caviar footer
 +27 84 421 6035 vs WhatsApp +27 94 988 8737).
 
+
+---
+
+## Git lineage — read this before pushing (2026-10-29)
+
+🔴 **`origin/master` is an UNRELATED July-2026 lineage with NO merge-base to
+this repo.** `git push origin master` fails with `non-fast-forward`, and the
+house rule is *never force over unrelated master lineage*.
+
+**The live lineage is `standup/YYYY-MM-DD`.** For the current day, push:
+
+```
+git push origin master:standup/YYYY-MM-DD
+```
+
+That is a clean fast-forward, because local `master` descends from that branch.
+Verified 2026-10-29: `a2ffce6..ac0c7e5 master -> standup/2026-10-29`.
+
+**Credentials:** `GITHUB_PAT` is in `/workspace/.env`. `gh` is not installed
+and no credential helper is configured, so a push needs `GIT_ASKPASS` with a
+small script that reads `$GITHUB_PAT` from the environment — never put the
+token in the remote URL, argv or a log. The PAT works; the earlier "PAT
+broken" note was a misdiagnosis of the non-fast-forward error.
