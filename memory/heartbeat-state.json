@@ -3176,5 +3176,21 @@
   "cron_kills": "CLEAN (rc=0) - the vault-sync 1200s budget fix holds inside the runner again.",
   "read_only": true,
   "mutations": "none - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified"
+ },
+ "vault_sync_rate_limit_attributed_2026_10_29": {
+  "answer": "the 28 Oct failure was a TRANSIENT PROVIDER RATE LIMIT, not a payload bug and not a budget kill. The string 'API rate limit reached. Please try again later.' is the model provider's message. Run history: 23 Oct ok 454s, 24 Oct ok 447s, 25 Oct ok 345s, 26 Oct ok 631s, 27 Oct ok 685s, 28 Oct error 203s - one failure in six nights.",
+  "consequence": "no engineering fix is warranted; the honest statement is 'the provider rate-limited one run'. cron-kills correctly ignores it (not a timeout kill).",
+  "closes": "the open question left in the 21:05 record"
+ },
+ "vault_payload_stale_reason_corrected_2026_10_29": {
+  "defect": "both vault payloads still said 'the remote push is PAT-gated' after I had corrected that reason at 19:00 (the PAT IS present; the push is rejected as non-fast-forward). The instruction was right and its justification was wrong.",
+  "lesson": "a payload is an instruction to a future agent - and a wrong reason in a payload teaches the next agent to 'fix' it back",
+  "fix": "both payloads now carry the accurate reason (remote master has no merge base -> non-fast-forward; never force-push master; pushing the lineage branch is an owner decision, not a cron decision). 'do NOT run git push' is unchanged.",
+  "verification": "read from jobs.json: stale phrase absent, accurate phrase present, budgets still 1200s, schedules unchanged, next runs unchanged (10:00Z and 22:00Z), and the date literals survived byte-for-byte ($(date +%Y-%m-%d): 4->4 and 6->6) because the edit was passed through an argv list so no shell could expand them"
+ },
+ "vault_eod_read_bounded_2026_10_29": {
+  "change": "the Midnight (EOD) job's step 3 read the day's full event log; it now reads in full only if under 4000 lines, otherwise every ##/### heading plus the last 300 lines - the same bound step 4 already applies to the inbox",
+  "why": "that file is today's note and grows all day; the job's own author already knew a growing scope is what killed the 12:00 sync at 620s, and the same bound was missing from its largest input",
+  "caveat": "NOT a rate-limit fix - there is no proof the tokens were the cause. It is the one unbounded input."
  }
 }
