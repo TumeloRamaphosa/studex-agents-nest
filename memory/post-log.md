@@ -657,3 +657,14 @@ This matters for tomorrow: Friday's Threads post went out early (`8384240`), so 
 **Status:** PARTIAL — posted: none
 **Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: none. Blotato failed: facebook, linkedin. Skipped (already published): instagram, threads.
 ---
+
+## 2026-10-29 (Thursday — Business) — daily-post cron
+
+**Content:** **Why Enterprises Should Buy Lead Time, Not Just Price.**  Enterprise buyers spend weeks negotiating unit price, then discover the real constraint was never the price. It was the clock.  Take our caviar import. The DAFF veterinary import permit must be applied for at least four weeks before shipment...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-29T07:14:03Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793257848_cfd86e53.png
+**FeedHive post ID:** N/A — FeedHive unavailable (skipped by operator instruction — FeedHive API not called)
+**Status:** PARTIAL — posted: instagram
+**Notes:** validate_brand() passed (10 checks). FeedHive: skipped by operator instruction — FeedHive API not called. Blotato posted: instagram. Blotato failed: facebook, linkedin. Skipped (already published): threads.
+---
