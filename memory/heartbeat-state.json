@@ -2572,7 +2572,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T09:39:18Z",
+ "last_heartbeat_pass": "2026-10-29T09:33:31Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2680,5 +2680,10 @@
    "7f99966"
   ],
   "unpushed": "owner-gated PAT; the remote is PUBLIC"
+ },
+ "record_clock_correction_2026_10_29_0938": {
+  "finding": "the 09:13 cycle's end time was TYPED by hand as 09:45; the pass log's own mtime says it finished at 09:33 - the same hand-typed-clock mistake I corrected at 08:43",
+  "corrected": "HEARTBEAT.md heading, memory/2026-10-29.md heading (allowlisted as a rename - a daily note is append-only), and memory/heartbeat-state.json last_heartbeat_pass now derives from the pass log's mtime",
+  "lesson": "a clock in a record must be DERIVED from a clock, never typed - two slips in one day is a rule, not an accident"
  }
 }

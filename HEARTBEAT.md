@@ -1,6 +1,6 @@
 # HEARTBEAT.md
 
-## 🟢 2026-10-29 09:45 UTC — THE 09:13 PASS WAS CLEAN, AND THE PASS CAN NOW SEE A JOB THAT DIED
+## 🟢 2026-10-29 09:33 UTC — THE 09:13 PASS WAS CLEAN, AND THE PASS CAN NOW SEE A JOB THAT DIED
 **09:13 canonical pass: 20 checkers · 16 clean · 4 known escalations · 0 new findings · 0
 could-not-prove · 0 broken.** `VERDICT: CLEAN - every checker proved its answer.`
 `dead-inbox` **CLEAN** ⇒ the 08:25 fix is verified by the pass itself. credential-fragments CLEAN ·
