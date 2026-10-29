@@ -2578,7 +2578,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T09:33:31Z",
+ "last_heartbeat_pass": "2026-10-29T10:55:35Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2696,7 +2696,17 @@
   "finding": "today's caption (Threads 8633885 + Instagram 8634450) says the Wagyu Ribeye carries 'marbling grade 5'; that phrase appears in exactly three files in the repo - the caption machine's own output - while the owning source studex-products-catalog.csv says 'marble scores 8+ to 11+'",
   "root_cause": "path A is bound by traceability (every figure traces to PRICE-SOURCE-REGISTRY.md - no invented statistics); path B has NO traceability rule - its guard checks that a PRICE is registry-owned, never that a SPEC is sourced. A satisfied clause is not evidence about the others",
   "owner_action": "the claim is live on two channels - edit both posts to the catalogue's wording, or leave them and fix the generator",
-  "proposed_guard": "a caption's grade/score/marbling claim must appear in the catalogue"
+  "proposed_guard": "a caption's grade/score/marbling claim must appear in the catalogue",
+  "live_on": [
+   "threads 8633885 (ONE post)"
+  ],
+  "not_on": [
+   "instagram 8634450 - that is the BUSINESS pillar caption ('Why Enterprises Should Buy Lead Time, Not Just Price.', 1180 chars, 4 hashtags) published by the Daily Post job at 07:16:01Z, per its own post 1565262919254548511"
+  ],
+  "edits_needed": 1,
+  "corrected_at": "2026-10-29T10:46:08Z",
+  "correction_source": "the Midday Nudge's own check-in post 1565306725513568397 (2026-10-29T10:10:05Z) + the Daily Post post 1565262919254548511 (07:16:01Z)",
+  "my_error": "at 09:45 I named TWO live posts carrying the wrong spec; there is ONE. The second id came from a summary line, not from the post. Twice in one day I asserted a specific fact from a summary instead of reading the artefact (the other was the typed 09:45 end time vs the derived 09:33). A summary is a pointer; the artefact is the evidence."
  },
  "backlog_sharpened_2026_10_29": {
   "publishable_price_stripped": [
@@ -2715,5 +2725,60 @@
  "caption_product_repetition_2026_10_29": {
   "finding": "the same Wagyu Biltong Gold 1kg box went live on Threads on 22 Oct AND 28 Oct with near-identical copy; the duplicate check compares TEXT and near-identical text is not identical text, so it passed",
   "fix": "dedupe on the product, not the copy - not built tonight: the product extractor needs the catalogue's own titles and a half-built guard that cries wolf is worse than none"
+ },
+ "vault_sync_1200_budget_fix_2026_10_29": {
+  "job": "Vault Sync - 12:00 SAST (Post-Meeting)",
+  "job_id": "5d6729b7-8ad0-4ba3-99c8-b48ddeac49aa",
+  "found_by": "ops/check-cron-timeout-kills.py (NEW - fired on its first live run at 10:41Z)",
+  "symptom": "killed at 620349 ms against a 600 s budget - 20 seconds of work past the line - every day, silently (lastError 'cron: job execution timed out', deliveryStatus unknown, consecutiveErrors 1)",
+  "fix": "openclaw cron edit 5d6729b7-8ad0-4ba3-99c8-b48ddeac49aa --timeout-seconds 1200 (rc=0) - the CLI dump and jobs.json both show payload.timeoutSeconds 1200, updatedAtMs 1793270601630",
+  "verified": "ops/check-cron-timeout-kills.py re-run -> rc=0, no job's last run was killed by a timeout its current budget could not have avoided",
+  "why_the_other_guard_missed_it": "cron-timeouts compares the budget to its SIBLINGS (600 vs 1200 = not an outlier) while cron-kills compares the kill to the WORK (620s of work vs a 600s budget). A budget can be small relative to its siblings and still be smaller than the job. One rule catches a MIS-BUDGET; the other catches a DEATH."
+ },
+ "midday_nudge_budget_proof_2026_10_29": {
+  "job": "e48bae9c-2adc-4ed0-9d06-60f142230aa5 (Midday Nudge)",
+  "ran_at": "2026-10-29T10:00:00Z",
+  "finished": "2026-10-29T10:20:28Z",
+  "status": "ok",
+  "duration_s": 1228,
+  "budget_s": 1800,
+  "old_budget_s": 900,
+  "delivery": "3 messages to #ops at 2026-10-29T10:10:05Z - the fix carried the job end-to-end (turn + delivery); under the old 900s budget it would have died again",
+  "remaining_test": "ceo-standup-0900's own next run is 2026-10-30T07:00:00Z - that is the real test of the 1800s budget for that job; cron-kills will not re-announce it until its next run proves it"
+ },
+ "ceo_standup_delivery_absent_confirmed_2026_10_29": {
+  "finding": "no #ops message between 06:54:16Z and 07:16:01Z is a CEO standup; the run died at 07:03:04Z, 303s into a 300s budget. The 09:00 SAST standup really did not report - my 08:42 report to Tumelo stands",
+  "why_it_matters": "a job that fails quietly is indistinguishable from a job that has nothing to say, until you read the channel"
+ },
+ "feed_reach_first_numbers_2026_10_29": {
+  "instagram_28_oct": "841 views / 489 reach / 12 likes / 0 comments",
+  "threads_28_oct": "50 views",
+  "comments_in_7_days": 0,
+  "future_posts_scheduled": 0,
+  "reading": "the feed is not scheduled and the reach is a rounding error either way; two independent reads (mine and the Midday Nudge's) agree the backlog is 3 publishable captions (26/25/27 Oct), caviar out, ribeye held"
+ },
+ "pass_10_37_2026_10_29": {
+  "end": "2026-10-29T10:55:35Z",
+  "checkers": 22,
+  "clean": 17,
+  "findings": [
+   "price-on-feed (finding)",
+   "staged-publish (finding)",
+   "cost-model (finding)",
+   "cron-kills (finding)",
+   "public-exposure (finding)"
+  ],
+  "new": [
+   "cron-kills"
+  ],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: NEW FINDING(S) - not previously escalated.",
+  "note": "cron-kills fired at 10:41Z on the Vault Sync 12:00 kill; the fix landed at 10:43Z mid-pass, so this pass recorded the finding as it stood - the guard now re-runs CLEAN"
+ },
+ "record_summary_attribution_correction_2026_10_29": {
+  "error": "my first completion test stripped leading whitespace, so it matched an INDENTED checker's own VERDICT line (discord-credential's) as if it were the runner's summary, and I embedded it in the daily note and HEARTBEAT.md",
+  "rule": "the runner's own summary is the line at COLUMN 0; a checker prints its verdict indented. A test that strips the thing that distinguishes one line from another will match the wrong line",
+  "fixed": "re-derived from the log's markers + the column-0 summary; the correction is appended to the daily note and the counts are in HEARTBEAT.md"
  }
 }

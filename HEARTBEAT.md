@@ -1,5 +1,35 @@
 # HEARTBEAT.md
 
+## 🔴 10:46 UTC — A GUARD BUILT THIS MORNING CAUGHT A SECOND JOB DYING EVERY DAY, AND MY 09:45 CLAIM WAS WRONG
+**The 10:37 pass — 22 checkers (the first with both new guards): 17 clean · 5 findings (cron-kills) · 0 broken · 0 could-not-prove** — the one NEW finding is `cron-kills` (the Vault Sync 12:00 kill, fixed at 10:43Z, guard now CLEAN). Pass end **2026-10-29T10:55:35Z**.
+The **`Vault Sync — 12:00 SAST (Post-Meeting)`** job was **killed at 620349 ms against a 600 s
+budget** — twenty seconds past the line — every day, silently. ✅ **Fixed at source**
+(`openclaw cron edit … --timeout-seconds 1200`; persisted; and **the guard that found it now returns
+CLEAN**). 🔑 *A fix is not a fix until the checker that found it agrees.*
+
+🔑 **WHY THE OTHER GUARD MISSED IT:** `cron-timeouts` compares a budget to its **siblings**
+(600 vs 1200 ⇒ not an outlier) and `cron-kills` compares the kill to the **work** (620 s of work vs
+a 600 s budget). *A budget can be small RELATIVE TO ITS SIBLINGS and still be smaller than the job.*
+One rule catches a **MIS-BUDGET**; the other catches a **DEATH**. 🔑 **A guard registered at 09:50
+fired at 10:41 on a job nothing else could see.**
+
+**✅ The Midday Nudge proved the 1800 s budget end-to-end:** ran 10:00:00Z, finished `ok` at
+10:20:28Z (1228 s of 1800 s) and **delivered 3 messages to `#ops` at 10:10:05Z**. Under the old
+900 s budget it would have died again.
+
+**🔴 My 09:45 claim was wrong: the "marbling grade 5" caption is on THREADS `8633885` ONLY.**
+`8634450` is the **Business pillar** caption (Daily Post, 07:16Z) ⇒ **one edit, not two.** 🔑 *I
+named two artefacts when there is one — the second id came from a summary, not from the post.*
+**Twice today I asserted a fact from a summary instead of reading the artefact.**
+
+**✅ Confirmed: the 09:00 SAST standup really did not report** — no `#ops` message between 06:54Z and
+07:16Z; the run died 07:03:04Z, 303 s into a 300 s budget.
+
+**📊 First reach numbers on our feed:** IG 28 Oct 841 views / 489 reach / 12 likes / **0 comments** ·
+Threads 28 Oct 50 views · **0 comments in 7 days** · **0 future posts scheduled** ⇒ the feed is not
+scheduled. **The one ask, unchanged:** a valid **Shopify Admin token** for store `57228b-3` —
+one credential unblocks order visibility, inventory visibility **and** the biltong ladder sync.
+
 ## 🔴 09:45 UTC — PATH B INVENTED A PRODUCT SPEC AND PUBLISHED IT, AND THE BACKLOG IS 3 CAPTIONS, NOT 5
 **09:13 pass CLEAN** (20 checkers · 16 clean · 4 known escalations · 0 new findings) · hosts
 unchanged ⇒ no post for them · mail CLEAN (1061 / 13).
