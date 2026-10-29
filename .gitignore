@@ -109,3 +109,4 @@ studex-meat/public/media/*.wav
 # reach the PUBLIC remote - the existing '.tmp-*.py' rule does not match them
 # because they carry no leading dot. Untracked 2026-10-29.
 ops/tmp-*
+ops/logs/
