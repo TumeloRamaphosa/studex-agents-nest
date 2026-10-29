@@ -1,16 +1,19 @@
 # HEARTBEAT.md
 
 ## 🔙 11:06 UTC — WHY THE VAULT SYNC IS 6× SLOWER: MEASURED, NOT GUESSED
-**The vault is not the problem — the repo is.** The vault it stages is **2.9 MB / 281 files**; the
-repo it commits into is **1.6 GB · 392 MB `.git` · 888 tracked files**, and the credential guard
-every commit must pass is **O(repo size)**: I timed the full-tree audit at **317 s** ⇒ **more than
-half the old 600 s budget**. The growth curve: **80 s (15 Oct) → 620 s (29 Oct)**, killed twice
-(21 Oct, 29 Oct). The budget was set on 22 Oct against a 201 s measurement.
+**🔴 CORRECTED (the section above blamed the wrong mechanism):** the **pre-commit hook is NOT the
+cost** — `core.hooksPath = .githooks` and `ops/git-pre-commit-guard.py` reads
+`git diff --cached --name-only` ⇒ **O(staged) by design**; it needs no change. The **317 s** I timed
+is the **PASS's** full-tree checker, not the hook. And the git plumbing is **0 s**:
+`git status --porcelain` 0 s · `git diff --cached` 0 s · `git ls-files` 0 s ⇒ 🔑 **the 620 s is the
+AGENT TURN** — the sync's own LLM work, growing because the vault grows (281 files) and the payload
+asks for thoroughness every run.
 
-🔑 **The fix is NOT to weaken the guard:** the **per-commit** hook should scan the **staged change**
-(O(change)); the **full-tree** audit belongs in the **canonical pass**, where O(tree) is the point.
-The guarantee is unchanged — a fragment is caught on the commit that introduces it. 🔑 *A per-commit
-safety scan that is O(repo) makes every job that commits grow with the repo.*
+🔑 **The fix is NOT the guard — it is the payload:** it ends `git commit … && git push` to a
+**PUBLIC** remote whose push is **PAT-gated**, so its last step can never succeed from this box.
+Drop the push (or gate it on a credential being present) and **bound the agent turn's scope** — read
+the N most-recent inbox notes. 🔑 *A budget is a ceiling; a scope is the actual fix.* 🔑 *Measure
+before blaming: the biggest thing in the tree (≈580 MB of untracked vendored dirs) costs 0 s.*
 
 ⚠️ **I did not run the sync to test it** — its payload ends in `git push` to a **PUBLIC** remote.
 

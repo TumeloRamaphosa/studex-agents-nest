@@ -2822,6 +2822,14 @@
   "the_cause": "the repo it commits into is 1.6 GB with a 392 MB .git (219 MiB loose + 172 MiB packed, 12142 loose objects) and 888 tracked files, and the credential guard every commit must pass is O(repo size): the full-tree audit measured 317s - more than half the old 600s budget. The pre-commit guard itself is O(staged) (1s with nothing staged)",
   "structural_fix": "the per-commit hook should scan the STAGED CHANGE (O(change)); the full-tree audit belongs in the canonical pass where O(tree) is the point. NOT weakening the guard - the guarantee is unchanged (a fragment is caught on the commit that introduces it)",
   "not_measured": "the split of the 620s between the agent turn and the commit's guard cost - I did not run the sync because its payload ends in git push to a PUBLIC remote; the guard's share is bounded at ~0.36s per staged file (~100s for 281 files)",
-  "housekeeping_owner_approved_only": "the standing git gc warnings have a cause: 12142 loose objects / 219 MiB, half the repo's size"
+  "housekeeping_owner_approved_only": "the standing git gc warnings have a cause: 12142 loose objects / 219 MiB, half the repo's size",
+  "CORRECTED_2026_10_29": {
+   "the_credential_guard_is_NOT_the_cost": "core.hooksPath = .githooks and ops/git-pre-commit-guard.py builds its file list from `git diff --cached --name-only --diff-filter=ACMR` => O(staged) by design. The 317s I timed is the CANONICAL PASS's full-tree checker (ops/audit-credential-fragments.py), not the commit hook. I attributed one mechanism's cost to another.",
+   "the_git_plumbing_is_not_slow": "measured: git status --porcelain 0s, git diff --cached --name-only 0s, git ls-files 0s - so neither staging, nor index refresh, nor worktree scan is the cost",
+   "so_the_620s_is_the_agent_turn": "the sync's own LLM work - read the vault inbox, read a memory file, write a 'thorough' consolidation note - and it grows because the vault grows (281 files) and the payload asks for thoroughness every run",
+   "the_real_fix": "the payload, not the guard: (1) it ends `git commit && git push` to a PUBLIC remote whose push is PAT-gated, so its last step can never succeed from this box - drop it or gate it on a credential being present; (2) bound the agent turn's scope (read the N most-recent inbox notes, not all 281 files). A budget is a ceiling; a scope is the actual fix",
+   "housekeeping_measured": "the untracked bulk (user_input_files 132M, OpenJarvis 104M, repos 81M, headroom 61M, gstack 57M, core 52M, herdr 48M, user_content 46M = ~580MB) is untracked and costs 0s - it is NOT the growth term. The 219 MiB of loose objects (12142) is the real gc housekeeping, owner-approved only",
+   "lesson": "measure before blaming: the biggest thing in the tree is not the thing that is slow - and I recommended a fix for a mechanism I had not read"
+  }
  }
 }
