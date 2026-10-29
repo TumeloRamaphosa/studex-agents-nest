@@ -1,4 +1,27 @@
 # HEARTBEAT.md
+## 🔴 2026-10-29 09:50 UTC — THE ROTATION LIST WAS WRONG: 1 CONFIRMED LIVE + 1 THAT WAS NEVER ON THE LIST
+Re-probed the **published remote** (`origin/master`, `origin/main`, `origin/ciie2026-build`,
+`origin/standup/2026-10-28` — 3967 blobs) against each provider, credential by credential.
+
+**LIVE — reachable from the public remote:**
+* **Blotato** …`8Og=` — `TOOLS.md`, `builds/2026-07-04.md`, `memory/2026-06-27.md` +10 more ⇒ **rotate**
+  (unchanged)
+* **GoDaddy** …`KcUs=` — `fix_spf_exchange.py`, `godaddy_dns_setup.py`, `godaddy_final.py` +1 more ⇒
+  **ROTATE — and it was NOT on yesterday's list.** It is the DNS provider for both live domains.
+
+**DEAD (rejected by the provider):** AgentMail ×5 · **ClickUp** (probed directly: 401 on `/user` *and*
+`/team`) · Orgo · Cloudflare · ElevenLabs · GitHubPAT ×3.
+**UNDETERMINED:** Meta/Facebook ×4 · FeedHive · Google · Perplexity — the providers will not answer
+(FB's Graph token is documented dead since 27 Jun; FeedHive 401 since 5 Oct).
+
+🔑 *A rotation list is only worth the owner's time if it is re-probed, not carried. "7 live" was true at
+01:00 and wrong by 09:00 — five had been revoked under us, and one live one was missing from the list.*
+→ `#ops` `1565284029555810445`. **MEMORY.md's escalation corrected.**
+
+Local state is already clean: the three GoDaddy scripts now read `GODADDY_API_KEY` from the environment
+instead of embedding it ⇒ nothing left to mask locally. The exposure lives in the **published history**,
+which only a rotation (or an owner-authorised history rewrite) can close.
+
 ## 🔴 2026-10-29 08:45 UTC — `dead-inbox` WENT RED, THE 09:00 STANDUP NEVER ARRIVED, AND THE CLICKUP KEY IS DEAD
 
 ### 🔴 A NEW FAIL, CAUGHT BY THE GUARD
