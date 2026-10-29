@@ -454,6 +454,13 @@
    "topic": "posted by the new Canonical Heartbeat Pass job itself (its first live run): cron-times found the new job had no declared timezone (tz=None) - the only enabled job in the fleet firing by default rather than by declaration; fixed at the source (schedule.tz = UTC), checker re-run rc=0, next run verified from jobs.json",
    "ts": "2026-10-29T15:53:23Z",
    "ts_source": "discord snowflake (the message id IS the send time)"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565443435119255573",
+   "topic": "a job's timeout bounds the TURN, not the work - the 18:23 cron run recorded durationMs=150315 while the pass it ran took 18 minutes (the turn handed off to a background session). Consequences: cron-kills can under-report a real runtime; raising a timeout does not bound background work (bounding the SCOPE does); a turn that ends early is not evidence the work was dropped. Also fixed: the runner's verdict_line() was skipping lines starting with '-' and swallowing detail lines.",
+   "ts": "2026-10-29T19:13:19Z",
+   "ts_source": "discord snowflake (the message id IS the send time)"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
