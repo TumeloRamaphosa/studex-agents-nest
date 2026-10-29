@@ -1,3 +1,9 @@
+[2026-10-29T05:09:10.315Z] Cycle complete. Sent 2 emails (0 failed). Total today: 2/5
+[2026-10-29T05:09:10.313Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: SA coffee export documentation
+[2026-10-29T05:09:07.992Z] Pausing 45min-worth of interval before next send (2s actual)
+[2026-10-29T05:09:07.991Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: biltong bulk pricing
+[2026-10-29T05:09:07.466Z] Day: 2026-10-29 | Week 1 | Today: 0/5 | Total: 35
+[2026-10-29T05:09:07.463Z] === Warmup Cycle ===
 [2026-10-28T15:14:14.931Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
 [2026-10-28T15:14:14.930Z] Day: 2026-10-28 | Week 1 | Today: 5/5 | Total: 35
 [2026-10-28T15:14:14.926Z] === Warmup Cycle ===
@@ -492,9 +498,36 @@
 [2026-10-12T13:00:07.984Z] === Warmup Cycle ===
 [2026-10-12T07:00:15.072Z] Cycle complete. Sent 2 emails. Total today: 0/5
 [2026-10-12T07:00:15.069Z] ✗ Failed to send to naledi-cmo@studex-group.com: AgentMail API error 404: {"name":"NotFoundError","code":"not_found","message":"Route not found","fix":"No route matches this path and HTTP method. Check both against the API reference at https://docs.agentmail.to — a typo in the path (e.g. /inbox vs /inboxes) or a wrong method is the usual cause.","docs":"https://docs.agentmail.to/errors#not_found"}
-[2026-10-12T07:00:12.952Z] Waiting 45min before next send...
-[2026-10-12T07:00:12.950Z] ✗ Failed to send to t.ramaphosa@studex-group.com: AgentMail API error 404: {"name":"NotFoundError","code":"not_found","message":"Route not found","fix":"No route matches this path and HTTP method. Check both against the API reference at https://docs.agentmail.to — a typo in the path (e.g. /inbox vs /inboxes) or a wrong method is the usual cause.","docs":"https://docs.agentmail.to/errors#not_found"}
-[2026-10-12T07:00:11.952Z] Day: 2026-10-12 | Week 1 | Today: 0/5 | Total: 0
-[2026-10-12T07:00:11.946Z] === Warmup Cycle ===
-[2026-10-12T05:06:17.111Z] Cycle complete. Sent 2 emails. Total today: 0/5
-[2026-10-12T05:06:17.110Z] ✗ Failed to send to naledi-cmo@studex-group.com: AgentMail API error 404: {"name":"NotFoundError","code":"not_found","message":"Route not found","fix":"No route matches this path and HTTP method. Check both against the API reference at https://docs.agentmail.to — a typo in the path (e.g. /inbox vs /inboxes) or a wrong method is the usual cause.","docs":"https://docs.agentmail.to/errors#not_found"}
+[2026-10-29T05:11:14.984Z] === Warmup run started — 2026-10-29 — LIVE ===
+[2026-10-29T05:11:15.500Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Re: Rwanda A1 documentation
+[2026-10-29T05:11:23.013Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Re: Rwanda harvest schedule
+[2026-10-29T05:11:29.171Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Delivery confirmation — Sandton
+[2026-10-29T05:11:37.081Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: CIIE Shanghai Nov 5-10 — buyer meetings
+[2026-10-29T05:11:44.986Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: RE: Luckin Coffee opportunity
+[2026-10-29T05:11:48.619Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Q3 pipeline review — Studex
+[2026-10-29T05:11:56.344Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Re: Sample shipment update
+[2026-10-29T05:12:02.091Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Studex partner inquiry
+[2026-10-29T05:12:07.903Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Re: Tumelo — introduction
+[2026-10-29T05:12:13.190Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: RE: Dubai meeting notes
+[2026-10-29T05:12:20.942Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Follow-up: Rwanda A1 availability
+[2026-10-29T05:12:27.316Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Studex partner inquiry
+[2026-10-29T05:12:34.823Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Studex Meat — quarterly review
+[2026-10-29T05:12:42.977Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Weekly update — Studex
+[2026-10-29T05:12:49.823Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Studex product catalog update
+[2026-10-29T05:12:55.824Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: RE: Dubai meeting notes
+[2026-10-29T05:13:02.767Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Coffee origin documentation attached
+[2026-10-29T05:13:08.873Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: RE: Dubai meeting notes
+[2026-10-29T05:13:16.286Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Weekly update — Studex
+[2026-10-29T05:13:19.970Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Re: cupping sample feedback
+[2026-10-29T05:13:28.032Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Follow-up: Rwanda A1 availability
+[2026-10-29T05:13:32.942Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Pricing update — Q3
+[2026-10-29T05:13:36.567Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Follow-up: Rwanda A1 availability
+[2026-10-29T05:13:43.067Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Re: Tumelo — introduction
+[2026-10-29T05:13:48.550Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Re: GCC distribution interest
+[2026-10-29T05:13:54.913Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Weekly update — Studex
+[2026-10-29T05:14:01.685Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Re: Rwanda A1 documentation
+[2026-10-29T05:14:07.877Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Delivery confirmation — Sandton
+[2026-10-29T05:14:13.495Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Re: cupping sample feedback
+[2026-10-29T05:14:19.192Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Re: Sample shipment update
+[2026-10-29T05:14:25.801Z] [REPORT] Emailed to tumelor001@gmail.com
+[2026-10-29T05:14:25.801Z] === Warmup run complete — 30 sent ===

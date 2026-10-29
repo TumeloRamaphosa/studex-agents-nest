@@ -1,9 +1,21 @@
 {
   "week": 1,
-  "sentToday": 5,
-  "lastSentDate": "2026-10-28",
-  "totalSent": 35,
+  "sentToday": 2,
+  "lastSentDate": "2026-10-29",
+  "totalSent": 37,
   "log": [
+    {
+      "ts": "2026-10-29T05:09:10.314Z",
+      "to": "naledi-cmo@studex-group.com",
+      "subject": "Re: SA coffee export documentation",
+      "success": true
+    },
+    {
+      "ts": "2026-10-29T05:09:07.992Z",
+      "to": "robusca.romanov@studex-group.com",
+      "subject": "Re: biltong bulk pricing",
+      "success": true
+    },
     {
       "ts": "2026-10-28T09:00:05.907Z",
       "to": "robusca.romanov@studex-group.com",
@@ -652,20 +664,6 @@
       "ts": "2026-10-15T13:00:15.306Z",
       "to": "naledi-cmo@studex-group.com",
       "subject": "Re: SA coffee export documentation",
-      "success": false,
-      "error": "AgentMail API error 404: {\"name\":\"NotFoundError\",\"code\":\"not_found\",\"message\":\"Route not found\",\"fix\":\"No route matches this path and HTTP method. Check both against the API reference at https://docs.agentmail.to — a typo in the path (e.g. /inbox vs /inboxes) or a wrong method is the usual cause.\",\"docs\":\"https://docs.agentmail.to/errors#not_found\"}"
-    },
-    {
-      "ts": "2026-10-15T13:00:13.168Z",
-      "to": "t.ramaphosa@agentmail.to",
-      "subject": "Follow-up: Youth Day content drop",
-      "success": false,
-      "error": "AgentMail API error 404: {\"name\":\"NotFoundError\",\"code\":\"not_found\",\"message\":\"Route not found\",\"fix\":\"No route matches this path and HTTP method. Check both against the API reference at https://docs.agentmail.to — a typo in the path (e.g. /inbox vs /inboxes) or a wrong method is the usual cause.\",\"docs\":\"https://docs.agentmail.to/errors#not_found\"}"
-    },
-    {
-      "ts": "2026-10-15T09:00:09.200Z",
-      "to": "naledi-cmo@studex-group.com",
-      "subject": "CIIE 2026 — meeting confirmation",
       "success": false,
       "error": "AgentMail API error 404: {\"name\":\"NotFoundError\",\"code\":\"not_found\",\"message\":\"Route not found\",\"fix\":\"No route matches this path and HTTP method. Check both against the API reference at https://docs.agentmail.to — a typo in the path (e.g. /inbox vs /inboxes) or a wrong method is the usual cause.\",\"docs\":\"https://docs.agentmail.to/errors#not_found\"}"
     }

@@ -244,8 +244,16 @@ def main() -> int:
             print("    - %s  %s  (status=%s)" % (date_str, name, status))
         print()
         print("VERDICT: EXPOSED - staged content that never published.")
-        print("  The publisher (studex-content-automation/scripts/blotato-fallback.js)")
-        print("  is not scheduled by anything. This checker does not publish.")
+        print("  Root cause (2026-10-29): the Facebook Graph token died on")
+        print("  27 Jun 2026 (FB190 'session has expired'). The caption was")
+        print("  queued and nothing published it, because the publisher")
+        print("  (studex-content-automation/scripts/blotato-fallback.js) was")
+        print("  an ORPHAN - no cron job, no script and no checklist entry")
+        print("  invoked it. Threads and Instagram were healthy the whole")
+        print("  time. FIXED: daily-content-agent.js now runs the fallback")
+        print("  when its Facebook post fails, so a dead Facebook token no")
+        print("  longer silences every other platform.")
+        print("  This checker does not publish - it only reports.")
         return 1
 
     print("VERDICT: CLEAN - every staged caption reached a platform.")

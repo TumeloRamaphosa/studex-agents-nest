@@ -74,6 +74,7 @@ JS_TESTS=(
   studex-content-automation/scripts/test-fallback-media.js
 studex-content-automation/scripts/test-fallback-policy.js
 studex-content-automation/scripts/test-no-price-in-caption-prompt.js
+studex-content-automation/scripts/test-fallback-is-invoked.js
 )
 
 fail=0

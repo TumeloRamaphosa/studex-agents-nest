@@ -475,6 +475,37 @@ async function main() {
       } catch (qErr) {
         console.error(`   ⚠️  Could not queue caption: ${qErr.message}`);
       }
+      // 🔑 2026-10-29. THE FALLBACK WAS AN ORPHAN.
+      //
+      // Facebook has been dead since 27 Jun 2026 (token FB190), so this
+      // catch block ran every single day and the caption went to the
+      // queue and STAYED there: nothing invoked blotato-fallback.js.
+      // Threads and Instagram were fine the whole time. Five days
+      // (23-27 Oct) published NOWHERE, and the platform the brand
+      // actually cares about had been silent for four months with no
+      // guard noticing.
+      //
+      // The repo already KNEW: ops/check-staged-publish.py and the
+      // heartbeat registry both said "nothing invokes the fallback".
+      // A known escalation nobody re-reads is a standing bug.
+      //
+      // So: after the caption is queued, run the fallback for today's
+      // date. It publishes to the platforms that still work and leaves
+      // Facebook for the day the token comes back.
+      try {
+        const { execFileSync } = require('child_process');
+        const fallback = path.join(__dirname, 'blotato-fallback.js');
+        const dateStr = started.toISOString().slice(0, 10);
+        console.error(`   ↪ Running the fallback for ${dateStr} (Facebook is down; the other platforms are not)`);
+        const out = execFileSync('node', [fallback, dateStr], {
+          encoding: 'utf-8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 240000,
+        });
+        console.error(out.trim().split('\n').slice(-8).join('\n'));
+        console.error(`   ✅ Fallback finished`);
+      } catch (fbErr) {
+        console.error(`   ⚠️  Fallback did not complete: ${fbErr.message}`);
+        console.error(`   ⚠️  The caption is still queued - it is NOT lost.`);
+      }
       process.exit(1);
     }
   }

@@ -239,8 +239,14 @@ function log(msg) {
   const path = join(__dirname, LOG_FILE);
   const existing = existsSync(path) ? readFileSync(path, 'utf-8') : '';
   const maxLines = 500;
-  const lines = [line, ...existing.split('\n')].filter(Boolean).slice(0, maxLines);
-  writeFileSync(path, lines.join('\n'));
+  // Append chronologically and trim the OLDEST lines.
+  //
+  // daily-warmup-runner.js also appends to this file. The previous version
+  // prepended and sliced from the head, so every cycle silently destroyed the
+  // runner's [SENT] audit trail (it lives at the tail of the file).
+  // Trailing newline keeps the two writers from gluing lines together.
+  const lines = [...existing.split('\n'), line].filter(Boolean);
+  writeFileSync(path, lines.slice(-maxLines).join('\n') + '\n');
 }
 
 function getDailyLimit(state) {

@@ -52,6 +52,28 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - `trash` > `rm` (recoverable beats gone forever)
 - When in doubt, ask.
 
+## ⚠️ Log Files — One Writer, One Direction
+
+Before adding a second writer to any log file, check how the existing writer
+orders its lines. A capped log (keeps N lines) plus mixed ordering means the cap
+silently eats whichever writer sits at the wrong end — and the file still looks
+healthy while the audit trail you needed is being destroyed.
+
+Rules:
+- **Agree on direction.** If one writer prepends and another appends, the cap
+  eats one of them. Pick append-at-end for all writers, and trim the **oldest**
+  lines (`slice(-maxLines)`), never the newest.
+- **Always terminate the last line with a newline.** Two writers on one file
+  without a trailing newline will glue records together, corrupting both.
+- **Verify after changing it:** write the file, then confirm the newest entries
+  are still present and still parse. A log that "looks fine" is not evidence.
+
+🔑 *`studex-email-warmup/warmup.log` had exactly this bug for 2+ weeks: the
+daily runner's `[SENT]` records were appended at the tail, and `index.js`
+prepended + sliced the head, so every build-hour cycle deleted them. Flagged on
+2026-10-28, not fixed until 2026-10-29. Proof was simulation on the real file,
+not a read of the code.*
+
 ## External vs Internal
 
 **Safe to do freely:**
