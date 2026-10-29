@@ -420,6 +420,12 @@
    "messageId": "1565284029555810445",
    "topic": "CREDENTIAL EXPOSURE - the rotation list was wrong: re-probed against the published remote (3967 blobs), the live set is Blotato + GoDaddy (GoDaddy was NOT on the earlier list), DEAD: AgentMail x5, ClickUp, Orgo, Cloudflare, ElevenLabs, GitHubPAT x3, UNDETERMINED: Meta x4, FeedHive, Google, Perplexity",
    "ts": "2026-10-29T08:40:12Z"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565300539753889803",
+   "topic": "path B invented a product spec ('marbling grade 5' vs the catalogue's 'marble scores 8+ to 11+') and published it on Threads 8633885 + Instagram 8634450; the backlog is 3 publishable captions (26/25/27 Oct), 1 must-not (24 Oct caviar - permit stack unassembled), 1 hold (23 Oct ribeye); and the same biltong product went live twice in 6 days because the duplicate check compares text, not the product",
+   "ts": "2026-10-29T09:47:00Z"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
