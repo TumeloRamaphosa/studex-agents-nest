@@ -1,0 +1,25 @@
+Subject: 🥩 Your Wagyu Biltong Gold is on its way, Tumelo!
+
+Hi Tumelo,
+
+Your {{product.name}} is packed and heading to you. 🎉
+
+Order STU-2847 | {{product.price}}
+
+{{product.tagline}}
+
+We'd love 60 seconds of your time.
+
+If you loved it — please leave us a review on Trustpilot. It takes one minute and helps more South Africans discover Studex.
+
+👉 https://www.trustpilot.com/review/studexmeat.com
+
+As a thank you, here's 10% off your next order:
+Code: REVIEW10
+
+Your first review = our eternal gratitude. 🥩
+
+Warm regards,
+Tumelo & the Studex Team
+📞 +27 94 988 8737
+🌐 studexmeat.com

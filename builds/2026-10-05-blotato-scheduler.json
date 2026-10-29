@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-05",
+  "build": "Blotato 5-Day Content Sequence Scheduler",
+  "mode": "live",
+  "results": [
+    {
+      "platform": "facebook",
+      "status": "failed",
+      "post": {
+        "day": 1,
+        "topic": "SA Coffee Origin Story",
+        "platforms": [
+          "tiktok",
+          "threads",
+          "facebook"
+        ],
+        "accounts": [
+          "tiktok",
+          "threads",
+          "facebook"
+        ],
+        "caption": "☕ AFRICA IN EVERY CUP — South Africa is now on the coffee map.\n\nFrom the Ethiopian highlands to the biltong bars of Johannesburg — Studex brings you single-origin African coffee.\n\nOur debut blend: Ethiopian Yirgacheffe + Kenyan AA.\n🫐 Blueberry, jasmine, wine-like acidity\n🍊 Citrus zest with a floral finish\n🇿🇦 Sourced direct. No middlemen. Traceable to the farm.\n\nWhy South Africa as the origin story?\nBecause we're the only African country doing something new: roasting African-sourced beans IN Africa for the world.\n\nWatch this space. 🐟☕\n\n#AfricanCoffee #EthiopianCoffee #KenyanCoffee #StudexCoffee #SpecialtyCoffee #SouthAfrica",
+        "imageUrl": "https://database.blotato.io/storage/v1/object/public/public_media/d03b21c4-5e15-4094-b2b1-b742c39438e4/a27e78bd-b513-4789-8a89-35025b151a4f.png",
+        "postTime": "2026-10-06T09:00:00.000Z"
+      },
+      "error": "422: {\"message\":\"Account connection has expired. Please reconnect your account.\",\"code\":5002}"
+    },
+    {
+      "platform": "facebook",
+      "status": "failed",
+      "post": {
+        "day": 2,
+        "topic": "Wagyu Biltong Bundle — The African Power Pair",
+        "platforms": [
+          "tiktok",
+          "threads",
+          "facebook"
+        ],
+        "accounts": [
+          "tiktok",
+          "threads",
+          "facebook"
+        ],
+        "caption": "🐟 COFFEE + BILTONG: The African Power Pair 🐟\n\nIntroducing the Studex Bundle:\n☕ Premium African coffee (250g or 500g)\n🐟 Craft biltong (200g) — signature cut\n\nWhy it works:\n🧂 Salt + fat resets your palate between sips\n🍫 Coffee bitterness + biltong umami = next-level flavour\n💪 Protein steadies the caffeine crash\n\nPerfect for:\n🏠 Home entertaining\n🏢 Office meetings\n�afari Safari drives\n🎁 Executive gifting\n\nShop via link in bio. Ships nationwide. 🇿🇦\n\n#BiltongAndCoffee #AfricanPairing #StudexBundle #CoffeeCulture #WagyuBiltong",
+        "imageUrl": "https://database.blotato.io/storage/v1/object/public/public_media/d03b21c4-5e15-4094-b2b1-b742c39438e4/c22be671-5fba-4e56-9877-58454a4de8e1.png",
+        "postTime": "2026-10-08T09:00:00.000Z"
+      },
+      "error": "422: {\"message\":\"Account connection has expired. Please reconnect your account.\",\"code\":5002}"
+    },
+    {
+      "platform": "facebook",
+      "status": "failed",
+      "post": {
+        "day": 3,
+        "topic": "UAE Export News — China/Africa Coffee Policy",
+        "platforms": [
+          "tiktok",
+          "threads",
+          "facebook"
+        ],
+        "accounts": [
+          "tiktok",
+          "threads",
+          "facebook"
+        ],
+        "caption": "🏜️ Big news from the UAE: Africa + China coffee trade just went tariff-lite.\n\nChina opened to ALL 53 African coffee origins — July 2026.\nThe UAE HoReCa market consumes 3.4 billion cups/year.\nDubai's specialty café scene is actively sourcing Ethiopian Yirgacheffe and Kenyan AA.\n\nThis is the window for South African roasted coffee:\n• Green bean entry into China at low tariff\n• Dubai luxury hotel F&B as beachhead market\n• \"Roasted in Cape Town, sourced from African farms\" — a story no one else is telling\n\nStudex is positioned. 🇿🇦🐟☕\n\n#UAE #ChinaMarket #AfricanCoffee #DubaiCoffee #StudexCoffee #ExportReady",
+        "imageUrl": "https://database.blotato.io/storage/v1/object/public/public_media/d03b21c4-5e15-4094-b2b1-b742c39438e4/f56f5bf7-fb51-4461-a652-e550d2a53dd5.png",
+        "postTime": "2026-10-10T09:00:00.000Z"
+      },
+      "error": "422: {\"message\":\"Account connection has expired. Please reconnect your account.\",\"code\":5002}"
+    },
+    {
+      "platform": "facebook",
+      "status": "failed",
+      "post": {
+        "day": 4,
+        "topic": "Hotel & Restaurant B2B Offer",
+        "platforms": [
+          "threads",
+          "facebook"
+        ],
+        "accounts": [
+          "threads",
+          "facebook"
+        ],
+        "caption": "🏨 Studex Coffee Is Now Available for Hotels & Restaurants ☕\n\nWhat we supply:\n✅ Premium African coffee (Ethiopian + Kenyan, direct-sourced)\n✅ Flexible B2B pricing — no lock-in contracts\n✅ Equipment support + barista training available\n✅ Monthly subscription: coffee + craft biltong pairing\n✅ Real human account manager\n\nTarget venues:\n🏔️ Boutique hotels\n🍽️ Fine dining\n🦁 Safari lodges\n🏢 Corporate offices\n\nB2B sample box available. No commitment. Just good coffee.\n\n📧 hello@studex-group.com\n📍 Delivered from Cape Town to your property\n\n#HotelCoffee #B2BCoffee #Horeca #StudexCoffee #SouthAfricaHospitality",
+        "imageUrl": "https://database.blotato.io/storage/v1/object/public/public_media/d03b21c4-5e15-4094-b2b1-b742c39438e4/f56f5bf7-fb51-4461-a652-e550d2a53dd5.png",
+        "postTime": "2026-10-12T09:00:00.000Z"
+      },
+      "error": "422: {\"message\":\"Account connection has expired. Please reconnect your account.\",\"code\":5002}"
+    },
+    {
+      "platform": "facebook",
+      "status": "failed",
+      "post": {
+        "day": 5,
+        "topic": "Customer Testimonials — Social Proof",
+        "platforms": [
+          "tiktok",
+          "threads",
+          "facebook"
+        ],
+        "accounts": [
+          "tiktok",
+          "threads",
+          "facebook"
+        ],
+        "caption": "💬 \"This is the coffee I've been looking for.\" 💬\n\nWhat people are saying about Studex Coffee:\n\n🗣️ \"The biltong + coffee pairing actually works.\" — Tumi, Sandton\n🗣️ \"As a former barista — the Kenyan AA is properly sourced.\" — Karin, Rosebank\n🗣️ \"Three people at my dinner party asked where I bought it.\" — Mpumi, Four Ways\n\nStudex Coffee is officially live.\nThank you. The journey is just starting. 🐟☕🇿🇦\n\nShop: link in bio\nB2B: hello@studex-group.com\n\n#CustomerTestimonial #JohannesburgCoffee #StudexLaunch #AfricanCoffee #SpecialtyCoffee",
+        "imageUrl": "https://database.blotato.io/storage/v1/object/public/public_media/d03b21c4-5e15-4094-b2b1-b742c39438e4/0c75c133-99f4-4738-9176-3d24c4fec2b9.png",
+        "postTime": "2026-10-14T09:00:00.000Z"
+      },
+      "error": "422: {\"message\":\"Account connection has expired. Please reconnect your account.\",\"code\":5002}"
+    }
+  ],
+  "summary": {
+    "attempted": 5,
+    "successful": 0,
+    "failed": 5
+  },
+  "sequence": [
+    {
+      "day": 1,
+      "topic": "SA Coffee Origin Story",
+      "platforms": [
+        "tiktok",
+        "threads",
+        "facebook"
+      ],
+      "postTime": "2026-10-06T09:00:00.000Z"
+    },
+    {
+      "day": 2,
+      "topic": "Wagyu Biltong Bundle — The African Power Pair",
+      "platforms": [
+        "tiktok",
+        "threads",
+        "facebook"
+      ],
+      "postTime": "2026-10-08T09:00:00.000Z"
+    },
+    {
+      "day": 3,
+      "topic": "UAE Export News — China/Africa Coffee Policy",
+      "platforms": [
+        "tiktok",
+        "threads",
+        "facebook"
+      ],
+      "postTime": "2026-10-10T09:00:00.000Z"
+    },
+    {
+      "day": 4,
+      "topic": "Hotel & Restaurant B2B Offer",
+      "platforms": [
+        "threads",
+        "facebook"
+      ],
+      "postTime": "2026-10-12T09:00:00.000Z"
+    },
+    {
+      "day": 5,
+      "topic": "Customer Testimonials — Social Proof",
+      "platforms": [
+        "tiktok",
+        "threads",
+        "facebook"
+      ],
+      "postTime": "2026-10-14T09:00:00.000Z"
+    }
+  ],
+  "igStatus": "expired — requires manual reconnect"
+}

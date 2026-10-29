@@ -1,0 +1,283 @@
+{
+  "timestamp": "2026-10-04T19:13:30.713Z",
+  "campaign": "Studex Coffee Launch v2",
+  "totalApiCalls": 24,
+  "successful": 10,
+  "imageUrl": "https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1791141122_b2f3b4de.png",
+  "posts": [
+    {
+      "post": "Post 1 — Origin Story",
+      "scheduledAt": "2026-10-05T07:00:00.000Z",
+      "platforms": [
+        "facebook",
+        "instagram",
+        "linkedin",
+        "threads",
+        "tiktok"
+      ],
+      "results": [
+        {
+          "platform": "facebook",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-05T07:00:00.000Z"
+        },
+        {
+          "platform": "instagram",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "4d3bc5fa-3d18-47c5-b02e-3c5da669daa0"
+          },
+          "scheduledAt": "2026-10-05T07:00:00.000Z"
+        },
+        {
+          "platform": "linkedin",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-05T07:00:00.000Z"
+        },
+        {
+          "platform": "threads",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "bdda7e65-8c76-41ed-a8e1-42209ff98ed1"
+          },
+          "scheduledAt": "2026-10-05T07:00:00.000Z"
+        },
+        {
+          "platform": "tiktok",
+          "httpStatus": 400,
+          "response": {
+            "statusCode": 400,
+            "message": "body.post.target must have required property 'disabledComments', body.post.target must have required property 'disabledDuet', body.post.target must have required property 'disabledStitch', body.post.target must have required property 'isBrandedContent', body.post.target must have required property 'isYourBrand', body.post.target must have required property 'isAiGenerated', body.post.target.privacyLevel must be one of: \"SELF_ONLY\", \"PUBLIC_TO_EVERYONE\", \"MUTUAL_FOLLOW_FRIENDS\", \"FOLLOWER_OF_CREATOR\"",
+            "reqId": "agyG0SL/S22/e/Z3hFPJ8w/369585"
+          },
+          "scheduledAt": "2026-10-05T07:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "post": "Post 2 — Tasting Notes",
+      "scheduledAt": "2026-10-06T07:00:00.000Z",
+      "platforms": [
+        "facebook",
+        "instagram",
+        "linkedin",
+        "threads",
+        "tiktok"
+      ],
+      "results": [
+        {
+          "platform": "facebook",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-06T07:00:00.000Z"
+        },
+        {
+          "platform": "instagram",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "85ad38d6-66fe-449f-9fd2-994e61f40929"
+          },
+          "scheduledAt": "2026-10-06T07:00:00.000Z"
+        },
+        {
+          "platform": "linkedin",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-06T07:00:00.000Z"
+        },
+        {
+          "platform": "threads",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "11407059-4b74-4f77-a1f7-2838cf1767b5"
+          },
+          "scheduledAt": "2026-10-06T07:00:00.000Z"
+        },
+        {
+          "platform": "tiktok",
+          "httpStatus": 400,
+          "response": {
+            "statusCode": 400,
+            "message": "body.post.target must have required property 'disabledComments', body.post.target must have required property 'disabledDuet', body.post.target must have required property 'disabledStitch', body.post.target must have required property 'isBrandedContent', body.post.target must have required property 'isYourBrand', body.post.target must have required property 'isAiGenerated', body.post.target.privacyLevel must be one of: \"SELF_ONLY\", \"PUBLIC_TO_EVERYONE\", \"MUTUAL_FOLLOW_FRIENDS\", \"FOLLOWER_OF_CREATOR\"",
+            "reqId": "1Iw45mhsSsyToKZwN8bLFQ/375105"
+          },
+          "scheduledAt": "2026-10-06T07:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "post": "Post 3 — Hotel/B2B Announcement",
+      "scheduledAt": "2026-10-07T08:00:00.000Z",
+      "platforms": [
+        "facebook",
+        "instagram",
+        "linkedin",
+        "threads"
+      ],
+      "results": [
+        {
+          "platform": "facebook",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-07T08:00:00.000Z"
+        },
+        {
+          "platform": "instagram",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "b945b79a-397f-41dd-af5f-ceaa79de65ba"
+          },
+          "scheduledAt": "2026-10-07T08:00:00.000Z"
+        },
+        {
+          "platform": "linkedin",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-07T08:00:00.000Z"
+        },
+        {
+          "platform": "threads",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "b73df5fd-9db0-492f-8f8b-41f754756439"
+          },
+          "scheduledAt": "2026-10-07T08:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "post": "Post 4 — Biltong + Coffee Bundle",
+      "scheduledAt": "2026-10-08T07:00:00.000Z",
+      "platforms": [
+        "facebook",
+        "instagram",
+        "linkedin",
+        "threads",
+        "tiktok"
+      ],
+      "results": [
+        {
+          "platform": "facebook",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-08T07:00:00.000Z"
+        },
+        {
+          "platform": "instagram",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "f2838517-e45c-4861-9994-f97b93fb7f38"
+          },
+          "scheduledAt": "2026-10-08T07:00:00.000Z"
+        },
+        {
+          "platform": "linkedin",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-08T07:00:00.000Z"
+        },
+        {
+          "platform": "threads",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "3c99675d-41f6-4a96-8917-bc214bdd4e83"
+          },
+          "scheduledAt": "2026-10-08T07:00:00.000Z"
+        },
+        {
+          "platform": "tiktok",
+          "httpStatus": 400,
+          "response": {
+            "statusCode": 400,
+            "message": "body.post.target must have required property 'disabledComments', body.post.target must have required property 'disabledDuet', body.post.target must have required property 'disabledStitch', body.post.target must have required property 'isBrandedContent', body.post.target must have required property 'isYourBrand', body.post.target must have required property 'isAiGenerated', body.post.target.privacyLevel must be one of: \"SELF_ONLY\", \"PUBLIC_TO_EVERYONE\", \"MUTUAL_FOLLOW_FRIENDS\", \"FOLLOWER_OF_CREATOR\"",
+            "reqId": "HMNJdHy+TUWSdUHacUpAXw/369581"
+          },
+          "scheduledAt": "2026-10-08T07:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "post": "Post 5 — Testimonial + CTA",
+      "scheduledAt": "2026-10-09T09:00:00.000Z",
+      "platforms": [
+        "facebook",
+        "instagram",
+        "linkedin",
+        "threads",
+        "tiktok"
+      ],
+      "results": [
+        {
+          "platform": "facebook",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-09T09:00:00.000Z"
+        },
+        {
+          "platform": "instagram",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "0e7ef188-6992-4e3b-8917-370a56d2d210"
+          },
+          "scheduledAt": "2026-10-09T09:00:00.000Z"
+        },
+        {
+          "platform": "linkedin",
+          "httpStatus": 422,
+          "response": {
+            "message": "Account connection has expired. Please reconnect your account.",
+            "code": 5002
+          },
+          "scheduledAt": "2026-10-09T09:00:00.000Z"
+        },
+        {
+          "platform": "threads",
+          "httpStatus": 201,
+          "response": {
+            "postSubmissionId": "649b77f6-0349-4190-8cc8-88c96d3d138a"
+          },
+          "scheduledAt": "2026-10-09T09:00:00.000Z"
+        },
+        {
+          "platform": "tiktok",
+          "httpStatus": 400,
+          "response": {
+            "statusCode": 400,
+            "message": "body.post.target must have required property 'disabledComments', body.post.target must have required property 'disabledDuet', body.post.target must have required property 'disabledStitch', body.post.target must have required property 'isBrandedContent', body.post.target must have required property 'isYourBrand', body.post.target must have required property 'isAiGenerated', body.post.target.privacyLevel must be one of: \"SELF_ONLY\", \"PUBLIC_TO_EVERYONE\", \"MUTUAL_FOLLOW_FRIENDS\", \"FOLLOWER_OF_CREATOR\"",
+            "reqId": "dWflfOFKSHSw2tP9QoUTEA/383638"
+          },
+          "scheduledAt": "2026-10-09T09:00:00.000Z"
+        }
+      ]
+    }
+  ]
+}

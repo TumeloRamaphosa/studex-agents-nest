@@ -1,0 +1,118 @@
+[
+  {
+    "type": "h1",
+    "text": "Rwanda A1 Washed — Grade & Origin"
+  },
+  {
+    "type": "table",
+    "headers": ["Attribute", "Specification"],
+    "rows": [
+      ["Grade", "A1 — Screen 15+"],
+      ["Process", "Fully Washed (Wet)"],
+      ["Altitude", "1,700–2,200 masl"],
+      ["Region", "Northern Province, Rwanda"],
+      ["Variety", "Bourbon, Jackson"],
+      ["Cup Profile", "Bright acidity, jasmine, citrus, brown sugar, clean finish"],
+      ["Certifications", "PROWTC, Rainforest Alliance, EU Organic"],
+      ["MOQ", "1 Metric Tonne"],
+      ["FOB Kigali (1 MT)", "USD $8.50 / kg"],
+      ["FOB Kigali (5 MT+)", "USD $7.90 / kg"],
+      ["FOB Kigali (20 MT FCL)", "USD $7.20 / kg"]
+    ],
+    "col_widths": [0.4, 0.6]
+  },
+  {
+    "type": "spacer",
+    "pt": 16
+  },
+  {
+    "type": "h1",
+    "text": "Rwanda A2 Natural — Grade & Origin"
+  },
+  {
+    "type": "table",
+    "headers": ["Attribute", "Specification"],
+    "rows": [
+      ["Grade", "A2 — Screen 13+"],
+      ["Process", "Natural (Dry)"],
+      ["Altitude", "1,500–2,000 masl"],
+      ["Region", "Western & Southern Province, Rwanda"],
+      ["Variety", "Bourbon, Mibirizi"],
+      ["Cup Profile", "Full body, blueberry, dark cherry, cocoa, winey complexity"],
+      ["Certifications", "PROWTC, Rainforest Alliance"],
+      ["MOQ", "1 Metric Tonne"],
+      ["FOB Kigali (1 MT)", "USD $7.20 / kg"],
+      ["FOB Kigali (5 MT+)", "USD $6.70 / kg"],
+      ["FOB Kigali (20 MT FCL)", "USD $6.10 / kg"]
+    ],
+    "col_widths": [0.4, 0.6]
+  },
+  {
+    "type": "spacer",
+    "pt": 16
+  },
+  {
+    "type": "callout",
+    "text": "China Market Access: Rwanda is cleared under China's unified GAC phytosanitary framework (effective July 2026). Combined with zero-tariff on African goods (effective May 2026), Rwanda coffee enters China with no import duty. Contact us for CIIE booth appointments and sample dispatch."
+  },
+  {
+    "type": "spacer",
+    "pt": 16
+  },
+  {
+    "type": "h1",
+    "text": "Export & Delivery"
+  },
+  {
+    "type": "table",
+    "headers": ["Detail", "Information"],
+    "rows": [
+      ["Payment Terms", "LC at sight / TT 30 days (trusted buyers)"],
+      ["Packaging", "GrainPro + jute sack, 60kg/bag or flexitank"],
+      ["Lead Time", "4–6 weeks from order confirmation"],
+      ["Loading Port", "Kigali ICD → Dar es Salaam → Shanghai"],
+      ["Transit Time", "28–35 days sea freight"],
+      ["Insurance", "All-risk marine cargo insurance"],
+      ["Documents", "Phytosanitary, CO, Bill of Lading, PROWTC certificate"]
+    ],
+    "col_widths": [0.4, 0.6]
+  },
+  {
+    "type": "spacer",
+    "pt": 16
+  },
+  {
+    "type": "divider"
+  },
+  {
+    "type": "spacer",
+    "pt": 8
+  },
+  {
+    "type": "h2",
+    "text": "Book Your CIIE Meeting"
+  },
+  {
+    "type": "body",
+    "text": "CIIE Shanghai | National Exhibition & Convention Center | Hall 6 | Booth TBC | Nov 5–10, 2026"
+  },
+  {
+    "type": "body",
+    "text": "Samples available to qualified buyers. Contact our China desk to reserve your slot before the show."
+  },
+  {
+    "type": "spacer",
+    "pt": 8
+  },
+  {
+    "type": "table",
+    "headers": ["Contact", "Details"],
+    "rows": [
+      ["Email", "charlie@agent.studexmeat.com"],
+      ["WeChat / WhatsApp", "+27 94 988 8737"],
+      ["CIIE Inquiries", "studex-2571@agentmail.to"],
+      ["Website", "studexwildlife.com"]
+    ],
+    "col_widths": [0.4, 0.6]
+  }
+]
