@@ -43,6 +43,13 @@
 - 🔑 **A test fixture that holds a live credential is a leak**, even when it is labelled "synthetic" — my own two new fixtures did exactly that and the pre-commit guard caught it.
 - 🔑 **`classify()` must test MASK before LENGTH** — `TOO-SHORT` is a class `require()` ALLOWS, so a 12-asterisk mask was being handed to callers as a live key.
 
+### Cron Runs Are Losing Their Memory Write — 2026-10-29
+- **Two cron jobs did their work and were still marked `error`** because the agent's trailing sidecar memory-write failed: `ceo-standup-2200` (28 Oct 22:00 SAST → `📝 Edit: in /workspace/MEMORY.md failed`) and `ae77d9f3` Email Warmup (29 Oct 07:00 SAST → `📝 Edit: in /workspace/AGENTS.md failed`). Both produced their full report — the **write** was lost, not the work.
+- **The class is long-standing, not new:** 12 `Edit … failed` events across 5 jobs in `~/.openclaw/cron/runs/*.jsonl`, 6 of them on `memory/heartbeat-state.json` (Vault Sync, all before 9 Oct). The two newest are the first against the **workspace-root, platform-managed** files.
+- **It has already cost a false fact:** MEMORY.md carried the "guard regression" line above for ~8 hours *after* the fix landed — the write that would have corrected it is exactly the one that failed.
+- 🔑 **A cron job that finishes its work and then fails its bookkeeping is still a failed job** — and the error names the *bookkeeping*, which is why the real failure (a lost note) reads as a side issue.
+- **Fix applied:** both payloads now append the run record to `/workspace/memory/$(date +%Y-%m-%d).md` and must **not** edit `MEMORY.md`/`AGENTS.md` from a cron run.
+
 ### Git / GitHub
 - Git is **diverged**: `master` has no upstream, **928 local-only commits**, and **106 remote-only commits**. Plain push is rejected non-fast-forward.
 - Reconcile only after Tumelo approves; resetting could discard remote work.
@@ -94,7 +101,7 @@
 - Christmas gifting: Classic R1,299/MOQ5; Executive R2,499/MOQ3; Boardroom R4,999/MOQ2; code `STUDEXGIFT10`.
 - Public social-feed captions must not contain prices; path-B pre-flight enforces this.
 - **Price ladder verified live 2026-10-28 22:00 SAST** (storefront `products.json` variants): Luxury Wagyu Biltong 1kg **R650** vs 500g **R450 = R900/kg** (inverted) · Wagyu Biltong Gold 1kg **R1,450** vs 7kg case **R12,500 = R1,785/kg**, while 7×1kg = R10,150 (**19% case arbitrage**) · Fire & Feast R999 · StudBot Rise R4,599. Live prices live in **Shopify** → every fix needs the Admin token (401 as of 28 Oct).
-- **Guard regression 2026-10-28 22:00 SAST:** `ops/test-credential-resolution.py` FAILS — a hardcoded ClickUp token no longer trips the checker (returned GREEN, should be RED). 29/30 tests pass. The credential checker that protects the repo has a hole; fix before trusting it.
+- ✅ **Guard regression RESOLVED — re-verified 2026-10-29 05:55 UTC:** the "hardcoded ClickUp token no longer trips the checker" hole is **CLOSED**. `ops/test-credential-resolution.py` is **30 passed / 0 failed**, including `hardcoded ClickUp token -> checker RED`, `real ClickUp token in a .md file -> checker RED`, `hardcoded AgentMail key -> checker RED`. 🔑 *A memory line recorded at 22:00 was TRUE then and FALSE later, and nothing ever re-verified it — the note outlived the defect. (The 22:00 cron run's own edit to this file FAILED — see the cron memory-write note below.)*
 - Caviar floor tool was built
 
 ## Recent Session Notes (2026-10-28 12:01)

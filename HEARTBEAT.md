@@ -1,4 +1,59 @@
 # HEARTBEAT.md
+## 🟡 2026-10-29 06:20 UTC — TWO CRON JOBS DID THEIR WORK AND WERE STILL MARKED `error`
+
+### 🔑 THE ERROR NAMED THE BOOKKEEPING, SO THE REAL FAILURE READ AS A SIDE ISSUE
+* `ceo-standup-2200` (28 Oct 22:00 SAST) → `⚠️ 📝 Edit: in /workspace/MEMORY.md failed`
+* `ae77d9f3` Studex Email Warmup (29 Oct 07:00 SAST) → `⚠️ 📝 Edit: in /workspace/AGENTS.md failed`
+* **Both produced their full report** — the warmup sent **40 emails, 0 failed**, across 4
+  inboxes. The **write** was lost, not the work. 🔑 *A cron job that finishes its work and
+  then fails its bookkeeping is still a failed job.*
+
+### 🔑 THE CLASS IS OLD; THE TARGET IS NEW
+**12** `Edit … failed` events across **5** jobs in `~/.openclaw/cron/runs/*.jsonl` — **6** of
+them on `memory/heartbeat-state.json` (Vault Sync, all before 9 Oct), 3 on source files in
+July. The **two newest are the first against the workspace-root, platform-managed files** —
+`MEMORY.md` and `AGENTS.md` — the files every session is told to write.
+
+### 🔑 IT HAS ALREADY PAID A PRICE: A FALSE FACT SAT IN MEMORY.md FOR 8 HOURS
+MEMORY.md carried *"Guard regression 2026-10-28 22:00 SAST: `ops/test-credential-resolution.py`
+FAILS — a hardcoded ClickUp token no longer trips the checker … 29/30 tests pass"*.
+**Re-verified 05:55 UTC: 30 passed / 0 failed**, including `hardcoded ClickUp token ->
+checker RED`, `real ClickUp token in a .md file -> checker RED`, `hardcoded AgentMail key ->
+checker RED`. The hole is **CLOSED**; the line was stale. 🔑 *A memory line recorded at 22:00
+was TRUE then and FALSE later, and nothing re-verified it — and the write that would have
+corrected it is exactly the one that failed.* ✅ Corrected in MEMORY.md.
+
+### ✅ FIX APPLIED TO BOTH PAYLOADS
+`openclaw cron edit <id> --message` (never by hand-editing `jobs.json`). Each payload now ends:
+> Record this run in today's daily note: resolve today's date yourself with `date +%Y-%m-%d`
+> and append your run record to `/workspace/memory/<today>.md`. Do NOT edit
+> `/workspace/MEMORY.md` or `/workspace/AGENTS.md` from this run — they are platform-managed
+> shared files, the edit fails, and the job is then recorded as failed with its note lost.
+
+**Verified by reading the API back, not by trusting the write's own output:**
+`ceo-standup-2200` 412 → 758 chars, enabled, `0 22 * * 1-6`, timeout 1800s intact ·
+`ae77d9f3` 218 → 564 chars, enabled, `0 7 * * *`, model `minimax/MiniMax-M2.7-highspeed`,
+thinking off, timeout 3600s intact · original message preserved verbatim as the prefix ·
+no other field changed. ⏳ **The proof is the next scheduled run** (12:00 / 22:00 SAST) — 🔑
+*a fix is not a fix until the job that failed agrees.*
+
+## 🟢 2026-10-29 05:44 UTC — THE CANONICAL PASS: 20 CHECKERS, 0 NEW FINDINGS, EVERY CHECKER PROVED ITS ANSWER
+`VERDICT: CLEAN - every checker proved its answer.` · 16 clean · 4 known escalations
+(price-on-feed, staged-publish, cost-model, public-exposure — **already posted, not re-posted**) ·
+**0 new** · **0 could-not-prove** · **0 broken**. Drift **18/18 CLEAN** · credential-fragments
+**CLEAN** · cred-resolution **CLEAN** (855 files) · credential-slots **CLEAN** (48 slots,
+1 short-but-real) · leak-sources **CLEAN** (7 hardcoded literals, none live) · scanner-log
+**CLEAN** · client-secret **CLEAN** · discord-credential **CLEAN** · git-index **CLEAN** ·
+pre-push guard **installed and matching its source** · mail **OK — 1058 messages / 13 inboxes**.
+
+**Hosts unchanged ⇒ no post:** MSI hub `:3000` + `:3778` → curl **rc=28** timeout · Alibaba VM →
+**SSH connect timeout**. Both DOWN since 17 Oct ⇒ no CHANGE ⇒ #ops stays quiet.
+
+**Other cron errors on the last run — each a single instance, transient, NOT posted:**
+`4eba3bce` Vault Sync — Midnight → `API rate limit reached` (provider-side) ·
+`e48bae9c` Midday Nudge — 12:00 → `cron: job execution timed out` (first timeout since the
+22 Oct 1800s fix).
+
 ## 🔴 2026-10-29 00:35 UTC — THE FRAGMENTS GUARD WATCHED ONE KEY OUT OF FIFTY, AND 7 LIVE KEYS ARE ON A PUBLIC REMOTE
 
 ### 🔑 THE DEFECT WAS THE SCOPE, NOT THE BUG
