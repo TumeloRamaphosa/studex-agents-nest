@@ -106,6 +106,45 @@ def main():
         rc4, out4 = run_checker(r4)
         check("NEGATIVE: an index that DISAGREES with HEAD is caught",
               rc4 == 1, "rc=%d %s" % (rc4, out4[-400:]))
+
+        # --- 5. NEGATIVE CONTROL: a GITLINK in the index ---
+        # A gitlink (mode 160000) is a path that is ANOTHER repository. It
+        # is not a file, so every CONTENT-based checker reads a clone and
+        # finds an empty directory there, with no error anywhere. This is
+        # the damage a leftover scratch dir with its own .git would cause
+        # the moment `git add .` ran - and the index would still be
+        # perfectly consistent with HEAD, so the OTHER checks in this
+        # checker would all stay green.
+        r5 = make_repo(base / "r5")
+        nested = r5 / "nested-repo"
+        nested.mkdir(parents=True, exist_ok=True)
+        subprocess.run(["git", "init", "-q"], cwd=str(nested),
+                       capture_output=True, timeout=120)
+        subprocess.run(["git", "config", "user.email", "l@example.invalid"],
+                       cwd=str(nested), capture_output=True, timeout=60)
+        subprocess.run(["git", "config", "user.name", "link test"],
+                       cwd=str(nested), capture_output=True, timeout=60)
+        (nested / "x.txt").write_text("x\n", encoding="utf-8")
+        subprocess.run(["git", "add", "-A"], cwd=str(nested),
+                       capture_output=True, timeout=120)
+        subprocess.run(["git", "commit", "-q", "-m", "nested"], cwd=str(nested),
+                       capture_output=True, timeout=120)
+        # This is the exact command that stages an embedded repo as a
+        # gitlink - the same warning git prints in the live repo.
+        subprocess.run(["git", "add", "-f", "nested-repo"], cwd=str(r5),
+                       capture_output=True, timeout=120)
+        rc5, out5 = run_checker(r5)
+        check("NEGATIVE: a GITLINK in the index is caught (rc=1)", rc5 == 1,
+              "rc=%d %s" % (rc5, out5[-400:]))
+        check("NEGATIVE: the verdict names the gitlink",
+              "GITLINK" in out5, out5[-400:])
+
+        # --- 6. POSITIVE CONTROL: the gitlink check does not fire on a
+        #            healthy repo (a guard that always fires is noise) ---
+        r6 = make_repo(base / "r6")
+        rc6, out6 = run_checker(r6)
+        check("POSITIVE: a healthy repo with no gitlinks is still CLEAN",
+              rc6 == 0, "rc=%d %s" % (rc6, out6[-400:]))
     finally:
         shutil.rmtree(base, ignore_errors=True)
 

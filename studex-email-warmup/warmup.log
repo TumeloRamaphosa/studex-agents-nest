@@ -1,42 +1,3 @@
-[2026-10-29T05:09:10.315Z] Cycle complete. Sent 2 emails (0 failed). Total today: 2/5
-[2026-10-29T05:09:10.313Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: SA coffee export documentation
-[2026-10-29T05:09:07.992Z] Pausing 45min-worth of interval before next send (2s actual)
-[2026-10-29T05:09:07.991Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: biltong bulk pricing
-[2026-10-29T05:09:07.466Z] Day: 2026-10-29 | Week 1 | Today: 0/5 | Total: 35
-[2026-10-29T05:09:07.463Z] === Warmup Cycle ===
-[2026-10-28T15:14:14.931Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-28T15:14:14.930Z] Day: 2026-10-28 | Week 1 | Today: 5/5 | Total: 35
-[2026-10-28T15:14:14.926Z] === Warmup Cycle ===
-[2026-10-28T13:00:08.352Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-28T13:00:08.317Z] Day: 2026-10-28 | Week 1 | Today: 5/5 | Total: 35
-[2026-10-28T13:00:08.314Z] === Warmup Cycle ===
-[2026-10-28T11:04:32.303Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-28T11:04:32.302Z] Day: 2026-10-28 | Week 1 | Today: 5/5 | Total: 35
-[2026-10-28T11:04:32.280Z] === Warmup Cycle ===
-[2026-10-28T09:00:05.908Z] Cycle complete. Sent 1 emails (0 failed). Total today: 5/5
-[2026-10-28T09:00:05.906Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: Q4 pipeline review
-[2026-10-28T09:00:05.435Z] Day: 2026-10-28 | Week 1 | Today: 4/5 | Total: 34
-[2026-10-28T09:00:05.428Z] === Warmup Cycle ===
-[2026-10-28T07:04:21.260Z] Cycle complete. Sent 2 emails (0 failed). Total today: 4/5
-[2026-10-28T07:04:21.258Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: Q4 pipeline review
-[2026-10-28T07:04:18.948Z] Pausing 45min-worth of interval before next send (2s actual)
-[2026-10-28T07:04:18.946Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: newsletter content — October
-[2026-10-28T07:04:18.494Z] Day: 2026-10-28 | Week 1 | Today: 2/5 | Total: 32
-[2026-10-28T07:04:18.470Z] === Warmup Cycle ===
-[2026-10-28T05:07:21.739Z] Cycle complete. Sent 2 emails (0 failed). Total today: 2/5
-[2026-10-28T05:07:21.737Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Follow-up: Youth Day content drop
-[2026-10-28T05:07:19.194Z] Pausing 45min-worth of interval before next send (2s actual)
-[2026-10-28T05:07:19.192Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: Q4 pipeline review
-[2026-10-28T05:07:18.529Z] Day: 2026-10-28 | Week 1 | Today: 0/5 | Total: 30
-[2026-10-28T05:07:18.497Z] === Warmup Cycle ===
-[2026-10-27T17:02:35.198Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-27T17:02:35.197Z] Day: 2026-10-27 | Week 1 | Today: 5/5 | Total: 30
-[2026-10-27T17:02:35.192Z] === Warmup Cycle ===
-[2026-10-27T15:11:26.478Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-27T15:11:26.477Z] Day: 2026-10-27 | Week 1 | Today: 5/5 | Total: 30
-[2026-10-27T15:11:26.454Z] === Warmup Cycle ===
-[2026-10-27T11:03:01.208Z] Cycle complete. Sent 1 emails (0 failed). Total today: 5/5
-[2026-10-27T11:03:01.206Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: Rwanda A1 sample pricing
 [2026-10-27T11:03:00.182Z] Day: 2026-10-27 | Week 1 | Today: 4/5 | Total: 29
 [2026-10-27T11:03:00.173Z] === Warmup Cycle ===
 [2026-10-27T07:09:11.250Z] Cycle complete. Sent 2 emails (0 failed). Total today: 4/5
@@ -531,3 +492,9 @@
 [2026-10-29T05:14:19.192Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Re: Sample shipment update
 [2026-10-29T05:14:25.801Z] [REPORT] Emailed to tumelor001@gmail.com
 [2026-10-29T05:14:25.801Z] === Warmup run complete — 30 sent ===
+[2026-10-29T07:16:14.691Z] === Warmup Cycle ===
+[2026-10-29T07:16:14.746Z] Day: 2026-10-29 | Week 1 | Today: 2/5 | Total: 37
+[2026-10-29T07:16:15.503Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: biltong bulk pricing
+[2026-10-29T07:16:15.505Z] Pausing 45min-worth of interval before next send (2s actual)
+[2026-10-29T07:16:17.806Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: order status — ORD-007
+[2026-10-29T07:16:17.808Z] Cycle complete. Sent 2 emails (0 failed). Total today: 4/5
