@@ -11,7 +11,7 @@
 memory/2026-10-29.md :: 08:12–08:45 UTC — `dead-inbox` WENT RED, THE 09:00 STANDUP'S REPORT NEVER LANDED, AND THE CLICKUP KEY IS DEAD
 memory/2026-10-29.md :: 08:45–09:50 UTC — THE ROTATION LIST WAS WRONG: 1 CONFIRMED LIVE + 1 THAT WAS NEVER ON THE LIST
 
-# 2026-10-29 09:38 UTC — a daily-note heading was RENAMED to correct its clock.
+# 2026-10-29 09:33 UTC — a daily-note heading was RENAMED to correct its clock.
 # The section CONTENT is intact; only the hour range in the title changed.
 # Old title -> new title:
 #   09:13–09:45 UTC — THE PASS WAS CLEAN, AND THE TWO GUARDS THE MORNING NEEDED NOW EXIST

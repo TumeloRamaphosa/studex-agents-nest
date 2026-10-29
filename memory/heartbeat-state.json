@@ -2681,9 +2681,9 @@
   ],
   "unpushed": "owner-gated PAT; the remote is PUBLIC"
  },
- "record_clock_correction_2026_10_29_0938": {
-  "finding": "the 09:13 cycle's end time was TYPED by hand as 09:45; the pass log's own mtime says it finished at 09:33 - the same hand-typed-clock mistake I corrected at 08:43",
-  "corrected": "HEARTBEAT.md heading, memory/2026-10-29.md heading (allowlisted as a rename - a daily note is append-only), and memory/heartbeat-state.json last_heartbeat_pass now derives from the pass log's mtime",
+ "record_clock_correction_2026_10_29_0933": {
+  "finding": "the 09:13 cycle's end time was TYPED by hand as 09:45; the pass log's own mtime says it finished at 09:33 - the same hand-typed-clock mistake corrected at 08:43, and then repeated inside the very sentence explaining it (I typed 09:38 there too, when the truth was 09:33)",
+  "corrected": "HEARTBEAT.md heading, memory/2026-10-29.md heading (allowlisted as a rename - a daily note is append-only), ops/memory-shrink-allowlist.txt comment and memory/heartbeat-state.json last_heartbeat_pass now all derive from the pass log's mtime",
   "lesson": "a clock in a record must be DERIVED from a clock, never typed - two slips in one day is a rule, not an accident"
  }
 }
