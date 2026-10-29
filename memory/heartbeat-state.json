@@ -405,13 +405,15 @@
    "channel": "1538825048465481728 (#ops)",
    "messageId": "1565279834467213404",
    "topic": "GUARD - dead-inbox went RED (new): the 09:00 standup's probe named healthyprocess394@agentmail.to (404 on every key; a send is accepted and reports success); fixed by registering the deliberate reference with a glob, checker CLEAN; the class exposed - 17 tracked ops/tmp-* scratch scripts were heading for the PUBLIC remote, now untracked and ignored",
-   "ts": "2026-10-29T08:25:29Z"
+   "ts": "2026-10-29T08:23:14Z",
+   "ts_source": "discord snowflake (the message id IS the send time)"
   },
   {
    "channel": "1538825048465481728 (#ops)",
    "messageId": "1565280151380689018",
    "topic": "THE 09:00 STANDUP'S REPORT NEVER LANDED - relayed in full (10 decisions + what did NOT happen); the job timed out but the agent had already committed the report (9f8d37b); ClickUp key probed 401/401 => dead, which corrects the '7 LIVE credentials' label",
-   "ts": "2026-10-29T08:25:29Z"
+   "ts": "2026-10-29T08:24:29Z",
+   "ts_source": "discord snowflake (the message id IS the send time)"
   },
   {
    "channel": "1538825048465481728 (#ops)",
@@ -2650,5 +2652,11 @@
   "finding": "the 09:00 standup agent kept working after the scheduler gave up on it and left three uncommitted files: a GITLINK detector for the git-index guard. A leftover scratch dir held its own .git repos and .gitignore covered .tmp-*.sh/.tmp-*.py as FILES, not DIRECTORIES, so 'git add .' would have staged embedded repos and shipped gitlinks to a PUBLIC remote. The index stayed consistent with HEAD, so every other checker stayed green.",
   "verified": "ops/test-empty-repo-false-green.py passes with its negative controls; ops/check-git-index.py reports 884 index files = 884 tracked by HEAD",
   "committed": "a5561e1"
+ },
+ "record_timestamp_correction_2026_10_29": {
+  "finding": "three headings written minutes earlier carried 09:50 and 08:45 UTC for work the machine clock, the exec log and the Discord snowflake place at 08:23-08:40 UTC - one heading was in the future",
+  "corrected": "HEARTBEAT.md (2 headings), memory/2026-10-29.md (2 headings), MEMORY.md (the re-probe line); memory/heartbeat-state.json had two #ops posts stamped with the time the RECORD was written instead of the time they were SENT - the message id IS the send time",
+  "guard": "the memory-shrink guard blocked the rename: a renamed ## heading reads as a DROPPED section, which is the failure that guard exists to stop. The two old titles are recorded in ops/memory-shrink-allowlist.txt as deliberate renames (content intact, clock corrected) instead of being rewritten silently",
+  "lesson": "a timestamp is a fact like any other, and the only authority for it is a clock - not the hour I believed I was writing in"
  }
 }

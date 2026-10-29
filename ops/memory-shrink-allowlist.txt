@@ -1,2 +1,12 @@
 # Sections deliberately dropped from MEMORY.md, one title per line.
 # Each line here is an explicit, human decision to remove that section.
+
+# 2026-10-29 — two daily-note headings were RENAMED to correct their clock times.
+# The section CONTENT is intact; only the hour range in the title changed.
+# Old title -> new title (a record must say when the work really happened):
+#   08:12–08:45 UTC — `dead-inbox` WENT RED, THE 09:00 STANDUP'S REPORT NEVER LANDED, AND THE CLICKUP KEY IS DEAD
+#     -> 08:12–08:25 UTC — `dead-inbox` WENT RED, THE 09:00 STANDUP'S REPORT NEVER LANDED, AND THE CLICKUP KEY IS DEAD
+#   08:45–09:50 UTC — THE ROTATION LIST WAS WRONG: 1 CONFIRMED LIVE + 1 THAT WAS NEVER ON THE LIST
+#     -> 08:30–08:40 UTC — THE ROTATION LIST WAS WRONG: 1 CONFIRMED LIVE + 1 THAT WAS NEVER ON THE LIST
+memory/2026-10-29.md :: 08:12–08:45 UTC — `dead-inbox` WENT RED, THE 09:00 STANDUP'S REPORT NEVER LANDED, AND THE CLICKUP KEY IS DEAD
+memory/2026-10-29.md :: 08:45–09:50 UTC — THE ROTATION LIST WAS WRONG: 1 CONFIRMED LIVE + 1 THAT WAS NEVER ON THE LIST

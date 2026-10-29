@@ -1,5 +1,5 @@
 # HEARTBEAT.md
-## 🔴 2026-10-29 09:50 UTC — THE ROTATION LIST WAS WRONG: 1 CONFIRMED LIVE + 1 THAT WAS NEVER ON THE LIST
+## 🔴 2026-10-29 08:40 UTC — THE ROTATION LIST WAS WRONG: 1 CONFIRMED LIVE + 1 THAT WAS NEVER ON THE LIST
 Re-probed the **published remote** (`origin/master`, `origin/main`, `origin/ciie2026-build`,
 `origin/standup/2026-10-28` — 3967 blobs) against each provider, credential by credential.
 
@@ -15,14 +15,14 @@ Re-probed the **published remote** (`origin/master`, `origin/main`, `origin/ciie
 (FB's Graph token is documented dead since 27 Jun; FeedHive 401 since 5 Oct).
 
 🔑 *A rotation list is only worth the owner's time if it is re-probed, not carried. "7 live" was true at
-01:00 and wrong by 09:00 — five had been revoked under us, and one live one was missing from the list.*
+01:00 and wrong by 08:40 — five had been revoked under us, and one live one was missing from the list.*
 → `#ops` `1565284029555810445`. **MEMORY.md's escalation corrected.**
 
 Local state is already clean: the three GoDaddy scripts now read `GODADDY_API_KEY` from the environment
 instead of embedding it ⇒ nothing left to mask locally. The exposure lives in the **published history**,
 which only a rotation (or an owner-authorised history rewrite) can close.
 
-## 🔴 2026-10-29 08:45 UTC — `dead-inbox` WENT RED, THE 09:00 STANDUP NEVER ARRIVED, AND THE CLICKUP KEY IS DEAD
+## 🔴 2026-10-29 08:25 UTC — `dead-inbox` WENT RED, THE 09:00 STANDUP NEVER ARRIVED, AND THE CLICKUP KEY IS DEAD
 
 ### 🔴 A NEW FAIL, CAUGHT BY THE GUARD
 `ops/tmp-ceo-standup-probe.py:80` — written by the 09:00 standup agent — names
