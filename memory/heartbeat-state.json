@@ -382,6 +382,12 @@
    "messageId": "1565248898560303105",
    "topic": "CRON - two jobs did their work and were still marked error because their memory WRITE failed (MEMORY.md / AGENTS.md); payload fix applied; the stale 'credential-resolution guard regression' claim in MEMORY.md corrected (now 30/30 green)",
    "ts": "2026-10-29T06:20:59+00:00"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565257448355274776",
+   "topic": "PUBLISHING - the Blotato fallback was an ORPHAN: 23-27 Oct published NOWHERE (FB token dead since 27 Jun, nothing invoked blotato-fallback.js while Threads/IG were healthy); fixed + test registered; the fix and 3 other fixes were UNCOMMITTED in the working tree (now c94bc35); ops/git-pre-commit-guard.py was untracked",
+   "ts": "2026-10-29T06:54:53Z"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
@@ -1243,7 +1249,7 @@
   "tmp_shape_surface": 1793044911,
   "warmup_state": 1793031521,
   "weather": null,
-  "canonical_pass": 1793254780
+  "canonical_pass": 1793256893
  },
  "lastCredNameFilter": {
   "at": "2026-10-27T08:45:00Z",
@@ -2534,7 +2540,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T06:19:40Z",
+ "last_heartbeat_pass": "2026-10-29T06:54:53Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2558,5 +2564,14 @@
   "fix": "openclaw cron edit --message on both jobs (never by hand-editing jobs.json): the payload now appends the run record to /workspace/memory/<today>.md and must NOT edit MEMORY.md or AGENTS.md from a cron run.",
   "verified": "read back from the API: message 412->758 and 218->564 chars, original preserved as prefix, enabled, schedules 0 22 * * 1-6 and 0 7 * * *, timeoutSeconds 1800 / 3600 and model minmax/MiniMax-M2.7-highspeed intact, no other field changed",
   "proof_pending": "the next scheduled run (12:00 / 22:00 SAST) - a fix is not a fix until the job that failed agrees"
+ },
+ "publishing_orphan_2026_10_29": {
+  "finding": "Facebook Graph token died 27 Jun 2026 (FB190). daily-content-agent.js's catch block ran every day, queued the caption and exited - nothing ever invoked blotato-fallback.js. 23-27 Oct published NOWHERE while Threads/Instagram were healthy.",
+  "known_before": "check-staged-publish.py and the heartbeat registry both said 'nothing invokes the fallback' - a known escalation nobody re-reads",
+  "fix": "daily-content-agent.js runs blotato-fallback.js for today's date after queueing; new test studex-content-automation/scripts/test-fallback-is-invoked.js registered in ops/run-tests.sh (it passed but was never run); check-staged-publish.py VERDICT now names the root cause",
+  "second_finding": "That fix and three others were UNCOMMITTED in the working tree (mtimes 02:43-05:35 today) - and ops/git-pre-commit-guard.py, the pre-commit guard's own SOURCE, was untracked while the registry pointed at it.",
+  "committed_as": "c94bc35",
+  "warmup_log_bug": "index.js prepended + sliced the HEAD while daily-warmup-runner.js appends at the TAIL, so every build-hour cycle destroyed the runner's [SENT] audit trail (2+ weeks). Now appends chronologically, trims the OLDEST lines, trailing newline.",
+  "posted": "#ops 1565257448355274776"
  }
 }
