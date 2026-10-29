@@ -1162,7 +1162,7 @@
   "agentmail_inventory": 1793020391,
   "agentmail_inventory_followthrough": 1793020922,
   "agentmail_sweep": 1792835166,
-  "alibaba": 1793254780,
+  "alibaba": 1793296297,
   "badge_payment_sweep": 1792768399,
   "blotato": 1792880700,
   "blotato_publish_state": {
@@ -1193,7 +1193,7 @@
    "ts": "2026-10-28T01:21:00Z"
   },
   "cron_fix": 1792692525,
-  "cron_fleet": 1793098018,
+  "cron_fleet": 1793296297,
   "cron_payload_claims": 1792847460,
   "deadInboxRule": 1792812323,
   "dead_inbox_check": 1793031521,
@@ -1210,7 +1210,7 @@
   "github_push": 1793044911,
   "godaddyCredential": 1792812323,
   "health": 1792847460,
-  "heartbeat": 1793123316,
+  "heartbeat": 1793296297,
   "heartbeat_2026-10-21_05:11_note": "Wednesday morning check (SAST 07:11). Hub DOWN (ports 3000/3778 timeout). Aliyun VM DOWN (SSH timeout exit 255). Orgo GONE (404). No change \u2014 no Discord notification. Shopify/AgentMail morning checks blocked by P0 token issues.",
   "heartbeat_2026-10-21_05:11_utc": 1730526660,
   "heartbeat_2026-10-22_05:46_utc_note": "Thursday 07:46 SAST. Hub :3000/:3778 still down, Alibaba SSH timeout (exit 255) \u2014 UNCHANGED since Oct 17, no Discord post. Drift 10/10 CLEAN, exit 0, 130 assertions. Email warmup ran clean 05:33 UTC (30 sent, 0 failed, all-time 248). Badge-payment reminder flagged to Tumelo (due Fri 23 Oct 16:00 UTC).",
@@ -1278,8 +1278,8 @@
   "heartbeat_2026-10-23_05_39_utc_note": "Fri 07:39 SAST. Drift 17/17 CLEAN exit 0 (incl. outbound drafts + secret-leak scan). Hub :3000/:3778 down, Alibaba SSH timeout - UNCHANGED since Oct 17, no Discord post. Storefront 200. External audit (13 inboxes, 811 msgs): only the 3 known Aug leads (Olga x2, Natalia, Zatsepilov) - no new external inbound. Daily-Post pre-flight CLEAN (threads already published 8384240, marker correct, no duplicate). CIIE badge payment due TODAY 16:00 UTC - escalation cron 51835fc8 fires 15:00 UTC.",
   "heartbeat_2026-10-23_20_35_utc": 1792787970,
   "history_exposure_measure": 1793097617,
-  "hosts": 1793098018,
-  "hub": 1792735628,
+  "hosts": 1793296297,
+  "hub": 1793296297,
   "mail": {
    "result": "983 messages / 13 inboxes, 0 new external arrivals since 21:17 UTC; newest is our own website-lead self-test",
    "ts": "2026-10-28T01:21:00Z"
@@ -1315,7 +1315,7 @@
   "tmp_shape_surface": 1793044911,
   "warmup_state": 1793031521,
   "weather": null,
-  "canonical_pass": 1793257949
+  "canonical_pass": 1793296297
  },
  "lastCredNameFilter": {
   "at": "2026-10-27T08:45:00Z",
