@@ -2915,5 +2915,37 @@
   "verified_in": "/root/.openclaw/cron/jobs.json",
   "guard_lesson": "a missing VERDICT token is not a missing answer (cron-kills/cron-timeouts report a plain sentence and the runner classifies by exit code) - but in a record it reads like one, so say it out loud",
   "config_guard_note": "the platform's config-protection guard blocked the first attempt because the job message contained the literal name of the agent runtime config file - even a mention trips it"
+ },
+ "pass_15_42_2026_10_29": {
+  "broken": [],
+  "checkers": 22,
+  "clean": 17,
+  "could_not_prove": [],
+  "cron_times": "FINDING: 'Canonical Heartbeat Pass' (f2a4c1c3-194f-47e2-b19e-1bec418f4d03) was an enabled job with tz=None - the only enabled job in the fleet with no declared timezone, so '23 * * * *' fired as UTC by default rather than by declaration. FIXED: cron update -> schedule {kind cron, expr '23 * * * *', tz UTC, staggerMs 0}; nextRunAtMs 1793287380000 -> 1793290980000 = exactly +3600s (same phase, verified from jobs.json, not the expr); ops/check-cron-times.py re-run rc=0.",
+  "discord": "POSTED once - msg 1565393118650568777 (#ops). Not a repeat: last cron finding posted was cron-kills (10:56Z); the 15:13Z/15:18Z posts were the 17:00 SAST standup.",
+  "end": "2026-10-29T15:42:29Z",
+  "end_source": "mtime of the pass output file (/tmp/heartbeat-pass-2026-10-29-1524.log), not the time the run started",
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "cron-times",
+   "public-exposure"
+  ],
+  "known": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "lesson": "The job that runs the pass was the pass's own new finding - created 33 min before it fired, with no timezone. A job created without --tz has no declared firing zone. And a checker that reports a count but drops the evidence is half a checker.",
+  "new": [
+   "cron-times"
+  ],
+  "note": "22/22 checkers proved their answer: 0 broken, 0 could-not-prove. Only mutation was the cron schedule's tz field, which does not change when the job fires. The 4 known escalations were unchanged and NOT re-posted.",
+  "runner_fix": "verdict_line()'s fallback skipped every line starting with '-', so a checker's PROBLEM detail was discarded and the pass printed 'cron-times: 1 PROBLEM(S):' with no evidence of WHICH job or WHY - the finding had to be re-read by running the checker by hand. Now keeps the 'N PROBLEM(S):' header plus the detail lines under it (300-char cap); all other paths verified unchanged on 5 input shapes.",
+  "runner_summary": "VERDICT: NEW FINDING(S) - not previously escalated.",
+  "start": "2026-10-29T15:23:00Z",
+  "tests": "bash ops/run-tests.sh -> ALL TESTS PASS (57 python + 8 other)"
  }
 }

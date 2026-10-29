@@ -143,8 +143,22 @@ def verdict_line(out):
         if s.startswith("VERDICT") or "VERDICT:" in s or s.startswith("RESULT"):
             best = s
     if not best:
-        for line in reversed(out.splitlines()):
-            s = line.strip()
+        lines = [l.strip() for l in out.splitlines()]
+        # A "N PROBLEM(S):" header is only a COUNT. The finding itself is in the
+        # detail lines under it, and those start with "-" - which the old skip
+        # rule threw away. So a real finding rendered as "1 PROBLEM(S):" and the
+        # operator could not see WHICH job or WHAT was wrong without running the
+        # checker by hand (that is exactly what happened on 2026-10-29).
+        # Keep the detail: the header plus the lines under it.
+        hdr = None
+        for i, s in enumerate(lines):
+            if s.endswith("PROBLEM(S):") and s[:-len("PROBLEM(S):")].strip().isdigit():
+                hdr = i
+        if hdr is not None:
+            detail = [s for s in lines[hdr + 1:] if s and not s.startswith("=")]
+            if detail:
+                return (lines[hdr] + " " + " ".join(detail))[:300]
+        for s in reversed(lines):
             if s and not s.startswith("=") and not s.startswith("-"):
                 best = s
                 break
