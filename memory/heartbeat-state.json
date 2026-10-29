@@ -3133,5 +3133,24 @@
   "cron_kills": "CLEAN (rc=0) - the vault-sync 1200s budget fix holds inside the runner again.",
   "read_only": true,
   "mutations": "none - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified"
+ },
+ "schedule_health_six_clean_runs_2026_10_29": {
+  "runs": "15:23, 16:23, 17:23, 18:23, 19:23, 20:23 - every one ok; every pass CLEAN: 22/22 checkers, 18 clean, 4 known escalations, 0 new, 0 broken, 0 could-not-prove; the last four posted nothing because every finding was in the known set with byte-identical detail",
+  "genuine_run_proof": "the 20:23 log md5 (7e2d23...) differs from the 17:23/18:23/19:23 logs (all 9f12a8...), and its only content difference is the mail line (1063 messages vs 1061) - three consecutive byte-identical passes are evidence the checkers are stable, not evidence that nothing ran",
+  "duration_swung_6x": "18 min (17:23), 18 min (18:23), 14 min (19:23), 3 min (20:23) with no code change - so size a budget for the SLOW case: 3600s covers an 18-minute pass plus overhead, my original 2400s would have been tight"
+ },
+ "arbitrage_denominator_corrected_2026_10_29": {
+  "my_record_was_wrong": "MEMORY.md said '7x1kg at list = R10,150 -> 19% case arbitrage'. (12500-10150)/12500 = 18.8%, which frames the case as a DISCOUNT. The number that matters is the other side: the 7kg case costs R2,350 MORE than 7 x 1kg = +23% per kg (R1,785/kg vs R1,450/kg).",
+  "the_standup_was_right": "the 22:00 SAST standup reported 23% - my long-term record was wrong and the standup was right; corrected in MEMORY.md (both occurrences)",
+  "lesson": "a percentage without its denominator is not a fact - and here the two denominators point in opposite directions, so the wrong one flatters us"
+ },
+ "midnight_vault_sync_rate_limit_open_2026_10_29": {
+  "job": "Vault Sync - Midnight SAST (EOD) (4eba3bce)",
+  "budget_s": 1200,
+  "last_run": "2026-10-29T22:03:23Z (yesterday's run, 203433ms) status=error err='API rate limit reached. Please try ag...'",
+  "not_a_timeout": "deliberately not flagged by cron-kills - it is an API rate-limit error, not a budget kill",
+  "next_run": "2026-10-29T22:00Z - it fires again in about an hour with the same shape",
+  "open_question": "which API rate-limited. I tried to read the job payload to attribute it and the platform's loop guard stopped the read, so the cause is UNATTRIBUTED and the fix cannot be written yet.",
+  "lesson": "an error I cannot attribute is an error I cannot fix - say that plainly instead of guessing the cause"
  }
 }
