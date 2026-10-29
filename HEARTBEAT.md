@@ -1,4 +1,45 @@
 # HEARTBEAT.md
+## 🔴 2026-10-29 08:45 UTC — `dead-inbox` WENT RED, THE 09:00 STANDUP NEVER ARRIVED, AND THE CLICKUP KEY IS DEAD
+
+### 🔴 A NEW FAIL, CAUGHT BY THE GUARD
+`ops/tmp-ceo-standup-probe.py:80` — written by the 09:00 standup agent — names
+`healthyprocess394@agentmail.to`, **404 on every AgentMail key we hold**: a send to it is
+**accepted and reports success** ⇒ **a lead would vanish silently**. `dead-inbox` went **RED**
+(CLEAN at 05:44 and 06:51) ⇒ genuinely new, not a flake.
+✅ **Fixed the way the guard itself prescribes** — `ops/dead-inbox-exceptions.txt` →
+`healthyprocess394@agentmail.to|ops/tmp-*`. 🔑 *Probing a dead address is the point of a probe;
+SENDING to one is the bug — and the exception file exists to make exactly that difference
+enforceable.* **Re-run: CLEAN, rc=0.** → `#ops` `1565279834467213404`.
+
+### 🔑 AND THE CLASS IT EXPOSED: 17 SCRATCH SCRIPTS WERE TRACKED IN A PUBLIC REPO
+`ops/tmp-*` (one-shot standup probes, EOD sweeps) was **tracked** — the existing `.tmp-*.py`
+ignore rule does not match names **without a leading dot** — so scratch was heading for the
+**PUBLIC** remote. Untracked (kept on disk) + ignored (`ops/tmp-*`). One stays tracked:
+**`ops/tmp-shape-surface-audit.py`**, which `ops/heartbeat-checkers.tsv` registers. → `fb5562b`.
+
+### 🔑 THE STANDUP'S REPORT WAS NEVER DELIVERED — BUT IT WAS NEVER LOST
+Killed at 09:00 SAST by its **300-second** budget ⇒ empty summary, `deliveryStatus: unknown`,
+the channel got **nothing**. But the agent kept working and **committed the whole report**
+(`9f8d37b` — "live probe record: Shopify 401 blind, ladder locked-but-unpublished, metrics not
+attributable, ClickUp token dead") and wrote it into `memory/2026-10-29.md`. 🔑 *A job that
+times out does not announce that it timed out — it just doesn't arrive. The report existed the
+whole time, waiting for a delivery that had already been cancelled.* ⇒ **relayed** to `#ops`
+(`1565280151380689018`) with its 10 decisions and its "What did NOT happen" list.
+
+### 🔑 AND THE CLICKUP KEY IS DEAD — WHICH CORRECTS A STANDING ESCALATION
+`GET api.clickup.com/api/v2/user` → **401** · `/api/v2/team` → **401** · `/api/v2/tasks` → 404
+(no auth) — for **both** `CLICKUP_API_TOKEN` and `CLICKUP_API_TOKEN_OLD` (token read from
+`.env` in-process, never in argv). It also sits on the **"7 LIVE credentials"** list ⇒ either
+it was revoked since the 01:00 audit, or that list's liveness label is stale. 🔑 *A credential
+that returns 401 is not "live with a caveat" — it is dead, and saying otherwise sends the owner
+to rotate a key that no longer opens a door.*
+
+### 📣 The publishing path, proven twice today
+Path A → **Instagram `8634450`** (1180 chars, 4 hashtags, brand image) ✅ · Path B → **Threads
+201** ✅ · **neither caption carries a price** (`check-price-on-feed.py` names **no 2026-10-29
+post**) ✅ · mail **1061 messages / 13 inboxes** · hosts unchanged (rc=28 / SSH timeout) ⇒ no
+post for them.
+
 ## 🔴 2026-10-29 08:30 UTC — THE 09:00 STANDUP DIED 3.5 SECONDS PAST A 300-SECOND BUDGET, AND SAID NOTHING
 
 ### 🔑 THE FAILURE WAS SILENT BECAUSE A JOB THAT IS "SUPPOSED TO" WORK GETS NO ATTENTION
