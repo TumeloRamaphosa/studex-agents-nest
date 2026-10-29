@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-10-29T06:55:23.550Z",
+    "product": "wagyu-ribeye",
+    "productName": "Wagyu Ribeye Steak",
+    "category": "wagyu",
+    "price": "From R950",
+    "status": "FAILED",
+    "error": "FB_PAGE_TOKEN not set. Renew at: https://developers.facebook.com → Meta Business Suite → Page Settings → Tokens",
+    "captionPreview": "The kind of steak that makes you cancel your dinner reservation. Our Wagyu Ribeye carries the deepest marbling in our range — marbling grade 5 — cut f",
+    "caption": "The kind of steak that makes you cancel your dinner reservation. Our Wagyu Ribeye carries the deepest marbling in our range — marbling grade 5 — cut for the home cook who wants a restaurant result without leaving the house. Sear it over the coals at your next braai or finish it in a ripping-hot pan; either way, this is the cut that turns an ordinary evening into an occasion. Choose the 500g for a quiet night of indulgence, or go for the 1kg when you're feeding people you genuinely like. Mzansi knows good beef, and this is the steak that stops conversation mid-bite. Order online and we'll deliver it straight to your door, anywhere in South Africa. Now tell us: are you team braai or team cast-iron pan? #wagyu #ribeye #steaknight #braai #studex"
+  },
+  {
     "timestamp": "2026-10-28T06:55:06.506Z",
     "product": "biltong-gold-1kg",
     "productName": "Wagyu Biltong Gold — 1kg",

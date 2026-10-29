@@ -388,6 +388,12 @@
    "messageId": "1565257448355274776",
    "topic": "PUBLISHING - the Blotato fallback was an ORPHAN: 23-27 Oct published NOWHERE (FB token dead since 27 Jun, nothing invoked blotato-fallback.js while Threads/IG were healthy); fixed + test registered; the fix and 3 other fixes were UNCOMMITTED in the working tree (now c94bc35); ops/git-pre-commit-guard.py was untracked",
    "ts": "2026-10-29T06:54:53Z"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "pending-0651-followup",
+   "topic": "FOLLOW-UP - the orphan-fallback fix fired on its first live run: today's Daily Content Agent published to THREADS (201) where it would have published nowhere; also the content agent's own .env-loader fix (8e668e8): 'FB_PAGE_TOKEN not set' while the token was present",
+   "ts": "2026-10-29T07:12:29Z"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
@@ -1249,7 +1255,7 @@
   "tmp_shape_surface": 1793044911,
   "warmup_state": 1793031521,
   "weather": null,
-  "canonical_pass": 1793256893
+  "canonical_pass": 1793257949
  },
  "lastCredNameFilter": {
   "at": "2026-10-27T08:45:00Z",
@@ -2540,12 +2546,12 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T06:54:53Z",
+ "last_heartbeat_pass": "2026-10-29T07:12:29Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
  "canonical_pass_2026_10_29": {
-  "at": "2026-10-29T06:19:40Z",
+  "at": "2026-10-29T07:12:29Z",
   "checkers_run": 20,
   "clean": 16,
   "known_escalations": 4,
@@ -2555,7 +2561,11 @@
   "credential_surface": "credential-fragments CLEAN; cred-resolution CLEAN (855 files); slots CLEAN (48, 1 short-but-real)",
   "mail": "OK - 1058 messages / 13 inboxes",
   "hosts": "MSI hub :3000/:3778 curl rc=28, Alibaba SSH timeout - UNCHANGED since 17 Oct, no post",
-  "suite": "ops/run-tests.sh - all PASS so far, incl. test-credential-resolution (30/30)"
+  "suite": "ops/run-tests.sh - all PASS so far, incl. test-credential-resolution (30/30)",
+  "pass_0651": "20 checkers / 16 clean / 4 known escalations / 0 new findings / 0 could-not-prove - VERDICT CLEAN",
+  "credential_files_859": "cred-resolution scanned 859 credential-bearing tracked files (up from 855) - so the check ran AFTER commits c94bc35 / ad8d097 / 8e668e8",
+  "fallback_proven_live": "Daily Content Agent 06:55 UTC: Threads POSTED 201 (fallback working), LinkedIn 422 (connection expired), Facebook queued - today's post carries no price (price-on-feed names no 2026-10-29 post)",
+  "content_agent_fix": "8e668e8 - the script reported FB_PAGE_TOKEN not set while the token was present; the loader resolved to the wrong .env file"
  },
  "cron_memory_write_loss_2026_10_29": {
   "finding": "Two cron jobs completed their work and were still marked error because the agent's trailing sidecar memory-write failed: ceo-standup-2200 (28 Oct 22:00 SAST, 'Edit: in /workspace/MEMORY.md failed') and ae77d9f3 Email Warmup (29 Oct 07:00 SAST, 'Edit: in /workspace/AGENTS.md failed').",
