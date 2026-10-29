@@ -3202,6 +3202,19 @@
   "why_it_matters": "this is the FIRST run on the corrected payload (the stale 'PAT-gated' reason was replaced 4 minutes before it fired), and it succeeded - so the payload correction is proven, not just applied",
   "artefact_read_not_summary": "studex-obsidian-vault/daily/2026-10-29.md - 305 lines, 34798 bytes, compiled '2026-10-29 22:00 UTC = 2026-10-30 00:00 SAST'. Not a stub: 'Orders and revenue - BLIND / UNPROVEN' (live 401 + 48 products re-probed), 'the money that IS visible - and it is going the wrong way', 'Content posted today - 2 of 4 platforms', 'One live post carries a spec we cannot source', Backlog, Tomorrow. The 'never report it as zero' rule fired correctly.",
   "independent_flag": "the log independently flagged the unsourceable live-post spec - the same Threads 8633885 edit already on the owner's list",
-  "bound_did_not_bite_tonight": "memory/2026-10-29.md is 1896 lines, under the 4000-line ceiling, so it was read in full exactly as designed - the ceiling was set from the job's own failure (a growing scope killed the 12:00 sync at 620s), not from a guess"
+  "bound_did_not_bite_tonight": "memory/2026-10-29.md is 1896 lines, under the 4000-line ceiling, so it was read in full exactly as designed - the ceiling was set from the job's own failure (a growing scope killed the 12:00 sync at 620s), not from a guess",
+  "vault_sync_fields_before": {
+   "last_sync": "2026-10-29T22:00:00Z",
+   "last_sync_date": "2026-10-29",
+   "last_sync_file": "studex-obsidian-vault/daily/2026-10-29.md",
+   "last_sync_sa_st": "2026-10-30 00:00 SAST"
+  },
+  "vault_sync_fields_after": {
+   "last_sync": "2026-10-29T22:08:52Z",
+   "last_sync_date": "2026-10-29",
+   "last_sync_file": "/workspace/studex-obsidian-vault/daily/2026-10-29.md",
+   "last_sync_sa_st": "2026-10-30T00:08:52+02:00"
+  },
+  "correction": "the vault job DID write its own four vault_sync.* fields - I assumed it had not. It wrote the run's START time, a relative path and a human SAST string; I sharpened it to the end time, an absolute path and an ISO-8601 offset. The delta is kept in the state so the next reader sees it instead of taking my word for it."
  }
 }
