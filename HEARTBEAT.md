@@ -1,4 +1,32 @@
 # HEARTBEAT.md
+
+## 🟢 2026-10-29 09:45 UTC — THE 09:13 PASS WAS CLEAN, AND THE PASS CAN NOW SEE A JOB THAT DIED
+**09:13 canonical pass: 20 checkers · 16 clean · 4 known escalations · 0 new findings · 0
+could-not-prove · 0 broken.** `VERDICT: CLEAN - every checker proved its answer.`
+`dead-inbox` **CLEAN** ⇒ the 08:25 fix is verified by the pass itself. credential-fragments CLEAN ·
+cred-resolution CLEAN (849 files) · drift 18/18 · git-index CLEAN (884 = 884) · pre-push guard CLEAN ·
+leak-sources CLEAN · scanner-log CLEAN · mail 1061/13 · hosts unchanged ⇒ **nothing posted**.
+
+### 🔴 TWO NEW STANDING GUARDS — the pass could see a MIS-BUDGETED job, but not a DEAD one
+Today a job died and the pass could not have told us: no checker read the run records, so the 09:00
+standup's kill sat unread for a day because the job was "supposed to" work.
+
+**`cron-timeouts` — `ops/check-cron-timeout-outliers.py`** — a job whose timeout is an **outlier
+against its own name family** (below a quarter of the family's max). One-sided: a larger budget is
+harmless, a smaller one silently kills the job. The threshold is 25% because the real defect was
+300s against 1800s.
+
+**`cron-kills` — `ops/check-cron-timeout-kills.py`** — a job whose **last run** was killed by a
+timeout its **current** budget could not avoid. Only the most recent run counts, and a job whose
+budget was raised past the kill point is **not** re-announced as a defect.
+
+🔑 *Both tests carry negative controls that prove the cruder rule would have cried wolf: "every
+timeout ≥ 600s" flags a legitimate 300s job, and "the last run timed out" flags a repaired job
+forever.* 🔑 *A guard that cries wolf gets switched off.*
+
+Registry now **22 checkers**; `ops/test-heartbeat-registry.py` 113/113 · suite **57 python + 8 other,
+ALL PASS**. Commits `f74e589` · `7f99966`. Still **local only** — owner-gated PAT, PUBLIC remote.
+
 ## 🔴 2026-10-29 08:40 UTC — THE ROTATION LIST WAS WRONG: 1 CONFIRMED LIVE + 1 THAT WAS NEVER ON THE LIST
 Re-probed the **published remote** (`origin/master`, `origin/main`, `origin/ciie2026-build`,
 `origin/standup/2026-10-28` — 3967 blobs) against each provider, credential by credential.

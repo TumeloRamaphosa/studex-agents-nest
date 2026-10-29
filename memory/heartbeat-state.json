@@ -2572,7 +2572,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T08:40:12Z",
+ "last_heartbeat_pass": "2026-10-29T09:39:18Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2592,7 +2592,8 @@
   "credential_files_859": "cred-resolution scanned 859 credential-bearing tracked files (up from 855) - so the check ran AFTER commits c94bc35 / ad8d097 / 8e668e8",
   "fallback_proven_live": "Daily Content Agent 06:55 UTC: Threads POSTED 201 (fallback working), LinkedIn 422 (connection expired), Facebook queued - today's post carries no price (price-on-feed names no 2026-10-29 post)",
   "content_agent_fix": "8e668e8 - the script reported FB_PAGE_TOKEN not set while the token was present; the loader resolved to the wrong .env file",
-  "pass_0812": "20 checkers / 15 clean / 4 known escalations / 1 NEW finding (dead-inbox, since fixed and re-verified CLEAN) / 0 could-not-prove / 0 broken. credential-fragments CLEAN; cred-resolution CLEAN (845 files, down from 859 after 17 scratch files were untracked); git-index CLEAN (884 = 884); mail 1061/13."
+  "pass_0812": "20 checkers / 15 clean / 4 known escalations / 1 NEW finding (dead-inbox, since fixed and re-verified CLEAN) / 0 could-not-prove / 0 broken. credential-fragments CLEAN; cred-resolution CLEAN (845 files, down from 859 after 17 scratch files were untracked); git-index CLEAN (884 = 884); mail 1061/13.",
+  "pass_0913": "20 checkers / 16 clean / 4 known escalations (price-on-feed, staged-publish, cost-model, public-exposure) / 0 NEW findings / 0 could-not-prove / 0 broken. dead-inbox CLEAN (the 08:25 fix verified by the pass itself); credential-fragments CLEAN; cred-resolution CLEAN (849 files); drift 18/18; git-index 884=884; mail 1061/13; hosts unchanged => nothing posted this cycle."
  },
  "cron_memory_write_loss_2026_10_29": {
   "finding": "Two cron jobs completed their work and were still marked error because the agent's trailing sidecar memory-write failed: ceo-standup-2200 (28 Oct 22:00 SAST, 'Edit: in /workspace/MEMORY.md failed') and ae77d9f3 Email Warmup (29 Oct 07:00 SAST, 'Edit: in /workspace/AGENTS.md failed').",
@@ -2658,5 +2659,26 @@
   "corrected": "HEARTBEAT.md (2 headings), memory/2026-10-29.md (2 headings), MEMORY.md (the re-probe line); memory/heartbeat-state.json had two #ops posts stamped with the time the RECORD was written instead of the time they were SENT - the message id IS the send time",
   "guard": "the memory-shrink guard blocked the rename: a renamed ## heading reads as a DROPPED section, which is the failure that guard exists to stop. The two old titles are recorded in ops/memory-shrink-allowlist.txt as deliberate renames (content intact, clock corrected) instead of being rewritten silently",
   "lesson": "a timestamp is a fact like any other, and the only authority for it is a clock - not the hour I believed I was writing in"
+ },
+ "cron_death_guards_2026_10_29": {
+  "finding": "the canonical pass could see a MIS-BUDGETED job but not a DEAD one - no checker read the run records, so the 09:00 standup's kill sat unread for a day",
+  "cron-timeouts": {
+   "file": "ops/check-cron-timeout-outliers.py",
+   "rule": "a job whose timeout is below a quarter of its own NAME FAMILY's maximum is an outlier (one-sided: a larger budget is harmless)",
+   "threshold": "25% - the real defect was 300s against 1800s (17%)",
+   "negative_control": "'every timeout must be >= 600s' catches the real defect AND flags a legitimate 300s quick job"
+  },
+  "cron-kills": {
+   "file": "ops/check-cron-timeout-kills.py",
+   "rule": "a job whose MOST RECENT run was killed by a timeout its CURRENT budget could not avoid; a budget raised past the kill point is NOT re-announced as a defect",
+   "live_fleet": "2 last-run timeout kills today (09:00 standup 303s, midday nudge 900s); both now have budgets far above their kill points, so no job is scheduled to die again",
+   "negative_control": "'the last run timed out' would flag the repaired standup forever"
+  },
+  "registry": "22 checkers; ops/test-heartbeat-registry.py 113/113; suite ALL TESTS PASS (57 python + 8 other)",
+  "commits": [
+   "f74e589",
+   "7f99966"
+  ],
+  "unpushed": "owner-gated PAT; the remote is PUBLIC"
  }
 }
