@@ -2592,7 +2592,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T10:55:35Z",
+ "last_heartbeat_pass": "2026-10-29T14:55:32Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2878,5 +2878,21 @@
    "log": "/tmp/hb-pass-1437.log",
    "checkers": 22
   }
+ },
+ "pass_14_37_2026_10_29": {
+  "end": "2026-10-29T14:55:32Z",
+  "checkers": 22,
+  "clean": 18,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
+  "cron_kills": "SILENT (not among the findings) - the vault-sync 1200s budget fix holds inside the runner"
  }
 }
