@@ -19,6 +19,7 @@ PY_TESTS=(
   ops/test-credential-fence-check.py
   ops/test-cron-times-checker.py
   ops/test-cron-timeout-outliers.py
+  ops/test-cron-timeout-kills.py
   ops/test-cron-range-checker.py
   ops/test-correction-rules.py
   ops/test-draft-rules.py
