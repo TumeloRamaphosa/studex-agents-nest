@@ -3070,5 +3070,15 @@
   "cron_kills": "CLEAN (rc=0) - the vault-sync 1200s budget fix holds inside the runner again.",
   "read_only": true,
   "mutations": "none - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified"
+ },
+ "scheduler_durationms_measures_the_turn_not_the_job_2026_10_29": {
+  "evidence": "the 18:23 cron run's record says durationMs=150315 with summary 'Switching approach - I'll use a background wait session instead of polling loops', while the pass it ran wrote ops/logs/heartbeat-pass-2026-10-29_1823.log with mtime 18:41 - 18 minutes of work behind a 150-second turn",
+  "meaning": "durationMs in a run record measures the AGENT TURN, not the job. A job's timeout therefore bounds the turn, not the work it hands off to a background session.",
+  "guard_impact": "ops/check-cron-timeout-kills.py reads exactly that field, so it can under-report a job's real runtime by an order of magnitude. The pass's truth is the state key + the log mtime, not the run record.",
+  "budget_consequence": "raising a timeout does not bound background work; bounding the work means bounding the SCOPE",
+  "my_explanation_was_wrong": "I wrote that cron-kills/cron-timeouts print '(no verdict line)' because they report a plain sentence rather than a VERDICT token. Wrong: the runner's verdict_line() skipped any line starting with '-', and those checkers' detail lines start with '  - ', so the runner threw the detail away. The agent fixed verdict_line() (verified on 5 input shapes; suite ALL TESTS PASS - 57 python + 8 other).",
+  "spec_hardened": "the job spec now says: start the pass with nohup into ops/logs/heartbeat-pass-<date>_<hhmm>.log and wait with ONE bounded command (tail --pid=<pid> -f /dev/null) - no polling loops, no long sleeps",
+  "schedule_health": "the job has run 4 times (15:23/16:23/17:23/18:23), all ok, all CLEAN 22/22 with 18 clean and 0 new/broken/cnp; the last two posted nothing because every finding was in the known set with byte-identical detail; no fleet job errored between 15:30Z and 19:11Z",
+  "agent_lesson": "to ask 'was it recorded?', LIST the keys - never probe for one you guessed (an invented key name read as 'nothing was recorded' when it had been)"
  }
 }
