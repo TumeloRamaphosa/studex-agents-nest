@@ -426,6 +426,13 @@
    "messageId": "1565300539753889803",
    "topic": "path B invented a product spec ('marbling grade 5' vs the catalogue's 'marble scores 8+ to 11+') and published it on Threads 8633885 + Instagram 8634450; the backlog is 3 publishable captions (26/25/27 Oct), 1 must-not (24 Oct caviar - permit stack unassembled), 1 hold (23 Oct ribeye); and the same biltong product went live twice in 6 days because the duplicate check compares text, not the product",
    "ts": "2026-10-29T09:47:00Z"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565318417165193349",
+   "topic": "12:00 SAST Vault Sync crossed its 600s budget (620349ms) and was killed - raised to 1200s, verified by the checker that found it; NOT a daily death (2 kills in 100 runs); the real question is the 6x runtime growth; plus my two corrections (Threads 8633885 ONLY for the wrong spec; pass end 09:33 not 09:45)",
+   "ts": "2026-10-29T10:56:32Z",
+   "ts_source": "discord snowflake (the message id IS the send time)"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
