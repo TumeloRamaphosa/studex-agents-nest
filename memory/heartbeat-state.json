@@ -2613,7 +2613,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T20:26:25Z",
+ "last_heartbeat_pass": "2026-10-29T21:26:30Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3152,5 +3152,29 @@
   "next_run": "2026-10-29T22:00Z - it fires again in about an hour with the same shape",
   "open_question": "which API rate-limited. I tried to read the job payload to attribute it and the platform's loop guard stopped the read, so the cause is UNATTRIBUTED and the fix cannot be written yet.",
   "lesson": "an error I cannot attribute is an error I cannot fix - say that plainly instead of guessing the cause"
+ },
+ "pass_2123_2026_10_29": {
+  "end": "2026-10-29T21:26:30Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-29_2123.log (the pass END time, not the time reading started)",
+  "checkers": 22,
+  "clean": 18,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
+  "known_set_exact": true,
+  "discord": "NOT POSTED - 0 new findings, 0 broken, 0 could-not-prove, every finding in the known set (price-on-feed, staged-publish, cost-model, public-exposure). The one changed line is a finding whose exposure SHRANK (price-on-feed live priced posts 3 -> 1) - a reduction, not a new risk, and rule 3 (post nothing when every finding is in the known set) governs.",
+  "content_change_vs_20_23_pass": "THREE lines differ and NONE is a new risk. (1) price-on-feed: '5 staged caption(s) and 3 live post(s)' -> '5 staged caption(s) and 1 live post(s)' - live priced posts dropped 3 -> 1, a REDUCTION. (2) client-secret: 2392 -> 2393 client file(s) scanned (still CLEAN). (3) cred-resolution: 852 -> 860 credential-bearing tracked file(s) scanned (still CLEAN). All three are explained by the 21:xx coffee price-sheet build adding tracked client files. mail unchanged at 1063 messages / 13 inboxes; drift unchanged at 18/18 clean.",
+  "price_on_feed_not_degraded": "Verified the drop is real, not a shrunken live scan: check-price-on-feed.py --json reports live_total=9 (feed fetched, non-empty), staged_total=8, staged_with_prices=5, live_with_prices=1, and it STILL flags threads 2026-10-28T07:00:07 acct=7701 R1,450. Detection demonstrably still works on the live feed, so 3 -> 1 is two priced posts no longer live. Checker source, PRICE-SOURCE-REGISTRY.md and skills/studex-daily-posting/SKILL.md all unmodified (git status clean for those paths).",
+  "cron_times": "CLEAN (rc=0) - the tz=UTC fix from the 15:42 pass has now held through SIX consecutive scheduled firings (16:23, 17:23, 18:23, 19:23, 20:23, 21:23).",
+  "cron_kills": "CLEAN (rc=0) - the vault-sync 1200s budget fix holds inside the runner again.",
+  "read_only": true,
+  "mutations": "none - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified"
  }
 }
