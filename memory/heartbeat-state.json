@@ -3011,6 +3011,18 @@
    "status": "ok",
    "duration_s": 801
   },
-  "lesson": "correct the reason, keep the consequence - and never let a stale reason keep steering the fix"
+  "lesson": "correct the reason, keep the consequence - and never let a stale reason keep steering the fix",
+  "writer_identity_correction": "the commit a2ffce6 was made by 5a506b8d = 'Evening Standup - 17:00 SAST' (802s, ok) writing the evening vault note - NOT a vault-sync job. The PAT-present finding still stands (that agent reached the same git-auth conclusion independently) but it is NOT a new point on the 12:00 Vault Sync's curve and must not be read as one. The 12:00 job's last observed runtime is still the killed 620s; its next proof is the 10:00Z run tomorrow under the 1200s budget.",
+  "public_correction_post": "1565420603379425373"
+ },
+ "scheduled_pass_16_23_2026_10_29": {
+  "verdict": "CLEAN - 22/22 checkers proved their answer, 18 clean (up from 17: cron-times closed), 0 new, 0 broken, 0 could-not-prove",
+  "posted_to_discord": false,
+  "why_not": "every finding was in the known set (price-on-feed, staged-publish, cost-model, public-exposure) and the detail lines were byte-identical to the 15:42 run - the 'post only on a change' rule stayed quiet, correctly",
+  "tz_fix_survived_a_real_firing": "the tz=UTC fix held through the 16:23 firing - a fix that has only been verified by re-running the checker is a hypothesis; a fix that survives the next scheduled fire is evidence",
+  "job_runtime_s": 1318,
+  "budget_s": 3600,
+  "budget_used": "37% - the 3600s fix has comfortable headroom (the first run used 2237s of 2400s)",
+  "fleet": "no job in the fleet errored between 15:30Z and 17:41Z"
  }
 }
