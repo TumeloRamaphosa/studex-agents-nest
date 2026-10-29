@@ -11,7 +11,8 @@ const path = require('path');
 
 function loadEnv() {
   const env = {};
-  for (const f of ['/workspace/.env', path.join(process.env.HOME || '/root', '.env')]) {
+  // Project-local .env first — it holds FB_PAGE_TOKEN for this project.
+  for (const f of [path.join(__dirname, '../.env'), '/workspace/.env', path.join(process.env.HOME || '/root', '.env')]) {
     if (require('fs').existsSync(f)) {
       require('fs').readFileSync(f, 'utf8').split('\n').forEach(line => {
         const t = line.trim();

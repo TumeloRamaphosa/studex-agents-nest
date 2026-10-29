@@ -39,7 +39,10 @@ const OPENAI_API = 'https://api.openai.com/v1';
 // ─── Load .env ───────────────────────────────────────────────────────────────
 function loadEnv() {
   const env = {};
-  for (const f of [ENV_FILE, '/workspace/.env', path.join(__dirname, '../../.env')]) {
+  // Project-local .env is FIRST: it holds this project's FB_PAGE_TOKEN/FB_PAGE_ID
+  // and must not be shadowed by the shared /workspace/.env. (It previously used
+  // '../../.env', which resolved back to /workspace/.env and never read it.)
+  for (const f of [path.join(__dirname, '../.env'), ENV_FILE, '/workspace/.env']) {
     if (fs.existsSync(f)) {
       fs.readFileSync(f, 'utf8').split('\n').forEach(line => {
         const t = line.trim();
