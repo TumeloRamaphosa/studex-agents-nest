@@ -36,7 +36,8 @@
 - **Festive close = 13–15 Nov 2026** (SA hamper window opened 29 Oct). Caviar-free biltong+coffee box is the 2026 product; caviar is 2027.
 
 ### Credential Fragments in the PUBLIC Remote — 2026-10-29 🔴 OPEN
-- **7 LIVE credentials have 12+ char fragments in the PUBLISHED remote** (AgentMail ×7, Pinecone, ClickUp, Orgo, Facebook, FeedHive, Blotato). The working tree is masked (892 files / 50 credentials → CLEAN); the **published history is not un-published**.
+- **Re-probed 2026-10-29 08:45 UTC against the published remote (3967 blobs across 4 pushed refs): the live set is 1 + 1, not 7.** **Blotato** (LIVE, 13+ files) and **GoDaddy** (LIVE — *not on the earlier list*: `fix_spf_exchange.py`, `godaddy_dns_setup.py`, `godaddy_final.py` + 1). **DEAD now:** AgentMail ×5, ClickUp (401 on `/user` *and* `/team`), Orgo, Cloudflare, ElevenLabs, GitHubPAT ×3. **Undeterminable:** Meta/Facebook ×4, FeedHive, Google, Perplexity. Posted to `#ops` (`1565284029555810445`).
+- 🔑 **A rotation list is only worth the owner's time if it is re-probed, not carried.** "7 live" was true at 01:00 and wrong by 09:00: five had been revoked under us, and one live one was missing from the list. The working tree is masked (892 files / 50 credentials → CLEAN); the **published history is not un-published**.
 - 🔑 **ROTATION is the fix and only Tumelo can rotate a credential.** Everything else is hygiene. Posted to `#ops` (`1565186632305606747`).
 - The guard that should have caught it watched **ONE** key out of fifty (`ops/audit-blotato-fragments.py`) — **retired**. Use `ops/audit-credential-fragments.py` (all 50 × all tracked files) and `ops/mask-credential-fragments.py` (masks in place, preserves inode).
 - 🔑 **A guard's SCOPE is part of its contract.** Watching one key while the repo holds fifty is a guard for a key nobody else has.

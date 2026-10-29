@@ -412,6 +412,12 @@
    "messageId": "1565280151380689018",
    "topic": "THE 09:00 STANDUP'S REPORT NEVER LANDED - relayed in full (10 decisions + what did NOT happen); the job timed out but the agent had already committed the report (9f8d37b); ClickUp key probed 401/401 => dead, which corrects the '7 LIVE credentials' label",
    "ts": "2026-10-29T08:25:29Z"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565284029555810445",
+   "topic": "CREDENTIAL EXPOSURE - the rotation list was wrong: re-probed against the published remote (3967 blobs), the live set is Blotato + GoDaddy (GoDaddy was NOT on the earlier list), DEAD: AgentMail x5, ClickUp, Orgo, Cloudflare, ElevenLabs, GitHubPAT x3, UNDETERMINED: Meta x4, FeedHive, Google, Perplexity",
+   "ts": "2026-10-29T08:40:12Z"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
@@ -2564,7 +2570,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T08:25:29Z",
+ "last_heartbeat_pass": "2026-10-29T08:40:12Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2583,7 +2589,8 @@
   "pass_0651": "20 checkers / 16 clean / 4 known escalations / 0 new findings / 0 could-not-prove - VERDICT CLEAN",
   "credential_files_859": "cred-resolution scanned 859 credential-bearing tracked files (up from 855) - so the check ran AFTER commits c94bc35 / ad8d097 / 8e668e8",
   "fallback_proven_live": "Daily Content Agent 06:55 UTC: Threads POSTED 201 (fallback working), LinkedIn 422 (connection expired), Facebook queued - today's post carries no price (price-on-feed names no 2026-10-29 post)",
-  "content_agent_fix": "8e668e8 - the script reported FB_PAGE_TOKEN not set while the token was present; the loader resolved to the wrong .env file"
+  "content_agent_fix": "8e668e8 - the script reported FB_PAGE_TOKEN not set while the token was present; the loader resolved to the wrong .env file",
+  "pass_0812": "20 checkers / 15 clean / 4 known escalations / 1 NEW finding (dead-inbox, since fixed and re-verified CLEAN) / 0 could-not-prove / 0 broken. credential-fragments CLEAN; cred-resolution CLEAN (845 files, down from 859 after 17 scratch files were untracked); git-index CLEAN (884 = 884); mail 1061/13."
  },
  "cron_memory_write_loss_2026_10_29": {
   "finding": "Two cron jobs completed their work and were still marked error because the agent's trailing sidecar memory-write failed: ceo-standup-2200 (28 Oct 22:00 SAST, 'Edit: in /workspace/MEMORY.md failed') and ae77d9f3 Email Warmup (29 Oct 07:00 SAST, 'Edit: in /workspace/AGENTS.md failed').",
@@ -2626,5 +2633,22 @@
   "meaning": "the ClickUp credential cannot authenticate, so no ClickUp board read is possible with it",
   "correction": "it also sits on the '7 LIVE credentials' escalation list - either it was revoked since the 01:00 audit or that list's liveness label is stale; the whole list needs a re-probe",
   "lesson": "a credential that returns 401 is not 'live with a caveat' - it is dead"
+ },
+ "credential_exposure_reprobe_2026_10_29": {
+  "scope": "published remote - origin/master, origin/main, origin/ciie2026-build, origin/standup/2026-10-28 - 3967 unique blobs; each credential re-probed against its provider",
+  "live": {
+   "Blotato": "TOOLS.md, builds/2026-07-04.md, memory/2026-06-27.md +10 more - ROTATE (unchanged)",
+   "GoDaddy": "fix_spf_exchange.py, godaddy_dns_setup.py, godaddy_final.py +1 more - ROTATE, and it was NOT on the earlier list; it is the DNS provider for both live domains"
+  },
+  "dead": "AgentMail x5, ClickUp (401 on /user and /team), Orgo, Cloudflare, ElevenLabs, GitHubPAT x3",
+  "undetermined": "Meta/Facebook x4, FeedHive, Google, Perplexity - the providers will not answer",
+  "local_state": "the three GoDaddy scripts now read GODADDY_API_KEY from the environment, so nothing is left to mask locally; the exposure lives in the PUBLISHED history and only a rotation (or an owner-authorised history rewrite) closes it",
+  "lesson": "a rotation list is only worth the owner's time if it is re-probed, not carried - '7 live' was true at 01:00 and wrong by 09:00",
+  "posted": "#ops 1565284029555810445"
+ },
+ "gitindex_gitlink_rescue_2026_10_29": {
+  "finding": "the 09:00 standup agent kept working after the scheduler gave up on it and left three uncommitted files: a GITLINK detector for the git-index guard. A leftover scratch dir held its own .git repos and .gitignore covered .tmp-*.sh/.tmp-*.py as FILES, not DIRECTORIES, so 'git add .' would have staged embedded repos and shipped gitlinks to a PUBLIC remote. The index stayed consistent with HEAD, so every other checker stayed green.",
+  "verified": "ops/test-empty-repo-false-green.py passes with its negative controls; ops/check-git-index.py reports 884 index files = 884 tracked by HEAD",
+  "committed": "a5561e1"
  }
 }
