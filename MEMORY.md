@@ -35,11 +35,21 @@
 - Caviar is **not** in `studex-products-catalog.csv`. **Resolved 2026-10-28 22:00 SAST:** the live storefront catalogue has **30 products, 0 caviar → caviar is NOT purchasable on studexmeat.com.** But caviar IS still advertised with live retail+trade prices (R4,200/R2,800/R1,600 and R34,000/R22,000/R12,500) on the public caviar trade page `ess0ocgcd9f0.space.mcode.io` — that page has **no cart** (WhatsApp + mailto only), so it is lead-gen, not checkout. "Advertised ≠ purchasable" — but the trade page is public.
 - **Festive close = 13–15 Nov 2026** (SA hamper window opened 29 Oct). Caviar-free biltong+coffee box is the 2026 product; caviar is 2027.
 
+### Credential Fragments in the PUBLIC Remote — 2026-10-29 🔴 OPEN
+- **7 LIVE credentials have 12+ char fragments in the PUBLISHED remote** (AgentMail ×7, Pinecone, ClickUp, Orgo, Facebook, FeedHive, Blotato). The working tree is masked (892 files / 50 credentials → CLEAN); the **published history is not un-published**.
+- 🔑 **ROTATION is the fix and only Tumelo can rotate a credential.** Everything else is hygiene. Posted to `#ops` (`1565186632305606747`).
+- The guard that should have caught it watched **ONE** key out of fifty (`ops/audit-blotato-fragments.py`) — **retired**. Use `ops/audit-credential-fragments.py` (all 50 × all tracked files) and `ops/mask-credential-fragments.py` (masks in place, preserves inode).
+- 🔑 **A guard's SCOPE is part of its contract.** Watching one key while the repo holds fifty is a guard for a key nobody else has.
+- 🔑 **A test fixture that holds a live credential is a leak**, even when it is labelled "synthetic" — my own two new fixtures did exactly that and the pre-commit guard caught it.
+- 🔑 **`classify()` must test MASK before LENGTH** — `TOO-SHORT` is a class `require()` ALLOWS, so a 12-asterisk mask was being handed to callers as a live key.
+
 ### Git / GitHub
 - Git is **diverged**: `master` has no upstream, **928 local-only commits**, and **106 remote-only commits**. Plain push is rejected non-fast-forward.
 - Reconcile only after Tumelo approves; resetting could discard remote work.
 - GitHub PAT unavailable: credential store empty, no `gh`, no SSH key, no token in `.env`.
 - Fix: Tumelo creates a fine-grained PAT with `contents:write`, provided securely rather than committed to `TOOLS.md`.
+- ⚠️ **The remote is PUBLIC.** Any commit is a publication. The pre-commit guard blocks credential-bearing commits — never `--no-verify` it.
+- **A local commit does not survive a container reset** — only a push to GitHub does.
 
 ### Sales Visibility — 2026-10-28
 - **Zero confirmed orders remain an instrumentation blind spot.** Shopify Admin API still returns HTTP 401, “Invalid API key or access token”; orders, revenue, and stock cannot be read.

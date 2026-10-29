@@ -1,4 +1,83 @@
 # HEARTBEAT.md
+## 🔴 2026-10-29 00:35 UTC — THE FRAGMENTS GUARD WATCHED ONE KEY OUT OF FIFTY, AND 7 LIVE KEYS ARE ON A PUBLIC REMOTE
+
+### 🔑 THE DEFECT WAS THE SCOPE, NOT THE BUG
+`ops/audit-blotato-fragments.py` watched **ONE** credential out of the **fifty**
+the repo holds, and reported **CLEAN** while **22 tracked files** held fragments
+of **15 credentials — 7 of them proven LIVE**. 🔑 *A guard that watches one key
+while the repo holds fifty is a guard for a key nobody else has.*
+
+**Replaced by:**
+* `ops/audit-credential-fragments.py` — **every** credential × **every** tracked
+  file, 12+ char slices ⇒ **892 files, 50 credentials, VERDICT: CLEAN** ✅
+* `ops/mask-credential-fragments.py` — masks **in place**, preserves inode ✅
+* `ops/test-audit-credential-fragments.py` · `ops/test-mask-credential-fragments.py`
+* `ops/heartbeat-checkers.tsv` — `credential-fragments` registered; the
+  one-credential entry **removed**; `ops/audit-blotato-fragments.py` retired to
+  `.trash-` (never tracked, `.gitignore`d) ✅
+
+### 🔴 THREE REAL DEFECTS THE NEW AUDIT EXPOSED
+**1. `scripts/daily-post.py` had NO credential guard at all.** My earlier fix was
+**lost in a history rewrite**, so a redaction artefact left in the `.env` slot
+went **straight to the Blotato API**. 🔑 *The guard was not weakened — it was
+absent, and nothing said so.* Restored, and the credential is now a
+**PRECONDITION** checked **before** the pillar check, the queue lookup and any
+content validation — 🔑 *a broken credential must never be masked by "no post
+queued".*
+
+**2. The "publisher refuses without a credential" case was VACUOUS.** 🔑 It
+stripped `BLOTATO_API_KEY` from the **ENVIRONMENT** while the publisher reads
+the **.env FILE** — so the credential was still there, the case passed, and it
+**never exercised the path it claimed to**. `STUDEX_ENV_FILE` now lets the
+publisher be pointed at a scratch file ⇒ "no credential" is a **REAL** state. 🔑
+*A test that passes without reaching its assertion is a test that certifies
+nothing.*
+
+**3. `classify()` tested LENGTH before PLACEHOLDER** ⇒ a 12-asterisk mask was
+classified `TOO-SHORT` — a class `require()` **ALLOWS** ⇒ 🔑 **a MASKED
+credential was handed to the caller as if it were a live key**, and the masker
+writes exactly that shape. 🔑 *The tool that removes a leak was manufacturing
+one.* `MASK` is now tested first; the word markers (`example`, `dummy`) stay
+**after** the length test so a short real key containing one is still not
+refused.
+
+### 🔴 FOUR PRE-EXISTING RED FILES → ALL GREEN (none of them mine)
+Each was a **fixture or an input not updated with the checker it feeds**:
+| file | root cause |
+|---|---|
+| `ops/test-pre-push-guard-check.py` | the checker gained a **second** hook source; the fixture still copied **one** |
+| `ops/test-china-tariff-claim.py` | the registry had **no ban row** for the expired-tariff framing ⇒ the generated manifest had no `must_not` |
+| `ops/test-cron-times-checker.py` | the **LIVE** cron job fired at 21:30 while its name promises 22:00 |
+| `ops/test-cron-range-checker.py` | same control, same live data |
+
+🔑 **⇒ the china fix went into the REGISTRY, not the generated manifest** —
+the manifest is a build artefact, and the builder then reported **128
+newly-asserted** items the racer's manifest had been missing. 🔑 *Fix the
+source, regenerate; never hand-edit the artefact.*
+
+### 🔴 THE LIVE CRON DRIFT (a real one, caught by the suite)
+`Research Hour — 10-11 PM SAST` ran at **22:00:13** on 28 Oct, then its
+expression was changed to `30 21 * * 0-6` and the scheduler began believing
+**21:30** — 🔑 **30 minutes early, every night, telling the agent "it is 10:00
+PM" while the clock said 9:30.** Expression restored to `0 22 * * 0-6` and the
+cached `state.nextRunAtMs` recomputed (`2026-10-29 22:00 SAST`). 🔑 The
+gateway CLI **timed out**, so the file was corrected directly and **verified by
+the checker that reads the same field** — 🔑 *a fix is not a fix until the
+checker that found it agrees.*
+
+### 🔑 AND THE GUARD CAUGHT MY OWN FIXTURES
+The pre-commit guard **blocked** the commit: two new test files had their
+"ground truth" credentials pasted in whole — 🔑 **and they were the LIVE
+values.** 🔑 *A synthetic credential that happens to be the actual one is the
+worst kind of fixture: it leaks while looking safe.* Both now use fakes of the
+same shape sharing **no 12-char slice** with any live key ⇒ audit CLEAN ✅
+
+### ⚠️ THE STANDING ESCALATION STAYS OPEN ✅
+**7 live credentials' fragments are in the PUBLISHED remote.** 🔑 Masking the
+working tree does **not** unpublish the history. 🔑 **ROTATION is the fix, and
+only Tumelo can rotate a credential** — everything else is hygiene. Posted to
+`#ops` (`1565186632305606747`).
+
 ## 🔴 2026-10-28 12:35 UTC — A LIVE BOLOTATO KEY WAS IN 7 TRACKED FILES, AND THIS REPO'S REMOTE IS PUBLIC
 ## 🔴 2026-10-28 13:25 UTC — THE DRIFT CHECKER CAUGHT MY OWN DEPLOY, AND THE FIX WAS IN THE SOURCE
 ## 🔴 2026-10-28 13:35 UTC — THE FRAGMENTS AUDIT WAS TOO BROKEN TO FIND A REAL LEAK
