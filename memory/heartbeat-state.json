@@ -2337,12 +2337,12 @@
   "inbox_note": "studex-obsidian-vault/inbox/ STILL DOES NOT EXIST (contents in inbox-archive/, last entry 2026-07-03). No agent artefact was filed to the vault this morning. Morning intel came from memory/2026-10-27.md, memory/2026-10-27-morning-nudge-0700.md, memory/2026-10-27-standup-0900.md, memory/2026-10-27-credential-leak.md, studex-meat-task-board/ (SMT-001 REPORT/APPROVALS/DECISIONS/FINDINGS/BLAST-RADIUS), memory/post-queue/, posts/pending/, memory/post-log.md, plus live probes (Shopify storefront+Admin, Blotato, GitHub API, rclone gdrive).",
   "last_commit": "40854d1c",
   "last_file": "studex-obsidian-vault/daily/2026-10-29.md",
-  "last_sync": "2026-10-29T22:00:00Z",
+  "last_sync": "2026-10-29T22:08:52Z",
   "last_sync_commit": "6a0193f",
   "last_sync_cron_id": "4eba3bce-4551-4f02-8a03-fbbafa7084b0",
   "last_sync_date": "2026-10-29",
-  "last_sync_file": "studex-obsidian-vault/daily/2026-10-29.md",
-  "last_sync_sa_st": "2026-10-30 00:00 SAST",
+  "last_sync_file": "/workspace/studex-obsidian-vault/daily/2026-10-29.md",
+  "last_sync_sa_st": "2026-10-30T00:08:52+02:00",
   "last_sync_ts": 1793311200,
   "last_sync_utc": "2026-10-29T22:00:00Z",
   "leads_recovered": "3 REAL external partners received BLANK emails from us (subject set, body empty): 2026-08-20 21:57 -> kfschof@gmail.com (429B, NO reply on record - subject said 'Test' so nobody chased us - found 23:00 UTC by the new size-based detector, invisible to every prior sweep); 2026-08-25 16:56 -> obelyakova@sv-tech.ru / Olga Beliakova, ART-ENGINEERING (402B, replied 19 min later, still unread, compliance-hold label); 2026-08-25 16:56 -> africabiz.r@yandex.com / Natalia Mordvinova (404B, replied 25 Aug 19:03, still unread). All 3 need replies. Drafts: obelyakova-reply.md + kfschof-reply.md ready (NOT SENT, need Tumelo approval); Natalia has no draft yet.",
@@ -3193,5 +3193,15 @@
   "change": "the Midnight (EOD) job's step 3 read the day's full event log; it now reads in full only if under 4000 lines, otherwise every ##/### heading plus the last 300 lines - the same bound step 4 already applies to the inbox",
   "why": "that file is today's note and grows all day; the job's own author already knew a growing scope is what killed the 12:00 sync at 620s, and the same bound was missing from its largest input",
   "caveat": "NOT a rate-limit fix - there is no proof the tokens were the cause. It is the one unbounded input."
+ },
+ "vault_eod_run_2026_10_29_ok": {
+  "status": "ok",
+  "duration_s": 532,
+  "finished": "2026-10-29T22:08:52Z",
+  "consecutiveErrors": 0,
+  "why_it_matters": "this is the FIRST run on the corrected payload (the stale 'PAT-gated' reason was replaced 4 minutes before it fired), and it succeeded - so the payload correction is proven, not just applied",
+  "artefact_read_not_summary": "studex-obsidian-vault/daily/2026-10-29.md - 305 lines, 34798 bytes, compiled '2026-10-29 22:00 UTC = 2026-10-30 00:00 SAST'. Not a stub: 'Orders and revenue - BLIND / UNPROVEN' (live 401 + 48 products re-probed), 'the money that IS visible - and it is going the wrong way', 'Content posted today - 2 of 4 platforms', 'One live post carries a spec we cannot source', Backlog, Tomorrow. The 'never report it as zero' rule fired correctly.",
+  "independent_flag": "the log independently flagged the unsourceable live-post spec - the same Threads 8633885 edit already on the owner's list",
+  "bound_did_not_bite_tonight": "memory/2026-10-29.md is 1896 lines, under the 4000-line ceiling, so it was read in full exactly as designed - the ceiling was set from the job's own failure (a growing scope killed the 12:00 sync at 620s), not from a guess"
  }
 }
