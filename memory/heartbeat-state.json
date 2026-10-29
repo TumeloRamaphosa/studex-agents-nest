@@ -400,6 +400,18 @@
    "messageId": "1565277861030396016",
    "topic": "CRON - the 09:00 standup was killed by a 300-second budget (303,478 ms, empty summary, nothing delivered); root cause was timeoutSeconds=300 while every sibling has 1800-3600; raised to 1800 and verified",
    "ts": "2026-10-29T08:15:35Z"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565279834467213404",
+   "topic": "GUARD - dead-inbox went RED (new): the 09:00 standup's probe named healthyprocess394@agentmail.to (404 on every key; a send is accepted and reports success); fixed by registering the deliberate reference with a glob, checker CLEAN; the class exposed - 17 tracked ops/tmp-* scratch scripts were heading for the PUBLIC remote, now untracked and ignored",
+   "ts": "2026-10-29T08:25:29Z"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565280151380689018",
+   "topic": "THE 09:00 STANDUP'S REPORT NEVER LANDED - relayed in full (10 decisions + what did NOT happen); the job timed out but the agent had already committed the report (9f8d37b); ClickUp key probed 401/401 => dead, which corrects the '7 LIVE credentials' label",
+   "ts": "2026-10-29T08:25:29Z"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
@@ -2552,7 +2564,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-29T08:15:35Z",
+ "last_heartbeat_pass": "2026-10-29T08:25:29Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -2596,5 +2608,23 @@
   "fix": "openclaw cron edit ceo-standup-0900 --timeout-seconds 1800 - verified by reading the API back: timeout 300->1800, enabled, schedule 0 9 * * 1-6, agentId main, delivery (discord -> #ops, bestEffort) and the 466-char payload message unchanged; only updatedAtMs moved.",
   "lesson": "a standup silently killed by a 5-minute budget is the worst kind of missing - no report, no error in the channel, the brief simply does not exist; the run record said 'error' all along and nobody looked at a job that was 'supposed to' work.",
   "posted": "#ops 1565277861030396016"
+ },
+ "dead_inbox_red_2026_10_29": {
+  "finding": "ops/tmp-ceo-standup-probe.py:80 (written by the 09:00 standup agent) names healthyprocess394@agentmail.to, which is 404 on every AgentMail key - a send to it is accepted and reports success, so a lead vanishes silently. The dead-inbox checker went RED (CLEAN at 05:44 and 06:51) - a genuinely new finding.",
+  "fix": "registered the deliberate reference in ops/dead-inbox-exceptions.txt as 'healthyprocess394@agentmail.to|ops/tmp-*' - probing a dead address is the point of a probe, sending to one is the bug; the glob covers every scratch probe of that kind. Checker re-run: CLEAN, rc=0. Commit fb5562b.",
+  "class_exposed": "17 one-shot scratch scripts under ops/tmp-* were TRACKED (the '.tmp-*.py' ignore rule does not match names without a leading dot), so scratch was heading for the PUBLIC remote. Untracked (kept on disk) + ignored via 'ops/tmp-*'. ops/tmp-shape-surface-audit.py stays tracked because ops/heartbeat-checkers.tsv registers it.",
+  "lesson": "a guard that flags a deliberate reference and a guard that cries wolf are both failures of precision; the fix is to make the difference explicit, not to silence the guard",
+  "posted": "#ops 1565279834467213404"
+ },
+ "standup_0900_report_undelivered_2026_10_29": {
+  "finding": "ceo-standup-0900 was killed by its 300s budget at 09:00 SAST (empty summary, deliveryStatus unknown) so the channel received NOTHING - but the agent kept working and committed the whole report (9f8d37b) and wrote it into memory/2026-10-29.md.",
+  "lesson": "a job that times out does not announce that it timed out - it just doesn't arrive; the report existed the whole time, waiting for a delivery that had already been cancelled",
+  "relayed": "#ops 1565280151380689018 - 10 decisions + the 'What did NOT happen' list"
+ },
+ "clickup_token_dead_2026_10_29": {
+  "probe": "GET api.clickup.com/api/v2/user -> 401, /api/v2/team -> 401, /api/v2/tasks -> 404 (no auth); both CLICKUP_API_TOKEN and CLICKUP_API_TOKEN_OLD; token read from .env in-process, never in argv",
+  "meaning": "the ClickUp credential cannot authenticate, so no ClickUp board read is possible with it",
+  "correction": "it also sits on the '7 LIVE credentials' escalation list - either it was revoked since the 01:00 audit or that list's liveness label is stale; the whole list needs a re-probe",
+  "lesson": "a credential that returns 401 is not 'live with a caveat' - it is dead"
  }
 }
