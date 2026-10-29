@@ -2733,7 +2733,9 @@
   "symptom": "killed at 620349 ms against a 600 s budget - 20 seconds of work past the line - every day, silently (lastError 'cron: job execution timed out', deliveryStatus unknown, consecutiveErrors 1)",
   "fix": "openclaw cron edit 5d6729b7-8ad0-4ba3-99c8-b48ddeac49aa --timeout-seconds 1200 (rc=0) - the CLI dump and jobs.json both show payload.timeoutSeconds 1200, updatedAtMs 1793270601630",
   "verified": "ops/check-cron-timeout-kills.py re-run -> rc=0, no job's last run was killed by a timeout its current budget could not have avoided",
-  "why_the_other_guard_missed_it": "cron-timeouts compares the budget to its SIBLINGS (600 vs 1200 = not an outlier) while cron-kills compares the kill to the WORK (620s of work vs a 600s budget). A budget can be small relative to its siblings and still be smaller than the job. One rule catches a MIS-BUDGET; the other catches a DEATH."
+  "why_the_other_guard_missed_it": "cron-timeouts compares the budget to its SIBLINGS (600 vs 1200 = not an outlier) while cron-kills compares the kill to the WORK (620s of work vs a 600s budget). A budget can be small relative to its siblings and still be smaller than the job. One rule catches a MIS-BUDGET; the other catches a DEATH.",
+  "how_often_it_had_been_dying": "CORRECTED: it was NOT dying every day. The run history is 100 runs / 2 timeout kills / 38 ok, and the first kill since 21 Oct was TODAY. Durations: 23 Oct 361s, 24 Oct 280s, 26 Oct 101s, 27 Oct 270s, 28 Oct 572s, 29 Oct 620s (killed). The budget was fine until the work outgrew it",
+  "the_real_question": "the sync grew 101s -> 270s -> 572s -> 620s in three days (6x in four runs) - the vault is growing, or the git push at the end of its payload is slowing as the repo history grows, or both. The budget is now 1200s so it will run, but if the growth continues 1200s is the next line to cross and cron-kills will be the one that says so"
  },
  "midday_nudge_budget_proof_2026_10_29": {
   "job": "e48bae9c-2adc-4ed0-9d06-60f142230aa5 (Midday Nudge)",
@@ -2780,5 +2782,10 @@
   "error": "my first completion test stripped leading whitespace, so it matched an INDENTED checker's own VERDICT line (discord-credential's) as if it were the runner's summary, and I embedded it in the daily note and HEARTBEAT.md",
   "rule": "the runner's own summary is the line at COLUMN 0; a checker prints its verdict indented. A test that strips the thing that distinguishes one line from another will match the wrong line",
   "fixed": "re-derived from the log's markers + the column-0 summary; the correction is appended to the daily note and the counts are in HEARTBEAT.md"
+ },
+ "record_pattern_assertion_correction_2026_10_29": {
+  "error": "I wrote that the Vault Sync 'has been dying quietly, every day' off ONE kill. The history is 2 kills in 100 runs, the first since 21 Oct",
+  "rule": "a single data point is a data point, not a pattern. Asserting a pattern is cheaper than reading the history",
+  "today_three_of_this_family": "the typed clock (09:45 vs the derived 09:33), the two-post ids (there was one post), and now 'every day' off one kill"
  }
 }
