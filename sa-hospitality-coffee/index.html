@@ -4,29 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Specialty Coffee for South African Hospitality | Studex</title>
-<meta name="description" content="Wholesale specialty coffee for SA hospitality, restaurants, offices and cafés. Roasted coffee from R270/kg, green coffee from 20 MT. Trade MOQ from 50kg. Delivery across South Africa.">
+<meta name="description" content="Wholesale specialty coffee for SA hospitality. Tiered roasted pricing from R240/kg (30kg+) and R270/kg at 1kg, green coffee by container, barista training and in-room sachets. Roasted to order, MOQ 5kg.">
 <style>
 :root{--emerald:#0B4F3C;--gold:#C9A84C;--ink:#0d0f0e;--paper:#fbfaf7;--muted:#5d6661;--line:#e3e0d8}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
-.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px}
 header{background:var(--emerald);color:#fff;padding:54px 0 46px}
 .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
 h1{font-size:clamp(30px,5.2vw,48px);line-height:1.1;margin:14px 0 16px;font-weight:700;letter-spacing:-.01em}
-header p{font-size:17px;color:#d8e4de;max-width:640px}
+header p{font-size:17px;color:#d8e4de;max-width:660px}
 .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-block;padding:13px 24px;border-radius:3px;font-weight:600;font-size:15px;text-decoration:none;border:2px solid transparent}
+.btn{display:inline-block;padding:13px 24px;border-radius:3px;font-weight:600;font-size:15px;text-decoration:none;border:2px solid transparent;cursor:pointer}
 .btn.gold{background:var(--gold);color:var(--ink)}
 .btn.ghost{border-color:rgba(255,255,255,.5);color:#fff}
 main{padding:0 0 10px}
 section{padding:48px 0;border-bottom:1px solid var(--line)}
 h2{font-size:clamp(22px,3.4vw,30px);letter-spacing:-.01em;margin-bottom:8px}
-.sub{color:var(--muted);margin-bottom:26px;max-width:640px}
+.sub{color:var(--muted);margin-bottom:26px;max-width:680px}
 table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:15px}
-th,td{padding:13px 15px;text-align:left;border-bottom:1px solid var(--line)}
+th,td{padding:13px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
 th{background:var(--emerald);color:#fff;font-size:12px;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
 tr:last-child td{border-bottom:none}
 .mono{font-variant-numeric:tabular-nums;white-space:nowrap}
+.price{display:block;font-weight:700;color:var(--emerald);font-variant-numeric:tabular-nums}
+.vat{display:block;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .tag{display:inline-block;background:rgba(201,168,76,.16);color:#8A6A2A;font-size:11px;font-weight:600;padding:3px 9px;border-radius:2px;letter-spacing:.03em}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px}
 .card{background:#fff;border:1px solid var(--line);padding:22px;border-radius:3px}
@@ -40,89 +42,351 @@ tr:last-child td{border-bottom:none}
 .note strong{color:var(--ink)}
 .cta{background:var(--ink);color:#fff;padding:52px 0;text-align:center}
 .cta h2{color:#fff;margin-bottom:10px}
-.cta p{color:#b9c1bd;max-width:560px;margin:0 auto 24px}
+.cta p{color:#b9c1bd;max-width:600px;margin:0 auto 24px}
 .cta .btn.gold{font-size:16px}
 footer{background:var(--ink);color:#7d8781;font-size:13px;padding:26px 0;border-top:1px solid #1d211f}
 footer a{color:var(--gold);text-decoration:none}
 footer .c{color:#b9c1bd}
+.svc{background:#fff;border:1px solid var(--line);border-radius:3px;padding:22px}
+.svc .amt{font-size:24px;font-weight:700;color:var(--emerald);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.svc .unit{font-size:12px;color:var(--muted);margin-bottom:10px}
+.svc p{font-size:13px;color:var(--muted)}
+.svc .cond{font-size:12px;color:var(--ink);border-top:1px solid #f0eee8;padding-top:9px;margin-top:9px}
+form{background:#fff;border:1px solid var(--line);border-radius:3px;padding:26px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.f label{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+.f input[type=text],.f input[type=email],.f input[type=tel],.f select,.f textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:3px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink)}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:3px;padding:8px 12px;font-size:14px;cursor:pointer;background:#fff}
+.chip input{accent-color:var(--emerald);margin:0}
+.chip:has(input:checked){border-color:var(--emerald);background:rgba(11,79,60,.06)}
+.fblock{margin-top:16px}
+.out{display:none;background:#fff;border:1px solid var(--line);border-left:4px solid var(--emerald);border-radius:3px;padding:24px;margin-top:18px}
+.out.show{display:block}
+.out h3{font-size:19px;margin-bottom:6px}
+.out pre{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#f7f6f2;border:1px solid var(--line);padding:14px;border-radius:3px;margin:14px 0;color:var(--ink)}
+.small{font-size:13px;color:var(--muted)}
+@media print{.noprint{display:none!important}body{background:#fff}section{padding:24px 0}.btnrow{display:none}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
   <div class="kicker">Studex · Specialty Coffee Supply</div>
   <h1>Specialty coffee for South African hospitality</h1>
-  <p>Roasted coffee for cafés, restaurants, hotels and offices — delivered on a monthly schedule. Or green beans direct from origin for your own roasting programme.</p>
+  <p>Roasted coffee for cafés, restaurants, hotels and offices — delivered on a monthly schedule, at a published tier price. Or green beans direct from origin for your own roasting programme.</p>
   <div class="btnrow">
-    <a class="btn gold" href="https://wa.me/27794988737" target="_blank" rel="noopener">WhatsApp for a quote</a>
-    <a class="btn ghost" href="#pricing">See pricing</a>
+    <a class="btn gold" href="#quote">Request a quote</a>
+    <a class="btn ghost" href="#pricing">See the price sheet</a>
+    <a class="btn ghost" href="https://wa.me/27794988737" target="_blank" rel="noopener">WhatsApp +27 94 988 8737</a>
   </div>
 </div></header>
 
 <main>
-<section><div class="wrap">
-  <h2>Roasted coffee — wholesale</h2>
-  <p class="sub">Roasted and packed in South Africa. Prices per kilogram, ex VAT, as at October 2026 and subject to confirmation on order.</p>
+
+<section id="pricing"><div class="wrap">
+  <h2>Roasted coffee — wholesale price sheet</h2>
+  <p class="sub">Roasted and packed in South Africa. Prices per kilogram, in ZAR, <strong>as at 29 October 2026</strong>. Ex VAT and VAT-inclusive shown on every line, because a procurement manager needs both.</p>
   <table>
-    <thead><tr><th>Origin &amp; process</th><th>Flavour profile</th><th>Price per kg</th><th>Trade MOQ</th></tr></thead>
+    <thead><tr>
+      <th style="width:34%">Origin &amp; process</th>
+      <th style="width:22%">Flavour profile</th>
+      <th style="width:11%">1 kg</th>
+      <th style="width:11%">5 kg</th>
+      <th style="width:11%">20 kg</th>
+      <th style="width:11%">30 kg +</th>
+    </tr></thead>
     <tbody>
-      <tr><td><strong>Washed</strong></td><td>Clean, bright, classic body — the everyday house coffee</td><td class="mono">R400</td><td class="mono">50 kg</td></tr>
-      <tr><td><strong>Honey</strong></td><td>Sweet, rounded, gentle fruit — a step up on filter</td><td class="mono">R350</td><td class="mono">50 kg</td></tr>
-      <tr><td><strong>Aerobic</strong></td><td>Winey, wine-like depth, high clarity — specialty menu</td><td class="mono">R380</td><td class="mono">50 kg</td></tr>
-      <tr><td><strong>Natural</strong></td><td>Fruity, full, syrupy — espresso and signature brews</td><td class="mono">R270</td><td class="mono">50 kg</td></tr>
+      <tr>
+        <td><strong>Washed</strong></td>
+        <td style="font-size:14px;color:var(--muted)">Clean, bright, classic body — the everyday house coffee</td>
+        <td class="mono"><span class="price">R400</span><span class="vat">R460 incl VAT</span></td>
+        <td class="mono"><span class="price">R385</span><span class="vat">R443 incl VAT</span></td>
+        <td class="mono"><span class="price">R370</span><span class="vat">R426 incl VAT</span></td>
+        <td class="mono"><span class="price">R350</span><span class="vat">R403 incl VAT</span></td>
+      </tr>
+      <tr>
+        <td><strong>Honey</strong></td>
+        <td style="font-size:14px;color:var(--muted)">Sweet, rounded, gentle fruit — a step up on filter</td>
+        <td class="mono"><span class="price">R350</span><span class="vat">R403 incl VAT</span></td>
+        <td class="mono"><span class="price">R335</span><span class="vat">R385 incl VAT</span></td>
+        <td class="mono"><span class="price">R320</span><span class="vat">R368 incl VAT</span></td>
+        <td class="mono"><span class="price">R310</span><span class="vat">R357 incl VAT</span></td>
+      </tr>
+      <tr>
+        <td><strong>Aerobic</strong></td>
+        <td style="font-size:14px;color:var(--muted)">Winey, wine-like depth, high clarity — specialty menu</td>
+        <td class="mono"><span class="price">R380</span><span class="vat">R437 incl VAT</span></td>
+        <td class="mono"><span class="price">R365</span><span class="vat">R420 incl VAT</span></td>
+        <td class="mono"><span class="price">R350</span><span class="vat">R403 incl VAT</span></td>
+        <td class="mono"><span class="price">R335</span><span class="vat">R385 incl VAT</span></td>
+      </tr>
+      <tr>
+        <td><strong>Natural</strong></td>
+        <td style="font-size:14px;color:var(--muted)">Fruity, full, syrupy — espresso and signature brews</td>
+        <td class="mono"><span class="price">R270</span><span class="vat">R311 incl VAT</span></td>
+        <td class="mono"><span class="price">R260</span><span class="vat">R299 incl VAT</span></td>
+        <td class="mono"><span class="price">R250</span><span class="vat">R288 incl VAT</span></td>
+        <td class="mono"><span class="price">R240</span><span class="vat">R276 incl VAT</span></td>
+      </tr>
     </tbody>
   </table>
-  <div class="note"><strong>How ordering works.</strong> Trade pricing starts at 50 kg per order, on a scheduled monthly delivery. Retail packs and the full product range are on our store at <a href="https://studexmeat.com" target="_blank" rel="noopener">studexmeat.com</a> — this page is for volume and trade supply only.</div>
+  <div class="note">
+    <strong>How ordering works.</strong> Minimum order is <strong>5 kg</strong> — one 5 kg bag is a legitimate first order for a café. Volume pricing applies on the order size, not on an annual contract, so nothing is locked in. Orders of 20 kg or more run on a scheduled monthly delivery. Retail packs and the full product range are on our store at <a href="https://studexmeat.com" target="_blank" rel="noopener">studexmeat.com</a> — this page is for volume and trade supply.
+    <br><br>
+    <strong>Two price lists, not one.</strong> The tier above is <em>roasted</em> coffee. If you buy <em>green</em> beans to roast yourself, that is priced per container in USD — see the next section.
+  </div>
+  <div class="note">
+    <strong>Printed copy.</strong> This page is a complete price sheet. Use your browser's print function to save it as PDF for your procurement file. Prices as at 29 October 2026, ex and inc VAT, and confirmed on order.
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Services that come with the coffee</h2>
+  <p class="sub">Coffee is the reason they call. These are the reasons they stay — and each one is priced separately, so you can take one or all of them.</p>
+  <div class="grid">
+    <div class="svc">
+      <h3>Barista training — foundations</h3>
+      <div class="amt">R7,500</div>
+      <div class="unit">per on-site day, up to 8 staff · R8,625 incl VAT</div>
+      <p>One full day on site: dial-in, espresso workflow, milk texturing, grinder and brewer setup, a brewing spec card for your bar, and a grinder dial-in on your machine.</p>
+      <p class="cond">Travel outside Gauteng quoted separately, at cost.</p>
+    </div>
+    <div class="svc">
+      <h3>Barista training — retainer</h3>
+      <div class="amt">R3,500</div>
+      <div class="unit">per month, quarterly minimum · R4,025 incl VAT</div>
+      <p>One on-site half-day per month, up to 6 staff. Equipment guidance, dialling-in on every new machine, staff rotation cover, and menu changes handled as they happen.</p>
+      <p class="cond">3-month minimum R10,500. Cancels with 30 days' notice after the minimum term.</p>
+    </div>
+    <div class="svc">
+      <h3>In-room single-serve sachet</h3>
+      <div class="amt">R3.95</div>
+      <div class="unit">per 2 g sachet, 1,000+ units · R4.54 incl VAT</div>
+      <p>2 g single-serve sachets, custom-printed with your brand, in-room or at the bar. The guest sees your hotel, not our name — you keep the margin on the cup.</p>
+      <p class="cond">R4.20 each at 500–999 units. Case of 1,000: R3,950. R1,500 one-off print setup. Roasted to order within 10 days.</p>
+    </div>
+    <div class="svc">
+      <h3>Sample pack</h3>
+      <div class="amt">R495</div>
+      <div class="unit">per pack — 5 × 250 g cupping set · R569 incl VAT</div>
+      <p>250 g of each of the four coffees, roasted to order, with a printed cupping sheet and a brew guide for your equipment. Cup them, pick one, we scale it.</p>
+      <p class="cond">Fully credited against your first order of 20 kg or more.</p>
+    </div>
+  </div>
+  <div class="note">
+    <strong>Why the training matters more than the discount.</strong> The service sector says its hardest problem is not price — it is <em>training and retaining skilled baristas</em>. Most coffee suppliers sell you a machine and a consumable. We will also make sure your staff can run it. That is the difference between coffee you buy and coffee you serve.
+  </div>
 </div></section>
 
 <section><div class="wrap">
   <h2>Green coffee direct from origin</h2>
-  <p class="sub">For roasters and specialty cafés that buy green. Prices in USD per metric tonne, FOB, as at October 2026 and indicative — they move with the market.</p>
+  <p class="sub">For roasters and specialty cafés that buy green. The catalogue is below; <strong>FOB pricing is quoted on request</strong> against the current season's band, because the green market moves and a published number on a web page goes stale faster than we can correct it.</p>
   <table>
-    <thead><tr><th>Origin</th><th>Process</th><th>Cupping</th><th>From</th></tr></thead>
+    <thead><tr><th style="width:30%">Origin</th><th style="width:20%">Process</th><th style="width:22%">Cupping</th><th>FOB</th></tr></thead>
     <tbody>
-      <tr><td><strong>Rwanda A1 Washed</strong><br><span style="font-size:12px;color:var(--muted)">Nyamasheke</span></td><td>Washed</td><td class="mono">84–87</td><td class="mono">USD 4,200/MT</td></tr>
-      <tr><td><strong>Ethiopia Yirgacheffe</strong><br><span style="font-size:12px;color:var(--muted)">Gedeo Zone</span></td><td>Washed</td><td class="mono">86–90</td><td class="mono">USD 4,500/MT</td></tr>
-      <tr><td><strong>Kenya AA Nyeri</strong><br><span style="font-size:12px;color:var(--muted)">Nyeri County</span></td><td>Washed</td><td class="mono">87–89</td><td class="mono">USD 4,800/MT</td></tr>
-      <tr><td><strong>Uganda Bugisu AA</strong><br><span style="font-size:12px;color:var(--muted)">Mount Elgon</span></td><td>Washed</td><td class="mono">83–86</td><td class="mono">USD 3,400/MT</td></tr>
-      <tr><td><strong>South Africa Bourbon</strong><br><span style="font-size:12px;color:var(--muted)">Mpumalanga</span></td><td>Washed</td><td class="mono">82–85</td><td class="mono">USD 5,200/MT</td></tr>
-      <tr><td><strong>Custom blend</strong><br><span style="font-size:12px;color:var(--muted)">Tailored to your spec · MOQ 5 MT</span></td><td>Any</td><td class="mono">—</td><td class="mono">USD 3,800/MT</td></tr>
+      <tr><td><strong>Rwanda A1 Washed</strong><br><span style="font-size:12px;color:var(--muted)">Nyamasheke</span></td><td>Washed</td><td class="mono">84–87</td><td class="mono">On request</td></tr>
+      <tr><td><strong>Ethiopia Yirgacheffe</strong><br><span style="font-size:12px;color:var(--muted)">Gedeo Zone</span></td><td>Washed</td><td class="mono">86–90</td><td class="mono">On request</td></tr>
+      <tr><td><strong>Kenya AA Nyeri</strong><br><span style="font-size:12px;color:var(--muted)">Nyeri County</span></td><td>Washed</td><td class="mono">87–89</td><td class="mono">On request</td></tr>
+      <tr><td><strong>Uganda Bugisu AA</strong><br><span style="font-size:12px;color:var(--muted)">Mount Elgon</span></td><td>Washed</td><td class="mono">83–86</td><td class="mono">On request</td></tr>
+      <tr><td><strong>South Africa Bourbon</strong><br><span style="font-size:12px;color:var(--muted)">Mpumalanga</span></td><td>Washed</td><td class="mono">82–85</td><td class="mono">On request</td></tr>
+      <tr><td><strong>Custom blend</strong><br><span style="font-size:12px;color:var(--muted)">Tailored to your spec · MOQ 5 MT</span></td><td>Any</td><td class="mono">—</td><td class="mono">On request</td></tr>
     </tbody>
   </table>
-  <div class="note"><strong>Documentation on every shipment.</strong> Certificate of Analysis, fumigation certificate and phytosanitary certificate ship with every consignment. Sample shipments of 5–10 kg are available on request at USD 28–45/kg.</div>
+  <div class="note"><strong>Documentation on every shipment.</strong> Certificate of Analysis, fumigation certificate and phytosanitary certificate ship with every consignment. Sample shipments of 5–10 kg are available on request. FOB ports: Djibouti, Mombasa, Durban.</div>
 </div></section>
 
 <section><div class="wrap">
   <h2>What fits your volume</h2>
   <p class="sub">Different buyers move at very different volumes. These are the tiers we supply against.</p>
   <div class="grid">
-    <div class="card"><h3>Cafés &amp; restaurants</h3><div class="price">50–200 kg</div><div class="unit">per month, per client</div><ul><li>Roasted weekly or monthly</li><li>Your blend or ours</li><li>Scheduled delivery</li></ul></div>
-    <div class="card"><h3>Offices &amp; workplaces</h3><div class="price">20–100 kg</div><div class="unit">per month, per office</div><ul><li>Bulk filter or espresso</li><li>Equipment guidance on request</li><li>Consistent monthly billing</li></ul></div>
-    <div class="card"><h3>Retail &amp; specialty</h3><div class="price">200–2,000 kg</div><div class="unit">per month</div><ul><li>Green or roasted</li><li>Labelling available</li><li>Trade pricing applied</li></ul></div>
+    <div class="card"><h3>Cafés &amp; restaurants</h3><div class="price">5–50 kg</div><div class="unit">per month, per client</div><ul><li>Roasted weekly or monthly</li><li>Your blend or ours</li><li>Scheduled delivery</li><li>Training optional</li></ul></div>
+    <div class="card"><h3>Hotels &amp; lodges</h3><div class="price">20–200 kg</div><div class="unit">per month, per property</div><ul><li>Guest-room sachets</li><li>In-room service spec</li><li>Staff training programme</li><li>Barista on-site cover</li></ul></div>
+    <div class="card"><h3>Offices &amp; workplaces</h3><div class="price">20–100 kg</div><div class="unit">per month, per office</div><ul><li>Bulk filter or espresso</li><li>Equipment guidance on request</li><li>Consistent monthly billing</li><li>Machine setup support</li></ul></div>
+    <div class="card"><h3>Retail &amp; specialty</h3><div class="price">200–2,000 kg</div><div class="unit">per month</div><ul><li>Green or roasted</li><li>Labelling available</li><li>Trade pricing applied</li><li>Private-label sachet</li></ul></div>
     <div class="card"><h3>Commodity traders</h3><div class="price">60–240 MT</div><div class="unit">per container</div><ul><li>A1: 17+ screen, 20 MT</li><li>A2: 15–16 screen, 40 MT</li><li>FOB Djibouti / Mombasa / Durban</li></ul></div>
   </div>
 </div></section>
+
+<section><div class="wrap">
+  <h2>Commercial terms</h2>
+  <p class="sub">Everything a procurement manager has to ask, answered up front.</p>
+  <table>
+    <thead><tr><th style="width:26%">Term</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Roasted minimum</strong></td><td>5 kg first order. 20 kg or more runs on a scheduled monthly delivery.</td></tr>
+      <tr><td><strong>Green minimum</strong></td><td>20 MT per 20 ft container (A1 20 MT / A2 40 MT). Custom blend MOQ 5 MT.</td></tr>
+      <tr><td><strong>Roasting &amp; dispatch</strong></td><td>Roasted to order. Dispatched within 2 business days of order.</td></tr>
+      <tr><td><strong>Delivery</strong></td><td>Free on orders over R850 in Gauteng, over R1,500 nationally. Below that: R95 (Gauteng), R135 (national).</td></tr>
+      <tr><td><strong>Delivery time</strong></td><td>48 hours — Gauteng, KZN, Cape Town. 72 hours — nationally.</td></tr>
+      <tr><td><strong>Payment</strong></td><td>30-day terms on account after the first order. Card or EFT for the first order.</td></tr>
+      <tr><td><strong>Green stock</strong></td><td>Green lots land Durban on a 3–4 week cycle from FOB. Stock dates quoted per order.</td></tr>
+      <tr><td><strong>Price validity</strong></td><td>Prices as at 29 October 2026, confirmed on order. Green FOB is quoted per enquiry against the current band.</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section id="quote" class="noprint"><div class="wrap">
+  <h2>Request a quote</h2>
+  <p class="sub">Tell us what you pour and how much. We will come back with a price, a delivery schedule and a sample pack if you want one. No account required, no obligation — and no card details taken here.</p>
+  <form id="quote-form">
+    <div class="fgrid">
+      <div class="f"><label for="q-business">Business name *</label><input type="text" id="q-business" name="business" required placeholder="Hotel / café / restaurant"></div>
+      <div class="f"><label for="q-contact">Contact name *</label><input type="text" id="q-contact" name="contact" required placeholder="Who we should speak to"></div>
+      <div class="f"><label for="q-email">Email *</label><input type="email" id="q-email" name="email" required placeholder="you@business.com"></div>
+      <div class="f"><label for="q-phone">WhatsApp / phone</label><input type="tel" id="q-phone" name="phone" placeholder="+27 XX XXX XXXX"></div>
+      <div class="f"><label for="q-type">Business type</label><select id="q-type" name="type">
+        <option value="">Select…</option><option>Café</option><option>Restaurant</option><option>Hotel</option><option>Lodge / safari lodge</option><option>Office / workplace</option><option>Coffee shop chain</option><option>Retailer</option><option>Roaster</option><option>Other</option>
+      </select></div>
+      <div class="f"><label for="q-volume">Monthly roasted volume</label><select id="q-volume" name="volume">
+        <option value="">Select…</option><option>5–20 kg</option><option>20–50 kg</option><option>50–100 kg</option><option>100–300 kg</option><option>300 kg+</option><option>Just a sample pack</option><option>Green coffee — per container</option>
+      </select></div>
+    </div>
+
+    <div class="fblock">
+      <div class="f"><label>Coffees you are interested in</label>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="coffee" value="Washed"> Washed</label>
+          <label class="chip"><input type="checkbox" name="coffee" value="Honey"> Honey</label>
+          <label class="chip"><input type="checkbox" name="coffee" value="Aerobic"> Aerobic</label>
+          <label class="chip"><input type="checkbox" name="coffee" value="Natural"> Natural</label>
+          <label class="chip"><input type="checkbox" name="coffee" value="Green"> Green coffee</label>
+          <label class="chip"><input type="checkbox" name="coffee" value="Not sure"> Not sure yet</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="fblock">
+      <div class="f"><label>Services you want priced</label>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="service" value="Barista training — foundations day"> Training day</label>
+          <label class="chip"><input type="checkbox" name="service" value="Barista training — monthly retainer"> Training retainer</label>
+          <label class="chip"><input type="checkbox" name="service" value="In-room single-serve sachet"> In-room sachets</label>
+          <label class="chip"><input type="checkbox" name="service" value="Sample pack (5 × 250 g)"> Sample pack</label>
+          <label class="chip"><input type="checkbox" name="service" value="Biltong / corporate hampers"> Biltong &amp; hampers</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="fblock fgrid">
+      <div class="f"><label for="q-city">Delivery city</label><input type="text" id="q-city" name="city" placeholder="e.g. Cape Town"></div>
+      <div class="f"><label for="q-when">When do you need it</label><input type="text" id="q-when" name="when" placeholder="e.g. next month, immediately"></div>
+    </div>
+
+    <div class="fblock">
+      <div class="f"><label for="q-notes">Anything else we should know</label><textarea id="q-notes" name="notes" rows="4" placeholder="Your equipment, your current supplier, what is not working for you…"></textarea></div>
+    </div>
+
+    <div class="fblock">
+      <button type="submit" class="btn gold" style="background:var(--emerald);color:#fff;width:100%;padding:15px">Build my quote request</button>
+      <p class="small" style="margin-top:10px">This builds the request and hands it to WhatsApp or email — whichever you prefer. We reply within one business day.</p>
+    </div>
+  </form>
+
+  <div class="out" id="quote-out">
+    <h3>Your quote request is ready</h3>
+    <p class="small">Send it to us by whichever channel you use. Nothing is submitted until you do.</p>
+    <pre id="quote-text"></pre>
+    <div class="btnrow" style="margin-top:6px">
+      <a class="btn gold" id="quote-wa" href="#" target="_blank" rel="noopener" style="background:var(--emerald);color:#fff">Send on WhatsApp</a>
+      <a class="btn" id="quote-mail" href="#" style="border-color:var(--emerald);color:var(--emerald)">Send by email</a>
+      <button type="button" class="btn" id="quote-copy" style="border-color:var(--emerald);color:var(--emerald);background:none">Copy message</button>
+      <button type="button" class="btn" id="quote-reset" style="border-color:var(--line);color:var(--muted);background:none">Start again</button>
+    </div>
+  </div>
+</div></section>
+
+<script>
+(function () {
+  var form = document.getElementById('quote-form');
+  var out = document.getElementById('quote-out');
+  var textEl = document.getElementById('quote-text');
+  var wa = document.getElementById('quote-wa');
+  var mail = document.getElementById('quote-mail');
+  if (!form) return;
+
+  function picked(name) {
+    return Array.prototype.slice
+      .call(form.querySelectorAll('input[name="' + name + '"]:checked'))
+      .map(function (i) { return i.value; });
+  }
+
+  function val(id) {
+    var el = document.getElementById(id);
+    return el && el.value.trim() ? el.value.trim() : '—';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var coffees = picked('coffee');
+    var services = picked('service');
+    var lines = [
+      'STUDEX COFFEE QUOTE REQUEST',
+      '',
+      'Business: ' + val('q-business'),
+      'Contact: ' + val('q-contact'),
+      'Email: ' + val('q-email'),
+      'Phone: ' + val('q-phone'),
+      'Business type: ' + val('q-type'),
+      'Monthly roasted volume: ' + val('q-volume'),
+      'Coffees: ' + (coffees.length ? coffees.join(', ') : '—'),
+      'Services: ' + (services.length ? services.join(', ') : '—'),
+      'Delivery city: ' + val('q-city'),
+      'Needed by: ' + val('q-when'),
+      'Notes: ' + val('q-notes')
+    ];
+    var body = lines.join('\n');
+    textEl.textContent = body;
+    wa.href = 'https://wa.me/27794988737?text=' + encodeURIComponent(body);
+    mail.href = 'mailto:info@studexmeat.com?subject=' +
+      encodeURIComponent('Coffee quote request — ' + val('q-business')) +
+      '&body=' + encodeURIComponent(body);
+    out.classList.add('show');
+    out.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  document.getElementById('quote-copy').addEventListener('click', function () {
+    var btn = this;
+    var done = function () {
+      btn.textContent = '✓ Copied';
+      setTimeout(function () { btn.textContent = 'Copy message'; }, 2200);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(textEl.textContent).then(done, function () {});
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = textEl.textContent;
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (err) {}
+      document.body.removeChild(ta);
+    }
+  });
+
+  document.getElementById('quote-reset').addEventListener('click', function () {
+    form.reset();
+    out.classList.remove('show');
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
 
 <section><div class="wrap">
   <h2>Also from Studex</h2>
   <p class="sub">If you are building a hospitality supply basket, these sit alongside the coffee.</p>
   <div class="grid">
     <div class="card"><h3>Wagyu &amp; biltong</h3><div class="unit">Retail and trade</div><ul><li>Luxury Wagyu Biltong from R325 (500g pack)</li><li>Wagyu Biltong Gold 1kg — R1,250</li><li>Wagyu Biltong Gold 7kg case — R8,400</li></ul><p style="margin-top:10px"><a href="https://t56b7vkncytt.space.mcode.io" style="color:var(--emerald);font-weight:600;font-size:14px">Open the store →</a></p></div>
-    <div class="card"><h3>Russian caviar</h3><div class="unit">Trade &amp; hospitality</div><ul><li>2027 season — register interest</li><li>Oscietra Imperial, Kaluga Prestige and Sevtruga Medium</li><li>Import permit stack in hand; trade pricing on the first shipment</li></ul><p style="margin-top:10px"><a href="https://ess0ocgcd9f0.space.mcode.io" style="color:var(--emerald);font-weight:600;font-size:14px">Caviar trade page →</a></p></div>
+    <div class="card"><h3>Caviar — 2027 season</h3><div class="unit">Register interest</div><ul><li>Oscietra Imperial, Kaluga Prestige, Sevtruga Medium</li><li>Trade accounts only</li><li>Supply subject to import permit</li></ul><p style="margin-top:10px"><a href="https://b0hj2mt9c1nt.space.mcode.io" style="color:var(--emerald);font-weight:600;font-size:14px">Caviar trade page →</a></p></div>
     <div class="card"><h3>Institutional &amp; corporate</h3><div class="unit">Volume pricing</div><ul><li>Wagyu ribeye R1,050/kg</li><li>Dry-aged beef R850/kg</li><li>Craft biltong from R380/kg</li><li>Corporate hampers from R1,299/box</li></ul><p style="margin-top:10px"><a href="https://hhsmhunf1xci.space.mcode.io" style="color:var(--emerald);font-weight:600;font-size:14px">Sell sheet →</a></p></div>
+    <div class="card"><h3>Corporate gifting</h3><div class="unit">Christmas 2026</div><ul><li>Classic R1,299 · Executive R2,499</li><li>Boardroom R4,999</li><li>Order code STUDEXGIFT10</li></ul><p style="margin-top:10px"><a href="https://oi28dhtke3yk.space.mcode.io" style="color:var(--emerald);font-weight:600;font-size:14px">Gift boxes →</a></p></div>
   </div>
 </div></section>
 
-<section class="cta"><div class="wrap">
-  <h2>Tell us your volume and your roast</h2>
-  <p>Send us your monthly requirement, the coffees you are pouring, and where you need delivery. We will come back with a price and a delivery schedule.</p>
-  <a class="btn gold" href="https://wa.me/27794988737" target="_blank" rel="noopener">WhatsApp +27 94 988 8737</a>
-  <p style="margin-top:16px;font-size:14px">or email <a href="mailto:info@studexmeat.com" style="color:var(--gold)">info@studexmeat.com</a></p>
-</div></section>
 </main>
 
 <footer><div class="wrap">
   <p><strong class="c">Studex</strong> · Kigali · Dubai · Shanghai · Cape Town · <a href="https://studexmeat.com" target="_blank" rel="noopener">studexmeat.com</a></p>
-  <p style="margin-top:6px">Green coffee prices indicative, as at October 2026, subject to market movement and confirmation on order. Roasted prices ex VAT, as at October 2026, subject to confirmation on order. Lead times and shipping terms confirmed per quotation.</p>
+  <p style="margin-top:6px">Roasted prices ex and inc VAT, as at 29 October 2026, subject to confirmation on order. Green coffee FOB quoted on request against the current season's band. Service lines quoted per engagement. Lead times and shipping terms confirmed per quotation.</p>
 </div></footer>
+
 </body>
 </html>

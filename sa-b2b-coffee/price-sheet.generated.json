@@ -1,0 +1,444 @@
+{
+  "generatedAt": "2026-10-29T21:05:51.196Z",
+  "publicSheet": {
+    "origins": [
+      {
+        "key": "washed",
+        "name": "Washed",
+        "profile": "Clean, bright, classic body — the everyday house coffee",
+        "listZarPerKg": 400,
+        "cells": [
+          {
+            "tier": "bag1kg",
+            "listZarPerKg": 400,
+            "priceZarPerKg": 400,
+            "priceZarPerKgVatIncl": 460,
+            "landedZarPerKg": 184.63,
+            "floorZarPerKg": 246.17,
+            "floorBinds": false,
+            "marginPct": 53.8
+          },
+          {
+            "tier": "bulk5kg",
+            "listZarPerKg": 400,
+            "priceZarPerKg": 385,
+            "priceZarPerKgVatIncl": 442.75,
+            "landedZarPerKg": 181.63,
+            "floorZarPerKg": 242.17,
+            "floorBinds": false,
+            "marginPct": 52.8
+          },
+          {
+            "tier": "bulk20kg",
+            "listZarPerKg": 400,
+            "priceZarPerKg": 370,
+            "priceZarPerKgVatIncl": 425.5,
+            "landedZarPerKg": 179.63,
+            "floorZarPerKg": 239.51,
+            "floorBinds": false,
+            "marginPct": 51.5
+          },
+          {
+            "tier": "bulk30kg",
+            "listZarPerKg": 400,
+            "priceZarPerKg": 350,
+            "priceZarPerKgVatIncl": 402.5,
+            "landedZarPerKg": 179.63,
+            "floorZarPerKg": 239.51,
+            "floorBinds": false,
+            "marginPct": 48.7
+          }
+        ]
+      },
+      {
+        "key": "honey",
+        "name": "Honey",
+        "profile": "Sweet, rounded, gentle fruit — a step up on filter",
+        "listZarPerKg": 350,
+        "cells": [
+          {
+            "tier": "bag1kg",
+            "listZarPerKg": 350,
+            "priceZarPerKg": 350,
+            "priceZarPerKgVatIncl": 402.5,
+            "landedZarPerKg": 184.63,
+            "floorZarPerKg": 246.17,
+            "floorBinds": false,
+            "marginPct": 47.2
+          },
+          {
+            "tier": "bulk5kg",
+            "listZarPerKg": 350,
+            "priceZarPerKg": 335,
+            "priceZarPerKgVatIncl": 385.25,
+            "landedZarPerKg": 181.63,
+            "floorZarPerKg": 242.17,
+            "floorBinds": false,
+            "marginPct": 45.8
+          },
+          {
+            "tier": "bulk20kg",
+            "listZarPerKg": 350,
+            "priceZarPerKg": 320,
+            "priceZarPerKgVatIncl": 368,
+            "landedZarPerKg": 179.63,
+            "floorZarPerKg": 239.51,
+            "floorBinds": false,
+            "marginPct": 43.9
+          },
+          {
+            "tier": "bulk30kg",
+            "listZarPerKg": 350,
+            "priceZarPerKg": 310,
+            "priceZarPerKgVatIncl": 356.5,
+            "landedZarPerKg": 179.63,
+            "floorZarPerKg": 239.51,
+            "floorBinds": false,
+            "marginPct": 42.1
+          }
+        ]
+      },
+      {
+        "key": "aerobic",
+        "name": "Aerobic",
+        "profile": "Winey, wine-like depth, high clarity — specialty menu",
+        "listZarPerKg": 380,
+        "cells": [
+          {
+            "tier": "bag1kg",
+            "listZarPerKg": 380,
+            "priceZarPerKg": 380,
+            "priceZarPerKgVatIncl": 437,
+            "landedZarPerKg": 184.63,
+            "floorZarPerKg": 246.17,
+            "floorBinds": false,
+            "marginPct": 51.4
+          },
+          {
+            "tier": "bulk5kg",
+            "listZarPerKg": 380,
+            "priceZarPerKg": 365,
+            "priceZarPerKgVatIncl": 419.75,
+            "landedZarPerKg": 181.63,
+            "floorZarPerKg": 242.17,
+            "floorBinds": false,
+            "marginPct": 50.2
+          },
+          {
+            "tier": "bulk20kg",
+            "listZarPerKg": 380,
+            "priceZarPerKg": 350,
+            "priceZarPerKgVatIncl": 402.5,
+            "landedZarPerKg": 179.63,
+            "floorZarPerKg": 239.51,
+            "floorBinds": false,
+            "marginPct": 48.7
+          },
+          {
+            "tier": "bulk30kg",
+            "listZarPerKg": 380,
+            "priceZarPerKg": 335,
+            "priceZarPerKgVatIncl": 385.25,
+            "landedZarPerKg": 179.63,
+            "floorZarPerKg": 239.51,
+            "floorBinds": false,
+            "marginPct": 46.4
+          }
+        ]
+      },
+      {
+        "key": "natural",
+        "name": "Natural",
+        "profile": "Fruity, full, syrupy — espresso and signature brews",
+        "listZarPerKg": 270,
+        "cells": [
+          {
+            "tier": "bag1kg",
+            "listZarPerKg": 270,
+            "priceZarPerKg": 270,
+            "priceZarPerKgVatIncl": 310.5,
+            "landedZarPerKg": 184.63,
+            "floorZarPerKg": 246.17,
+            "floorBinds": false,
+            "marginPct": 31.6
+          },
+          {
+            "tier": "bulk5kg",
+            "listZarPerKg": 270,
+            "priceZarPerKg": 260,
+            "priceZarPerKgVatIncl": 299,
+            "landedZarPerKg": 181.63,
+            "floorZarPerKg": 242.17,
+            "floorBinds": false,
+            "marginPct": 30.1
+          },
+          {
+            "tier": "bulk20kg",
+            "listZarPerKg": 270,
+            "priceZarPerKg": 250,
+            "priceZarPerKgVatIncl": 287.5,
+            "landedZarPerKg": 179.63,
+            "floorZarPerKg": 239.51,
+            "floorBinds": false,
+            "marginPct": 28.1
+          },
+          {
+            "tier": "bulk30kg",
+            "listZarPerKg": 270,
+            "priceZarPerKg": 240,
+            "priceZarPerKgVatIncl": 276,
+            "landedZarPerKg": 179.63,
+            "floorZarPerKg": 239.51,
+            "floorBinds": false,
+            "marginPct": 25.2
+          }
+        ]
+      }
+    ],
+    "tiers": [
+      {
+        "key": "bag1kg",
+        "label": "1 kg",
+        "discountPct": 0,
+        "pack": "bag1kg",
+        "moq": "5 kg",
+        "note": "Sample & small accounts",
+        "packZarPerKg": 11,
+        "landedZarPerKg": 184.63,
+        "floorZarPerKg": 246.17
+      },
+      {
+        "key": "bulk5kg",
+        "label": "5 kg",
+        "discountPct": 0.04,
+        "pack": "bulk5kg",
+        "moq": "5 kg",
+        "note": "Café accounts",
+        "packZarPerKg": 8,
+        "landedZarPerKg": 181.63,
+        "floorZarPerKg": 242.17
+      },
+      {
+        "key": "bulk20kg",
+        "label": "20 kg",
+        "discountPct": 0.08,
+        "pack": "bulk20kg",
+        "moq": "20 kg",
+        "note": "Restaurant & boutique hotel",
+        "packZarPerKg": 6,
+        "landedZarPerKg": 179.63,
+        "floorZarPerKg": 239.51
+      },
+      {
+        "key": "bulk30kg",
+        "label": "30 kg +",
+        "discountPct": 0.12,
+        "pack": "bulk30kg",
+        "moq": "30 kg",
+        "note": "Hotel group & scheduled supply",
+        "packZarPerKg": 6,
+        "landedZarPerKg": 179.63,
+        "floorZarPerKg": 239.51
+      }
+    ]
+  },
+  "internalModel": {
+    "inputs": {
+      "fxUsdZar": {
+        "value": 16.64,
+        "label": "FX USD/ZAR",
+        "source": "frankfurter.dev (ECB reference) 2026-10-29; cross-check exchangerate-api 16.6339 — agree within 0.04%. Higher of the two used, so the cost side is never understated.",
+        "confidence": "verified"
+      },
+      "greenFobUsdPerKg": {
+        "value": 6.75,
+        "label": "Green coffee FOB, high end of our band",
+        "source": "Our published Kigali FOB band $6.07-6.75/kg (studex-price-sheet/dist/index.html, \"Live desk — re-verify before quoting\"). TOP of band used: a floor is only a floor at worst-case cost.",
+        "confidence": "UNVERIFIED — band pending re-verification"
+      },
+      "greenFobBandLowUsdPerKg": {
+        "value": 6.07,
+        "label": "Green coffee FOB, low end of band",
+        "source": "Same source as above. Used only for the sensitivity table.",
+        "confidence": "UNVERIFIED"
+      },
+      "oceanFreightUsdPerKg": {
+        "value": 0.07,
+        "label": "Ocean freight + insurance, origin → Durban",
+        "source": "ASSUMPTION — $70/tonne on Kigali/Mombasa–Durban. Needs a forwarder quote.",
+        "confidence": "ASSUMPTION — needs forwarder quote"
+      },
+      "importDutyRate": {
+        "value": 0,
+        "label": "Import duty on green coffee",
+        "source": "ASSUMPTION — treated as 0% for green coffee into SA. NOT broker-confirmed. If this is wrong the whole floor moves.",
+        "confidence": "ASSUMPTION — broker to confirm"
+      },
+      "portClearingZarPerKg": {
+        "value": 1.8,
+        "label": "Port handling, clearing, inland to roastery",
+        "source": "ASSUMPTION — R1.80/kg green.",
+        "confidence": "ASSUMPTION"
+      },
+      "roastYield": {
+        "value": 0.85,
+        "label": "Roast yield (kg roasted per kg green)",
+        "source": "ASSUMPTION — 15% weight loss on a filter roast. 1 kg green -> 0.85 kg roasted.",
+        "confidence": "ASSUMPTION"
+      },
+      "roastingCostZarPerKg": {
+        "value": 38,
+        "label": "Roasting cost",
+        "source": "ASSUMPTION — R38/kg roasted (energy, labour, depreciation, roast loss).",
+        "confidence": "ASSUMPTION — needs roastery quote"
+      },
+      "packZarPerKg": {
+        "value": {
+          "bag1kg": 11,
+          "bulk5kg": 8,
+          "bulk20kg": 6,
+          "bulk30kg": 6
+        },
+        "label": "Packaging per kg roasted",
+        "source": "ASSUMPTION — 1kg valve bag + label R11; 5kg R8; 20kg/30kg R6.",
+        "confidence": "ASSUMPTION"
+      },
+      "targetMarginPct": {
+        "value": 0.25,
+        "label": "Target gross margin used to set the floor",
+        "source": "POLICY — 25%. Lower than the 30% used on the caviar desk, because a volume-tiered wholesale sheet with no headroom is not a wholesale sheet. The margin actually achieved at every published tier is printed in the internal sheet.",
+        "confidence": "policy"
+      },
+      "roundingZar": {
+        "value": 5,
+        "label": "Published prices round to the nearest R5",
+        "source": "POLICY — a price sheet with R396.32 on it is not a price sheet.",
+        "confidence": "policy"
+      }
+    },
+    "greenLandedZarPerKg": 115.28,
+    "greenPerKgRoasted": 135.63,
+    "landedByTier": [
+      {
+        "tier": "bag1kg",
+        "landedZarPerKg": 184.63,
+        "floorZarPerKg": 246.17
+      },
+      {
+        "tier": "bulk5kg",
+        "landedZarPerKg": 181.63,
+        "floorZarPerKg": 242.17
+      },
+      {
+        "tier": "bulk20kg",
+        "landedZarPerKg": 179.63,
+        "floorZarPerKg": 239.51
+      },
+      {
+        "tier": "bulk30kg",
+        "landedZarPerKg": 179.63,
+        "floorZarPerKg": 239.51
+      }
+    ],
+    "floorBinds": [],
+    "services": [
+      {
+        "key": "sample-pack",
+        "name": "Sample pack — 5 x 250 g cupping set",
+        "price": "R495",
+        "priceVatIncl": "R569",
+        "unit": "per pack (5 origins x 250 g)",
+        "credit": "Fully credited against your first order of 20 kg or more.",
+        "costBasis": "Product at list R350 (5 x 250 g across the four origins) + R85 sample packing = R435. Priced at R495 to cover the pack, and credited back so the acquisition cost is recovered on the first real order.",
+        "confidence": "COSTED from published list prices + packing assumption"
+      },
+      {
+        "key": "training-workshop",
+        "name": "Barista training — foundations workshop",
+        "price": "R7,500",
+        "priceVatIncl": "R8,625",
+        "unit": "per on-site day, up to 8 staff",
+        "credit": "Travel outside Gauteng quoted separately, at cost.",
+        "costBasis": "Trainer day R2,500 + travel/accommodation R1,000 + materials R750 + consumables R1,000 = R5,250. Priced at R7,500 (~30% margin). Benchmarked against SA barista schools at R1,500-3,000 per person — R938 per head here.",
+        "confidence": "ASSUMPTION — trainer day rate not confirmed"
+      },
+      {
+        "key": "training-retainer",
+        "name": "Barista training — monthly retainer",
+        "price": "R3,500",
+        "priceVatIncl": "R4,025",
+        "unit": "per month, quarterly minimum",
+        "credit": "One on-site half-day per month, up to 6 staff. 3-month minimum: R10,500.",
+        "costBasis": "Half-day session ~R1,800 (trainer R1,250 + travel R550). Priced at R3,500/month. The retainer is the wedge: it turns a transactional bean sale into a recurring account, and it is the one thing the office-coffee-service majors do not offer.",
+        "confidence": "ASSUMPTION — trainer day rate not confirmed"
+      },
+      {
+        "key": "in-room-sachet",
+        "name": "In-room single-serve sachet",
+        "price": "R3.95",
+        "priceVatIncl": "R4.54",
+        "unit": "per 2 g sachet, 1,000+ units",
+        "credit": "R4.20 each at 500-999 units. R1,500 one-off print setup. Case of 1,000: R3,950.",
+        "costBasis": "Coffee at the 30 kg tier (R240/kg) = R0.48 per 2 g sachet + sachet film, print and fill R1.20 = R1.67. Priced at R3.95. Custom-printed with the hotel brand — the hotel keeps the margin on the cup and the room sees the brand, not ours.",
+        "confidence": "COSTED from the 30 kg tier price + packaging assumption"
+      }
+    ],
+    "logistics": [
+      {
+        "label": "Roasting",
+        "value": "Roasted to order. Dispatched within 2 business days of order."
+      },
+      {
+        "label": "Delivery",
+        "value": "Free on orders over R850 in Gauteng, over R1,500 nationally. Below that R95 (Gauteng) / R135 (national)."
+      },
+      {
+        "label": "Delivery time",
+        "value": "48 hours Gauteng, KZN, Cape Town. 72 hours nationally."
+      },
+      {
+        "label": "Payment",
+        "value": "30-day terms on account after the first order; card or EFT for the first order."
+      },
+      {
+        "label": "Green stock",
+        "value": "Green lots land Durban on a 3-4 week cycle from FOB. Stock dates quoted per order."
+      }
+    ],
+    "sensitivity": [
+      {
+        "label": "Band low (green $6.07/kg)",
+        "fob": 6.07,
+        "greenLandedZarPerKg": 103.97,
+        "worstCell": {
+          "origin": "Natural",
+          "tier": "bulk30kg",
+          "margin": 30.7,
+          "floorBinds": false
+        }
+      },
+      {
+        "label": "Band high (green $6.75/kg) — published floor",
+        "fob": 6.75,
+        "greenLandedZarPerKg": 115.28,
+        "worstCell": {
+          "origin": "Natural",
+          "tier": "bulk30kg",
+          "margin": 25.2,
+          "floorBinds": false
+        }
+      },
+      {
+        "label": "Stress (green $7.50/kg)",
+        "fob": 7.5,
+        "greenLandedZarPerKg": 127.76,
+        "worstCell": {
+          "origin": "Natural",
+          "tier": "bulk5kg",
+          "margin": 24.5,
+          "floorBinds": false
+        }
+      }
+    ]
+  }
+}

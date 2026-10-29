@@ -105,7 +105,10 @@ page but **do not deploy** before sign-off · propose `git gc`/prune (219 MiB lo
 | `fr7m7fzyailo.space.mcode.io` | Rwanda Premium Coffee China/CIIE |
 | `oi28dhtke3yk.space.mcode.io` | Corporate Gifting Christmas 2026 |
 | `3zryumjeuemk.space.mcode.io` | Studex Computer / Always-On Agent Machine |
+| `iei7fdqx5j1y.space.mcode.io` | **SA hospitality coffee — tiered wholesale price sheet (2026-10-29, CURRENT)** |
+| `b0hj2mt9c1nt.space.mcode.io` | **Caviar trade desk — permit-conditioned, prices stripped (2026-10-29, CURRENT)** |
 
+- 🔴 **Delete these three legacy deploys (Tumelo, dashboard) — still live with old content as of 2026-10-29:** `ess0ocgcd9f0` (caviar with prices + 50% deposit path), `i09hd71cvt06` (old coffee page carrying the false "permit stack in hand"), `psq9xaisb9kf` (older coffee page with caviar prices). The deploy tool cannot remove a deploy — delete is a dashboard action.
 - Static HTML is required for WhatsApp/email previews; JS-only SPAs render blank.
 - Source for static institutional pages: `/workspace/studex-meat-static/`.
 - `studex-meat/vite.config.ts` uses `base: './'`; favicon is a data URI.
@@ -242,3 +245,66 @@ checkers classified in `ops/heartbeat-checkers.tsv`.
 ⏳ Owner action still open: the live **Shopify storefront still sells the old
 ladder** (500g R450 · 1kg R1,450 · 7kg case R12,500) while the site now says
 R325 / R1,250 / R8,400. Shopify Admin API is 401 from this box.
+
+---
+
+## Recent Session Notes (2026-10-29 23:00 SAST — Build Hour)
+
+**Shipped:** SA B2B coffee tiered wholesale price sheet with a working
+quote-request flow · caviar page stripped of prices, sale path and unevidenced
+origin claims · 3 internal source-of-truth docs · 1 build-verification harness
+(166 checks) · 21/21 live deployment checks.
+
+- **Coffee price sheet (CURRENT):** https://iei7fdqx5j1y.space.mcode.io
+  Source `/workspace/sa-hospitality-coffee/index.html`. 4 origins × 4 tiers
+  (1/5/20/30 kg), ex VAT **and** VAT-inclusive per cell. Washed 400/385/370/350
+  · Honey 350/335/320/310 · Aerobic 380/365/350/335 · Natural 270/260/250/240.
+  Service lines: training day R7,500 · training retainer R3,500/mo (3-mo min)
+  · in-room sachet R3.95 · sample pack R495 (credited vs first 20 kg).
+  Roasted MOQ **5 kg**, green MOQ **20 MT**.
+- **Caviar (CURRENT):** https://b0hj2mt9c1nt.space.mcode.io
+  Source `/workspace/deploy-caviar/index.html`. Prices, "Russian", the 50%
+  deposit path and the sample-pack order path all removed. Permit strip at top:
+  2027 season, trade accounts only, **stack not yet assembled**.
+- **Generator:** `sa-b2b-coffee/compute-price-sheet.mjs` →
+  `sa-b2b-coffee/price-sheet.generated.json`. Published table + internal cost
+  model + margins + sensitivity all emit from this one file.
+- **Cost model:** landed R115.28/kg green → R135.63/kg roasted equivalent;
+  landed R179.63–R184.63/kg by tier; **25% margin floor**; every published
+  cell clears it (worst: Natural 30 kg+ at 25.2%).
+  🔴 **At green $7.50/kg the Natural 5 kg tier falls to 24.5% — below floor.**
+- **Docs:** `sa-b2b-coffee/WHOLESALE-PRICE-SHEET.md` (incl. 10-row assumptions
+  register) · `sa-b2b-coffee/BENCHMARK-SHEET.md` ·
+  `caviar-trade-desk/PERMIT-STACK.md`.
+- **Harness:** `ops/verify-build-2026-10-29.py` — 166/166 pass.
+
+🔑 *Four things learned, none of them from the brief:*
+1. **The brief named the wrong file for the caviar page.** It said
+   `caviar-trade-desk/src`; that is the **internal** landed-cost engine.
+   Editing it would have broken the internal tool and left the public page
+   untouched. The real source is `deploy-caviar/index.html`. **Always verify a
+   deploy's source by matching its live HTML, not by trusting a filename.**
+2. **`ops/price-ladder-guard.py` scored a live false claim CLEAN.** The
+   hospitality page carried *"Import permit stack in hand"* — the stack does
+   not exist — and the guard missed it because its pattern is
+   `import permit (is)? in hand` and this string inserts *stack* in between.
+   🔑 **A pattern guard is only as good as its last near-miss. Semantic claims
+   need semantic review; the tool cannot be the judge.**
+3. **Two published green FOB bands are live at once** — $3,400–5,200/MT on the
+   hospitality page vs $6.07–6.75/kg on the price sheet. A buyer could price a
+   contract off the stale one. Costed on the **top** of the band; removed the
+   contradictory published figures rather than restating an unsourceable one.
+4. **The deploy tool cannot delete a deploy.** Every deploy creates a NEW URL,
+   so superseded pages stay live forever unless a human deletes them in the
+   dashboard. 🔴 **Three legacy deploys still carry the old caviar prices and
+   the false permit claim — Tumelo must delete them.** Also: a harness that
+   hard-fails on unde deletable URLs will fail forever, so legacy URLs are a
+   WARNING with a named owner and only tonight's deploys are hard failures.
+
+⏳ Owner actions: (1) re-verify the green FOB band + reconcile the green
+table — **before CIIE, 5 days**; (2) delete `ess0ocgcd9f0`, `i09hd71cvt06`,
+`psq9xaisb9kf`; (3) broker-confirm HS 1604.31 @ 30% + 15% VAT and re-run
+`caviar-landed-cost.xlsx`; (4) confirm the trainer day rate; (5) send the
+10-name coffee outreach; (6) confirm the two phone numbers (caviar footer
++27 84 421 6035 vs WhatsApp +27 94 988 8737).
+
