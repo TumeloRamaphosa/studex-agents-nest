@@ -3000,5 +3000,17 @@
   "note": "22/22 checkers proved their answer: 0 broken, 0 could-not-prove. 18 clean (up from 17 - cron-times closed). This pass was READ-ONLY: nothing was mutated, no credential was touched, no surface was written. The 4 known escalations were unchanged in content and were NOT re-posted.",
   "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
   "start": "2026-10-29T16:23:00Z"
+ },
+ "vault_sync_push_reason_corrected_2026_10_29": {
+  "my_claim_was_wrong_about_the_reason": "I said the vault payload's `git push` 'can never succeed (PAT-gated)'. An evening vault-sync run committed at 2026-10-29T15:11:39Z (a2ffce6, 'Git auth correction (PAT present, only force-push needs a decision)') proves the PAT IS present and the push AUTHENTICATES. The push is rejected as NON-FAST-FORWARD because the remote master has no merge base with the local repo.",
+  "the_fix_changes_shape_not_existence": "either push to the dated branch that tracks the lineage (the standup/... pattern, which fast-forwards cleanly) or drop the push from the payload. Never force-push master.",
+  "the_run": {
+   "job_name": "Evening Standup \u2014 17:00 SAST",
+   "job_id_prefix": "5a506b8d",
+   "finished": "15:18:27Z",
+   "status": "ok",
+   "duration_s": 801
+  },
+  "lesson": "correct the reason, keep the consequence - and never let a stale reason keep steering the fix"
  }
 }
