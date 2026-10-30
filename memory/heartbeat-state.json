@@ -2614,7 +2614,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T00:26:45Z",
+ "last_heartbeat_pass": "2026-10-30T01:26:38Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3272,6 +3272,38 @@
   "cron_payload_claims": "CLEAN - 27 payload(s) scanned, no hardcoded system-status claims.",
   "credential_fragments": "CLEAN - still proves the same thing. The checker enumerates with 'git ls-files' and reads each file FROM THE WORKING TREE, which still carries the 22:43Z masks; HEAD still holds the fragments, so rotation remains the only real fix (owner-side).",
   "runtime_note": "The pass took ~3.5 minutes this run (00:23 -> 00:26:45Z), not the ~18 minutes the runbook estimates. All 22 checkers executed and the runner printed a full summary plus a column-0 VERDICT, so the pass was complete - the runbook estimate is stale. The wait was still done as ONE bounded command (a ps-based exit watcher inside a single exec), never a poll loop.",
+  "read_only": true,
+  "mutations": "none - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified."
+ },
+ "pass_0123_2026_10_30": {
+  "end": "2026-10-30T01:26:38Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-30_0123.log (the pass END time, not the time reading started)",
+  "checkers": 22,
+  "clean": 18,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
+  "known_set_exact": true,
+  "discord": "NOT POSTED - 0 new findings, 0 broken, 0 could-not-prove, and every finding is in the known set (price-on-feed, staged-publish, cost-model, public-exposure). Rule 3 governs. Independently confirmed: all four known finding blocks are byte-identical to the 00:23 pass, so no known finding's CONTENT changed either. Nothing to say in #ops (1538825048465481728).",
+  "content_change_vs_00_23_pass": "NONE in any finding. diff -u ops/logs/heartbeat-pass-2026-10-30_0023.log ops/logs/heartbeat-pass-2026-10-30_0123.log returns rc=1 with EXACTLY ONE differing line (line 69): the cred-resolution file COUNT, 1128 -> 1129. All four known finding blocks, every CLEAN verdict, the runner summary and the column-0 VERDICT line are byte-identical. Both logs are 4673 bytes.",
+  "cred_resolution_count_delta": "1128 -> 1129 (+1). EXPLAINED - a denominator change, NOT an exposure. In ops/credential-resolution-check.py the `scanned` counter increments for EVERY tracked text file that passes SKIP_DIRS/ALLOW/is_text_candidate; the credential-word test sits ABOVE the increment and does not gate it. The 00:23 pass committed memory/2026-10-30.md as a NEW tracked file (commit 050c079), so the denominator grew by exactly one. ops/logs/*.log are gitignored and untracked, so the new pass log added nothing. The checkers that would catch a genuinely new credential literal - tracked-creds, credential-fragments, credential-slots - all remained CLEAN this pass.",
+  "mail": "CLEAN - 1063 message(s) scanned across 13 inbox(es).",
+  "cred_resolution": "CLEAN - 1129 credential-bearing tracked file(s) scanned (+1 vs the 00:23 pass; fully explained by the previous pass committing its own daily note as a new tracked file - the counter is a denominator, not a leak count).",
+  "credential_slots": "CLEAN - 48 slot(s) checked, 1 short-but-real; no placeholder holds a slot.",
+  "client_secret": "CLEAN - 2393 client file(s) scanned; no secret-named VITE_ variable reachable from the browser.",
+  "leak_sources": "CLEAN - 7 total hardcoded literals (known, not new).",
+  "cron_times": "CLEAN (rc=0) - the tz=UTC fix from the 15:42 pass has now held through NINE scheduled firings (16:23 through 01:23).",
+  "cron_kills": "CLEAN (rc=0) - the vault-sync 1200s budget fix holds inside the runner again.",
+  "cron_payload_claims": "CLEAN - 27 payload(s) scanned, no hardcoded system-status claims.",
+  "credential_fragments": "CLEAN - still proves the same thing. The checker enumerates with 'git ls-files' and reads each file FROM THE WORKING TREE, which still carries the 22:43Z masks; HEAD still holds the fragments, so rotation remains the only real fix (owner-side).",
+  "runtime_note": "The pass took ~3.6 minutes this run (01:23 -> 01:26:38Z), not the ~18 minutes the runbook estimates. All 22 checkers executed and the runner printed a full summary plus a column-0 VERDICT, so the pass was complete - the runbook estimate is stale. The wait was done as ONE bounded command (tail --pid=<pid> -f /dev/null in a single exec), never a poll loop.",
   "read_only": true,
   "mutations": "none - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified."
  }
