@@ -1175,7 +1175,7 @@
   "agentmail_inventory": 1793020391,
   "agentmail_inventory_followthrough": 1793020922,
   "agentmail_sweep": 1792835166,
-  "alibaba": 1793342183,
+  "alibaba": 1793345998,
   "badge_payment_sweep": 1792768399,
   "blotato": 1792880700,
   "blotato_publish_state": {
@@ -1291,8 +1291,8 @@
   "heartbeat_2026-10-23_05_39_utc_note": "Fri 07:39 SAST. Drift 17/17 CLEAN exit 0 (incl. outbound drafts + secret-leak scan). Hub :3000/:3778 down, Alibaba SSH timeout - UNCHANGED since Oct 17, no Discord post. Storefront 200. External audit (13 inboxes, 811 msgs): only the 3 known Aug leads (Olga x2, Natalia, Zatsepilov) - no new external inbound. Daily-Post pre-flight CLEAN (threads already published 8384240, marker correct, no duplicate). CIIE badge payment due TODAY 16:00 UTC - escalation cron 51835fc8 fires 15:00 UTC.",
   "heartbeat_2026-10-23_20_35_utc": 1792787970,
   "history_exposure_measure": 1793097617,
-  "hosts": 1793342183,
-  "hub": 1793342183,
+  "hosts": 1793345998,
+  "hub": 1793345998,
   "mail": {
    "result": "983 messages / 13 inboxes, 0 new external arrivals since 21:17 UTC; newest is our own website-lead self-test",
    "ts": "2026-10-28T01:21:00Z"
