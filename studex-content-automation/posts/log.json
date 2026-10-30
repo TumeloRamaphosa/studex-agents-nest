@@ -1,5 +1,16 @@
 [
   {
+    "timestamp": "2026-10-30T06:55:05.876Z",
+    "product": "caviar-oscietra",
+    "productName": "Oscietra Imperial Caviar",
+    "category": "caviar",
+    "price": "R4,200 per 100g",
+    "status": "FAILED",
+    "error": "Facebook 190: Error validating access token: Session has expired on Saturday, 27-Jun-26 05:00:00 PDT. The current time is Thursday, 29-Oct-26 23:55:35 PDT.",
+    "captionPreview": "Some moments deserve more than champagne — they deserve caviar. Our Oscietra Imperial Caviar is the richest, most sought-after tier we carry: deep, nu",
+    "caption": "Some moments deserve more than champagne — they deserve caviar. Our Oscietra Imperial Caviar is the richest, most sought-after tier we carry: deep, nutty, with a clean finish and that unmistakable pop that turns an ordinary evening into a full-blown occasion. And here's the best part, SA — you don't need a five-star reservation or a trip abroad to taste the aristocrat of the sea. Just a chilled 100g tin, a mother of pearl spoon, and good company. It's perfect for anniversary dinners, milestone celebrations, or spoiling someone who swears they've tasted everything. One spoonful and you'll understand why this delicacy has crowned the finest tables for centuries. So tell us — who's the one person you'd share your first tin with? Tag them below, or send us a message to reserve yours.\n\n#oscietracaviar #studex #luxuryfoodsa #southafrica #gourmetliving"
+  },
+  {
     "timestamp": "2026-10-29T06:55:23.550Z",
     "product": "wagyu-ribeye",
     "productName": "Wagyu Ribeye Steak",

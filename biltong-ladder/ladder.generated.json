@@ -1,0 +1,773 @@
+{
+  "generatedAt": "2026-10-30T21:15:49.963Z",
+  "generator": "biltong-ladder/compute-ladder.mjs",
+  "costInputs": {
+    "rawBeefRarPerKg": {
+      "standardSilverside": {
+        "value": 140,
+        "source": "r/southafrica thread, Jul 2026 — \"Retail bulk silverside is currently R130-150/kg\". Midpoint taken. The same thread also notes \"at R599/kg that is based on a raw beef price of around R200/kg\", which is a useful independent sanity check.",
+        "confidence": "MARKET-ANCHORED — needs Tumelo’s invoice"
+      },
+      "wagyuTrimmed": {
+        "value": 320,
+        "source": "ASSUMPTION — SA A-grade wagyu strip at wholesale, trimmed for biltong. NOT sourced. This is the number most likely to be wrong, which is exactly why the break-even table is printed.",
+        "confidence": "ASSUMPTION — needs Tumelo’s invoice"
+      }
+    },
+    "finishedYield": {
+      "value": 0.35,
+      "label": "kg finished biltong per kg raw beef",
+      "source": "ASSUMPTION — wet-to-dry weight loss in curing. 1 kg raw -> 0.35 kg finished. Sensitive: every 0.05 of yield moves finished cost by roughly R130/kg.",
+      "confidence": "ASSUMPTION — needs a yield test"
+    },
+    "spicesMarinadeRarPerKg": {
+      "value": 45,
+      "source": "ASSUMPTION — salt, coriander, chilli and cure packaging, per kg finished.",
+      "confidence": "ASSUMPTION"
+    },
+    "coldChainDispatchRarPerKg": {
+      "value": 22,
+      "source": "ASSUMPTION — vacuum sealing, cold store, courier dispatch, per kg finished.",
+      "confidence": "ASSUMPTION"
+    },
+    "qaOverheadRarPerKg": {
+      "value": 65,
+      "source": "ASSUMPTION — hygiene, QA and labour overhead allocated per kg finished.",
+      "confidence": "ASSUMPTION"
+    },
+    "packagingRarPerKg": {
+      "value": {
+        "luxury500g": 19,
+        "luxury1kg": 14,
+        "gold1kg": 59,
+        "goldCase7kg": 60
+      },
+      "label": "Packaging per kg finished, by line and pack",
+      "source": "ASSUMPTION — Luxury 500g pouch + label R9.50; Luxury 1kg valve bag R14; Gold 1kg = 14 x 70g resealable pouches at R4.20 each (R58.80/kg, so R59); Gold 7kg case = 100 x 70g bulk liners (R420 per 7kg, so R60/kg). The two lines genuinely cost different to pack, which is part of why Gold can carry a premium.",
+      "confidence": "ASSUMPTION"
+    },
+    "goldLineRatio": {
+      "value": 2.2308,
+      "label": "Gold 1kg price as a multiple of Luxury 1kg",
+      "source": "DERIVED from the live Shopify ladder: Gold 1kg R1,450 / Luxury 1kg R650 = 2.2308. This is a MARKET/BRAND relationship, not a cost one — the R45/kg packaging gap explains only 5% of it, so the rest is positioning. The proposal preserves the ratio rather than inventing a new architecture, then checks whether the result still clears the floor.",
+      "confidence": "derived from live prices"
+    }
+  },
+  "policy": {
+    "marginFloorPct": {
+      "value": 0.25,
+      "source": "POLICY — 25%, matching the wholesale coffee sheet and the caviar desk floor. A ladder below this is not a ladder.",
+      "confidence": "policy"
+    },
+    "smallPackPremiumCap": {
+      "value": 0.15,
+      "source": "POLICY — the per-kg premium a smaller pack may carry over the 1kg, capped at 15%. Market check: Woolworths charges R157.99 for 150g against R279.99 for 400g — a 50% per-kg premium at the snack end, roughly 25% at the 400g end. 15% is the disciplined number for a fresh-protein brand, not a confection.",
+      "confidence": "policy"
+    },
+    "caseSavingPct": {
+      "value": 0.08,
+      "source": "POLICY — the 7kg case must be at least 8% cheaper per kg than 7 x 1kg. The buyer has to be able to count the saving, or the case is a decoration.",
+      "confidence": "policy"
+    },
+    "roundingZar": {
+      "value": 5,
+      "source": "POLICY — published prices round to the nearest R5.",
+      "confidence": "policy"
+    }
+  },
+  "fx": {
+    "value": 16.64,
+    "source": "frankfurter.dev (ECB reference) 2026-10-29; cross-check exchangerate-api 16.6339 — agree within 0.04%. Higher of the two used.",
+    "confidence": "verified"
+  },
+  "benchmarks": {
+    "sa": [
+      {
+        "name": "Woolworths — Free Range Chilli Beef Biltong Snapsticks",
+        "pack": "150g",
+        "price": 157.99,
+        "pricePerKg": 1053.27,
+        "source": "Woolworths.co.za product page; the R1,053/kg was calculated by Newsday, Jul 2026",
+        "date": "Oct 2026",
+        "note": "The highest visible SA biltong price per kg. This is the ceiling of the SA retail market."
+      },
+      {
+        "name": "Woolworths — Free Range Sliced Beef Biltong",
+        "pack": "400g",
+        "price": 279.99,
+        "pricePerKg": 699.98,
+        "source": "Woolworths.co.za product page",
+        "date": "Oct 2026",
+        "note": "The mainstream SA benchmark tier for a decent sliced biltong."
+      },
+      {
+        "name": "Woolworths — Sliced Beef Biltong (gifting range)",
+        "pack": "400g",
+        "price": 219.99,
+        "pricePerKg": 549.98,
+        "source": "Woolworths.co.za gifting range page",
+        "date": "Oct 2026",
+        "note": "Lower cut / different range, same pack size."
+      },
+      {
+        "name": "Woolworths — Bulk Original Beef Biltong Snapsticks",
+        "pack": "500g",
+        "price": 219.99,
+        "pricePerKg": 439.98,
+        "source": "Woolworths.co.za product A-6009195240318",
+        "date": "Oct 2026",
+        "note": "The value end of the SA market."
+      },
+      {
+        "name": "Woolworths — Free Range Sliced Beef Biltong",
+        "pack": "5 x 25g (125g)",
+        "price": 109.99,
+        "pricePerKg": 879.92,
+        "source": "Woolworths.co.za product page",
+        "date": "Oct 2026",
+        "note": "Small-pack per-kg premium benchmark: +26% vs the 400g."
+      },
+      {
+        "name": "Checkers — Kalahari Biltong Moist Sliced Beef",
+        "pack": "per kg",
+        "price": 429.99,
+        "pricePerKg": 429.99,
+        "source": "Checkers.co.za product 10155402KG",
+        "date": "Oct 2026",
+        "note": "Mass-retail comparator."
+      },
+      {
+        "name": "Shoprite — Kalahari Bulk Biltong",
+        "pack": "per kg",
+        "price": 129.99,
+        "pricePerKg": 129.99,
+        "source": "Shoprite.co.za product page",
+        "date": "Oct 2026",
+        "note": "The floor of the SA market. Below this, nobody can buy."
+      },
+      {
+        "name": "Biltong Boytjies — Wagyu Biltong / Wagyu Drywors",
+        "pack": "per kg",
+        "price": 549.99,
+        "pricePerKg": 549.99,
+        "source": "biltongboytjies.co.za blog, Apr 2026 — \"Most Biltong Shops will sell fresh Wagyu biltong or Wagyu drywors for R499.99-R599.99 Per KG\"",
+        "date": "Apr 2026",
+        "note": "🔑 The closest thing to a direct SA competitor on the word \"Wagyu\". This is the number our SA-facing product has to live with."
+      }
+    ],
+    "us": [
+      {
+        "name": "Biltong Depot — Original Biltong with Fat (slab subscription)",
+        "pack": "1 lb",
+        "priceUsd": 35.99,
+        "source": "biltongdepot.com product page",
+        "date": "Oct 2026"
+      },
+      {
+        "name": "BeefSnacksUSA — Monthly Biltong",
+        "pack": "1 lb",
+        "priceUsd": 33,
+        "source": "beefsnacksusa.com product page — subscribe and save 10%",
+        "date": "Oct 2026"
+      },
+      {
+        "name": "Lowfeld Soul Food — Beef Biltong Slices",
+        "pack": "1 lb",
+        "priceUsd": 33.99,
+        "source": "lowfeld-soul-food.com product page",
+        "date": "Oct 2026"
+      },
+      {
+        "name": "The Grub Company — Bulk Biltong",
+        "pack": "1 lb",
+        "priceUsd": 58,
+        "source": "thegrubcompany.com blog, Jul 2026",
+        "date": "Oct 2026"
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "scenario": {
+        "id": "standard",
+        "label": "Standard silverside beef",
+        "raw": {
+          "value": 140,
+          "source": "r/southafrica thread, Jul 2026 — \"Retail bulk silverside is currently R130-150/kg\". Midpoint taken. The same thread also notes \"at R599/kg that is based on a raw beef price of around R200/kg\", which is a useful independent sanity check.",
+          "confidence": "MARKET-ANCHORED — needs Tumelo’s invoice"
+        },
+        "note": "What the product looks like if \"Wagyu\" is a label rather than a grade."
+      },
+      "live": [
+        {
+          "id": "shopify",
+          "label": "Shopify live store (studexmeat.com)",
+          "status": "LIVE — structurally broken",
+          "source": "products.json variants, verified 28 Oct 2026; re-confirmed 30 Oct on the live product page studexmeat.com/products/wagyu-biltong (sale price R650.00, regular R812.50)",
+          "tiers": [
+            {
+              "line": "Luxury Wagyu Biltong",
+              "sizeKg": 0.5,
+              "label": "500g",
+              "price": 450,
+              "packKey": "luxury500g",
+              "pricePerKg": 900,
+              "costPerKg": 551,
+              "marginPct": 38.8,
+              "clearsFloor": true,
+              "breakEvenRaw": 183.4
+            },
+            {
+              "line": "Luxury Wagyu Biltong",
+              "sizeKg": 1,
+              "label": "1kg",
+              "price": 650,
+              "packKey": "luxury1kg",
+              "pricePerKg": 650,
+              "costPerKg": 546,
+              "marginPct": 16,
+              "clearsFloor": false,
+              "breakEvenRaw": 119.53
+            },
+            {
+              "line": "Wagyu Biltong Gold",
+              "sizeKg": 1,
+              "label": "1kg",
+              "price": 1450,
+              "packKey": "gold1kg",
+              "pricePerKg": 1450,
+              "costPerKg": 591,
+              "marginPct": 59.2,
+              "clearsFloor": true,
+              "breakEvenRaw": 313.77
+            },
+            {
+              "line": "Wagyu Biltong Gold",
+              "sizeKg": 7,
+              "label": "7kg case",
+              "price": 12500,
+              "packKey": "goldCase7kg",
+              "pricePerKg": 1785.71,
+              "costPerKg": 592,
+              "marginPct": 66.8,
+              "clearsFloor": true,
+              "breakEvenRaw": 401.55
+            }
+          ],
+          "invariants": [
+            {
+              "rule": "small pack per-kg premium over the 1kg",
+              "line": "Luxury Wagyu Biltong",
+              "holds": false,
+              "observed": "the 500g is 38.5% MORE per kg than the 1kg",
+              "required": "at most 15.0% per-kg premium",
+              "detail": "500g R900.00/kg vs 1kg R650.00/kg"
+            },
+            {
+              "rule": "the 7kg case must be CHEAPER in total than 7 x 1kg",
+              "line": "Wagyu Biltong Gold",
+              "holds": false,
+              "observed": "the case COSTS R2,350 MORE than 7 x 1kg (+23.2%)",
+              "required": "must be cheaper",
+              "detail": "case R12,500 vs 7 x 1kg R10,150"
+            }
+          ]
+        },
+        {
+          "id": "marketing",
+          "label": "Marketing page + registry §2.1 (studex-biltong/index.html)",
+          "status": "LIVE — right shape, thin money",
+          "source": "studex-biltong/index.html product grid, re-read 30 Oct; matches studex-meat/PRICE-SOURCE-REGISTRY.md §2.1. The 500g shows as \"From R325\" with no size stated on the card.",
+          "tiers": [
+            {
+              "line": "Luxury Wagyu Biltong",
+              "sizeKg": 0.5,
+              "label": "500g (from, size not stated on the card)",
+              "price": 325,
+              "packKey": "luxury500g",
+              "pricePerKg": 650,
+              "costPerKg": 551,
+              "marginPct": 15.2,
+              "clearsFloor": false,
+              "breakEvenRaw": 117.78
+            },
+            {
+              "line": "Wagyu Biltong Gold",
+              "sizeKg": 1,
+              "label": "1kg",
+              "price": 1250,
+              "packKey": "gold1kg",
+              "pricePerKg": 1250,
+              "costPerKg": 591,
+              "marginPct": 52.7,
+              "clearsFloor": true,
+              "breakEvenRaw": 261.27
+            },
+            {
+              "line": "Wagyu Biltong Gold",
+              "sizeKg": 7,
+              "label": "7kg case",
+              "price": 8400,
+              "packKey": "goldCase7kg",
+              "pricePerKg": 1200,
+              "costPerKg": 592,
+              "marginPct": 50.7,
+              "clearsFloor": true,
+              "breakEvenRaw": 247.8
+            }
+          ],
+          "invariants": [
+            {
+              "rule": "the 7kg case must be CHEAPER in total than 7 x 1kg",
+              "line": "Wagyu Biltong Gold",
+              "holds": true,
+              "observed": "the case saves R350 against 7 x 1kg (4.0% off)",
+              "required": "must be cheaper",
+              "detail": "case R8,400 vs 7 x 1kg R8,750"
+            }
+          ]
+        }
+      ],
+      "proposed": {
+        "tiers": [
+          {
+            "line": "Luxury Wagyu Biltong",
+            "sizeKg": 0.5,
+            "label": "500g",
+            "price": 415,
+            "packKey": "luxury500g",
+            "pricePerKg": 830,
+            "costPerKg": 551,
+            "marginPct": 33.6,
+            "clearsFloor": true,
+            "breakEvenRaw": 165.02
+          },
+          {
+            "line": "Luxury Wagyu Biltong",
+            "sizeKg": 1,
+            "label": "1kg",
+            "price": 730,
+            "packKey": "luxury1kg",
+            "pricePerKg": 730,
+            "costPerKg": 546,
+            "marginPct": 25.2,
+            "clearsFloor": true,
+            "breakEvenRaw": 140.52
+          },
+          {
+            "line": "Wagyu Biltong Gold",
+            "sizeKg": 1,
+            "label": "1kg",
+            "price": 1630,
+            "packKey": "gold1kg",
+            "pricePerKg": 1630,
+            "costPerKg": 591,
+            "marginPct": 63.7,
+            "clearsFloor": true,
+            "breakEvenRaw": 361.03
+          },
+          {
+            "line": "Wagyu Biltong Gold",
+            "sizeKg": 7,
+            "label": "7kg case",
+            "price": 10500,
+            "packKey": "goldCase7kg",
+            "pricePerKg": 1500,
+            "costPerKg": 592,
+            "marginPct": 60.5,
+            "clearsFloor": true,
+            "breakEvenRaw": 326.55
+          }
+        ],
+        "invariants": [
+          {
+            "rule": "500g per kg vs Luxury 1kg per kg",
+            "line": "Luxury Wagyu Biltong",
+            "holds": true,
+            "observed": "500g R830.00/kg vs 1kg R730.00/kg",
+            "required": "at most 15.0% per-kg premium on the small pack",
+            "detail": "premium 13.7%"
+          },
+          {
+            "rule": "7kg case vs 7 x Gold 1kg",
+            "line": "Wagyu Biltong Gold",
+            "holds": true,
+            "observed": "case R10,500 vs 7 x 1kg R11,410",
+            "required": "must be cheaper",
+            "detail": "saving R910 (8.0%)"
+          },
+          {
+            "rule": "per-kg price falls as pack size rises, within each line",
+            "line": "Luxury + Gold separately",
+            "holds": true,
+            "observed": "Luxury 500g R830.00/kg → 1kg R730.00/kg  ·  Gold 1kg R1,630.00/kg → case R1,500.00/kg",
+            "required": "monotonically non-increasing within a line",
+            "detail": ""
+          }
+        ],
+        "cost": {
+          "luxury500g": 551,
+          "luxury1kg": 546,
+          "gold1kg": 591,
+          "goldCase7kg": 592
+        },
+        "floorPerKg": {
+          "luxury500g": 734.6666666666666,
+          "luxury1kg": 728,
+          "gold1kg": 788,
+          "goldCase7kg": 789.3333333333334
+        },
+        "deltas": [
+          {
+            "line": "Luxury Wagyu Biltong",
+            "label": "500g",
+            "livePrice": 450,
+            "proposedPrice": 415,
+            "deltaZar": -35,
+            "deltaPct": -7.8
+          },
+          {
+            "line": "Luxury Wagyu Biltong",
+            "label": "1kg",
+            "livePrice": 650,
+            "proposedPrice": 730,
+            "deltaZar": 80,
+            "deltaPct": 12.3
+          },
+          {
+            "line": "Wagyu Biltong Gold",
+            "label": "1kg",
+            "livePrice": 1450,
+            "proposedPrice": 1630,
+            "deltaZar": 180,
+            "deltaPct": 12.4
+          },
+          {
+            "line": "Wagyu Biltong Gold",
+            "label": "7kg case",
+            "livePrice": 12500,
+            "proposedPrice": 10500,
+            "deltaZar": -2000,
+            "deltaPct": -16
+          }
+        ]
+      }
+    },
+    {
+      "scenario": {
+        "id": "wagyu",
+        "label": "Wagyu, trimmed",
+        "raw": {
+          "value": 320,
+          "source": "ASSUMPTION — SA A-grade wagyu strip at wholesale, trimmed for biltong. NOT sourced. This is the number most likely to be wrong, which is exactly why the break-even table is printed.",
+          "confidence": "ASSUMPTION — needs Tumelo’s invoice"
+        },
+        "note": "What the product costs if the beef really is wagyu. This is the scenario that decides whether SA retail works at all."
+      },
+      "live": [
+        {
+          "id": "shopify",
+          "label": "Shopify live store (studexmeat.com)",
+          "status": "LIVE — structurally broken",
+          "source": "products.json variants, verified 28 Oct 2026; re-confirmed 30 Oct on the live product page studexmeat.com/products/wagyu-biltong (sale price R650.00, regular R812.50)",
+          "tiers": [
+            {
+              "line": "Luxury Wagyu Biltong",
+              "sizeKg": 0.5,
+              "label": "500g",
+              "price": 450,
+              "packKey": "luxury500g",
+              "pricePerKg": 900,
+              "costPerKg": 1065.29,
+              "marginPct": -18.4,
+              "clearsFloor": false,
+              "breakEvenRaw": 183.4
+            },
+            {
+              "line": "Luxury Wagyu Biltong",
+              "sizeKg": 1,
+              "label": "1kg",
+              "price": 650,
+              "packKey": "luxury1kg",
+              "pricePerKg": 650,
+              "costPerKg": 1060.29,
+              "marginPct": -63.1,
+              "clearsFloor": false,
+              "breakEvenRaw": 119.53
+            },
+            {
+              "line": "Wagyu Biltong Gold",
+              "sizeKg": 1,
+              "label": "1kg",
+              "price": 1450,
+              "packKey": "gold1kg",
+              "pricePerKg": 1450,
+              "costPerKg": 1105.29,
+              "marginPct": 23.8,
+              "clearsFloor": false,
+              "breakEvenRaw": 313.77
+            },
+            {
+              "line": "Wagyu Biltong Gold",
+              "sizeKg": 7,
+              "label": "7kg case",
+              "price": 12500,
+              "packKey": "goldCase7kg",
+              "pricePerKg": 1785.71,
+              "costPerKg": 1106.29,
+              "marginPct": 38,
+              "clearsFloor": true,
+              "breakEvenRaw": 401.55
+            }
+          ],
+          "invariants": [
+            {
+              "rule": "small pack per-kg premium over the 1kg",
+              "line": "Luxury Wagyu Biltong",
+              "holds": false,
+              "observed": "the 500g is 38.5% MORE per kg than the 1kg",
+              "required": "at most 15.0% per-kg premium",
+              "detail": "500g R900.00/kg vs 1kg R650.00/kg"
+            },
+            {
+              "rule": "the 7kg case must be CHEAPER in total than 7 x 1kg",
+              "line": "Wagyu Biltong Gold",
+              "holds": false,
+              "observed": "the case COSTS R2,350 MORE than 7 x 1kg (+23.2%)",
+              "required": "must be cheaper",
+              "detail": "case R12,500 vs 7 x 1kg R10,150"
+            }
+          ]
+        },
+        {
+          "id": "marketing",
+          "label": "Marketing page + registry §2.1 (studex-biltong/index.html)",
+          "status": "LIVE — right shape, thin money",
+          "source": "studex-biltong/index.html product grid, re-read 30 Oct; matches studex-meat/PRICE-SOURCE-REGISTRY.md §2.1. The 500g shows as \"From R325\" with no size stated on the card.",
+          "tiers": [
+            {
+              "line": "Luxury Wagyu Biltong",
+              "sizeKg": 0.5,
+              "label": "500g (from, size not stated on the card)",
+              "price": 325,
+              "packKey": "luxury500g",
+              "pricePerKg": 650,
+              "costPerKg": 1065.29,
+              "marginPct": -63.9,
+              "clearsFloor": false,
+              "breakEvenRaw": 117.78
+            },
+            {
+              "line": "Wagyu Biltong Gold",
+              "sizeKg": 1,
+              "label": "1kg",
+              "price": 1250,
+              "packKey": "gold1kg",
+              "pricePerKg": 1250,
+              "costPerKg": 1105.29,
+              "marginPct": 11.6,
+              "clearsFloor": false,
+              "breakEvenRaw": 261.27
+            },
+            {
+              "line": "Wagyu Biltong Gold",
+              "sizeKg": 7,
+              "label": "7kg case",
+              "price": 8400,
+              "packKey": "goldCase7kg",
+              "pricePerKg": 1200,
+              "costPerKg": 1106.29,
+              "marginPct": 7.8,
+              "clearsFloor": false,
+              "breakEvenRaw": 247.8
+            }
+          ],
+          "invariants": [
+            {
+              "rule": "the 7kg case must be CHEAPER in total than 7 x 1kg",
+              "line": "Wagyu Biltong Gold",
+              "holds": true,
+              "observed": "the case saves R350 against 7 x 1kg (4.0% off)",
+              "required": "must be cheaper",
+              "detail": "case R8,400 vs 7 x 1kg R8,750"
+            }
+          ]
+        }
+      ],
+      "proposed": {
+        "tiers": [
+          {
+            "line": "Luxury Wagyu Biltong",
+            "sizeKg": 0.5,
+            "label": "500g",
+            "price": 810,
+            "packKey": "luxury500g",
+            "pricePerKg": 1620,
+            "costPerKg": 1065.29,
+            "marginPct": 34.2,
+            "clearsFloor": true,
+            "breakEvenRaw": 372.4
+          },
+          {
+            "line": "Luxury Wagyu Biltong",
+            "sizeKg": 1,
+            "label": "1kg",
+            "price": 1415,
+            "packKey": "luxury1kg",
+            "pricePerKg": 1415,
+            "costPerKg": 1060.29,
+            "marginPct": 25.1,
+            "clearsFloor": true,
+            "breakEvenRaw": 320.34
+          },
+          {
+            "line": "Wagyu Biltong Gold",
+            "sizeKg": 1,
+            "label": "1kg",
+            "price": 3160,
+            "packKey": "gold1kg",
+            "pricePerKg": 3160,
+            "costPerKg": 1105.29,
+            "marginPct": 65,
+            "clearsFloor": true,
+            "breakEvenRaw": 762.65
+          },
+          {
+            "line": "Wagyu Biltong Gold",
+            "sizeKg": 7,
+            "label": "7kg case",
+            "price": 20355,
+            "packKey": "goldCase7kg",
+            "pricePerKg": 2907.86,
+            "costPerKg": 1106.29,
+            "marginPct": 62,
+            "clearsFloor": true,
+            "breakEvenRaw": 696.11
+          }
+        ],
+        "invariants": [
+          {
+            "rule": "500g per kg vs Luxury 1kg per kg",
+            "line": "Luxury Wagyu Biltong",
+            "holds": true,
+            "observed": "500g R1,620.00/kg vs 1kg R1,415.00/kg",
+            "required": "at most 15.0% per-kg premium on the small pack",
+            "detail": "premium 14.5%"
+          },
+          {
+            "rule": "7kg case vs 7 x Gold 1kg",
+            "line": "Wagyu Biltong Gold",
+            "holds": true,
+            "observed": "case R20,355 vs 7 x 1kg R22,120",
+            "required": "must be cheaper",
+            "detail": "saving R1,765 (8.0%)"
+          },
+          {
+            "rule": "per-kg price falls as pack size rises, within each line",
+            "line": "Luxury + Gold separately",
+            "holds": true,
+            "observed": "Luxury 500g R1,620.00/kg → 1kg R1,415.00/kg  ·  Gold 1kg R3,160.00/kg → case R2,907.86/kg",
+            "required": "monotonically non-increasing within a line",
+            "detail": ""
+          }
+        ],
+        "cost": {
+          "luxury500g": 1065.2857142857142,
+          "luxury1kg": 1060.2857142857142,
+          "gold1kg": 1105.2857142857142,
+          "goldCase7kg": 1106.2857142857142
+        },
+        "floorPerKg": {
+          "luxury500g": 1420.3809523809523,
+          "luxury1kg": 1413.7142857142856,
+          "gold1kg": 1473.7142857142856,
+          "goldCase7kg": 1475.047619047619
+        },
+        "deltas": [
+          {
+            "line": "Luxury Wagyu Biltong",
+            "label": "500g",
+            "livePrice": 450,
+            "proposedPrice": 810,
+            "deltaZar": 360,
+            "deltaPct": 80
+          },
+          {
+            "line": "Luxury Wagyu Biltong",
+            "label": "1kg",
+            "livePrice": 650,
+            "proposedPrice": 1415,
+            "deltaZar": 765,
+            "deltaPct": 117.7
+          },
+          {
+            "line": "Wagyu Biltong Gold",
+            "label": "1kg",
+            "livePrice": 1450,
+            "proposedPrice": 3160,
+            "deltaZar": 1710,
+            "deltaPct": 117.9
+          },
+          {
+            "line": "Wagyu Biltong Gold",
+            "label": "7kg case",
+            "livePrice": 12500,
+            "proposedPrice": 20355,
+            "deltaZar": 7855,
+            "deltaPct": 62.8
+          }
+        ]
+      }
+    }
+  ],
+  "impliedRaw": [
+    {
+      "name": "Woolworths — Free Range Chilli Beef Biltong Snapsticks",
+      "pricePerKg": 1053.27,
+      "impliedRawAtFloor": 225.38,
+      "note": "The highest visible SA biltong price per kg. This is the ceiling of the SA retail market."
+    },
+    {
+      "name": "Woolworths — Free Range Sliced Beef Biltong",
+      "pricePerKg": 699.98,
+      "impliedRawAtFloor": 132.64,
+      "note": "The mainstream SA benchmark tier for a decent sliced biltong."
+    },
+    {
+      "name": "Woolworths — Sliced Beef Biltong (gifting range)",
+      "pricePerKg": 549.98,
+      "impliedRawAtFloor": 93.27,
+      "note": "Lower cut / different range, same pack size."
+    },
+    {
+      "name": "Woolworths — Bulk Original Beef Biltong Snapsticks",
+      "pricePerKg": 439.98,
+      "impliedRawAtFloor": 64.39,
+      "note": "The value end of the SA market."
+    },
+    {
+      "name": "Woolworths — Free Range Sliced Beef Biltong",
+      "pricePerKg": 879.92,
+      "impliedRawAtFloor": 179.88,
+      "note": "Small-pack per-kg premium benchmark: +26% vs the 400g."
+    },
+    {
+      "name": "Checkers — Kalahari Biltong Moist Sliced Beef",
+      "pricePerKg": 429.99,
+      "impliedRawAtFloor": 61.77,
+      "note": "Mass-retail comparator."
+    },
+    {
+      "name": "Shoprite — Kalahari Bulk Biltong",
+      "pricePerKg": 129.99,
+      "impliedRawAtFloor": -16.98,
+      "note": "The floor of the SA market. Below this, nobody can buy."
+    },
+    {
+      "name": "Biltong Boytjies — Wagyu Biltong / Wagyu Drywors",
+      "pricePerKg": 549.99,
+      "impliedRawAtFloor": 93.27,
+      "note": "🔑 The closest thing to a direct SA competitor on the word \"Wagyu\". This is the number our SA-facing product has to live with."
+    }
+  ]
+}

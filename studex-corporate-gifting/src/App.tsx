@@ -1,63 +1,26 @@
-// ⚠️ CAVIAR TIERS NOT DEPLOYABLE — DO NOT SHIP.
+// ✅ CAVIAR-FREE SINCE 2026-10-30 — the 2026 festive proposition is biltong +
+// single-origin African coffee + packaging + delivery.
+//
 // The SA caviar permit stack (DFFE → ITAC frozen-fish notification → DAFF importer
 // registration → SARS importer code + duty line → NRCS → CITES export permit +
-// registered exporter code) is UNASSEMBLED as at 2026-10-28. Selling caviar into
-// SA without it is a seizure risk. The Gold and Platinum tiers below carry caviar
-// and publish CITES/ITAC compliance claims that are not yet true.
-// The live page (oi28dhtke3yk) correctly shows the older caviar-free
-// R1,299 / R2,499 / R4,999 build — LEAVE IT LIVE until the stack exists.
-// The compliant, caviar-stripped festive tiers live in ./tiers.compliant.tsx.
-// A live guard enforces all of this: ops/price-ladder-guard.py
+// registered exporter code) is UNASSEMBLED. Selling caviar into SA without it is
+// a seizure risk, and a first shipment could not land inside the 13–15 Nov festive
+// window even if the stack moved fast.
+//
+// The tiers and every compliance claim now come from ./tiers.compliant.tsx — one
+// owning source, caviar-free, re-priced against the public SA hamper market
+// (R199.95–R720). Do not inline a tier or a claim here: a second copy is a second
+// ladder, and a claim with no owning source is not a claim.
+//
+// The live page (oi28dhtke3yk) still shows the older caviar-free
+// R1,299 / R2,499 / R4,999 build — LEAVE IT LIVE until Tumelo signs off on this
+// ladder and on the deploy. Building this source publishes nothing: the deploy is
+// a separate, deliberate step.
+//
+// Guards: ops/price-ladder-guard.py (live pages) ·
+//         ops/check-caviar-in-retail-source.py (this source)
 import { useState } from "react";
-
-const TIERS = [
-  {
-    name: "Silver",
-    price: "R3,000",
-    tagline: "Executive Introductions",
-    color: "#94a3b8",
-    items: [
-      "200g Wagyu Biltong (vacuum-sealed)",
-      "250g Rwanda Single-Origin Coffee",
-      "Studex gift card (handwritten note)",
-      "Branded luxury box + ribbon",
-      "Delivery to 1 address nationwide",
-    ],
-    bestFor: "Client appreciation, team thank-yous",
-  },
-  {
-    name: "Gold",
-    price: "R7,000",
-    tagline: "Boardroom Indulgence",
-    color: "#d4a017",
-    items: [
-      "300g Premium Wagyu Biltong",
-      "500g Rwanda Single-Origin Coffee",
-      "50g Oscietra Caviar (CITES-certified)",
-      "Studex leather-bound note holder",
-      "Custom engraved card",
-      "Delivery to 3 addresses nationwide",
-    ],
-    bestFor: "Board meetings, year-end rewards, investor relations",
-    featured: true,
-  },
-  {
-    name: "Platinum",
-    price: "R15,000",
-    tagline: "Legacy Impressions",
-    color: "#e2e8f0",
-    items: [
-      "500g Heritage Wagyu Biltong (aged 30 days)",
-      "1kg African Coffee Selection (4 origins)",
-      "100g Imperial Beluga Caviar",
-      "Studex leather briefcase insert",
-      "Custom engraved crystal decanter",
-      "White-glove delivery + presentation",
-      "Delivery to 10 addresses nationwide",
-    ],
-    bestFor: "C-suite gifting, deal closes, mining & banking VIPs",
-  },
-];
+import { TIERS_COMPLIANT as TIERS, COMPLIANT_COPY } from "./tiers.compliant";
 
 const INQUIRIES = [
   "Corporate bulk order (10+ boxes)",
@@ -126,10 +89,10 @@ function App() {
       <section className="hero">
         <div className="hero-eyebrow">South Africa&#39;s Premier Corporate Gifting House</div>
         <h1 className="hero-title">Gift the <span className="accent">African Story</span></h1>
-        <p className="hero-sub">Wagyu biltong, imperial caviar, and single-origin African coffee &#8212; presented in bespoke boxes for SA&#39;s most discerning corporates.</p>
+        <p className="hero-sub">{COMPLIANT_COPY.heroSub}</p>
         <div className="hero-badges">
           <span>&#x1F98C; Heritage Wagyu Biltong</span>
-          <span>&#x1F41F; CITES Caviar</span>
+          <span>{COMPLIANT_COPY.heroBadge}</span>
           <span>&#x1F30D; African Coffee</span>
           <span>&#x1F4E6; Nationwide Delivery</span>
         </div>
@@ -141,7 +104,7 @@ function App() {
         <div className="proof-divider" />
         <div className="proof-item"><div className="proof-num">22%</div><div className="proof-label">YoY growth in food &amp; drink corporate gifting</div></div>
         <div className="proof-divider" />
-        <div className="proof-item"><div className="proof-num">R3K-R15K</div><div className="proof-label">Per-box price range across 3 tiers</div></div>
+        <div className="proof-item"><div className="proof-num">{TIERS[0].price}&ndash;{TIERS[TIERS.length - 1].price}</div><div className="proof-label">Per-box price range across {TIERS.length} tiers</div></div>
         <div className="proof-divider" />
         <div className="proof-item"><div className="proof-num">0</div><div className="proof-label">SA competitors in this white space</div></div>
       </section>
@@ -221,9 +184,9 @@ function App() {
             <p>Slow-dried for 30 days. No shortcuts. Our biltong is hung, not baked &#8212; the way biltong was meant to be made.</p>
           </div>
           <div className="diff-item">
-            <div className="diff-icon">&#x1F41F;</div>
-            <h3>CITES-Certified Caviar</h3>
-            <p>Every sturgeon product is CITES-compliant. We handle the paperwork so your procurement team doesn&#39;t have to.</p>
+            <div className="diff-icon">&#x1F4CA;</div>
+            <h3>{COMPLIANT_COPY.featureHeading}</h3>
+            <p>{COMPLIANT_COPY.featureBody}</p>
           </div>
           <div className="diff-item">
             <div className="diff-icon">&#x1F30D;</div>
@@ -339,7 +302,7 @@ function App() {
           <a href="https://studex-group.com">studex-group.com</a>
           <span>+27 94 988 8737</span>
         </div>
-        <p className="footer-copy">&#169; 2026 Studex Group (Pty) Ltd. All rights reserved. CITES-compliant. ITAC-compliant.</p>
+        <p className="footer-copy">{COMPLIANT_COPY.footerCopy}</p>
       </footer>
     </div>
   );

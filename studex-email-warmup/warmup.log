@@ -1,64 +1,3 @@
-[2026-10-27T07:09:08.353Z] === Warmup Cycle ===
-[2026-10-27T05:12:19.714Z] Cycle complete. Sent 2 emails (0 failed). Total today: 2/5
-[2026-10-27T05:12:19.711Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: CIIE 2026 — buyer meeting request
-[2026-10-27T05:12:17.321Z] Pausing 45min-worth of interval before next send (2s actual)
-[2026-10-27T05:12:17.318Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Follow-up: Youth Day content drop
-[2026-10-27T05:12:16.852Z] Day: 2026-10-27 | Week 1 | Today: 0/5 | Total: 25
-[2026-10-27T05:12:16.845Z] === Warmup Cycle ===
-[2026-10-26T17:04:00.858Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-26T17:04:00.857Z] Day: 2026-10-26 | Week 1 | Today: 5/5 | Total: 25
-[2026-10-26T17:04:00.846Z] === Warmup Cycle ===
-[2026-10-26T15:11:57.168Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-26T15:11:57.167Z] Day: 2026-10-26 | Week 1 | Today: 5/5 | Total: 25
-[2026-10-26T15:11:57.163Z] === Warmup Cycle ===
-[2026-10-26T13:01:41.789Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-26T13:01:41.787Z] Day: 2026-10-26 | Week 1 | Today: 5/5 | Total: 25
-[2026-10-26T13:01:41.768Z] === Warmup Cycle ===
-[2026-10-26T11:00:06.562Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-26T11:00:06.561Z] Day: 2026-10-26 | Week 1 | Today: 5/5 | Total: 25
-[2026-10-26T11:00:06.538Z] === Warmup Cycle ===
-[2026-10-26T09:00:07.568Z] Cycle complete. Sent 1 emails (0 failed). Total today: 5/5
-[2026-10-26T09:00:07.566Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: biltong bulk pricing
-[2026-10-26T09:00:07.115Z] Day: 2026-10-26 | Week 1 | Today: 4/5 | Total: 24
-[2026-10-26T09:00:07.094Z] === Warmup Cycle ===
-[2026-10-26T07:07:50.709Z] Cycle complete. Sent 2 emails (0 failed). Total today: 4/5
-[2026-10-26T07:07:50.707Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: CIIE 2026 — buyer meeting request
-[2026-10-26T07:07:48.352Z] Pausing 45min-worth of interval before next send (2s actual)
-[2026-10-26T07:07:48.350Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: order status — ORD-007
-[2026-10-26T07:07:47.822Z] Day: 2026-10-26 | Week 1 | Today: 2/5 | Total: 22
-[2026-10-26T07:07:47.799Z] === Warmup Cycle ===
-[2026-10-26T05:06:38.634Z] Cycle complete. Sent 2 emails (0 failed). Total today: 2/5
-[2026-10-26T05:06:38.633Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: Q4 pipeline review
-[2026-10-26T05:06:36.341Z] Pausing 45min-worth of interval before next send (2s actual)
-[2026-10-26T05:06:36.340Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: order status — ORD-007
-[2026-10-26T05:06:35.826Z] Day: 2026-10-26 | Week 1 | Today: 0/5 | Total: 20
-[2026-10-26T05:06:35.815Z] === Warmup Cycle ===
-[2026-10-25T17:00:05.952Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-25T17:00:05.951Z] Day: 2026-10-25 | Week 1 | Today: 5/5 | Total: 20
-[2026-10-25T17:00:05.947Z] === Warmup Cycle ===
-[2026-10-25T15:04:42.264Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-25T15:04:42.263Z] Day: 2026-10-25 | Week 1 | Today: 5/5 | Total: 20
-[2026-10-25T15:04:42.259Z] === Warmup Cycle ===
-[2026-10-25T13:00:05.783Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-25T13:00:05.782Z] Day: 2026-10-25 | Week 1 | Today: 5/5 | Total: 20
-[2026-10-25T13:00:05.756Z] === Warmup Cycle ===
-[2026-10-25T11:04:27.314Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
-[2026-10-25T11:04:27.313Z] Day: 2026-10-25 | Week 1 | Today: 5/5 | Total: 20
-[2026-10-25T11:04:27.287Z] === Warmup Cycle ===
-[2026-10-25T09:04:12.214Z] Cycle complete. Sent 1 emails (0 failed). Total today: 5/5
-[2026-10-25T09:04:12.212Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: Dubai distribution partnership
-[2026-10-25T09:04:11.709Z] Day: 2026-10-25 | Week 1 | Today: 4/5 | Total: 19
-[2026-10-25T09:04:11.413Z] === Warmup Cycle ===
-[2026-10-25T07:00:06.483Z] Cycle complete. Sent 2 emails (0 failed). Total today: 4/5
-[2026-10-25T07:00:06.481Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: Rwanda A1 sample pricing
-[2026-10-25T07:00:04.242Z] Pausing 45min-worth of interval before next send (2s actual)
-[2026-10-25T07:00:04.241Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Caviar inquiry — response
-[2026-10-25T07:00:03.564Z] Day: 2026-10-25 | Week 1 | Today: 2/5 | Total: 17
-[2026-10-25T07:00:03.560Z] === Warmup Cycle ===
-[2026-10-25T05:02:09.716Z] Cycle complete. Sent 2 emails (0 failed). Total today: 2/5
-[2026-10-25T05:02:09.714Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: Q4 pipeline review
-[2026-10-25T05:02:07.251Z] Pausing 45min-worth of interval before next send (2s actual)
-[2026-10-25T05:02:07.250Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: order status — ORD-007
 [2026-10-25T05:02:06.685Z] Day: 2026-10-25 | Week 1 | Today: 0/5 | Total: 15
 [2026-10-25T05:02:06.681Z] === Warmup Cycle ===
 [2026-10-24T17:04:39.151Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
@@ -498,3 +437,64 @@
 [2026-10-29T11:00:20.356Z] === Warmup Cycle ===
 [2026-10-29T11:00:20.360Z] Day: 2026-10-29 | Week 1 | Today: 5/5 | Total: 40
 [2026-10-29T11:00:20.361Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
+[2026-10-29T15:13:39.262Z] === Warmup Cycle ===
+[2026-10-29T15:13:39.449Z] Day: 2026-10-29 | Week 1 | Today: 5/5 | Total: 40
+[2026-10-29T15:13:39.544Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
+[2026-10-29T17:02:19.864Z] === Warmup Cycle ===
+[2026-10-29T17:02:19.907Z] Day: 2026-10-29 | Week 1 | Today: 5/5 | Total: 40
+[2026-10-29T17:02:19.908Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
+[2026-10-30T05:05:24.069Z] === Warmup Cycle ===
+[2026-10-30T05:05:24.092Z] Day: 2026-10-30 | Week 1 | Today: 0/5 | Total: 40
+[2026-10-30T05:05:24.584Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Re: SA coffee export documentation
+[2026-10-30T05:05:24.585Z] Pausing 45min-worth of interval before next send (2s actual)
+[2026-10-30T05:05:26.936Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: Dubai distribution partnership
+[2026-10-30T05:05:26.937Z] Cycle complete. Sent 2 emails (0 failed). Total today: 2/5
+[2026-10-30T05:08:29.052Z] === Warmup run started — 2026-10-30 — LIVE ===
+[2026-10-30T05:08:29.493Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Re: GCC distribution interest
+[2026-10-30T05:08:36.151Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Re: Tumelo — introduction
+[2026-10-30T05:08:41.633Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Pricing update — Q3
+[2026-10-30T05:08:46.441Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: CIIE Shanghai Nov 5-10 — buyer meetings
+[2026-10-30T05:08:53.420Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Studex product catalog update
+[2026-10-30T05:08:57.605Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Pricing update — Q3
+[2026-10-30T05:09:05.505Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Re: GCC distribution interest
+[2026-10-30T05:09:11.218Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: CIIE 2026 — buyer meetings
+[2026-10-30T05:09:19.148Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Studex product catalog update
+[2026-10-30T05:09:26.668Z] [SENT] robusca.romanov@studex-group.com → tumelor001@gmail.com: Follow-up: Rwanda A1 availability
+[2026-10-30T05:09:34.445Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Quick question on your order
+[2026-10-30T05:09:39.679Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Re: Rwanda harvest schedule
+[2026-10-30T05:09:46.861Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Q3 pipeline review — Studex
+[2026-10-30T05:09:53.922Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Studex product catalog update
+[2026-10-30T05:09:58.033Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: RE: Luckin Coffee opportunity
+[2026-10-30T05:10:05.077Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Pricing update — Q3
+[2026-10-30T05:10:12.672Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: RE: Dubai meeting notes
+[2026-10-30T05:10:20.934Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: Re: Rwanda harvest schedule
+[2026-10-30T05:10:24.625Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: RE: Luckin Coffee opportunity
+[2026-10-30T05:10:29.794Z] [SENT] naledi-cmo@studex-group.com → tumelor001@gmail.com: CIIE 2026 — buyer meetings
+[2026-10-30T05:10:33.540Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Coffee origin documentation attached
+[2026-10-30T05:10:38.579Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Re: Tumelo — introduction
+[2026-10-30T05:10:44.561Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Follow-up: Rwanda A1 availability
+[2026-10-30T05:10:50.041Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: CIIE 2026 — buyer meetings
+[2026-10-30T05:10:58.230Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Re: Rwanda harvest schedule
+[2026-10-30T05:11:03.190Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Studex product catalog update
+[2026-10-30T05:11:11.488Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Pricing update — Q3
+[2026-10-30T05:11:17.033Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Q3 pipeline review — Studex
+[2026-10-30T05:11:22.305Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Q3 pipeline review — Studex
+[2026-10-30T05:11:30.100Z] [SENT] project-2571-studex-agent-2077@agentmail.to → tumelor001@gmail.com: Delivery confirmation — Sandton
+[2026-10-30T05:11:38.239Z] [REPORT] Emailed to tumelor001@gmail.com
+[2026-10-30T05:11:38.239Z] === Warmup run complete — 30 sent ===
+[2026-10-30T07:07:57.925Z] === Warmup Cycle ===
+[2026-10-30T07:07:57.940Z] Day: 2026-10-30 | Week 1 | Today: 2/5 | Total: 42
+[2026-10-30T07:07:58.440Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Follow-up: Youth Day content drop
+[2026-10-30T07:07:58.442Z] Pausing 45min-worth of interval before next send (2s actual)
+[2026-10-30T07:08:00.917Z] ✓ Sent to: naledi-cmo@studex-group.com | Subject: Re: biltong bulk pricing
+[2026-10-30T07:08:00.919Z] Cycle complete. Sent 2 emails (0 failed). Total today: 4/5
+[2026-10-30T11:02:38.509Z] === Warmup Cycle ===
+[2026-10-30T11:02:38.532Z] Day: 2026-10-30 | Week 1 | Today: 4/5 | Total: 44
+[2026-10-30T11:02:38.986Z] ✓ Sent to: robusca.romanov@studex-group.com | Subject: Follow-up: Youth Day content drop
+[2026-10-30T11:02:38.988Z] Cycle complete. Sent 1 emails (0 failed). Total today: 5/5
+[2026-10-30T15:13:29.180Z] === Warmup Cycle ===
+[2026-10-30T15:13:29.204Z] Day: 2026-10-30 | Week 1 | Today: 5/5 | Total: 45
+[2026-10-30T15:13:29.209Z] Daily limit reached (5). Skipping. Next cycle tomorrow.
+[2026-10-30T17:00:04.168Z] === Warmup Cycle ===
+[2026-10-30T17:00:04.172Z] Day: 2026-10-30 | Week 1 | Today: 5/5 | Total: 45
+[2026-10-30T17:00:04.173Z] Daily limit reached (5). Skipping. Next cycle tomorrow.

@@ -2,7 +2,7 @@
 # Blotato DM Keyword Automations — Studex Build Hour 2026-08-26
 # Creates auto-reply flows for Facebook and Instagram DMs
 
-BLOTATO_KEY="[REDACTED:28 chars - rotate this key]YN2ZvCeGsVWWwdaf8Og="
+BLOTATO_KEY="[REDACTED:28 chars - rotate this key]********************"
 BASE="https://backend.blotato.com/v2"
 FB_ACCOUNT="38744"
 IG_ACCOUNT="55765"

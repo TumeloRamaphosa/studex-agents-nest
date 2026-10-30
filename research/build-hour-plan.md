@@ -36,7 +36,7 @@ After accounts are connected, run this. Replace `FACEBOOK_ACCOUNT_ID` and `INSTA
 ```bash
 # Create DM keyword automation — triggers on "price", "order", "delivery"
 curl -X POST "https://backend.blotato.com/v2/automations/dm" \
-  -H "blotato-api-key: [REDACTED:28 chars - rotate this key]YN2ZvCeGsVWWwdaf8Og=" \
+  -H "blotato-api-key: [REDACTED:28 chars - rotate this key]********************" \
   -H "Content-Type: application/json" \
   -d '{
     "account_id": "STUDEX_FACEBOOK_PAGE_ID",

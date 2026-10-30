@@ -1,0 +1,490 @@
+{
+  "generatedAt": "2026-10-30T21:15:49.787Z",
+  "generator": "coffee-fob-band/compute-band-card.mjs",
+  "selfTest": {
+    "passed": true,
+    "results": [
+      {
+        "scenario": "internal-high",
+        "tier": "Natural",
+        "expectMarginPct": 25.2,
+        "tolerance": 0.15,
+        "got": 25.2,
+        "pass": true
+      },
+      {
+        "scenario": "internal-low",
+        "tier": "Natural",
+        "expectMarginPct": 30.7,
+        "tolerance": 0.15,
+        "got": 30.7,
+        "pass": true
+      }
+    ]
+  },
+  "inputs": {
+    "fxUsdZar": {
+      "value": 16.64,
+      "label": "FX USD/ZAR",
+      "source": "frankfurter.dev (ECB reference) 2026-10-29; cross-check exchangerate-api 16.6339. Higher of the two used, so the cost side is never understated.",
+      "confidence": "verified"
+    },
+    "oceanFreightUsdPerKg": {
+      "value": 0.07,
+      "label": "Ocean freight + insurance, origin to Durban",
+      "source": "ASSUMPTION — $70/tonne on Kigali/Mombasa–Durban. Needs a forwarder quote.",
+      "confidence": "ASSUMPTION — needs forwarder quote"
+    },
+    "portClearingZarPerKg": {
+      "value": 1.8,
+      "label": "Port handling, clearing, inland to roastery",
+      "source": "ASSUMPTION — R1.80/kg green.",
+      "confidence": "ASSUMPTION"
+    },
+    "roastYield": {
+      "value": 0.85,
+      "label": "Roast yield (kg roasted per kg green)",
+      "source": "ASSUMPTION — 15% weight loss on a filter roast.",
+      "confidence": "ASSUMPTION"
+    },
+    "roastingCostZarPerKg": {
+      "value": 38,
+      "label": "Roasting cost",
+      "source": "ASSUMPTION — R38/kg roasted (energy, labour, depreciation, roast loss).",
+      "confidence": "ASSUMPTION — needs roastery quote"
+    },
+    "packZarPerKg": {
+      "value": {
+        "bag1kg": 11,
+        "bulk5kg": 8,
+        "bulk20kg": 6,
+        "bulk30kg": 6
+      },
+      "label": "Packaging per kg roasted",
+      "source": "ASSUMPTION — 1kg valve bag + label R11; 5kg R8; 20kg/30kg R6.",
+      "confidence": "ASSUMPTION"
+    },
+    "marginFloorPct": {
+      "value": 0.25,
+      "label": "Margin floor used to price the published tiers",
+      "source": "POLICY — 25% (sa-b2b-coffee/WHOLESALE-PRICE-SHEET.md). A 30% floor would forbid the entire volume ladder.",
+      "confidence": "policy"
+    },
+    "uaeImportCeilingUsdPerKg": {
+      "value": 6.5,
+      "label": "UAE green coffee import price ceiling",
+      "source": "IndexBox, Sep 2026 — UAE green coffee import range $2.50-6.50/kg.",
+      "confidence": "external benchmark"
+    }
+  },
+  "bands": [
+    {
+      "id": "published-a1",
+      "label": "PUBLISHED — Rwanda A1, 17+ screen, wet polished, 20 MT",
+      "fobUsdPerKg": [
+        4.2,
+        4.8
+      ],
+      "fobUsdPerMt": [
+        4200,
+        4800
+      ],
+      "status": "FOUND",
+      "owner": "studex-meat/PRICE-SOURCE-REGISTRY.md §2.6 (owner: studex-wildlife-coffee-vite/dist/index.html)",
+      "note": "The buyer-facing number. It is what the PROWTC offer quoted and what the coffee pages carry."
+    },
+    {
+      "id": "published-a2",
+      "label": "PUBLISHED — Rwanda A2, 15–16 screen, 40 MT",
+      "fobUsdPerKg": [
+        3.6,
+        4
+      ],
+      "fobUsdPerMt": [
+        3600,
+        4000
+      ],
+      "status": "FOUND",
+      "owner": "studex-meat/PRICE-SOURCE-REGISTRY.md §2.6 (owner: studex-wildlife-coffee-vite/dist/index.html)",
+      "note": "The commercial grade. Sits below A1; the gap IS the cupping score being monetised."
+    },
+    {
+      "id": "published-custom-blend",
+      "label": "PUBLISHED — Custom blend, MOQ 5 MT",
+      "fobUsdPerKg": [
+        3.8,
+        3.8
+      ],
+      "fobUsdPerMt": [
+        3800,
+        3800
+      ],
+      "status": "FOUND",
+      "owner": "studex-meat/PRICE-SOURCE-REGISTRY.md §2.6",
+      "note": "The size Ethiopia cannot service. This is the CIIE pitch, not the commodity pitch."
+    },
+    {
+      "id": "internal-price-sheet",
+      "label": "INTERNAL COST MODEL — the band the wholesale sheet floors on",
+      "fobUsdPerKg": [
+        6.07,
+        6.75
+      ],
+      "fobUsdPerMt": [
+        6070,
+        6750
+      ],
+      "status": "UNVERIFIED",
+      "owner": "studex-price-sheet/dist/index.html (\"Live desk — re-verify before quoting\"); consumed by sa-b2b-coffee/compute-price-sheet.mjs",
+      "note": "FLAGGED UNVERIFIED in our own assumptions register. Not traceable to any published table. Sits ABOVE the UAE import ceiling."
+    }
+  ],
+  "originPortfolio": {
+    "label": "PUBLISHED — origin portfolio table (multi-origin)",
+    "rangeUsdPerMt": [
+      3400,
+      5200
+    ],
+    "status": "FOUND",
+    "owner": "studex-meat/PRICE-SOURCE-REGISTRY.md §2.6",
+    "note": "This is NOT a competing band for the same product — it is a different SCOPE (Uganda 3,400 low, SA Bourbon 5,200 high). Rwanda A1 at 4,200-4,800 sits INSIDE it."
+  },
+  "scenarios": [
+    {
+      "id": "a1-low",
+      "label": "A1 band LOW — $4.20/kg",
+      "fob": 4.2,
+      "provenance": "PUBLISHED (registry §2.6, lower bound of Rwanda A1)",
+      "fobUsdPerMt": 4200,
+      "landedGreenZarPerKg": 72.85,
+      "roastedCostZarPerKg": 129.71,
+      "aboveUaeCeiling": false,
+      "tiers": [
+        {
+          "origin": "Natural",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 240,
+          "costZarPerKg": 129.71,
+          "marginPct": 46,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 172.95,
+          "headroomVsPublishedZarPerKg": 67.05
+        },
+        {
+          "origin": "Honey",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 310,
+          "costZarPerKg": 129.71,
+          "marginPct": 58.2,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 172.95,
+          "headroomVsPublishedZarPerKg": 137.05
+        },
+        {
+          "origin": "Washed",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 350,
+          "costZarPerKg": 129.71,
+          "marginPct": 62.9,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 172.95,
+          "headroomVsPublishedZarPerKg": 177.05
+        }
+      ]
+    },
+    {
+      "id": "a1-high",
+      "label": "A1 band HIGH — $4.80/kg",
+      "fob": 4.8,
+      "provenance": "PUBLISHED (registry §2.6, upper bound of Rwanda A1) — the conservative published case",
+      "fobUsdPerMt": 4800,
+      "landedGreenZarPerKg": 82.84,
+      "roastedCostZarPerKg": 141.46,
+      "aboveUaeCeiling": false,
+      "tiers": [
+        {
+          "origin": "Natural",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 240,
+          "costZarPerKg": 141.46,
+          "marginPct": 41.1,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 188.61,
+          "headroomVsPublishedZarPerKg": 51.39
+        },
+        {
+          "origin": "Honey",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 310,
+          "costZarPerKg": 141.46,
+          "marginPct": 54.4,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 188.61,
+          "headroomVsPublishedZarPerKg": 121.39
+        },
+        {
+          "origin": "Washed",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 350,
+          "costZarPerKg": 141.46,
+          "marginPct": 59.6,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 188.61,
+          "headroomVsPublishedZarPerKg": 161.39
+        }
+      ]
+    },
+    {
+      "id": "internal-low",
+      "label": "Internal band LOW — $6.07/kg",
+      "fob": 6.07,
+      "provenance": "UNVERIFIED (price sheet assumption register)",
+      "fobUsdPerMt": 6070,
+      "landedGreenZarPerKg": 103.97,
+      "roastedCostZarPerKg": 166.32,
+      "aboveUaeCeiling": false,
+      "tiers": [
+        {
+          "origin": "Natural",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 240,
+          "costZarPerKg": 166.32,
+          "marginPct": 30.7,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 221.76,
+          "headroomVsPublishedZarPerKg": 18.24
+        },
+        {
+          "origin": "Honey",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 310,
+          "costZarPerKg": 166.32,
+          "marginPct": 46.3,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 221.76,
+          "headroomVsPublishedZarPerKg": 88.24
+        },
+        {
+          "origin": "Washed",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 350,
+          "costZarPerKg": 166.32,
+          "marginPct": 52.5,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 221.76,
+          "headroomVsPublishedZarPerKg": 128.24
+        }
+      ]
+    },
+    {
+      "id": "internal-high",
+      "label": "Internal band HIGH — $6.75/kg",
+      "fob": 6.75,
+      "provenance": "UNVERIFIED (price sheet assumption register) — what the sheet actually floors on",
+      "fobUsdPerMt": 6750,
+      "landedGreenZarPerKg": 115.28,
+      "roastedCostZarPerKg": 179.63,
+      "aboveUaeCeiling": true,
+      "tiers": [
+        {
+          "origin": "Natural",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 240,
+          "costZarPerKg": 179.63,
+          "marginPct": 25.2,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 239.51,
+          "headroomVsPublishedZarPerKg": 0.49
+        },
+        {
+          "origin": "Honey",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 310,
+          "costZarPerKg": 179.63,
+          "marginPct": 42.1,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 239.51,
+          "headroomVsPublishedZarPerKg": 70.49
+        },
+        {
+          "origin": "Washed",
+          "tier": "30 kg +",
+          "packZarPerKg": 6,
+          "priceZarPerKg": 350,
+          "costZarPerKg": 179.63,
+          "marginPct": 48.7,
+          "clearsFloor": true,
+          "priceAtFloorZarPerKg": 239.51,
+          "headroomVsPublishedZarPerKg": 110.49
+        }
+      ]
+    }
+  ],
+  "gap": {
+    "landedDeltaZarPerKg": 32.44,
+    "roastedDeltaZarPerKg": 38.17,
+    "per30kgBagZar": 1144.94,
+    "per20MTContainerZar": 648800,
+    "marginGapPointsAt30kg": 15.9
+  },
+  "publishedTiers": [
+    {
+      "origin": "Natural",
+      "tier": "30 kg +",
+      "packZarPerKg": 6,
+      "priceZarPerKg": 240
+    },
+    {
+      "origin": "Honey",
+      "tier": "30 kg +",
+      "packZarPerKg": 6,
+      "priceZarPerKg": 310
+    },
+    {
+      "origin": "Washed",
+      "tier": "30 kg +",
+      "packZarPerKg": 6,
+      "priceZarPerKg": 350
+    }
+  ],
+  "filesNeedingCorrection": [
+    {
+      "file": "studex-meat/PRICE-SOURCE-REGISTRY.md",
+      "section": "§2.6",
+      "carries": "$3,400-5,200/MT origin table + $4,200-4,800 A1 + $3,600-4,000 A2 + $3,800 custom blend + $28-45/kg samples",
+      "status": "SOURCE OF TRUTH — this file owns the published band. Do not edit the numbers; edit the status fields here if the supplier re-bases.",
+      "action": "Keep. Add the re-verified band + date once the supplier answers."
+    },
+    {
+      "file": "studex-os/proposals/rwanda-offer-PROWTC-2026-07.json",
+      "section": "contact.email",
+      "carries": "t.ramaphosa@studexwildlife.com — DEAD, the buyer cannot reply",
+      "status": "🔴 ACTION REQUIRED — re-issue with a live reply address and the re-based band",
+      "action": "Replace contact.email with info@studexmeat.com; keep the price strings, which already match registry §2.6."
+    },
+    {
+      "file": "sa-b2b-coffee/compute-price-sheet.mjs",
+      "section": "INPUTS.greenFobUsdPerKg",
+      "carries": "$6.75/kg (band high) — UNVERIFIED",
+      "status": "🔴 COST FLOOR IS 32%+ HIGHER THAN THE PUBLISHED BAND",
+      "action": "Re-base to the supplier-confirmed band, then re-run. The published tier prices only move if a tier falls below the floor."
+    },
+    {
+      "file": "sa-b2b-coffee/price-sheet.generated.json",
+      "section": "assumptions / sensitivity",
+      "carries": "$6.07 and $6.75 sensitivity poles",
+      "status": "🔴 GENERATED — do not hand-edit; re-run the generator",
+      "action": "Regenerate after the band is re-based."
+    },
+    {
+      "file": "sa-b2b-coffee/WHOLESALE-PRICE-SHEET.md",
+      "section": "assumption #1 + assumption #10",
+      "carries": "\"re-verify before quoting\" + the live-page contradiction note",
+      "status": "🟡 ALREADY HANDLED — the live page stopped publishing green FOB numbers on 29 Oct (now \"quoted on request\")",
+      "action": "Update assumption #10 to say the contradiction is closed."
+    },
+    {
+      "file": "sa-hospitality-coffee/index.html",
+      "section": "green catalogue",
+      "carries": "NO published green price — \"FOB pricing is quoted on request against the current season's band\"",
+      "status": "✅ ALREADY CORRECT — no number to fix",
+      "action": "None. Leave alone."
+    },
+    {
+      "file": "ciie-buyer-brief/src/App.tsx",
+      "section": "stats bar + spec table + commercial terms",
+      "carries": "MANGLED price strings (USD 4.20-4.20-4.80/kg; USD 4.80-3.60-4.00/kg) and unsourced tiers ($4.60/kg, from $4.30/kg)",
+      "status": "🔴 FIXED 2026-10-30 — realigned to this band card",
+      "action": "Already corrected by tonight's build. Re-verify after deploy."
+    },
+    {
+      "file": "studex-wildlife-coffee-vite/dist/index.html",
+      "section": "green catalogue",
+      "carries": "The published origin portfolio table",
+      "status": "🟡 OWNER of the published band — changes only via the registry",
+      "action": "Re-check when the band is re-based."
+    }
+  ],
+  "contact": {
+    "supportEmail": "info@studexmeat.com",
+    "supportEmailOwner": "studex-meat/PRICE-SOURCE-REGISTRY.md §4b — the asserted support email on every coffee page",
+    "giftingEmail": "info@studex-group.com",
+    "orderLine": "+27 83 593 2577",
+    "storePhone": "+27 84 421 6035",
+    "storeWhatsapp": "+27 94 988 8737",
+    "whatsappLink": "https://wa.me/27794988737",
+    "entity": "Studex Meat (Pty) Ltd",
+    "locations": "Cape Town, South Africa & Kigali, Rwanda",
+    "deadOnes": [
+      {
+        "value": "t.ramaphosa@studexwildlife.com",
+        "where": "studex-os/proposals/rwanda-offer-PROWTC-2026-07.json",
+        "note": "Dead. The PROWTC buyer cannot reply to the offer that names them."
+      },
+      {
+        "value": "tumelo@studexmeat.com",
+        "where": "ciie-buyer-brief/src/App.tsx (before tonight)",
+        "note": "Not an asserted contact anywhere in the registry."
+      },
+      {
+        "value": "coffee@studexmeat.com",
+        "where": "ciie-buyer-brief/src/App.tsx (before tonight)",
+        "note": "Not an asserted contact anywhere in the registry."
+      },
+      {
+        "value": "ceo@agent.studexmeat.com",
+        "where": "superseded China lead page",
+        "note": "No DNS. Already retired from the registry."
+      }
+    ]
+  },
+  "supplierQuestion": [
+    "1. FOB Kigali (and FOB Djibouti if that is the contract) — USD per kg, for A1 and for A2, current crop.",
+    "2. Is the $6.07-6.75/kg band we have on file (a) green FOB, (b) something else entirely (landed, roasted, CIF), or (c) a stale figure?",
+    "3. Confirm the lot structure: A1 20 MT, A2 40 MT, custom blend 5 MT, samples 5-10 kg.",
+    "4. Screen size, moisture %, water activity, process, and the cupping score you will stand behind for each lot.",
+    "5. Who signs the phytosanitary certificate and the certificate of origin, and at what cost?"
+  ],
+  "openItems": [
+    {
+      "item": "China registration gate for a Rwandan green-coffee exporter",
+      "status": "NOT VERIFIED",
+      "detail": "From 20 Jul 2026 China runs a single continent-wide approval regime for qualified coffee beans from all 53 African countries. That is NOT the same as the overseas-establishment registration/certification a specific Rwandan exporter must hold to clear customs. Do not assume one implies the other.",
+      "owner": "Tumelo / freight forwarder"
+    },
+    {
+      "item": "Tariff date wording",
+      "status": "FOUND — and two dates are being conflated",
+      "detail": "Zero tariff for all 53 African countries from 1 May 2026 (that is the TARIFF). 20 Jul 2026 is the unified PHYTOsanitary approval regime (that is not a tariff date). A Rwandan LDC origin has no expiry; the 30 Apr 2028 window belongs to the 20 non-LDC African countries.",
+      "owner": "copy — corrected 2026-10-30"
+    },
+    {
+      "item": "Green coffee to SA: duty rate",
+      "status": "ASSUMPTION 0%",
+      "detail": "Not broker-confirmed. The whole SA landed-cost floor rests on it.",
+      "owner": "broker"
+    },
+    {
+      "item": "Ocean freight + insurance",
+      "status": "ASSUMPTION $0.07/kg",
+      "detail": "Needs a forwarder quote.",
+      "owner": "forwarder"
+    }
+  ],
+  "reconciliation": {
+    "publishedSetConsistent": true,
+    "publishedSetNote": "The published numbers reconcile: the origin portfolio table ($3,400-5,200/MT) is a DIFFERENT SCOPE, not a competing band, and Rwanda A1 ($4,200-4,800) sits inside it. The PROWTC offer quoted the A1/A2 rows correctly.",
+    "unreconciled": "the internal $6.07-6.75/kg cost band — not traceable to any published table and flagged UNVERIFIED in our own register"
+  }
+}

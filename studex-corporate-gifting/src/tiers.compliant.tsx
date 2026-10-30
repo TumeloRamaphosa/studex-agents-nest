@@ -39,14 +39,16 @@
  *
  * HOW TO USE
  * ----------
- * This file is NOT on the shipping path. App.tsx still imports its own TIERS
- * and is deliberately quarantined. When the festive push ships, replace the
- * TIERS constant in App.tsx with an import from this file AND swap in
- * COMPLIANT_COPY below — the claims in App.tsx are the other half of the
- * exposure.
+ * ✅ WIRED IN as of 2026-10-30: App.tsx imports TIERS_COMPLIANT and
+ * COMPLIANT_COPY from this file, so the tiers and every compliance claim have
+ * ONE owning source and the caviar copy in App.tsx is gone.
  *
- * Guard: ops/price-ladder-guard.py (CAVIAR-SELL-WITHOUT-PERMIT /
- * CAVIAR-COMPLIANCE-CLAIM) — run it before any gifting page is deployed.
+ * Still true: the live page (oi28dhtke3yk) shows the OLDER caviar-free
+ * R1,299 / R2,499 / R4,999 build — LEAVE IT LIVE until Tumelo signs off on this
+ * ladder and on the deploy. Building the source publishes nothing.
+ *
+ * Guards: ops/price-ladder-guard.py (live pages) ·
+ *         ops/check-caviar-in-retail-source.py (this source).
  */
 
 export type Tier = {
@@ -126,19 +128,30 @@ export const COMPLIANT_COPY = {
   heroSub:
     "Wagyu biltong and single-origin African coffee — presented in bespoke boxes for SA's most discerning corporates.",
 
-  /** Replaces the "CITES Caviar" badge. */
-  heroBadge: "🇿🇦 MJC Halaal · Farm-direct · Traceable",
+  /**
+   * Replaces the "CITES Caviar" badge.
+   *
+   * SCOPED ON PURPOSE: the MJC certificate covers 4 WAGYU products only — not
+   * coffee, not game (PRICE-SOURCE-REGISTRY.md, "MJC certificate covers 4 Wagyu
+   * products"). So the claim is scoped to the Wagyu in the box, never to "every
+   * product" and never to the box as a whole. The certifier's registered name
+   * is "MJC Halaal Trust"; the string "MJC Halal Trust" is a forbidden
+   * spelling.
+   */
+  heroBadge: "🇿🇦 Halaal-Certified Wagyu",
 
-  /** Replaces the "CITES-Certified Caviar" feature block. */
-  featureHeading: "Traceable to the Farm",
+  /**
+   * Replaces the "CITES-Certified Caviar" feature block.
+   *
+   * Every figure here is sourced: the SA hamper benchmarks are named in
+   * HAMPER_BENCHMARKS above (Richmeats R295 / R199.95, buildyourbasket.co.za
+   * R720). A claim with no owning source is not a claim.
+   */
+  featureHeading: "Priced Against a Public Benchmark",
   featureBody:
-    "Every box is batch-traceable from the farm. MJC Halaal certified, hormone-free, grass-fed — and priced against a public market benchmark so your procurement team can verify it.",
+    "Our entry box sits inside the R199.95–R720 public SA hamper market — Richmeats R295, buildyourbasket.co.za R720 — so your procurement team can verify the number instead of taking our word for it.",
 
-  /** Replaces the footer compliance line. */
+  /** Replaces the footer compliance line. Scoped to the Wagyu range. */
   footerCopy:
-    "© 2026 Studex Group (Pty) Ltd. All rights reserved. MJC Halaal certified. Batch-traceable.",
-
-  /** Optional pre-announcement of the 2027 caviar tier. */
-  caviarPreAnnouncement:
-    "Caviar box — 2027 season. Subject to the South African import permit stack being cleared with a registered clearing agent. Enquire to register interest.",
+    "© 2026 Studex Group (Pty) Ltd. All rights reserved. Halaal-certified Wagyu range.",
 } as const;

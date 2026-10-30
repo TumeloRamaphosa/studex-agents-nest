@@ -23,6 +23,9 @@ TOOLS_SUPPLEMENT.md
 studex-os/.vscode/*.env
 studex-os/*.env
 studex-workflows/.env
+# A nested .gitignore in core/packages/database/ has `!.env`, which un-ignores
+# a REAL credential file and puts it back in `git add .` scope. Guard it here.
+core/packages/database/.env
 matrix-chat-history/
 .matrix-chat-history/
 

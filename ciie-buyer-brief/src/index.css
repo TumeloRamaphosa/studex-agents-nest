@@ -1,0 +1,15 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #0a0d14; }
+a:hover { opacity: 0.85; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0d14; }
+::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 3px; }
+
+@media (max-width: 768px) {
+  .statsBar { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid2, .grid3 { grid-template-columns: 1fr !important; }
+  header, .hero, .section, .contact { padding: 32px 24px !important; }
+  .contactCard { padding: 32px 24px !important; }
+  .contactDetails { flex-direction: column !important; gap: 24px !important; }
+}

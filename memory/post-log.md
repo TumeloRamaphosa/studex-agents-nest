@@ -668,3 +668,14 @@ This matters for tomorrow: Friday's Threads post went out early (`8384240`), so 
 **Status:** PARTIAL — posted: instagram
 **Notes:** validate_brand() passed (10 checks). FeedHive: skipped by operator instruction — FeedHive API not called. Blotato posted: instagram. Blotato failed: facebook, linkedin. Skipped (already published): threads.
 ---
+
+## 2026-10-30 (Friday — Agents) — daily-post cron
+
+**Content:** **A chatbot answers. An agent finishes the job.**  You ask a chatbot for a quote and it gives you one. You ask it to chase the supplier, update the stock sheet, brief the customer and draft the follow-up — and it hands you four paragraphs about how it *would* do that.  That gap — between answering a...
+**Platforms:** facebook, instagram, linkedin, threads
+**Scheduled:** 09:00 SAST target (2026-10-30T07:06:41Z)
+**Media:** https://agent-cdn.minimax.io/mcp/image_tool/output/364053150926602246/376428811559175/1793343957_4ec71be5.png
+**FeedHive post ID:** N/A — FeedHive unavailable (FeedHive GET /accounts -> 404)
+**Status:** PARTIAL — posted: instagram
+**Notes:** validate_brand() passed (10 checks). FeedHive: FeedHive GET /accounts -> 404. Blotato posted: instagram. Blotato failed: facebook, linkedin. Skipped (already published): threads.
+---

@@ -6,7 +6,7 @@
 
 const axios = require('axios');
 
-const BLOTATO_KEY = '[REDACTED:28 chars - rotate this key]YN2ZvCeGsVWWwdaf8Og=';
+const BLOTATO_KEY = '[REDACTED:28 chars - rotate this key]********************';
 const BASE = 'https://backend.blotato.com/v2';
 const headers = { 'blotato-api-key': BLOTATO_KEY, 'Content-Type': 'application/json', Accept: 'application/json' };
 
