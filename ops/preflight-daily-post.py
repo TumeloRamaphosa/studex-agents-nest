@@ -34,6 +34,12 @@ import urllib.request
 ROOT = pathlib.Path("/workspace")
 sys.path.insert(0, str(ROOT / "scripts"))
 
+# The ONE source of truth for caption policy, shared with both publish
+# paths. Path A reaches it through validate_brand(); path B reaches it
+# through blotato-fallback.js. This pre-flight reaches it directly so
+# the audit and the gate can never disagree.
+import caption_policy  # noqa: E402
+
 import importlib.util  # noqa: E402
 
 # The real script is "daily-post.py" (hyphen) - import it by path so we call
@@ -483,6 +489,24 @@ def main():
                      "publishes. (Path A fails on this; path B does not.)")
             else:
                 print("  price: none (rule [10] OK)")
+
+            # 🔑 CAVIAR ON THE FEED - the PRODUCT rule the price rule cannot see.
+            # The 2026-10-30 pending caption offered Oscietra caviar and carried
+            # NO price, so the rule [10] check above passed, every gate read
+            # green, and a retail offer for an unpermitted and unfulfillable
+            # product went live on Threads (DfG_M2bEd5U) at 08:56 SAST. A guard
+            # that only asks "is there a price?" cannot see a product problem.
+            if caption_policy.caviar_offer(pcap):
+                fail("pending caption offers CAVIAR on a public feed - the SA "
+                     "permit stack (DFFE -> ITAC -> DAFF -> SARS -> CITES) is "
+                     "not assembled, 0 caviar products are purchasable on the "
+                     "storefront, and caviar is off the retail path for 2026 "
+                     "(trade desk only, 2027 season). This caption must not "
+                     "publish. The publish gate (scripts/caption_policy.py) "
+                     "refuses it too - but the audit has to say so as well, "
+                     "because this gate ran and read CLEAN.")
+            else:
+                print("  caviar: none (policy OK)")
             fb = pdata.get("fallback") or {}
             if fb.get("posted"):
                 print(f"  fallback already posted: {fb.get('posted')} "
