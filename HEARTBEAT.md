@@ -1,5 +1,30 @@
 # HEARTBEAT.md
 
+## 🔴 06:21 UTC — A PASS THAT CANNOT SEE THAT IT DID NOT RUN: THE FIX, AND A STANDING LIVENESS CHECK
+**The gap (2026-10-30):** the 03:23Z and 04:23Z canonical-pass slots **never ran** — both cron
+turns died of an upstream API rate limit after ~24 s, before the runner was invoked. No log, no
+state key, no note, and `delivered: false` sent nothing to Discord. **The guards were silent, not
+green.** `cron-times` cannot see it (the job fired on time, then died) and `cron-kills` cannot
+see it (a provider killed it, not a timeout) — no checker read whether **the pass itself** ran.
+
+**✅ The guard now exists: `ops/check-pass-completion.py` (registry: `pass-completion`, 23rd
+checker).** For each scheduled slot in a 6-hour window it asks ONE question — *is there evidence
+the runner reached its VERDICT line?* (pass log with a column-0 `VERDICT`, the pass-record JSON,
+or a `pass_<hhmm>_YYYY_MM_DD` state key). A slot still owed that produced nothing is a FINDING; a
+log with no VERDICT is an INCOMPLETE pass (started, died mid-run, proved nothing). **Negative
+controls prove it does NOT fire** for the slot the pass is inside (30-min grace), for slots before
+the pass was a cron job, for an aged-out gap (6-h window), for a disabled job, or for a
+non-hourly schedule. `ops/test-pass-completion.py` 20/20 · registry 115/115 · contract 68/68.
+🔑 *A guard that cries wolf gets switched off — the window is the difference between a
+finding and noise.* First live run: 6 slots · 4 proved · **2 missed (03:23Z, 04:23Z)** — exactly
+the two real gaps.
+
+### 🔁 STANDING CHECK ON EVERY HEARTBEAT POLL — is the pass still alive?
+A dead pass is only seen by the NEXT pass, so the heartbeat carries the liveness check:
+**the newest file in `ops/logs/heartbeat-pass-*.log` must be younger than 90 minutes.** If it is
+older, the canonical pass has STOPPED — say so plainly in the reply, and do not report the pass as
+clean. If it is younger, the hourly pass owns everything else; do not duplicate its work.
+
 ## 🔙 11:06 UTC — WHY THE VAULT SYNC IS 6× SLOWER: MEASURED, NOT GUESSED
 **🔴 CORRECTED (the section above blamed the wrong mechanism):** the **pre-commit hook is NOT the
 cost** — `core.hooksPath = .githooks` and `ops/git-pre-commit-guard.py` reads
