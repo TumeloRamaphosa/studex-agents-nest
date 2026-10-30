@@ -461,6 +461,12 @@
    "topic": "a job's timeout bounds the TURN, not the work - the 18:23 cron run recorded durationMs=150315 while the pass it ran took 18 minutes (the turn handed off to a background session). Consequences: cron-kills can under-report a real runtime; raising a timeout does not bound background work (bounding the SCOPE does); a turn that ends early is not evidence the work was dropped. Also fixed: the runner's verdict_line() was skipping lines starting with '-' and swallowing detail lines.",
    "ts": "2026-10-29T19:13:19Z",
    "ts_source": "discord snowflake (the message id IS the send time)"
+  },
+  {
+   "channel": "1538825048465481728 (#ops)",
+   "messageId": "1565613320059359254",
+   "topic": "NEW FINDING pass-completion - the 03:23Z and 04:23Z pass slots produced no completed pass (both cron turns died of an upstream API rate limit); the new 23rd checker caught it on its first live run inside the scheduled pass - the guards were silent, not green",
+   "ts": "2026-10-30T06:31:30Z"
   }
  ],
  "disk_2026_10_23_20_30_utc": {
@@ -2614,7 +2620,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T05:26:58Z",
+ "last_heartbeat_pass": "2026-10-30T06:26:52Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3380,5 +3386,68 @@
   "runtime_note": "The pass took ~3.9 minutes this run (05:23:00Z -> 05:26:58Z), not the ~18 minutes the runbook estimates - the estimate is stale and has been flagged in prior passes. All 22 checkers executed and the runner printed a full summary plus a column-0 VERDICT, so the pass was genuinely complete. Waited on ONE bounded command (background session running 'tail --pid=<pid> -f /dev/null'), never a poll loop.",
   "read_only": true,
   "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json."
+ },
+ "pass_0623_2026_10_30": {
+  "end": "2026-10-30T06:26:52Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-30_0623.log (the pass END time, not the time reading started)",
+  "checkers": 23,
+  "clean": 18,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure",
+   "pass-completion"
+  ],
+  "known_findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [
+   "pass-completion"
+  ],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: NEW FINDING(S) - not previously escalated.\n  - pass-completion: VERDICT: 2 expected pass slot(s) did not complete - the guards did not run for that window",
+  "known_set_exact": false,
+  "discord": "POSTED - ONE message to #ops (1538825048465481728), messageId 1565613320059359254. Rule 4 governs: there is a NEW finding. Checked for a repeat first - read the last 12 messages in the channel (newest 2026-10-30T05:08:22Z) and none of them mentions the missed 03:23Z/04:23Z slots, so this is the first time this finding has reached Discord. The 05:23 pass deliberately did NOT post it because at that time no checker had produced it (a rate-limited agent turn is not a finding); the finding only became a finding when the 23rd checker, added 06:20Z today, derived it inside the scheduled pass.",
+  "pass_completion": {
+   "checker": "ops/check-pass-completion.py (registered 'pass-completion' - the 23rd checker, added 06:20Z today)",
+   "first_live_run_inside_the_scheduled_pass": true,
+   "runner_line": "[FINDING] pass-completion (rc=1)  VERDICT: 2 expected pass slot(s) did not complete - the guards did not run for that window",
+   "standalone_rerun": "5 expected slot(s) in the last 6h (from 2026-10-30 01:23Z), 3 proved complete, 2 missed, 0 incomplete, 0 unproven",
+   "missed_slots": [
+    "2026-10-30T03:23:00Z",
+    "2026-10-30T04:23:00Z"
+   ],
+   "evidence_reverified_this_pass": [
+    "no ops/logs/heartbeat-pass-2026-10-30_0323.log or _0423.log exists anywhere on disk",
+    "no pass_0323_* / pass_0423_* key was ever added to heartbeat-state.json",
+    "cron run history for job f2a4c1c3-194f-47e2-b19e-1bec418f4d03: runAtMs 1793330580009 (03:23:00Z, 24264ms) and 1793334180009 (04:23:00Z, 24113ms) both finished status=error with 'API rate limit reached. Please try again later.' - the agent turn died before it could start the runner"
+   ],
+   "coverage_impact": "the 22 pre-existing checkers did not execute for those two hours, so nothing was PROVEN in that window - the guards were silent, not green.",
+   "owner_side": "the rate limit is upstream on the model provider (MiniMax-M3.1-Flash); it cannot be remediated from this workspace. If it recurs, the durable fix is a wrapper that records the pass outcome even when the agent turn dies, or a schedule that does not ride on a single provider quota.",
+   "repeat_risk_handled": "the checker's window is 6 hours, so these two slots stay visible until ~09:23Z and the 07:23Z pass will re-derive the identical finding. A top-level 'discord_posted_findings' entry in heartbeat-state.json is scoped to this exact missed-slot set so the next pass re-posts ONLY if a NEW slot is missed or the content changes - 'never post the same finding twice in a row' without weakening the guard."
+  },
+  "known_findings_unchanged": "price-on-feed (5 staged captions + 1 live post carry a price on a public feed), staged-publish (staged content that never published), cost-model (public page awyjxfplygag.space.mcode.io still leaks belowfloor/dutyrate/farm gate/farmgateusdperkg/fxusdzar/landedzarperkg/margin floor/vatrate), public-exposure (a credential that still authenticates is reachable from the public remote) - all four unchanged in content from the 05:23 pass and all already escalated before; none re-posted.",
+  "runtime_note": "The pass took ~3.9 minutes this run (06:23:00Z -> 06:26:52Z), not the ~18 minutes the runbook estimates - the estimate has been stale for several passes. All 23 checkers executed and the runner printed a full summary plus a column-0 VERDICT, so the pass was genuinely complete. Waited on ONE bounded command for the pid to exit, never a poll loop.",
+  "stale_contract_text": "The cron payload still says 'It is 22 READ-ONLY checkers and takes about 18 minutes'. It is now 23 checkers and ~4 minutes. Not acted on - the payload is owner-owned and nothing in this pass was blocked by the stale text; recorded so the next session can decide.",
+  "read_only": true,
+  "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md, memory/heartbeat-state.json and one Discord message in #ops."
+ },
+ "discord_posted_findings": {
+  "pass-completion": {
+   "posted_at": "2026-10-30T06:31:30Z",
+   "messageId": "1565613320059359254",
+   "channel": "1538825048465481728 (#ops)",
+   "posted_by_pass": "pass_0623_2026_10_30",
+   "missed_slots": [
+    "2026-10-30T03:23:00Z",
+    "2026-10-30T04:23:00Z"
+   ],
+   "rule": "Do NOT re-post this finding again for the SAME missed-slot set. The checker's 6h window keeps these two slots visible until ~2026-10-30T09:23Z, so the 07:23Z pass WILL re-derive them. Post again ONLY if a NEW slot is missed or the content changes."
+  }
  }
 }
