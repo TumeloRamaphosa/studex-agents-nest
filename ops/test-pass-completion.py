@@ -116,6 +116,37 @@ check("the finding says it died mid-run", "died mid-run" in out, out[-500:])
 check("the finding does not accuse a clean slot",
       "2026-10-30 03:23" not in out, out[-500:])
 
+print("\n=== D2. AN ALREADY-ANNOUNCED GAP IS NOT A NEW FINDING ===")
+setup = dict(ALL_OK)
+del setup["2026-10-30_0323"]
+del setup["2026-10-30_0423"]
+announced = {"discord_posted_findings": {"pass-completion": {
+    "missed_slots": ["2026-10-30T03:23:00Z", "2026-10-30T04:23:00Z"],
+    "posts": [{"posted_at": "2026-10-30T06:31:30Z",
+               "messageId": "1565613320059359254"}]}}}
+rc, out = run([job()], logs_setup=setup, state=announced)
+check("an already-announced gap is not a finding", rc == 0, "rc=%d out=%s" % (rc, out[-600:]))
+check("the checker still names the unproven slots", "2026-10-30 03:23" in out, out[-600:])
+check("it says they were already announced", "already announced" in out, out[-600:])
+check("it names the announcement it refuses to repeat",
+      "1565613320059359254" in out, out[-600:])
+check("the verdict does not claim every slot completed",
+      "every expected pass slot produced a completed pass" not in out, out[-600:])
+
+print("\n=== D3. A GENUINELY NEW GAP STILL FIRES (the negative control) ===")
+setup = dict(ALL_OK)
+del setup["2026-10-30_0323"]
+del setup["2026-10-30_0423"]
+partial = {"discord_posted_findings": {"pass-completion": {
+    "missed_slots": ["2026-10-30T03:23:00Z"],   # 04:23 was NEVER announced
+    "posts": []}}}
+rc, out = run([job()], logs_setup=setup, state=partial)
+check("a slot that was never announced is still a finding", rc == 1,
+      "rc=%d out=%s" % (rc, out[-600:]))
+check("the finding names the 04:23 slot", "2026-10-30 04:23" in out, out[-600:])
+check("the already-announced slot is not listed as a problem",
+      "2026-10-30 03:23 UTC produced NO pass record at all" not in out, out[-600:])
+
 print("\n=== D. A STATE KEY PROVES A SLOT THAT HAS NO LOG ===")
 setup = dict(ALL_OK)
 del setup["2026-10-30_0223"]

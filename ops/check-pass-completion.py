@@ -202,6 +202,29 @@ def main():
         state_ok = False
         state = {}
 
+    # ANNOUNCE ONCE.
+    # The agent posts this finding to Discord and keeps the UNION of every slot
+    # it has already announced in `discord_posted_findings`. The checker's 6h
+    # window keeps re-deriving an announced slot for hours afterwards, so
+    # without this the checker fires EVERY hour for a gap nobody needs to hear
+    # about again - and the runner labels it "NEW FINDING(S)", which is exactly
+    # how a duplicate post happens.
+    # A slot that was already announced is still a gap (those hours were
+    # unproven) and is still printed, but it is not a NEW thing to say.
+    announced_slots = set()
+    announce_note = ""
+    if state_ok and isinstance(state.get("discord_posted_findings"), dict):
+        pc = state["discord_posted_findings"].get("pass-completion")
+        if isinstance(pc, dict):
+            raw = pc.get("missed_slots")
+            if isinstance(raw, list):
+                announced_slots = {str(x) for x in raw}
+            posts = pc.get("posts")
+            if isinstance(posts, list) and posts and isinstance(posts[-1], dict):
+                last = posts[-1]
+                announce_note = " (last announced %s, message %s)" % (
+                    last.get("posted_at"), last.get("messageId"))
+
     missed = []
     incomplete = []
     unproven = []
@@ -227,14 +250,27 @@ def main():
             continue
         missed.append(slot)
 
+    def slot_key(slot):
+        return slot.strftime("%Y-%m-%dT%H:%M:00Z")
+
+    missed_new = [s for s in missed if slot_key(s) not in announced_slots]
+    missed_known = [s for s in missed if slot_key(s) in announced_slots]
+
     print("pass-completion check: %d expected slot(s) in the last %dh (from %s), "
-          "%d proved complete, %d missed, %d incomplete, %d unproven"
+          "%d proved complete, %d missed (%d new, %d already announced), "
+          "%d incomplete, %d unproven"
           % (len(expected), WINDOW_HOURS,
              expected[0].strftime("%Y-%m-%d %H:%MZ") if expected else "n/a",
-             proved, len(missed), len(incomplete), len(unproven)))
+             proved, len(missed), len(missed_new), len(missed_known),
+             len(incomplete), len(unproven)))
+
+    for slot in missed_known:
+        print("  (already announced) slot %s UTC produced NO pass record - the "
+              "guards were silent for that hour and it was already reported%s"
+              % (slot.strftime("%Y-%m-%d %H:%M"), announce_note))
 
     problems = []
-    for slot in missed:
+    for slot in missed_new:
         problems.append("slot %s UTC produced NO pass record at all - the pass did "
                         "not run, so the guards were silent rather than green"
                         % slot.strftime("%Y-%m-%d %H:%M"))
@@ -258,7 +294,12 @@ def main():
     if unproven:
         print("VERDICT: COULD NOT PROVE - %d slot(s) could not be judged" % len(unproven))
         return 2
-    print("VERDICT: CLEAN - every expected pass slot produced a completed pass")
+    if missed_known:
+        print("VERDICT: CLEAN - %d missed slot(s) were already announced%s; every "
+              "OTHER expected slot produced a completed pass"
+              % (len(missed_known), announce_note))
+    else:
+        print("VERDICT: CLEAN - every expected pass slot produced a completed pass")
     return 0
 
 
