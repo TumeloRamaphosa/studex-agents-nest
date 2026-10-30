@@ -1223,7 +1223,7 @@
   "github_push": 1793044911,
   "godaddyCredential": 1792812323,
   "health": 1792847460,
-  "heartbeat": 1793342183,
+  "heartbeat": 1793345931,
   "heartbeat_2026-10-21_05:11_note": "Wednesday morning check (SAST 07:11). Hub DOWN (ports 3000/3778 timeout). Aliyun VM DOWN (SSH timeout exit 255). Orgo GONE (404). No change \u2014 no Discord notification. Shopify/AgentMail morning checks blocked by P0 token issues.",
   "heartbeat_2026-10-21_05:11_utc": 1730526660,
   "heartbeat_2026-10-22_05:46_utc_note": "Thursday 07:46 SAST. Hub :3000/:3778 still down, Alibaba SSH timeout (exit 255) \u2014 UNCHANGED since Oct 17, no Discord post. Drift 10/10 CLEAN, exit 0, 130 assertions. Email warmup ran clean 05:33 UTC (30 sent, 0 failed, all-time 248). Badge-payment reminder flagged to Tumelo (due Fri 23 Oct 16:00 UTC).",
@@ -1328,7 +1328,7 @@
   "tmp_shape_surface": 1793044911,
   "warmup_state": 1793031521,
   "weather": null,
-  "canonical_pass": 1793342183
+  "canonical_pass": 1793345931
  },
  "lastCredNameFilter": {
   "at": "2026-10-27T08:45:00Z",
