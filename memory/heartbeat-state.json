@@ -2621,7 +2621,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T10:26:57Z",
+ "last_heartbeat_pass": "2026-10-30T11:26:45Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3592,5 +3592,75 @@
   "read_only": true,
   "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md, memory/heartbeat-state.json and ONE Discord message in #ops.",
   "state_file_format": "This pass's commit shows a LARGE diff on memory/heartbeat-state.json (~7k lines) but only THREE keys actually changed (pass_1023_2026_10_30, last_heartbeat_pass, discord_posted_findings); 201 -> 202 top-level keys, 0 lost. The churn is pure indentation: the 10:16Z vault-sync writer re-emitted the file with a different indent, and this pass restored the canonical writer's format (indent=1, ops/apply-pass-record.py). `git diff -w` shows the real change as 130 insertions / 37 deletions. Verified: keys lost = [], keys changed = exactly the three intended ones. NEXT WRITER: keep the canonical indent=1 so the file does not flip-flop between writers."
+ },
+ "pass_1123_2026_10_30": {
+  "end": "2026-10-30T11:26:45Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-30_1123.log (the pass END time, not the time reading started)",
+  "checkers": 24,
+  "clean": 19,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure",
+   "pass-completion"
+  ],
+  "known_findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [
+   "pass-completion"
+  ],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: NEW FINDING(S) - not previously escalated.\n  - pass-completion: VERDICT: 2 expected pass slot(s) did not complete - the guards did not run for that window",
+  "known_set_exact": false,
+  "discord": "NOT POSTED. The runner calls pass-completion NEW because it is not in the runner's KNOWN_ESCALATED registry, but rule 4a governs: the derived missed-slot set {2026-10-30T08:23:00Z, 2026-10-30T09:23:00Z} is IDENTICAL to the set already posted at 2026-10-30T10:27:55Z by pass_1023_2026_10_30 (messageId 1565673600806166549), and both slots already sit in the top-level discord_posted_findings['pass-completion'].missed_slots union {03:23Z, 04:23Z, 08:23Z, 09:23Z}. Same finding, same slots, same cause (upstream model-provider rate limit killed the agent turn ~24s in), same content -> no new slot and no content change -> POST NOTHING and add NO second entry to discord_posted_findings. Verified by a standalone re-run of the single read-only checker ops/check-pass-completion.py (NOT a second full pass): '5 expected slot(s) in the last 6h (from 2026-10-30 06:23Z), 3 proved complete, 2 missed, 0 incomplete, 0 unproven' with the missed slots named as 08:23 UTC and 09:23 UTC - byte-identical to the prior derivation.",
+  "pass_completion": {
+   "checker": "ops/check-pass-completion.py (registered 'pass-completion' - the 23rd checker, first live run 2026-10-30 06:23Z)",
+   "runner_line": "[FINDING] pass-completion (rc=1)  VERDICT: 2 expected pass slot(s) did not complete - the guards did not run for that window",
+   "standalone_rerun": "5 expected slot(s) in the last 6h (from 2026-10-30 06:23Z), 3 proved complete, 2 missed, 0 incomplete, 0 unproven",
+   "missed_slots": [
+    "2026-10-30T08:23:00Z",
+    "2026-10-30T09:23:00Z"
+   ],
+   "slot_set_identical_to_1023_post": true,
+   "previous_posted_slot_set": [
+    "2026-10-30T08:23:00Z",
+    "2026-10-30T09:23:00Z"
+   ],
+   "cause": "upstream model-provider rate limit - both agent turns died ~24s in, before the runner started. NOT a timeout kill (cron-kills is CLEAN) and NOT a misfire (cron-times is CLEAN): the cron fired on time and then died.",
+   "recurrence": "SAME pair of silent slots as the 10:27Z post (08:23Z/09:23Z) - the finding has NOT spread, no new slot appeared, and the 10:23Z slot itself proved complete. 2 hours of unproven coverage on 30 Oct (08:23Z-09:23Z), unchanged since the last announcement. The rate limit is owner-side/upstream; the durable fix is a wrapper that records the pass outcome even when the agent turn dies, so a rate-limited hour is never indistinguishable from a green one.",
+   "coverage_impact": "the other 23 checkers did not execute for 08:23Z and 09:23Z - that window is unproven, not green."
+  },
+  "known_findings_unchanged": "price-on-feed (5 staged captions + 1 live post carry a price on a public feed), staged-publish (staged content that never published), cost-model (public page awyjxfplygag.space.mcode.io still leaks belowfloor/dutyrate/farm gate/farmgateusdperkg/fxusdzar/landedzarperkg/margin floor/vatrate), public-exposure (a credential that still authenticates is reachable from the public remote) - all four unchanged in content from the 10:23 pass and all already escalated before; none re-posted.",
+  "checker_count_change": "23 -> 24 checkers. The newly registered checker is 'spec-traceability' (a numeric QUALITY claim - marbling grade, marble score - in the content catalog that its owning source does not support); it is CLEAN on this pass: 'OK - 5 publishable product(s), every quality claim traced to its owning source row.' More coverage, not a new defect, so it does not trigger a Discord post.",
+  "checker_detail": {
+   "drift": "CLEAN - pages: 18 clean: 18 drift: 0 unreachable: 0",
+   "tmp-surface": "CLEAN",
+   "credential-slots": "CLEAN - every slot holds a credential (48 slot(s) checked, 1 short-but-real)",
+   "tracked-creds": "CLEAN - not matching any live credential: 0",
+   "dead-inbox": "CLEAN - no provably-unreachable mailbox referenced in code",
+   "mail": "CLEAN - 1087 message(s) scanned across 13 inbox(es)",
+   "scanner-log": "CLEAN - credentials in an exposed state: 0",
+   "cron-payload-claims": "CLEAN - 27 payload(s) scanned, no hardcoded system-status claims",
+   "cron-times": "CLEAN - all time-named jobs fire at the time their name promises",
+   "cron-timeouts": "CLEAN - no job's timeout is an outlier against its own siblings",
+   "cron-kills": "CLEAN - no job's last run was killed by a timeout its current budget could not have avoided",
+   "spec-traceability": "CLEAN - OK - 5 publishable product(s), every quality claim traced to its owning source row",
+   "client-secret": "CLEAN - 2393 client file(s) scanned; no secret-named VITE_ variable reachable from the browser",
+   "leak-sources": "CLEAN - 7 total hardcoded literals (known, not new)",
+   "discord-credential": "CLEAN - no live credential literal in any scanned message",
+   "pre-push-guard": "CLEAN - the commit and push guards are installed at the path git actually uses, executable, and identical to their sources",
+   "git-index": "CLEAN - the index is intact and consistent with HEAD",
+   "credential-fragments": "CLEAN - no fragment of any credential in tracked source",
+   "cred-resolution": "CLEAN - 1135 credential-bearing tracked file(s) scanned"
+  },
+  "runtime_note": "The pass took ~3.75 minutes (11:23:00Z -> 11:26:45Z). The cron payload's '24 READ-ONLY checkers and takes about 4 minutes' is now CORRECT on both counts (it was stale at 23 checkers / 18 minutes in the 10:23 pass). Waited on ONE bounded `tail --pid` command for the pid to exit - no poll loop.",
+  "read_only": true,
+  "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json. NO Discord message was sent (rule 4a)."
  }
 }
