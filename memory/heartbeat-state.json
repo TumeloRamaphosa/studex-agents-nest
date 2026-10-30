@@ -2621,7 +2621,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T20:26:50Z",
+ "last_heartbeat_pass": "2026-10-30T21:26:58Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3496,6 +3496,24 @@
    "messageId": "1565818951362150401",
    "posted_by_pass": "ceo-evening-wrap (announced 20:05:29Z; pass_2023_2026_10_30 posted nothing - already announced)",
    "rule": "Do NOT re-post this finding again for a slot set already listed in `posts[].missed_slots` (and therefore in the union at the top level). The checker's 6h window keeps an announced slot visible until ~6h after it, so later passes WILL re-derive it. Post again ONLY if a NEW slot is missed or the content changes. Three posts so far, all the same upstream cause: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z). Fourth slot-pair added 2026-10-30T20:23Z (18:23Z + 19:23Z) - announced by the CEO EVENING WRAP at 20:05:29Z, msg 1565818951362150401, so pass_2023_2026_10_30 posted nothing. Four announcements so far: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z), 20:05Z (18:23Z/19:23Z, by the EOD wrap)."
+  },
+  "dead-inbox": {
+   "channel": "1538825048465481728 (#ops)",
+   "missed_slots": [
+    "2026-10-30T21:23:00Z"
+   ],
+   "posts": [
+    {
+     "posted_at": "2026-10-30T21:30:00Z",
+     "messageId": "1565840075110088815",
+     "posted_by_pass": "pass_2123_2026_10_30",
+     "missed_slots": [
+      "2026-10-30T21:23:00Z"
+     ],
+     "why": "FIRST announcement of this finding - the checker's first live trip."
+    }
+   ],
+   "missed_slots_note": "UNION of every slot already announced for this finding. A future pass should treat the finding as ALREADY POSTED when its derived missed-slot set is a SUBSET of this list. Post again ONLY if a NEW slot appears that is not in this list, or if the content/meaning changes. NOTE: a slot can also be announced to the channel by a DIFFERENT job - so read the channel before posting, not only this ledger."
   }
  },
  "pass_0723_2026_10_30": {
@@ -4083,5 +4101,24 @@
   "runtime_note": "The pass took ~3m50s (20:23:00Z -> 2026-10-30T20:26:50Z). Waited on ONE bounded `tail --pid` command for the pid to exit - no poll loop.",
   "read_only": true,
   "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json. NO Discord message was sent (announce-once: the same slots + same content were already posted at 20:05:29Z)."
+ },
+ "pass_2123_2026_10_30": {
+  "end_time": "2026-10-30T21:26:58Z",
+  "log": "ops/logs/heartbeat-pass-2026-10-30_2123.log",
+  "verdict": "NEW FINDING(S) - not previously escalated.",
+  "checkers_run": 24,
+  "clean": 19,
+  "known_escalations": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new_findings": [
+   "dead-inbox"
+  ],
+  "could_not_prove": [],
+  "broken": [],
+  "note": "dead-inbox tripped for the first time. 3 hits, all deliberate denylist/registry entries naming a dead address (ciie-buyer-brief/check-bundle.mjs FORBIDDEN list; coffee-fob-band/band.generated.json + compute-band-card.mjs deadOnes registry). Triggered by the 21:19Z build regenerating those two artifacts. Fixed per the checker's own documented remedy: per-file exceptions in ops/dead-inbox-exceptions.txt. Checker re-run CLEAN; test suite 6/6 incl. the negative control. Posted to Discord #ops (messageId 1565840075110088815)."
  }
 }
