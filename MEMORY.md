@@ -311,6 +311,12 @@ table — **before CIIE, 5 days**; (2) delete `ess0ocgcd9f0`, `i09hd71cvt06`,
 
 ---
 
+## Guards built 2026-10-30 — all recurring, all proven against real artefacts
+- **`spec-traceability`** (`ops/check-spec-traceability.py`) — every numeric **quality** claim in the content catalog must trace to **its own product's** owning row in `studex-products-catalog.csv`. Deliberately per-product: the source legitimately contains "All 5-7 marble score" and "Marble Score 7/8" for *other* products, so a corpus check would wave "grade 5" through. Price columns are excluded from matching. It closed this: the catalog's ribeye tagline said "Marbling grade 5 Wagyu" while the owning source says "marble scores 8+ to 11+" — **the caption machine was faithful; the catalog invented it.**
+- **Caviar is off the public feed, enforced in code (reversible on request).** `caviar-oscietra` is `available:false` in the content catalog · `scripts/caption_policy.py` holds `CAVIAR_RE` + a caviar clause in `policy_failures()` · `ops/preflight-daily-post.py` audits pending captions · and `blotato-fallback.js` **spawns that same Python policy** (it does not reimplement it, and it fails closed), so path B cannot drift from path A. Proven against the exact caption that shipped as Threads `DfG_M2bEd5U`: path B now exits 1, prints `CAPTION POLICY VIOLATION`, and marks the pending file `BLOCKED_BY_CAPTION_POLICY`. 🔑 *A permit stack (DFFE → ITAC → DAFF → SARS → CITES) must exist before this reverses — a preference is not a permit.*
+- **`pass-completion` announces a gap ONCE, in code** — an already-announced slot is no longer a finding (`memory/heartbeat-state.json` → `discord_posted_findings['pass-completion']['missed_slots']` is the union). Fail-safe: with no record every gap counts as new, because a repeat post beats a silent gap.
+- **The hourly rate limit is upstream — now MEASURED, not inferred.** The box has **no `crond`, no `crontab`, no `systemd`** (PID 1 = `supervisord`) and `openclaw cron` has **no command/shell payload kind**, so every cron job is an agent turn and the provider throttle kills the turn before the runner starts (5 silent hours on 30 Oct: 03/04/08/09/13:23Z). A second runner would be a second writer on shared state — the race AGENTS.md documents — so it was deliberately not built. 🔑 *Detection is automatic now; coverage is not ours to fix.*
+
 ## Git lineage — read this before pushing (2026-10-29)
 
 🔴 **`origin/master` is an UNRELATED July-2026 lineage with NO merge-base to
