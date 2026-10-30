@@ -2614,7 +2614,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T02:26:49Z",
+ "last_heartbeat_pass": "2026-10-30T05:26:58Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3337,5 +3337,48 @@
   "runtime_note": "The pass took ~3.8 minutes this run (02:23 -> 02:26:49Z), not the ~18 minutes the runbook estimates. All 22 checkers executed and the runner printed a full summary plus a column-0 VERDICT, so the pass was complete - the runbook estimate is stale. The wait was still done as ONE bounded command (tail --pid=<pid> -f /dev/null in a single exec), never a poll loop.",
   "read_only": true,
   "mutations": "none - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified."
+ },
+ "pass_0523_2026_10_30": {
+  "end": "2026-10-30T05:26:58Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-30_0523.log (the pass END time, not the time reading started)",
+  "checkers": 22,
+  "clean": 18,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
+  "known_set_exact": true,
+  "discord": "NOT POSTED - 0 new findings, 0 broken, 0 could-not-prove, and every finding is in the known set (price-on-feed, staged-publish, cost-model, public-exposure). Rule 3 governs. Independently confirmed with diff against the 02:23 pass: exactly ONE differing line (the mail checker's message count), so no known finding's CONTENT changed either. Nothing to say in #ops (1538825048465481728).",
+  "content_change_vs_02_23_pass": "ONE line only - the mail checker's count (1063 -> 1084 message(s) scanned across 13 inbox(es)). That is a count, not an answer; the checker still proves the same thing and stays CLEAN. All four known finding detail blocks, every CLEAN verdict, the runner summary and the column-0 VERDICT line are byte-identical.",
+  "mail": "CLEAN - 1084 message(s) scanned across 13 inbox(es) (+21 vs the 02:23 pass).",
+  "cred_resolution": "CLEAN - 1129 credential-bearing tracked file(s) scanned (stable).",
+  "credential_slots": "CLEAN - 48 slot(s) checked, 1 short-but-real; no placeholder holds a slot.",
+  "client_secret": "CLEAN - 2393 client file(s) scanned; no secret-named VITE_ variable reachable from the browser.",
+  "leak_sources": "CLEAN - 7 total hardcoded literals (known, not new).",
+  "credential_fragments": "CLEAN - unchanged from the 02:23 pass; the working tree still carries the 22:43Z masks while HEAD still holds the fragments, so rotation remains the only real fix (owner-side).",
+  "cron_times": "CLEAN (rc=0) - the tz=UTC fix from the 15:42 pass has held through ELEVEN scheduled firings (16:23 on 29 Oct through 05:23 on 30 Oct, counting only firings that actually executed).",
+  "cron_kills": "CLEAN (rc=0) - the vault-sync 1200s budget fix holds inside the runner.",
+  "cron_payload_claims": "CLEAN - 27 payload(s) scanned, no hardcoded system-status claims.",
+  "missed_passes": {
+   "slots": [
+    "2026-10-30T03:23:00Z",
+    "2026-10-30T04:23:00Z"
+   ],
+   "cause": "both cron runs finished with status=error and the message 'API rate limit reached. Please try again later.' (durations 24.3s and 24.1s - the agent turn died before it could start the pass).",
+   "evidence": "no ops/logs/heartbeat-pass-2026-10-30_0323.log or _0423.log exists anywhere on the filesystem; no pass_0323_/pass_0423_ key was ever added to heartbeat-state.json; no memory entry was written for either slot. Read from /root/.openclaw/cron/runs/f2a4c1c3-194f-47e2-b19e-1bec418f4d03.jsonl.",
+   "coverage_impact": "the 22 checkers did not execute for those two hours, so nothing was PROVEN during that window - the guards were silent, not green.",
+   "not_posted_because": "rule 3/4 govern Discord posts on checker findings, and no checker ran to produce one. A rate-limited agent turn is not a finding, a broken checker, or a could-not-prove. Recorded here and in the daily note instead, so the gap is on the record for the next session.",
+   "meta_gap": "neither cron-times nor cron-kills can see this class of failure: cron-times checks that the SCHEDULE fires at the promised clock time, and cron-kills checks that the last run was not killed by its own timeout budget. A run that fires on time and then dies of an API rate limit looks perfectly healthy to both. There is currently no checker for 'the pass itself completed' - that is a genuine hole in the pass, not a claim about any individual checker.",
+   "owner_action": "the model API rate limit on the MiniMax-M3.1-Flash provider is upstream and outside this workspace. If it recurs, the durable fix is a wrapper that records the pass outcome even when the agent turn dies, or a schedule that does not depend on a single provider quota."
+  },
+  "runtime_note": "The pass took ~3.9 minutes this run (05:23:00Z -> 05:26:58Z), not the ~18 minutes the runbook estimates - the estimate is stale and has been flagged in prior passes. All 22 checkers executed and the runner printed a full summary plus a column-0 VERDICT, so the pass was genuinely complete. Waited on ONE bounded command (background session running 'tail --pid=<pid> -f /dev/null'), never a poll loop.",
+  "read_only": true,
+  "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json."
  }
 }
