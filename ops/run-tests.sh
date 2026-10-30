@@ -22,6 +22,7 @@ PY_TESTS=(
   ops/test-cron-timeout-kills.py
   ops/test-pass-completion.py
   ops/test-caption-policy-caviar.py
+  ops/test-spec-traceability.py
   ops/test-cron-range-checker.py
   ops/test-correction-rules.py
   ops/test-draft-rules.py
