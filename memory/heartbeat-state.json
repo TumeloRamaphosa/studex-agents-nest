@@ -2620,7 +2620,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T06:26:52Z",
+ "last_heartbeat_pass": "2026-10-30T07:26:46Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3449,5 +3449,53 @@
    ],
    "rule": "Do NOT re-post this finding again for the SAME missed-slot set. The checker's 6h window keeps these two slots visible until ~2026-10-30T09:23Z, so the 07:23Z pass WILL re-derive them. Post again ONLY if a NEW slot is missed or the content changes."
   }
+ },
+ "pass_0723_2026_10_30": {
+  "end": "2026-10-30T07:26:46Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-30_0723.log (the pass END time, not the time reading started)",
+  "checkers": 23,
+  "clean": 18,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure",
+   "pass-completion"
+  ],
+  "known_findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [
+   "pass-completion"
+  ],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: NEW FINDING(S) - not previously escalated.\n  - pass-completion: VERDICT: 2 expected pass slot(s) did not complete - the guards did not run for that window",
+  "known_set_exact": false,
+  "discord": "NOT POSTED - rule 4a dedupe. The finding is pass-completion with the SAME missed-slot set and the SAME content already posted at 2026-10-30T06:28:23Z (messageId 1565613320059359254): slots 2026-10-30T03:23:00Z and 2026-10-30T04:23:00Z, meaning 'guards silent for those two hours, unproven not green', cause 'upstream model-provider rate limit, agent turn died ~24s in before the runner started'. Verified three ways before deciding: (1) the top-level 'discord_posted_findings' entry in heartbeat-state.json already records this finding with exactly those two slots; (2) a standalone re-run of the single checker ops/check-pass-completion.py (read-only, NOT a second full pass) re-derived the IDENTICAL two slots - 'slot 2026-10-30 03:23 UTC' and 'slot 2026-10-30 04:23 UTC', 2 missed / 0 incomplete / 0 unproven; (3) the prior Discord message body was fetched and read in full and says the same thing. No NEW slot was missed - the 06:23Z slot completed (log + pass_0623_2026_10_30 key exist) and the 07:23Z slot completes with this pass - so nothing changed and rule 4a's 'never post the same finding twice in a row' applies. No second discord_posted_findings entry was added.",
+  "pass_completion": {
+   "checker": "ops/check-pass-completion.py (registered 'pass-completion' - the 23rd checker)",
+   "runner_line": "[FINDING] pass-completion (rc=1)  VERDICT: 2 expected pass slot(s) did not complete - the guards did not run for that window",
+   "standalone_rerun": "5 expected slot(s) in the last 6h (from 2026-10-30 02:23Z), 3 proved complete, 2 missed, 0 incomplete, 0 unproven",
+   "missed_slots": [
+    "2026-10-30T03:23:00Z",
+    "2026-10-30T04:23:00Z"
+   ],
+   "same_as_previous_post": true,
+   "slot_set_identical_to_pass_0623": true,
+   "content_identical_to_pass_0623": true,
+   "no_new_slot_missed": "The 06:23Z slot completed - ops/logs/heartbeat-pass-2026-10-30_0623.log exists and pass_0623_2026_10_30 is in heartbeat-state.json. The 07:23Z slot completes with this pass. So the missed set is unchanged at exactly two slots.",
+   "coverage_impact": "the other 22 checkers did not execute for those two hours, so nothing was PROVEN in that window - the guards were silent, not green.",
+   "owner_side": "the rate limit is upstream on the model provider (MiniMax-M3.1-Flash); it cannot be remediated from this workspace. It did NOT recur - the 06:23Z and 07:23Z passes both ran to completion. If it recurs, the durable fix is a wrapper that records the pass outcome even when the agent turn dies, or a schedule that does not ride on a single provider quota.",
+   "repeat_risk_handled": "the checker's window is 6 hours, so these two slots stay visible until ~09:23Z and the 08:23Z pass will re-derive the identical finding again. The existing top-level 'discord_posted_findings' entry is scoped to this exact missed-slot set, so 08:23Z should also post NOTHING."
+  },
+  "known_findings_unchanged": "price-on-feed (5 staged captions + 1 live post carry a price on a public feed), staged-publish (staged content that never published), cost-model (public page awyjxfplygag.space.mcode.io still leaks belowfloor/dutyrate/farm gate/farmgateusdperkg/fxusdzar/landedzarperkg/margin floor/vatrate), public-exposure (a credential that still authenticates is reachable from the public remote) - all four unchanged in content and all already escalated before; none re-posted. The cost-model URL and the leaked field list are byte-identical to the 06:23Z pass.",
+  "runtime_note": "The pass ran 07:23:00Z -> 07:26:46Z (~3.8 minutes), matching the ~4 minutes the cron payload claims. All 23 checkers executed, the runner printed a full summary plus a column-0 VERDICT, so the pass was genuinely complete. Waited on ONE bounded command for the pid to exit (tail --pid), never a poll loop.",
+  "stale_contract_text": "The cron payload says '23 READ-ONLY checkers and takes about 4 minutes' - that is now accurate. (The 06:23Z record noted it was stale at 22/18min; it has since been corrected upstream.)",
+  "read_only": true,
+  "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json. No Discord message was sent."
  }
 }
