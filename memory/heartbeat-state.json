@@ -2621,7 +2621,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T16:26:50Z",
+ "last_heartbeat_pass": "2026-10-30T17:26:46Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3935,6 +3935,70 @@
   },
   "content_change_vs_15_23_pass": "NONE - diff -u ops/logs/heartbeat-pass-2026-10-30_1523.log ops/logs/heartbeat-pass-2026-10-30_1623.log returns rc=0 (byte-identical). Every finding, every CLEAN verdict, the runner summary and the column-0 VERDICT line are unchanged.",
   "runtime_note": "The pass took ~3m50s (16:23:00Z -> 2026-10-30T16:26:50Z). Waited on ONE bounded `tail --pid` command for the pid to exit - no poll loop.",
+  "read_only": true,
+  "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json. NO Discord message was sent (rule 3)."
+ },
+ "pass_1723_2026_10_30": {
+  "end": "2026-10-30T17:26:46Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-30_1723.log (the pass END time, not the time reading started)",
+  "checkers": 24,
+  "clean": 20,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "known_findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
+  "known_set_exact": true,
+  "discord": "NOT POSTED - rule 3. Every finding is in the KNOWN set (price-on-feed, staged-publish, cost-model, public-exposure); 0 new findings, 0 could NOT prove, 0 broken/missing. The runner summary is the column-0 VERDICT line and it reads CLEAN. No slot missed, no content change -> nothing to announce in #ops (1538825048465481728). Rule 4a independently agrees: discord_posted_findings['pass-completion'] already carries the only in-window missed slot and no new slot appeared, so no second entry was added.",
+  "pass_completion": {
+   "checker": "ops/check-pass-completion.py - CLEAN (rc=0)",
+   "runner_line": "VERDICT: CLEAN - 1 missed slot(s) were already announced (last announced 2026-10-30T14:29:00Z, message 1565733938788311203); every OTHER expected slot",
+   "missed_slots_new": [],
+   "missed_slots_already_announced": [
+    "2026-10-30T13:23:00Z"
+   ],
+   "why_this_is_not_a_new_finding": "The 13:23Z gap was already announced by the 14:23Z pass (msg 1565733938788311203) and is still inside the checker 6h window, so it is re-derived on every pass for ~6h. The checker's new-vs-already-announced split suppressed it and it returned CLEAN. No NEW slot appeared and the content is unchanged -> no Discord post (rule 4a independently agrees)."
+  },
+  "known_findings_unchanged": "price-on-feed (5 staged caption(s) and 1 live post(s) carry a price on a public feed), staged-publish (EXPOSED - staged content that never published), cost-model (awyjxfplygag.space.mcode.io -> belowfloor, dutyrate, farm gate, farmgateusdperkg, fxusdzar, landedzarperkg, margin floor, vatrate), public-exposure (RESULT: DRIFT - a credential that still authenticates is reachable from the public remote) - all four byte-identical in content to the 16:23Z pass, all already escalated, none re-posted.",
+  "checker_detail": {
+   "drift": "pages: 18  clean: 18  drift: 0  unreachable: 0",
+   "price-on-feed": "VERDICT: FINDING - 5 staged caption(s) and 1 live post(s) carry a price on a public feed.",
+   "staged-publish": "VERDICT: EXPOSED - staged content that never published.",
+   "cost-model": "https://awyjxfplygag.space.mcode.io -> belowfloor, dutyrate, farm gate, farmgateusdperkg, fxusdzar, landedzarperkg, margin floor, vatrate",
+   "tmp-surface": "VERDICT: CLEAN",
+   "credential-slots": "VERDICT: CLEAN - every credential slot holds a credential (48 slot(s) checked, 1 short-but-real)",
+   "tracked-creds": "not matching any live credential : 0",
+   "dead-inbox": "[ OK ] dead inbox check   CLEAN   no provably-unreachable mailbox referenced in code",
+   "mail": "VERDICT: OK - 1087 message(s) scanned across 13 inbox(es).",
+   "scanner-log": "credentials in an exposed state: 0",
+   "cron-payload-claims": "CLEAN   27 payload(s) scanned - no hardcoded system-status claims",
+   "cron-times": "all time-named jobs fire at the time their name promises",
+   "cron-timeouts": "no job's timeout is an outlier against its own siblings",
+   "cron-kills": "no job's last run was killed by a timeout its current budget could not have avoided",
+   "pass-completion": "VERDICT: CLEAN - 1 missed slot(s) were already announced (last announced 2026-10-30T14:29:00Z, message 1565733938788311203); every OTHER expected slot",
+   "spec-traceability": "VERDICT: OK - 5 publishable product(s), every quality claim traced to its owning source row.",
+   "client-secret": "CLEAN - 2393 client file(s) scanned - no secret-named VITE_ variable is reachable from the browser",
+   "leak-sources": "total hardcoded literals: 7",
+   "discord-credential": "VERDICT: CLEAN - no live credential literal in any scanned message",
+   "public-exposure": "RESULT: DRIFT",
+   "pre-push-guard": "VERDICT: CLEAN - the commit and push guards are installed at the path git actually uses, executable, and identical to their sources.",
+   "git-index": "VERDICT: CLEAN - the index is intact and consistent with HEAD.",
+   "credential-fragments": "VERDICT: CLEAN - no fragment of any credential in tracked source.",
+   "cred-resolution": "VERDICT: CLEAN - 1140 credential-bearing tracked file(s) scanned"
+  },
+  "content_change_vs_16_23_pass": "NONE - diff -u ops/logs/heartbeat-pass-2026-10-30_1623.log ops/logs/heartbeat-pass-2026-10-30_1723.log returns rc=0 (byte-identical). Every finding, every CLEAN verdict, the runner summary and the column-0 VERDICT line are unchanged.",
+  "runtime_note": "The pass took ~3m47s (17:23:00Z -> 2026-10-30T17:26:46Z). Waited on ONE bounded `tail --pid` command for the pid to exit - no poll loop. The cron payload's '24 READ-ONLY checkers and takes about 4 minutes' is accurate on both counts.",
   "read_only": true,
   "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json. NO Discord message was sent (rule 3)."
  }
