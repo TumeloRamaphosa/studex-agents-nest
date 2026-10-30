@@ -2621,7 +2621,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T17:26:46Z",
+ "last_heartbeat_pass": "2026-10-30T20:26:50Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3445,9 +3445,11 @@
     "2026-10-30T04:23:00Z",
     "2026-10-30T08:23:00Z",
     "2026-10-30T09:23:00Z",
-    "2026-10-30T13:23:00Z"
+    "2026-10-30T13:23:00Z",
+    "2026-10-30T18:23:00Z",
+    "2026-10-30T19:23:00Z"
    ],
-   "missed_slots_note": "UNION of every slot already announced for this finding. A future pass should treat the finding as ALREADY POSTED when its derived missed-slot set is a SUBSET of this list (the checker's 6h window keeps an announced slot visible for 6h, so it WILL be re-derived). Post again ONLY if a NEW slot appears that is not in this list, or if the content/meaning changes.",
+   "missed_slots_note": "UNION of every slot already announced for this finding. A future pass should treat the finding as ALREADY POSTED when its derived missed-slot set is a SUBSET of this list (the checker's 6h window keeps an announced slot visible for 6h, so it WILL be re-derived). Post again ONLY if a NEW slot appears that is not in this list, or if the content/meaning changes. NOTE: a slot can also be announced to the channel by a DIFFERENT job (e.g. the CEO Evening Wrap) - so read the channel before posting, not only this ledger.",
    "posts": [
     {
      "posted_at": "2026-10-30T06:31:30Z",
@@ -3477,13 +3479,23 @@
       "2026-10-30T13:23:00Z"
      ],
      "why": "NEW missed-slot set - the 13:23Z slot, a 5th silent pass slot today and the 3rd distinct occurrence of the same upstream 'API rate limit reached' cause. The checker's new-vs-already-announced split suppressed the stale 09:23Z gap and fired only on 13:23Z, so this is a real change, not a duplicate."
+    },
+    {
+     "posted_at": "2026-10-30T20:05:29Z",
+     "messageId": "1565818951362150401",
+     "posted_by_pass": "ceo-evening-wrap (NOT this pass)",
+     "missed_slots": [
+      "2026-10-30T18:23:00Z",
+      "2026-10-30T19:23:00Z"
+     ],
+     "why": "The 18:23Z and 19:23Z slots were already announced to #ops by the CEO EVENING WRAP job at 20:05:29Z, 18 minutes before this pass ended, with the same two slots and the same upstream rate_limit cause. This pass therefore POSTED NOTHING - but the slots are recorded here so the checker's new-vs-already-announced split suppresses them on later passes instead of re-announcing them every hour."
     }
    ],
    "channel": "1538825048465481728 (#ops)",
-   "posted_at": "2026-10-30T14:29:00Z",
-   "messageId": "1565733938788311203",
-   "posted_by_pass": "pass_1423_2026_10_30",
-   "rule": "Do NOT re-post this finding again for a slot set already listed in `posts[].missed_slots` (and therefore in the union at the top level). The checker's 6h window keeps an announced slot visible until ~6h after it, so later passes WILL re-derive it. Post again ONLY if a NEW slot is missed or the content changes. Three posts so far, all the same upstream cause: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z)."
+   "posted_at": "2026-10-30T20:05:29Z",
+   "messageId": "1565818951362150401",
+   "posted_by_pass": "ceo-evening-wrap (announced 20:05:29Z; pass_2023_2026_10_30 posted nothing - already announced)",
+   "rule": "Do NOT re-post this finding again for a slot set already listed in `posts[].missed_slots` (and therefore in the union at the top level). The checker's 6h window keeps an announced slot visible until ~6h after it, so later passes WILL re-derive it. Post again ONLY if a NEW slot is missed or the content changes. Three posts so far, all the same upstream cause: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z). Fourth slot-pair added 2026-10-30T20:23Z (18:23Z + 19:23Z) - announced by the CEO EVENING WRAP at 20:05:29Z, msg 1565818951362150401, so pass_2023_2026_10_30 posted nothing. Four announcements so far: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z), 20:05Z (18:23Z/19:23Z, by the EOD wrap)."
   }
  },
  "pass_0723_2026_10_30": {
@@ -4001,5 +4013,75 @@
   "runtime_note": "The pass took ~3m47s (17:23:00Z -> 2026-10-30T17:26:46Z). Waited on ONE bounded `tail --pid` command for the pid to exit - no poll loop. The cron payload's '24 READ-ONLY checkers and takes about 4 minutes' is accurate on both counts.",
   "read_only": true,
   "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json. NO Discord message was sent (rule 3)."
+ },
+ "pass_2023_2026_10_30": {
+  "end": "2026-10-30T20:26:50Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-30_2023.log (the pass END time, not the time reading started)",
+  "checkers": 24,
+  "clean": 19,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure",
+   "pass-completion"
+  ],
+  "known_findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [
+   "pass-completion"
+  ],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: NEW FINDING(S) - not previously escalated.",
+  "known_set_exact": true,
+  "discord": "NOT POSTED - the finding (and its exact missed-slot set) was ALREADY announced to #ops (1538825048465481728) by the CEO EVENING WRAP job at 2026-10-30T20:05:29Z, messageId 1565818951362150401, whose text says 'the heartbeat pass job itself is now erroring rate_limit (2 consecutive). 18:23Z and 19:23Z produced no pass'. That is the same finding, the same two slots and the same cause, posted 18 minutes before this pass ended. Rule 4a ('never post the same finding twice in a row' + 'post NOTHING if the SAME missed-slot set / SAME content was already posted') therefore governs over rule 4: posting again would be a duplicate to humans. The channel was read before deciding. The slots were still added to the union so the checker's new-vs-already-announced split suppresses them on later passes instead of re-posting them.",
+  "pass_completion": {
+   "checker": "ops/check-pass-completion.py - FINDING (rc=1)",
+   "runner_line": "VERDICT: 2 expected pass slot(s) did not complete - the guards did not run for that window",
+   "missed_slots_new": [
+    "2026-10-30T18:23:00Z",
+    "2026-10-30T19:23:00Z"
+   ],
+   "missed_slots_already_announced": [],
+   "cause": "Both cron turns fired on time and then died ~25s in on 'API rate limit reached' before the runner ever started. Cron run history: runAtMs 1793384580017 (2026-10-30T18:23:00Z, 25179ms, status error) and runAtMs 1793388180008 (2026-10-30T19:23:00Z, 25406ms, status error); job state consecutiveErrors=2, lastErrorReason=rate_limit. Neither cron-times nor cron-kills can see this - a run that fires on time and then dies of a provider throttle looks healthy to both.",
+   "evidence": "1) no ops/logs/heartbeat-pass-2026-10-30_1823.log / _1923.log, no pass-record-2026-10-30_1823.json / _1923.json, no pass_1823_2026_10_30 / pass_1923_2026_10_30 key; 2) cron runs history above; 3) runner summary counts 2 expected slots did not complete.",
+   "why_not_posted": "Already announced to the channel by the CEO EVENING WRAP at 20:05:29Z (msg 1565818951362150401) with the same slots and the same cause. Announce-once wins over announce-again: no second post."
+  },
+  "known_findings_unchanged": "price-on-feed (5 staged caption(s) and 1 live post(s) carry a price on a public feed), staged-publish (EXPOSED - staged content that never published), cost-model (awyjxfplygag.space.mcode.io -> belowfloor, dutyrate, farm gate, farmgateusdperkg, fxusdzar, landedzarperkg, margin floor, vatrate), public-exposure (RESULT: DRIFT - a credential that still authenticates is reachable from the public remote) - all four byte-identical in content to the 17:23Z pass, all already escalated, none re-posted.",
+  "checker_detail": {
+   "drift": "pages: 18  clean: 18  drift: 0  unreachable: 0",
+   "price-on-feed": "VERDICT: FINDING - 5 staged caption(s) and 1 live post(s) carry a price on a public feed.",
+   "staged-publish": "VERDICT: EXPOSED - staged content that never published.",
+   "cost-model": "https://awyjxfplygag.space.mcode.io -> belowfloor, dutyrate, farm gate, farmgateusdperkg, fxusdzar, landedzarperkg, margin floor, vatrate",
+   "tmp-surface": "VERDICT: CLEAN",
+   "credential-slots": "VERDICT: CLEAN - every credential slot holds a credential (48 slot(s) checked, 1 short-but-real)",
+   "tracked-creds": "not matching any live credential : 0",
+   "dead-inbox": "[ OK ] dead inbox check   CLEAN   no provably-unreachable mailbox referenced in code",
+   "mail": "VERDICT: OK - 1089 message(s) scanned across 13 inbox(es).",
+   "scanner-log": "credentials in an exposed state: 0",
+   "cron-payload-claims": "CLEAN   27 payload(s) scanned - no hardcoded system-status claims",
+   "cron-times": "all time-named jobs fire at the time their name promises",
+   "cron-timeouts": "no job's timeout is an outlier against its own siblings",
+   "cron-kills": "no job's last run was killed by a timeout its current budget could not have avoided",
+   "pass-completion": "VERDICT: 2 expected pass slot(s) did not complete - the guards did not run for that window",
+   "spec-traceability": "VERDICT: OK - 5 publishable product(s), every quality claim traced to its owning source row.",
+   "client-secret": "CLEAN - 2393 client file(s) scanned - no secret-named VITE_ variable is reachable from the browser",
+   "leak-sources": "total hardcoded literals: 7",
+   "discord-credential": "VERDICT: CLEAN - no live credential literal in any scanned message",
+   "public-exposure": "RESULT: DRIFT",
+   "pre-push-guard": "VERDICT: CLEAN - the commit and push guards are installed at the path git actually uses, executable, and identical to their sources.",
+   "git-index": "VERDICT: CLEAN - the index is intact and consistent with HEAD.",
+   "credential-fragments": "VERDICT: CLEAN - no fragment of any credential in tracked source.",
+   "cred-resolution": "VERDICT: CLEAN - 1140 credential-bearing tracked file(s) scanned"
+  },
+  "content_change_vs_17_23_pass": "diff -u ops/logs/heartbeat-pass-2026-10-30_1723.log ops/logs/heartbeat-pass-2026-10-30_2023.log returns rc=1 with exactly three changed hunks: the mail checker count (1087 -> 1089), the pass-completion line (CLEAN -> FINDING, with the runner summary and the clean/new counters following). Every one of the four known findings is byte-identical, so no known finding's content changed.",
+  "runtime_note": "The pass took ~3m50s (20:23:00Z -> 2026-10-30T20:26:50Z). Waited on ONE bounded `tail --pid` command for the pid to exit - no poll loop.",
+  "read_only": true,
+  "mutations": "none to any live surface - no credential touched, no surface written, no cron schedule changed, no post published, no config file modified. Writes were limited to the pass log, this record, memory/2026-10-30.md and memory/heartbeat-state.json. NO Discord message was sent (announce-once: the same slots + same content were already posted at 20:05:29Z)."
  }
 }
