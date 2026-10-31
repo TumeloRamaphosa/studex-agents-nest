@@ -2621,7 +2621,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-31T00:27:06Z",
+ "last_heartbeat_pass": "2026-10-31T01:27:07Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -3526,6 +3526,15 @@
     }
    ],
    "missed_slots_note": "UNION of every slot already announced for this finding. A future pass should treat the finding as ALREADY POSTED when its derived missed-slot set is a SUBSET of this list. Post again ONLY if a NEW slot appears that is not in this list, or if the content/meaning changes. NOTE: a slot can also be announced to the channel by a DIFFERENT job - so read the channel before posting, not only this ledger."
+  },
+  "caviar-on-feed": {
+   "channel": "1538825048465481728 (#ops)",
+   "posted_at": "2026-10-31T01:02:26Z",
+   "messageId": "1565893681188442216",
+   "posted_by_pass": "NOT this pass - the turn that built ops/check-caviar-on-feed.py (01:02-01:05Z, commit 00850f2) posted it 3 minutes BEFORE the checker was registered.",
+   "missed_slots": [],
+   "why": "The finding's CONTENT was already announced to #ops: three live public posts offering caviar (Threads 8676561/DfG_M2bEd5U, IG 8634450, IG 8592075). The pass_0123_2026_10_31 pass derived the SAME content - same count, same post ids, same owner-side remedy - so rule 4a says post NOTHING and do not add a second entry. Recorded here so a later pass suppresses it rather than re-announcing it.",
+   "known_in_registry": true
   }
  },
  "pass_0723_2026_10_30": {
@@ -4159,5 +4168,35 @@
   "discord_post_reason": "Rule 3: every finding is in the known set, nothing broken, nothing could-not-prove -> post NOTHING. The discord_posted_findings ledger was NOT modified (no post means no new entry; the pass-completion missed-slot set was already announced at 2026-10-31T00:05:00Z, message 1565879713866580139).",
   "pass_completion": "CLEAN - 3 missed slot(s) were already announced (last announced 2026-10-31T00:05:00Z, message 1565879713866580139); every OTHER expected slot produced a completed pass. The 30 Oct silent-slot cluster (provider throttle) is now announced-and-suppressed, not silent.",
   "note": "24/24 checkers proved their answer. Known escalations unchanged in content: price-on-feed (5 staged captions + 1 live post carry a price on a public feed), staged-publish (EXPOSED), cost-model (https://awyjxfplygag.space.mcode.io leaks belowfloor/dutyrate/farm gate/farmgateusdperkg/fxusdzar/landedzarperkg/margin floor/vatrate), public-exposure (RESULT: DRIFT)."
+ },
+ "pass_0123_2026_10_31": {
+  "end": "2026-10-31T01:27:07Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-31_0123.log (the pass END time, not the time reading started)",
+  "log": "ops/logs/heartbeat-pass-2026-10-31_0123.log",
+  "checkers": 25,
+  "clean": 20,
+  "findings": [
+   "price-on-feed",
+   "caviar-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "known_findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [],
+  "broken": [],
+  "could_not_prove": [],
+  "runner_summary": "VERDICT: CLEAN - every checker proved its answer. No new findings.",
+  "known_set_exact": false,
+  "known_set_note": "The 5th finding, caviar-on-feed, is the 25th checker - added tonight at 01:05Z (commit 00850f2) and marked known=yes in ops/heartbeat-checkers.tsv, so the runner counts it as a KNOWN escalation (its summary: 'known escalations : 5', 'NEW findings : 0'). It is therefore not a new finding, but it is also not in the 4-finding known set named in the pass instructions, so it was checked against rule 4a explicitly.",
+  "caviar_guard_first_pass": "First pass to include the caviar guard. It fired: 'VERDICT: FINDING - 3 live public post(s) offer caviar.' Same content as msg 1565893681188442216 posted to #ops at 01:02:26Z (Threads 8676561/DfG_M2bEd5U, IG 8634450, IG 8592075) - same three post ids, same count, same remedy (owner deletes; Blotato has no delete route for a published post).",
+  "pass_completion": "CLEAN - '2 missed slot(s) were already announced (last announced 2026-10-31T00:05:00Z, message 1565879713866580139); every OTHER expected slot' produced a completed pass. No new silent slot.",
+  "discord_posted": false,
+  "discord_post_reason": "NOT POSTED. The runner's column-0 verdict is CLEAN with 0 new findings, 0 broken and 0 could-not-prove. The four instruction-known findings are present with detail lines byte-identical to the 00:23Z pass (no content change). The 5th, caviar-on-feed, is a KNOWN escalation per the runner's own summary AND its content was already announced to #ops at 01:02:26Z (msg 1565893681188442216) - same three posts, same meaning. Rule 4a: post again ONLY if a NEW slot is missed or the content changes. Neither happened, so posting it would repeat a finding the channel already has."
  }
 }
