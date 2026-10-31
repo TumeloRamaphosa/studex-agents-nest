@@ -337,3 +337,20 @@ and no credential helper is configured, so a push needs `GIT_ASKPASS` with a
 small script that reads `$GITHUB_PAT` from the environment — never put the
 token in the remote URL, argv or a log. The PAT works; the earlier "PAT
 broken" note was a misdiagnosis of the non-fast-forward error.
+
+### Live public-feed breaches — 2026-10-31 (owner-side, Blotato has no delete route)
+🔑 **The caviar breach is THREE live posts, not one** (found by `ops/check-caviar-on-feed.py`, a
+known escalation that runs every pass until they are gone):
+* **Threads `8676561` / `DfG_M2bEd5U`** (30 Oct 06:56Z) — retail Oscietra offer → **DELETE**.
+* **Instagram `8634450`** (29 Oct 07:14Z) — "Take our caviar import. The DAFF veterinary import permit
+  must be applied for…" → a public caviar-import capability while the permit stack is NOT assembled
+  → **DELETE**. (CORRECTION: this post does **not** carry the marble claim.)
+* **Instagram `8592075`** (28 Oct 07:03Z) — "Caviar imported and distributed on a 7–14 day lead,
+  priced per 100g" → no number, so the price guard could never see it → **DELETE**.
+* **Threads `8633885`** (29 Oct) — the **only** post carrying "marbling grade 5" → **EDIT** the
+  caption to "marble scores 8+ to 11+".
+- All three deletions are ~2 minutes of work in the Threads/Instagram apps; IG allows no caption
+  edit, so a repost of the B2B lead-time content needs the caviar line stripped from the source
+  first (the publish-path policy refuses that caption as it stands, so it cannot re-publish itself).
+- 🔑 *A guard whose remedy is a deletion must know whose surface it reads: this Blotato key also
+  carries `laisa_aesthetics` (55765), another brand — the checker scans only our accounts.*
