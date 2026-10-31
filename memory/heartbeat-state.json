@@ -2621,7 +2621,7 @@
    "psq9xaisb9kf"
   ]
  },
- "last_heartbeat_pass": "2026-10-30T21:26:58Z",
+ "last_heartbeat_pass": "2026-10-31T00:27:06Z",
  "open_owner_actions": [
   "Shopify storefront still on the old ladder (500g R450 / 1kg R1,450 / 7kg R12,500) \u2014 Admin API 401 from this box"
  ],
@@ -4132,5 +4132,32 @@
   "could_not_prove": [],
   "broken": [],
   "note": "dead-inbox tripped for the first time. 3 hits, all deliberate denylist/registry entries naming a dead address (ciie-buyer-brief/check-bundle.mjs FORBIDDEN list; coffee-fob-band/band.generated.json + compute-band-card.mjs deadOnes registry). Triggered by the 21:19Z build regenerating those two artifacts. Fixed per the checker's own documented remedy: per-file exceptions in ops/dead-inbox-exceptions.txt. Checker re-run CLEAN; test suite 6/6 incl. the negative control. Posted to Discord #ops (messageId 1565840075110088815)."
+ },
+ "pass_0023_2026_10_31": {
+  "end_time": "2026-10-31T00:27:06Z",
+  "end_source": "mtime of ops/logs/heartbeat-pass-2026-10-31_0023.log (the pass END time, not the time reading started)",
+  "log": "ops/logs/heartbeat-pass-2026-10-31_0023.log",
+  "verdict": "CLEAN - every checker proved its answer. No new findings.",
+  "checkers_run": 24,
+  "clean": 20,
+  "findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "known_findings": [
+   "price-on-feed",
+   "staged-publish",
+   "cost-model",
+   "public-exposure"
+  ],
+  "new": [],
+  "broken": [],
+  "could_not_prove": [],
+  "discord_posted": false,
+  "discord_post_reason": "Rule 3: every finding is in the known set, nothing broken, nothing could-not-prove -> post NOTHING. The discord_posted_findings ledger was NOT modified (no post means no new entry; the pass-completion missed-slot set was already announced at 2026-10-31T00:05:00Z, message 1565879713866580139).",
+  "pass_completion": "CLEAN - 3 missed slot(s) were already announced (last announced 2026-10-31T00:05:00Z, message 1565879713866580139); every OTHER expected slot produced a completed pass. The 30 Oct silent-slot cluster (provider throttle) is now announced-and-suppressed, not silent.",
+  "note": "24/24 checkers proved their answer. Known escalations unchanged in content: price-on-feed (5 staged captions + 1 live post carry a price on a public feed), staged-publish (EXPOSED), cost-model (https://awyjxfplygag.space.mcode.io leaks belowfloor/dutyrate/farm gate/farmgateusdperkg/fxusdzar/landedzarperkg/margin floor/vatrate), public-exposure (RESULT: DRIFT)."
  }
 }
