@@ -47,6 +47,7 @@ PY_TESTS=(
   ops/test-staged-publish.py
   ops/test-blotato-probe-auth.py
   ops/test-price-on-feed.py
+  ops/test-caviar-on-feed.py
   ops/test-check-latest-mail.py
   ops/test-unbound-time-names.py
   ops/test-preflight-gate-wording.py
