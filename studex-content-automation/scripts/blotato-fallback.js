@@ -92,6 +92,32 @@ function charWeight(ch) {
 function truncate(text, platform) {
   const max = LIMITS[platform];
   if (!max) return text;
+
+  // 🔑 CTA-SAFE TRUNCATION - the shared Python policy owns the cut, so the
+  // two publish paths cannot drift apart.
+  //
+  // THE DEFECT (2026-10-31): this function cut the caption at 497 chars and
+  // appended "...", and the CTA lives at the END of the caption - so every
+  // Threads post lost its call to action. Measured on the LIVE feed: 5/5
+  // Threads posts carried NO CTA and every one was exactly 500 chars, while
+  // 5/5 Instagram posts carried one (they were never truncated). The
+  // generator's validator had already approved the PRE-truncation caption,
+  // so no gate caught it.
+  //
+  // The helper cuts the PROSE and keeps the CTA + hashtags. It is called via
+  // the same spawnSync pattern this file already uses for the caption policy
+  // (one implementation, not two).
+  const policy = path.join(__dirname, '..', '..', 'scripts', 'caption_policy.py');
+  const r = spawnSync('python3', [policy, '--truncate', platform, text || ''], {
+    encoding: 'utf8',
+    maxBuffer: 1024 * 1024,
+  });
+  if (r.status === 0 && r.stdout !== undefined) {
+    const out = r.stdout.replace(/\n$/, '');
+    if (out) return out;
+  }
+  // The shared helper could not be run. Fall back to the old cut rather than
+  // publishing something we cannot verify.
   let out = '';
   let n = 0;
   for (const ch of Array.from(text)) {

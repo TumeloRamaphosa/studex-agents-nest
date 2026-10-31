@@ -287,7 +287,12 @@ def build_platform_texts(content):
         ig_content = ig_content.rstrip()
     threads = clean
     if len(threads) > 500:
-        threads = threads[:497].rsplit(" ", 1)[0] + "..."
+        # Truncate the PROSE, never the CTA. The CTA lives at the end of the
+        # caption, so the old plain cut at 497 chars deleted it every time:
+        # 5/5 live Threads posts carried NO call to action while 5/5
+        # Instagram posts did (they were never truncated). The shared helper
+        # lives in caption_policy.py so both publish paths behave identically.
+        threads, _dropped = caption_policy.truncate_for_platform(threads, "threads")
 
     texts = {}
     for platform in ("facebook", "instagram", "linkedin", "threads"):

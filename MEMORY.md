@@ -16,7 +16,10 @@
 - Discord exec approvals are unavailable; `approval-timeout` means the command did not run. Avoid repeated retries.
 
 ## 🎯 PLAN FOR TODAY — 31 Oct 2026
-**Owner's five minutes (each releases something):** **delete 3 live caviar posts** (Threads
+**Owner's five minutes (each releases something):** **edit the 5 CTA-less Threads posts**
+(`8676561`, `8633885`, `8591759`, `8549930`, `8508724` - each must END with an ask; this is the
+"turn reach into replies" lever: 1226 views / 709 reach already, but **0 comments and 0 follows on
+every post**) + **delete 3 live caviar posts** (Threads
 `DfG_M2bEd5U`, IG `8634450`, IG `8592075` — now **PROVEN** un-automatable: the Blotato API has no
 delete route) + **edit** Threads `8633885` to "marble scores 8+ to 11+" · **Shopify Admin token**
 for `57228b-3` (P1 — the only revenue blind spot + the biltong ladder sync; the store still sells
@@ -404,3 +407,27 @@ known escalation that runs every pass until they are gone):
   false-green).
 - **Reach data is reachable**: each post carries `state.analytics.latest`; `GET /analytics` answers
   200 ⇒ reach/comments for our own posts are readable from the fleet.
+
+### The feed reached people and asked for nothing - 2026-10-31 (FIXED, live-verified)
+- **Our own reach was readable all along**: `GET /posts` carries `state.analytics.latest.metrics`
+  per post (views / reach / likes / comments / profile visits / follows / shares). No scraping
+  needed. Best post `8549928` (IG, 27 Oct): **1226 views, 709 reach, 17 likes, 9 profile visits,
+  0 follows**.
+- **EVERY post on both platforms had 0 comments, 0 follows and 0 shares.** The account can reach
+  people; it never asks for anything.
+- **ROOT CAUSE: truncation ate the CTA.** Threads captions are capped at 500 chars and BOTH publish
+  paths cut at 497 + "..." (`scripts/daily-post.py`, `studex-content-automation/scripts/
+  blotato-fallback.js`). The CTA lives at the END of a caption, so the cut deleted exactly it - and
+  the generator's validator ("no closing question/CTA") had already approved the **pre-truncation**
+  text, so every gate read green. Measured: IG **5/5** carry a CTA, Threads **0/5** (all exactly
+  499-500 chars). KEY *A validator that checks the text BEFORE the transform is not checking the
+  text that ships.*
+- **FIXED** in `scripts/caption_policy.py` (`truncate_for_platform` cuts the PROSE, keeps the CTA +
+  hashtags; `cta_parts` splits by INDEX; `has_cta` requires the question in the TAIL; `weighted_len`
+  matches the JS emoji rule). Path A calls the helper; Path B shells out to it via `--truncate`.
+- **GUARD**: `ops/check-cta-on-feed.py` (26th checker, known escalation) - imports `has_cta()` from
+  the shared policy, allow-lists our accounts only, `0` clean / `1` finding / `2` could-not-prove,
+  fails closed on an empty feed. Live: **5/5 Threads posts are CTA-less** (owner-side edit; Blotato
+  has no edit route). Registry 127/127; suite **63 python + 8 other, ALL PASS**.
+- 🔑 *Do not generalise from the newest N posts - `8508724` (Threads, 792 views) disproved my own
+  "IG is 4-6x Threads" claim.*
