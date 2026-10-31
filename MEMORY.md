@@ -354,3 +354,19 @@ known escalation that runs every pass until they are gone):
   first (the publish-path policy refuses that caption as it stands, so it cannot re-publish itself).
 - 🔑 *A guard whose remedy is a deletion must know whose surface it reads: this Blotato key also
   carries `laisa_aesthetics` (55765), another brand — the checker scans only our accounts.*
+
+### Mac / fleet access - 2026-10-31 KEY THE BRIDGE IS THE ORGO VM, NOT TAILSCALE
+- **The Orgo VM is REACHABLE from the fleet: `67.213.119.157:22` is OPEN**
+  (`SSH-2.0-OpenSSH_9.6p1 Ubuntu`). The **API** keys are dead (401) - the **host never was**.
+  KEY *A credential verdict is a verdict about a credential, not about the host; carrying it forward
+  as "unreachable" erased a working route.*
+- **SSH is public-key only** (password auth disabled) => the fleet needs its key in the VM
+  `authorized_keys`. Fleet keypair: `/root/.ssh/id_ed25519` (mode 600, **outside** `/workspace`).
+  Public key handed to Tumelo in #ops (msg `1565898666869522533`).
+- **The fleet has no tailnet route**: `100.86.119.17` (node `orgo-auto-meat`, ON the tailnet)
+  times out on 22 and 80; no Tailscale client here, `/dev/net/tun` absent, every install source 404s.
+  => **A fresh Tailscale key is NOT the critical path** - the Orgo VM reaches the tailnet for us.
+- Mac side still owed by Tumelo: **Tailscale SSH** (`sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale
+  set --ssh` + a tailnet SSH ACL) **or** macOS **Remote Login ON**. Remote Login is currently off.
+- Still true and unchanged: `TAILSCALE_API_KEY` -> "API token invalid"; `TAILSCALE_AUTH_KEY` was
+  never consumed (`tailscale up` never ran) so it may still be valid.
