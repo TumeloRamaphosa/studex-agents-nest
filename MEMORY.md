@@ -15,19 +15,24 @@
 - If blocked by permissions, do not modify other config files; inform Tumelo and ask how to proceed.
 - Discord exec approvals are unavailable; `approval-timeout` means the command did not run. Avoid repeated retries.
 
-## 🎯 PLAN FOR TODAY — 29 Oct 2026
-**Owner's five minutes (each releases something):** Shopify Admin token for `57228b-3` (P1 — the
-only revenue blind spot + the biltong ladder sync; the store still sells R450/R1,450/R12,500 with
-the 19% case arbitrage live) · caviar sign-off + take `ess0ocgcd9f0` down (**Christmas window
-closes 13–15 Nov**) · **one word and the 3 parked captions publish** (26/25/27 Oct, price-stripped)
-· edit Threads `8633885` ("marble score 8+ to 11+", ONE post) · confirm the phone digits
-`+27 94 988 8737` on 8 live pages · delete 4 public deploys (`awyjxfplygag` cost model,
-`nudsduvyrc12`+`bkqn328wj5a6` old prices, `ess0ocgcd9f0` caviar) · GitHub PAT + rotate Blotato &
-GoDaddy · reconnect Blotato fb `38744` + LinkedIn `26628` · coffee FOB re-base now or at CIIE (5 days).
-**My build list:** make the canonical pass a **cron job** (today it was silent 3 h 45 m because it
-only runs when a session is awake) · fix the vault-sync payload (drop the PAT-gated `git push`,
-bound the turn's scope) · caption set ready for one-word release · build the caviar-free gifting
-page but **do not deploy** before sign-off · propose `git gc`/prune (219 MiB loose objects).
+## 🎯 PLAN FOR TODAY — 31 Oct 2026
+**Owner's five minutes (each releases something):** **delete 3 live caviar posts** (Threads
+`DfG_M2bEd5U`, IG `8634450`, IG `8592075` — now **PROVEN** un-automatable: the Blotato API has no
+delete route) + **edit** Threads `8633885` to "marble scores 8+ to 11+" · **Shopify Admin token**
+for `57228b-3` (P1 — the only revenue blind spot + the biltong ladder sync; the store still sells
+R450/R1,450/R12,500 and the 7kg case is **+23%/kg, not +19%** — it costs R2,350 MORE than 7 × 1kg)
+· caviar sign-off + the 30% floor + take `ess0ocgcd9f0` down (**Christmas window closes 13–15
+Nov**) · **one word and the 3 parked captions publish** (26/25/27 Oct, price-stripped) · **paste the
+fleet SSH key on the Orgo VM** (one line — opens the Mac path; the key is in the 31 Oct #ops post)
+· confirm the phone digits `+27 94 988 8737` on 8 live pages · delete 4 public deploys
+(`awyjxfplygag` cost model, `nudsduvyrc12`+`bkqn328wj5a6` old prices, `ess0ocgcd9f0` caviar) ·
+GitHub PAT + rotate Blotato & GoDaddy · reconnect Blotato fb `38744` + LinkedIn `26628` ·
+coffee FOB re-base now or at CIIE (5 days) · CIIE badge (5–10 Nov).
+**My build list:** make the coverage path **LLM-free** (9 hourly slots died of an upstream rate
+limit) · make every note heading **derived from a clock** (I typed one tonight) · fix the vault-sync
+payload (drop the PAT-gated `git push`, bound the turn's scope) · caption set ready for one-word
+release · build the caviar-free gifting page but **do not deploy** before sign-off · propose
+`git gc`/prune (219 MiB loose objects).
 **Money order:** see the money → stop selling below the site's own prices → capture Christmas before
 15 Nov → turn reach into replies → take the cost model off the public internet.
 
@@ -370,3 +375,19 @@ known escalation that runs every pass until they are gone):
   set --ssh` + a tailnet SSH ACL) **or** macOS **Remote Login ON**. Remote Login is currently off.
 - Still true and unchanged: `TAILSCALE_API_KEY` -> "API token invalid"; `TAILSCALE_AUTH_KEY` was
   never consumed (`tailscale up` never ran) so it may still be valid.
+
+### Blotato API surface — 2026-10-31 (measured, so nobody re-hunts it)
+- **NO write route for an existing post** — `DELETE`/`PATCH`/`PUT`/`POST` on `/posts/{id}` and on
+  `/posts/{id}/{update,edit,caption,hide,unpublish,archive,delete}` all return **404 "Route not
+  found"** (probed with a valid body against a non-existent id, so validation could not mask
+  routing). Also 404: `/post-submissions/{id}`, `/scheduled-posts/{id}`.
+  KEY *The caviar/marble deletions are **owner-side by API design**, not by neglect.*
+- **What exists:** `GET /posts` (list), `GET /users/me`, `GET /users/me/accounts`,
+  **`GET /analytics`**, `POST /posts` (create). `GET /accounts` -> 401.
+- WARN **TRAP: `GET /posts/{id}` is a STUB that returns 200 for ANY id** — it echoes the path
+  segment back as `postSubmissionId` (`GET /posts/comments` -> `{"postSubmissionId":"comments",
+  "status":"in-progress"}`). Never use a per-post GET to prove a post exists; **read the LIST
+  endpoint and count `items`** (this is what `ops/check-caviar-on-feed.py` does ⇒ it cannot
+  false-green).
+- **Reach data is reachable**: each post carries `state.analytics.latest`; `GET /analytics` answers
+  200 ⇒ reach/comments for our own posts are readable from the fleet.

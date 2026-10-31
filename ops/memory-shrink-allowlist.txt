@@ -17,3 +17,20 @@ memory/2026-10-29.md :: 08:45–09:50 UTC — THE ROTATION LIST WAS WRONG: 1 CON
 #   09:13–09:45 UTC — THE PASS WAS CLEAN, AND THE TWO GUARDS THE MORNING NEEDED NOW EXIST
 #     -> 09:13–09:33 UTC — THE PASS WAS CLEAN, AND THE TWO GUARDS THE MORNING NEEDED NOW EXIST
 memory/2026-10-29.md :: 09:13–09:45 UTC — THE PASS WAS CLEAN, AND THE TWO GUARDS THE MORNING NEEDED NOW EXIST
+
+# 2026-10-31 01:40 UTC — the rolling "plan for today" section was REFRESHED for 31 Oct (it was
+# still headed 29 Oct, two days stale, and carried a fact already corrected on 29 Oct).
+# This is a RENAME of the same rolling section, not a dropped one: every P0 it listed is carried
+# into the 31 Oct version, and the 29 Oct entries that are now DONE are gone because they are
+# done (the canonical pass IS a cron job now). Nothing was dropped that a session still needs.
+# Old title -> new title:
+#   🎯 PLAN FOR TODAY — 29 Oct 2026
+#     -> 🎯 PLAN FOR TODAY — 31 Oct 2026
+# Changes inside the section, for the record:
+#   - caviar item: was "sign-off + take ess0ocgcd9f0 down"; now also 3 live post DELETIONS
+#     (Threads DfG_M2bEd5U, IG 8634450, IG 8592075) + 1 caption EDIT (Threads 8633885) — the
+#     breach was under-counted, and the delete route is now PROVEN absent from the Blotato API.
+#   - 7kg case figure: "19%" -> "23%/kg" (the 19% was the discount framing and pointed the
+#     wrong way; corrected 2026-10-29, but this line never got it).
+#   - added: paste the fleet SSH key on the Orgo VM (opens the Mac path), CIIE badge (5-10 Nov).
+🎯 PLAN FOR TODAY — 29 Oct 2026
