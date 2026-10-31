@@ -431,3 +431,25 @@ known escalation that runs every pass until they are gone):
   has no edit route). Registry 127/127; suite **63 python + 8 other, ALL PASS**.
 - 🔑 *Do not generalise from the newest N posts - `8508724` (Threads, 792 views) disproved my own
   "IG is 4-6x Threads" claim.*
+
+### A payload's checker count is a CLAIM, not a fact - 2026-10-31 (guard now exists)
+- **The defect**: registering `cta-on-feed` (26th) left the canonical pass's payload saying
+  *"It is 25 READ-ONLY checkers"* - the pass would run 26 while its instructions said 25.
+- **Nothing caught it**: the registry test checks that every checker ON DISK is classified and
+  every registered checker EXISTS (neither is "does the payload's number match the registry's");
+  `check-cron-payload-claims` checks for a FALSE STATUS (a stale number is not a false status).
+  🔑 *A claim can be wrong without being false-sounding, and a guard that only catches
+  false-sounding claims will not catch a stale number.*
+- **Fixed** (payload -> 27) and **guarded**: `ops/check-cron-count-claims.py` (27th checker,
+  `known=no`) derives the count from the registry's PASS rows and compares it to any count a
+  payload STATES; silent on payloads that state nothing; skips `checker 25` (an id) and disabled
+  jobs; `2 = unchecked` (never clean) if the cron file or registry cannot be read.
+- 🔑 *It caught its own registration*: adding the checker made the registry 27 and the payload
+  26, and the suite went red on my own test. A guard that counts the thing it is part of must be
+  able to catch its own registration - this one did, in the same cycle, unprompted.*
+- **A regex bug found by the test, not by reading**: `\w+` does not match the hyphen in
+  "READ-ONLY", so the rule never fired on the very payload it was written for. Fixed to
+  `[\w'-]+`, plus a lookbehind so a date (`2026-10-25 checkers`) is not read as a count.
+  🔑 *A pattern guard is only as good as its last near-miss - and the near-miss here was the
+  exact string in the live payload.*
+- Registry 129/129; suite **64 python + 8 other, ALL PASS**.

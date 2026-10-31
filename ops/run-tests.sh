@@ -24,6 +24,7 @@ PY_TESTS=(
   ops/test-caption-policy-caviar.py
   ops/test-cta-truncation.py
   ops/test-cta-on-feed.py
+  ops/test-cron-count-claims.py
   ops/test-spec-traceability.py
   ops/test-cron-range-checker.py
   ops/test-correction-rules.py
