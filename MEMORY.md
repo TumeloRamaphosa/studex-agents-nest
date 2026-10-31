@@ -354,9 +354,22 @@ known escalation that runs every pass until they are gone):
   priced per 100g" → no number, so the price guard could never see it → **DELETE**.
 * **Threads `8633885`** (29 Oct) — the **only** post carrying "marbling grade 5" → **EDIT** the
   caption to "marble scores 8+ to 11+".
-- All three deletions are ~2 minutes of work in the Threads/Instagram apps; IG allows no caption
-  edit, so a repost of the B2B lead-time content needs the caviar line stripped from the source
-  first (the publish-path policy refuses that caption as it stands, so it cannot re-publish itself).
+- 🔑 **CORRECTED 2026-10-31 01:50 — EDIT, DON'T DELETE, ON THE TWO IG POSTS.** Our reach is
+  readable from `GET /posts` (`state.analytics.latest.metrics`) and it **inverts the remedy**:
+  `8592075` = **841 views / 489 reach / 5 profile visits**, `8634450` = **480 / 276 / 4** — these
+  are our **two best-performing posts** and they carry **every profile visit we have**. Deleting
+  them discards the best content we have produced. **So: `8634450` and `8592075` → EDIT the caption**
+  (drop the caviar/DAFF-permit line, keep the lead-time and supply-chain story) — delete only if
+  the app offers no edit. `DfG_M2bEd5U` → still delete (it is purely a caviar product offer).
+  `8633885` → edit the marble claim.
+  ⚠️ **What is PROVEN is that the Blotato *API* has no edit route — NOT that the Instagram app
+  cannot edit.** Say it as "edit if the app offers it, delete if it doesn't"; do not assert the
+  app's affordance from here (no browser on this box).
+- **The money-order item has a receipt:** IG reach is **4–6×** Threads (480–841 vs 50–130 views),
+  but **every post has 0 comments, 0 follows, 0 shares** — the funnel stops at the profile visit
+  (4–5 visits → 0 follows). 🔑 *Reach is not the problem; the call to action is.* The fix is a **CTA
+  in the caption** (WhatsApp / link-in-bio / comment prompt), not more posts. Also: **analytics land
+  ~24h after posting**, so a post cannot be judged the same day.
 - 🔑 *A guard whose remedy is a deletion must know whose surface it reads: this Blotato key also
   carries `laisa_aesthetics` (55765), another brand — the checker scans only our accounts.*
 
