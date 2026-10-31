@@ -3447,7 +3447,9 @@
     "2026-10-30T09:23:00Z",
     "2026-10-30T13:23:00Z",
     "2026-10-30T18:23:00Z",
-    "2026-10-30T19:23:00Z"
+    "2026-10-30T19:23:00Z",
+    "2026-10-30T22:23:00Z",
+    "2026-10-30T23:23:00Z"
    ],
    "missed_slots_note": "UNION of every slot already announced for this finding. A future pass should treat the finding as ALREADY POSTED when its derived missed-slot set is a SUBSET of this list (the checker's 6h window keeps an announced slot visible for 6h, so it WILL be re-derived). Post again ONLY if a NEW slot appears that is not in this list, or if the content/meaning changes. NOTE: a slot can also be announced to the channel by a DIFFERENT job (e.g. the CEO Evening Wrap) - so read the channel before posting, not only this ledger.",
    "posts": [
@@ -3489,13 +3491,23 @@
       "2026-10-30T19:23:00Z"
      ],
      "why": "The 18:23Z and 19:23Z slots were already announced to #ops by the CEO EVENING WRAP job at 20:05:29Z, 18 minutes before this pass ended, with the same two slots and the same upstream rate_limit cause. This pass therefore POSTED NOTHING - but the slots are recorded here so the checker's new-vs-already-announced split suppresses them on later passes instead of re-announcing them every hour."
+    },
+    {
+     "posted_at": "2026-10-31T00:05:00Z",
+     "messageId": "1565879713866580139",
+     "posted_by_pass": "katia-manual-heartbeat (NOT the pass - the pass itself could not run: upstream rate limit)",
+     "missed_slots": [
+      "2026-10-30T22:23:00Z",
+      "2026-10-30T23:23:00Z"
+     ],
+     "why": "Two more silent slots (22:23Z, 23:23Z). Measured: the failing turns consumed 0 tokens and died in 24s, with no fleet load overlapping and no tokens spent in the 18:00Z hour - so the throttle is provider-side, not self-inflicted. `openclaw cron edit --retries` -> unknown option, so there is no retry knob. Announced manually so the next successful pass treats these slots as already announced."
     }
    ],
    "channel": "1538825048465481728 (#ops)",
-   "posted_at": "2026-10-30T20:05:29Z",
-   "messageId": "1565818951362150401",
-   "posted_by_pass": "ceo-evening-wrap (announced 20:05:29Z; pass_2023_2026_10_30 posted nothing - already announced)",
-   "rule": "Do NOT re-post this finding again for a slot set already listed in `posts[].missed_slots` (and therefore in the union at the top level). The checker's 6h window keeps an announced slot visible until ~6h after it, so later passes WILL re-derive it. Post again ONLY if a NEW slot is missed or the content changes. Three posts so far, all the same upstream cause: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z). Fourth slot-pair added 2026-10-30T20:23Z (18:23Z + 19:23Z) - announced by the CEO EVENING WRAP at 20:05:29Z, msg 1565818951362150401, so pass_2023_2026_10_30 posted nothing. Four announcements so far: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z), 20:05Z (18:23Z/19:23Z, by the EOD wrap)."
+   "posted_at": "2026-10-31T00:05:00Z",
+   "messageId": "1565879713866580139",
+   "posted_by_pass": "katia-manual-heartbeat (NOT the pass - the pass could not run: upstream rate limit)",
+   "rule": "Do NOT re-post this finding again for a slot set already listed in `posts[].missed_slots` (and therefore in the union at the top level). The checker's 6h window keeps an announced slot visible until ~6h after it, so later passes WILL re-derive it. Post again ONLY if a NEW slot is missed or the content changes. Three posts so far, all the same upstream cause: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z). Fourth slot-pair added 2026-10-30T20:23Z (18:23Z + 19:23Z) - announced by the CEO EVENING WRAP at 20:05:29Z, msg 1565818951362150401, so pass_2023_2026_10_30 posted nothing. Five announcements so far: 06:28Z (03:23Z/04:23Z), 10:27Z (08:23Z/09:23Z), 14:29Z (13:23Z), 20:05Z (18:23Z/19:23Z, by the EOD wrap). Fifth announcement 2026-10-31T00:05Z (22:23Z + 23:23Z) posted MANUALLY by katia because the pass could not run (same upstream rate limit); msg 1565879713866580139."
   },
   "dead-inbox": {
    "channel": "1538825048465481728 (#ops)",
